@@ -1,0 +1,40 @@
+<section ng-controller="DeadlinesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Deadline</h1>
+  </div>
+  <div class="col-md-6">
+    <form name="deadlineForm" class="form-horizontal" ng-submit ="update(deadlineForm.$valid)" novalidate>
+      <fieldset>
+                <div class="form-group" show-errors>
+          <label for="event_date">Data impegno</label>
+	  <input name="event_date" id="deadline.event_date" type="date" class="form-control" datepicker-popup ng-model="event_date"/>
+	</div>
+	<div ng-messages="deadlineForm.event_date.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Deadline title is required.</p>
+        </div>
+	<div class="form-group" show-errors>
+	  <label for="event">Impegno</label>
+	  <input name="event" type="text" ng-model="deadline.event" id="event" class="form-control" placeholder="event" required>
+          <div ng-messages="deadlineForm.event.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Deadline title is required.</p>
+          </div>
+	  </div>
+        <div class="form-group">
+          <label for="content">Descrizione</label>
+          <textarea name="content" ng-model="deadline.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+        </div>
+	<div class="form-group">
+          <label for="classes">Classi</label>
+          <input type="text" name="classes" ng-list ng-model="deadline.classes" id="classes" class="form-control"  placeholder="Classe">
+        </div>
+       <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+	
+      </fieldset>
+    </form>
+  </div>
+</section>

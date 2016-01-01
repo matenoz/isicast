@@ -1,0 +1,13 @@
+'use strict';
+
+angular.module('features').directive('homeFeatures', [
+	function() {
+		return {
+			templateUrl: 'modules/features/views/list-features-template.html',
+			restrict: 'E',
+			transclude:true,
+			link: function postLink(scope, element, attrs) {
+			}
+		};
+	}
+]);

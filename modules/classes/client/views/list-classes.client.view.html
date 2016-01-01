@@ -1,0 +1,23 @@
+<section ng-controller="ClassesController" ng-init="find()">
+  <div class="page-header">
+    <h1>Classes</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="classe in classes" ui-sref="classes.view({classeId: classe._id})" class="list-group-item">
+      <small class="list-group-item-text">
+    <!--    Posted on
+        <span ng-bind="classe.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="classe.user.displayName"></span>-->
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="classe.nome_classe"></h4>
+      <p class="list-group-item-text" ng-bind="classe.indirizzo"></p>
+      <p class="list-group-item-text" ng-bind="classe.docenti"></p>
+      <p class="list-group-item-text" ng-bind="classe.coordinatore"></p>
+       <p class="list-group-item-text" ng-bind="classe.orario_classe"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="classes.$resolved && !classes.length">
+    No classes yet, why don't you <a ui-sref="classes.create">create one</a>?
+  </div>
+</section>

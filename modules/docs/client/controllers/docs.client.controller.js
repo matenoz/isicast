@@ -1,0 +1,102 @@
+'use strict';
+
+// Docs controller
+angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs',function ($scope, $stateParams, $location, Authentication, Docs) {
+    $scope.authentication = Authentication;
+    $scope.currentPage = 1;
+    $scope.pageSize =10;
+    $scope.offset = 0;
+  // Page changed handle
+    $scope.pageChanged = function() {
+      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+    };
+    
+    // month filter
+    $scope.selectedMonth = "";
+    $scope.months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    $scope.selectedMonthFilter = function(element) {
+	if(!$scope.selectedMonth) return true;
+	return element.created.getMonth() === $scope.selectedMonth;
+    };
+    
+    // Create new Doc
+    $scope.create = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'docForm');
+
+        return false;
+      }
+
+      // Create new Doc object
+      var doc = new Docs({
+        title: this.title,
+        content: this.content
+      });
+
+      // Redirect after save
+      doc.$save(function (response) {
+        $location.path('docs/' + response._id);
+
+        // Clear form fields
+        $scope.title = '';
+        $scope.content = '';
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    // Remove existing Doc
+    $scope.remove = function (doc) {
+      if (doc) {
+        doc.$remove();
+
+        for (var i in $scope.docs) {
+          if ($scope.docs[i] === doc) {
+            $scope.docs.splice(i, 1);
+          }
+        }
+      } else {
+        $scope.doc.$remove(function () {
+          $location.path('docs');
+        });
+      }
+    };
+
+    // Update existing Doc
+    $scope.update = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'docForm');
+
+        return false;
+      }
+
+      var doc = $scope.doc;
+
+      doc.$update(function () {
+        $location.path('docs/' + doc._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    // Find a list of Docs
+    $scope.find = function () {
+      $scope.docs = Docs.query();
+    };
+ 
+    // Find existing Doc
+    $scope.findOne = function () {
+      $scope.doc = Docs.get({
+        docId: $stateParams.docId
+      });	
+    };
+        // Search for documents
+    $scope.docSearch = function(doc) {
+       $location.path('docs/' + doc._id);
+    };
+  }
+]);

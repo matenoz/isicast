@@ -1,0 +1,35 @@
+<section ng-controller="DeadlinesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1 ng-bind="deadline.event"></h1>
+  </div>
+  <div class="pull-right" ng-show="authentication.user._id == deadline.user._id">
+    <a class="btn btn-primary" ui-sref="deadlines.edit({deadlineId: deadline._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-8">
+<table class="table table-bordered">
+  <thead >
+    <tr>
+      <th>data</th>
+      <th>evento</th>
+      <th>descrizione</th>
+      <th>classi</th>
+      <th>pubblicatore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td ng-bind="deadline.event_date"></td>
+      <td ng-bind="deadline.event"></td>
+      <td ><p ng-bind="deadline.content"></p></td>
+      <td ng-bind="deadline.classes"></td>
+      <td><span ng-bind="deadline.user.displayName"></span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</section>

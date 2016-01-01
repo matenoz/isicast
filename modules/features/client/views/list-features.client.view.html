@@ -1,0 +1,20 @@
+<section ng-controller="FeaturesController" ng-init="find()">
+  <div class="page-header">
+    <h1>Features</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="feature in features" ui-sref="features.view({featureId: feature._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="feature.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="feature.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="feature.title"></h4>
+      <p class="list-group-item-text" ng-bind="feature.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="features.$resolved && !features.length">
+    No features yet, why don't you <a ui-sref="features.create">create one</a>?
+  </div>
+</section>

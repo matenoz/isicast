@@ -1,0 +1,41 @@
+<section ng-controller="ClassesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Classe</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="classeForm" class="form-horizontal" ng-submit="update(classeForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="nome_classe">Nome_Classe</label>
+          <input name="nome_classe" type="text" ng-model="classe.nome_classe" id="nome_classe" class="form-control" placeholder="Nome_Classe" required>
+          <div ng-messages="classeForm.nome_classe.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Classe nome_classe is required.</p>
+          </div>
+        </div>
+	<div class="form-group">
+          <label for="indirizzo">Indirizzo</label>
+          <input name="indirizzo" ng-model="indirizzo" id="indirizzo" class="form-control" placeholder="Indirizzo">
+        </div>
+	<div class="form-group">
+	  <label for="docenti">Docenti</label>
+	  <input name="docenti" ng-list ng-model="docenti" id="docenti" class="form-control" placeholder="Docenti">
+	</div>
+	<div class="form-group">
+          <label for="coordinatore">Coordinatore</label>
+          <input name="coordinatore" ng-model="coordinatore" id="coordinatore" class="form-control" placeholder="Coordinatore">
+        </div>                                              
+       <div class="form-group">
+          <label for="orario_classe">Orario_Classe</label>
+          <input name="orario_classe" ng-model="orario_classe" id="orario_classe" class="form-control" placeholder="Orario_Classe">
+        </div>             
+	
+        <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
