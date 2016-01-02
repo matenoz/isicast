@@ -99,7 +99,7 @@ exports.teacherByID = function (req, res, next, id) {
     });
   }
 
-    Teacher.findById(id).populate('user', 'displayName').exec(function (err, teacher) {
+  Teacher.findById(id).populate('user', 'displayName').exec(function (err, teacher) {
     if (err) {
       return next(err);
     } else if (!teacher) {

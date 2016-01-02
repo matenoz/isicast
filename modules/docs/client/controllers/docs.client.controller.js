@@ -1,8 +1,23 @@
+
 'use strict';
 
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs',function ($scope, $stateParams, $location, Authentication, Docs) {
     $scope.authentication = Authentication;
+    // picker stuff
+    $scope.files = [];
+    $scope.onLoaded = function () {
+         console.log('Google Picker loaded!');
+    }; 
+    $scope.onPicked = function (docs) {
+      	angular.forEach(docs, function (file, index) {
+          $scope.files.push(file);
+       	});
+    };
+    $scope.onCancel = function () {
+         console.log('Google picker close/cancel!');
+    };
+    // pagination
     $scope.currentPage = 1;
     $scope.pageSize =10;
     $scope.offset = 0;
@@ -13,7 +28,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     
     // month filter
     $scope.selectedMonth = "";
-    $scope.months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     $scope.selectedMonthFilter = function(element) {
 	if(!$scope.selectedMonth) return true;
 	return element.created.getMonth() === $scope.selectedMonth;

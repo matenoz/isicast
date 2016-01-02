@@ -20,8 +20,8 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         nome_classe: this.nome_classe,
         indirizzo: this.indirizzo,
         docenti:this.docenti,
-	coordinatore:this.coordinatore,  
-	orario_classe:this.orario_classe  
+        coordinatore:this.coordinatore,  
+        orario_classe:this.orario_classe  
       });
 
       // Redirect after save
@@ -31,9 +31,9 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         // Clear form fields
         $scope.nome_classe = '';
         $scope.indirizzo = '';
-	$scope.docenti = '';
-	$scope.coordinatore = '';
-	$scope.orario_classe = '';
+        $scope.docenti = '';
+        $scope.coordinatore = '';
+        $scope.orario_classe = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

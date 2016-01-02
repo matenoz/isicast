@@ -21,19 +21,19 @@ var ClasseSchema = new Schema({
     default: '',
     trim: true
   },
-    docenti: {
-	type:Array, default:['','','','','' ]
+  docenti: {
+    type:Array, default:['','','','','' ]
   },
-   coordinatore:{
+  coordinatore:{
     type: String,
     default:'',
     trim: true
-   },
-   orario_classe:{
+  },
+  orario_classe:{
     type:Schema.Types.ObjectId,
     ref: 'Class_timetable'
-   },
-      user: {
+  },
+  user: {
     type: Schema.ObjectId,
     ref: 'User'
   }  

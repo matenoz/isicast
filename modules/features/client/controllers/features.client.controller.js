@@ -5,7 +5,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
     $scope.authentication = Authentication;
     // Create new Feature
     $scope.create = function (isValid) {
-	$scope.error = null;
+      $scope.error = null;
 
 	if (!isValid) {
             $scope.$broadcast('show-errors-check-validity', 'featureForm');
@@ -79,4 +79,4 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
 	});
     };
 }
-	    ]);
+]);

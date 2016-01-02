@@ -35,7 +35,7 @@ var TeacherSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Teacher_timetable'
   },
-    user: {
+  user: {
     type: Schema.ObjectId,
     ref: 'User'
   }
