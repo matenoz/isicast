@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('core').factory('Deadlines', ['$resource',
-	function($resource) {
-		return $resource('/deadlines');
-	}
+angular.module('core').factory('Deadlines', ['$resource',function($resource) {
+  return $resource('/deadlines');
+}
 ]);

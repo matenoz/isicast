@@ -1,117 +1,116 @@
-
 'use strict';
 
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs',function ($scope, $stateParams, $location, Authentication, Docs) {
-    $scope.authentication = Authentication;
+  $scope.authentication = Authentication;
     // picker stuff
-    $scope.files = [];
-    $scope.onLoaded = function () {
-         console.log('Google Picker loaded!');
-    }; 
-    $scope.onPicked = function (docs) {
-      	angular.forEach(docs, function (file, index) {
-          $scope.files.push(file);
-       	});
-    };
-    $scope.onCancel = function () {
-         console.log('Google picker close/cancel!');
-    };
+  $scope.files = [];
+  $scope.onLoaded = function () {
+    console.log('Google Picker loaded!');
+  }; 
+  $scope.onPicked = function (docs) {
+    angular.forEach(docs, function (file, index) {
+      $scope.files.push(file);
+    });
+  };
+  $scope.onCancel = function () {
+    console.log('Google picker close/cancel!');
+  };
     // pagination
-    $scope.currentPage = 1;
-    $scope.pageSize =10;
-    $scope.offset = 0;
+  $scope.currentPage = 1;
+  $scope.pageSize =10;
+  $scope.offset = 0;
   // Page changed handle
-    $scope.pageChanged = function() {
-      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
-    };
+  $scope.pageChanged = function() {
+    $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+  };
     
     // month filter
-    $scope.selectedMonth = "";
-    $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    $scope.selectedMonthFilter = function(element) {
-	if(!$scope.selectedMonth) return true;
-	return element.created.getMonth() === $scope.selectedMonth;
-    };
+  $scope.selectedMonth = '';
+  $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  $scope.selectedMonthFilter = function(element) {
+    if(!$scope.selectedMonth) return true;
+    return element.created.getMonth() === $scope.selectedMonth;
+  };
     
     // Create new Doc
-    $scope.create = function (isValid) {
-      $scope.error = null;
+  $scope.create = function (isValid) {
+    $scope.error = null;
 
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'docForm');
+    if (!isValid) {
+      $scope.$broadcast('show-errors-check-validity', 'docForm');
 
-        return false;
-      }
+      return false;
+    }
 
       // Create new Doc object
-      var doc = new Docs({
-        title: this.title,
-        content: this.content
-      });
+    var doc = new Docs({
+      title: this.title,
+      content: this.content
+    });
 
       // Redirect after save
-      doc.$save(function (response) {
-        $location.path('docs/' + response._id);
+    doc.$save(function (response) {
+      $location.path('docs/' + response._id);
 
         // Clear form fields
-        $scope.title = '';
-        $scope.content = '';
-      }, function (errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
-    };
+      $scope.title = '';
+      $scope.content = '';
+    }, function (errorResponse) {
+      $scope.error = errorResponse.data.message;
+    });
+  };
 
     // Remove existing Doc
-    $scope.remove = function (doc) {
-      if (doc) {
-        doc.$remove();
+  $scope.remove = function (doc) {
+    if (doc) {
+      doc.$remove();
 
-        for (var i in $scope.docs) {
-          if ($scope.docs[i] === doc) {
-            $scope.docs.splice(i, 1);
-          }
+      for (var i in $scope.docs) {
+        if ($scope.docs[i] === doc) {
+          $scope.docs.splice(i, 1);
         }
-      } else {
-        $scope.doc.$remove(function () {
-          $location.path('docs');
-        });
       }
-    };
+    } else {
+      $scope.doc.$remove(function () {
+        $location.path('docs');
+      });
+    }
+  };
 
     // Update existing Doc
-    $scope.update = function (isValid) {
-      $scope.error = null;
+  $scope.update = function (isValid) {
+    $scope.error = null;
 
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'docForm');
+    if (!isValid) {
+      $scope.$broadcast('show-errors-check-validity', 'docForm');
 
-        return false;
-      }
+      return false;
+    }
 
-      var doc = $scope.doc;
+    var doc = $scope.doc;
 
-      doc.$update(function () {
-        $location.path('docs/' + doc._id);
-      }, function (errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
-    };
+    doc.$update(function () {
+      $location.path('docs/' + doc._id);
+    }, function (errorResponse) {
+      $scope.error = errorResponse.data.message;
+    });
+  };
 
     // Find a list of Docs
-    $scope.find = function () {
-      $scope.docs = Docs.query();
-    };
+  $scope.find = function () {
+    $scope.docs = Docs.query();
+  };
  
     // Find existing Doc
-    $scope.findOne = function () {
-      $scope.doc = Docs.get({
-        docId: $stateParams.docId
-      });	
-    };
+  $scope.findOne = function () {
+    $scope.doc = Docs.get({
+      docId: $stateParams.docId
+    });	
+  };
         // Search for documents
-    $scope.docSearch = function(doc) {
-       $location.path('docs/' + doc._id);
-    };
-  }
+  $scope.docSearch = function(doc) {
+    $location.path('docs/' + doc._id);
+  };
+}
 ]);

@@ -19,9 +19,9 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       var teacher = new Teachers({
         name: this.name,
         materia: this.materia,
-	coordinator:this.coordinator,
-	classes:this.classes,
-	teacher_timetable:this.teacher_timetable  
+        coordinator:this.coordinator,
+        classes:this.classes,
+        teacher_timetable:this.teacher_timetable  
       });
 
       // Redirect after save
@@ -31,9 +31,9 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         // Clear form fields
         $scope.name = '';
         $scope.materia = '';
-	$scope.coordinator = '';
-	$scope.classes = '';
-	$scope.teacher_timetable = '';
+        $scope.coordinator = '';
+        $scope.classes = '';
+        $scope.teacher_timetable = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

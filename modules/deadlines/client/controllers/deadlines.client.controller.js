@@ -16,9 +16,9 @@ angular.module('deadlines').controller('DeadlinesController', ['$scope', '$state
 
       // Create new Deadline object
       var deadline = new Deadlines({
-	event_date:this.event_date,
-	event:this.event,  
-	classes: this.classes,
+        event_date:this.event_date,
+        event:this.event,  
+        classes: this.classes,
         content: this.content
       });
 
@@ -28,9 +28,9 @@ angular.module('deadlines').controller('DeadlinesController', ['$scope', '$state
 
         // Clear form fields
         $scope.event_date = '';
-	$scope.event = '';
-	$scope.content = '';
-	$scope.classes = '';  
+        $scope.event = '';
+        $scope.content = '';
+        $scope.classes = '';  
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
