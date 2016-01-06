@@ -25,6 +25,16 @@ var DocSchema = new Schema({
     default: '',
     trim: true
   },
+  main_doc:{
+    type:Array,
+    default:[],
+    trim:true
+  },  
+  attachment:{
+    type:Array,
+    default:[],
+    trim:true
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

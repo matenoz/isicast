@@ -41,7 +41,8 @@ exports.update = function (req, res) {
 
   doc.title = req.body.title;
   doc.content = req.body.content;
-
+  doc.main_doc = req.body.main_doc;  
+  doc.attachment = req.body.attachment;  
   doc.save(function (err) {
     if (err) {
       return res.status(400).send({

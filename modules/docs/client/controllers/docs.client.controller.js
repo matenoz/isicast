@@ -3,19 +3,6 @@
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs',function ($scope, $stateParams, $location, Authentication, Docs) {
   $scope.authentication = Authentication;
-    // picker stuff
-  $scope.files = [];
-  $scope.onLoaded = function () {
-    console.log('Google Picker loaded!');
-  }; 
-  $scope.onPicked = function (docs) {
-    angular.forEach(docs, function (file, index) {
-      $scope.files.push(file);
-    });
-  };
-  $scope.onCancel = function () {
-    console.log('Google picker close/cancel!');
-  };
     // pagination
   $scope.currentPage = 1;
   $scope.pageSize =10;
@@ -32,6 +19,19 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     if(!$scope.selectedMonth) return true;
     return element.created.getMonth() === $scope.selectedMonth;
   };
+      // picker stuff
+  $scope.files = [];
+  $scope.onLoaded = function () {
+    console.log('Google Picker loaded!');
+  }; 
+  $scope.onPicked = function (docs) {
+    angular.forEach(docs, function (file, index) {
+      $scope.files.push(file);
+    });
+  };
+  $scope.onCancel = function () {
+    console.log('Google picker close/cancel!');
+  };    
     
     // Create new Doc
   $scope.create = function (isValid) {
@@ -46,9 +46,19 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
       // Create new Doc object
     var doc = new Docs({
       title: this.title,
-      content: this.content
+      content: this.content,
+      main_doc:[],
+      attachment:[]
+      	
     });
-
+    angular.forEach($scope.files, function(file,index){
+      if(index === 0){
+        doc.main_doc.push(file);
+      }
+      else {	  
+        doc.attachment.push(file);
+      }
+    });  
       // Redirect after save
     doc.$save(function (response) {
       $location.path('docs/' + response._id);
@@ -56,6 +66,8 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
         // Clear form fields
       $scope.title = '';
       $scope.content = '';
+      $scope.main_doc = [];
+      $scope.attachment = [];
     }, function (errorResponse) {
       $scope.error = errorResponse.data.message;
     });
