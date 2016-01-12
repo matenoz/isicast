@@ -1,4 +1,4 @@
-<div class="list-group">
+<!-- <div class="list-group">
 <a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize" ui-sref="docs.view({docId: doc._id})" class="list-group-item">
     <small class="list-group-item-text">
       Posted on
@@ -8,22 +8,23 @@
     </small>
     <h4 class="list-group-item-heading" data-ng-bind="doc.name"></h4>
   </a>
-</div> 
-<!--<div class="panel-group">
+</div> --> 
+<div class="panel-group">
  <a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize"
-	data-ng-href="#!/docs/{{doc._id}}">
+	ui-sref="docs.view({docId: doc._id})">
        <div class="panel panel-default">
 	 <div class="panel-heading"><small>
-	     Posted on
+	     Documento prot:<span ng-bind="doc.prot"></span> del
 	     <span data-ng-bind="doc.created | date:'medium'"></span>
-	     by
+	     Resp. proc.to
 	     <span data-ng-bind="doc.user.displayName"></span>
 	   </small>
 	 </div>
 	 <div class="panel-body">
-	   <h4 data-ng-bind="doc.name"></h4>
-	   <h4 data-ng-bind="doce.materia"></h4>
+	   <h5 data-ng-bind="doc.title"></h5>
+	   <p data-ng-bind="doc.content"></p>
+     ...leggi
 	 </div>
        </div>
      </a>
-</div>-->	
+</div>	

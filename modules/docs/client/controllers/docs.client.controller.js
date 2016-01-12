@@ -12,14 +12,14 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
   };
     
-    // month filter
+/*    // month filter
   $scope.selectedMonth = '';
   $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   $scope.selectedMonthFilter = function(element) {
     if(!$scope.selectedMonth) return true;
     return element.created.getMonth() === $scope.selectedMonth;
   };
-      // picker stuff
+     */// picker stuff
   $scope.files = [];
   $scope.onLoaded = function () {
     console.log('Google Picker loaded!');
@@ -47,6 +47,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     var doc = new Docs({
       title: this.title,
       content: this.content,
+      prot: this.prot,
       main_doc:[],
       attachment:[]
       	
@@ -66,6 +67,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
         // Clear form fields
       $scope.title = '';
       $scope.content = '';
+      $scope.prot = null;
       $scope.main_doc = [];
       $scope.attachment = [];
     }, function (errorResponse) {

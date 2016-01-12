@@ -6,7 +6,13 @@
     <form name="docForm" class="form-horizontal" ng-submit="create(docForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="title">Title</label>
+          <label for="prot">Protocollo</label>
+          <input name="prot" type="number" ng-model="prot" id="prot" class="form-control" placeholder="Protocollo" required>
+          <div ng-messages="docForm.prot.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Doc protocol is required.</p>
+          </div>
+        <div class="form-group" show-errors>
+          <label for="title">Oggetto</label>
           <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
           <div ng-messages="docForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Doc title is required.</p>
