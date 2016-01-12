@@ -1,0 +1,16 @@
+'use strict';
+
+// Rename this file to local.js for having a local configuration variables that
+// will not get commited and pushed to remote repositories.
+// Use it for your API keys, passwords, etc.
+
+/* For example:
+
+module.exports = {
+	google: {
+    clientID: process.env.GOOGLE_ID || '217850201622-irb8g1r49hngdhle0p5918d79fidia3h.apps.googleusercontent.com',
+    clientSecret: process.env.GOOGLE_SECRET || '5JtK8Y9SGBWPY7Y0HFsVyKVI',
+    callbackURL: '/api/auth/google/callback'
+  }
+};
+*/
