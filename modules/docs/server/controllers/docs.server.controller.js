@@ -41,6 +41,7 @@ exports.update = function (req, res) {
 
   doc.title = req.body.title;
   doc.content = req.body.content;
+  doc.prot = req.body.prot;
   doc.main_doc = req.body.main_doc;  
   doc.attachment = req.body.attachment;  
   doc.save(function (err) {

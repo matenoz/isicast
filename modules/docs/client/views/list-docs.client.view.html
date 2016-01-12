@@ -2,24 +2,25 @@
   <div class="page-header">
     <h1>Docs</h1>
   </div>
-  <div class="form-group">
+ <div class="form-group">
     <input type="text"  ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Search documents...">
   </div>
-  <!-- <div class="form-group"> -->
-  <!--   <select ng-model="selectedMonth" class="form-control" ng-options="month as month for month in months"> -->
-  <!--     <option></option> -->
-  <!--   </select>   -->
-  <!--  </div> -->
+ <!--  <div class="form-group">
+    <select ng-model="selectedMonth" class="form-control" ng-options="month as month for month in months">
+      <option></option>
+    </select>  
+   </div> -->
   <div class="list-group">
     <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
       <small class="list-group-item-text">
-        Posted on
+        Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
         <span ng-bind="doc.created | date:'mediumDate'"></span>
-        by
+        Resp. proc.to
         <span ng-bind="doc.user.displayName"></span>
       </small>
       <h4 class="list-group-item-heading" ng-bind="doc.title"></h4>
       <p class="list-group-item-text" ng-bind="doc.content"></p>
+      ...leggi
     </a>
   </div>
    <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>

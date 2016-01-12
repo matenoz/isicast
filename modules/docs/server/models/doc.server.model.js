@@ -14,11 +14,15 @@ var DocSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  prot:  {
+    type:Number,
+    required:'protocoll cannot be blank'
+  },
   title: {
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Object cannot be blank'
   },
   content: {
     type: String,

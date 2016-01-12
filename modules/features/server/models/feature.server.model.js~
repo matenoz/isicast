@@ -25,6 +25,18 @@ var FeatureSchema = new Schema({
     default: '',
     trim: true
   },
+  img: {
+    type:String,
+    default:"",
+    trim:true
+  },
+  deadline:{
+    type:Date,
+      },
+  priority:{
+    type:Number,
+    default:5
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

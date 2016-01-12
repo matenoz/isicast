@@ -1,32 +1,29 @@
-<!-- <div class="list-group"> -->
-<!-- <a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize" ui-sref="docs.view({docId: doc._id})" class="list-group-item"> -->
-<!--     <small class="list-group-item-text"> -->
-<!--       Posted on -->
-<!--       <span data-ng-bind="doc.created | date:'medium'"></span> -->
-<!--       by -->
-<!--       <span data-ng-bind="doc.user.displayName"></span> -->
-<!--     </small> -->
-<!--     <h4 class="list-group-item-heading" data-ng-bind="doc.name"></h4> -->
-<!--   </a> -->
-<!-- </div> --> 
+<!-- <div class="list-group">
+<a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize" ui-sref="docs.view({docId: doc._id})" class="list-group-item">
+    <small class="list-group-item-text">
+      Posted on
+      <span data-ng-bind="doc.created | date:'medium'"></span>
+      by
+      <span data-ng-bind="doc.user.displayName"></span>
+    </small>
+    <h4 class="list-group-item-heading" data-ng-bind="doc.name"></h4>
+  </a>
+</div> --> 
 <div class="panel-group">
- <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize"
+ <a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize"
 	ui-sref="docs.view({docId: doc._id})">
-       <div class="panel panel-danger">
-	 <div class="panel-heading">
-	   <small>
-	     Posted on
-	     <span ng-bind="doc.created | date:'medium'"></span>
-	     by
-	     <span ng-bind="doc.user.displayName"></span>
+       <div class="panel panel-default">
+	 <div class="panel-heading"><small>
+	     Documento prot:<span ng-bind="doc.prot"></span> del
+	     <span data-ng-bind="doc.created | date:'medium'"></span>
+	     Resp. proc.to
+	     <span data-ng-bind="doc.user.displayName"></span>
 	   </small>
 	 </div>
 	 <div class="panel-body">
-	   <h4 ng-bind="doc.title"></h4>
-	   <p ng-bind="doc.content"></p>
-	   <ul>
-	     <li ng-bind="doc.main_doc"></li>
-	   </ul>
+	   <h5 data-ng-bind="doc.title"></h5>
+	   <p data-ng-bind="doc.content"></p>
+     ...leggi
 	 </div>
        </div>
      </a>

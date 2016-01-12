@@ -20,6 +20,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     return element.created.getMonth() === $scope.selectedMonth;
   };
   */// picker stuff
+
   $scope.files = [];
   $scope.onLoaded = function () {
     console.log('Google Picker loaded!');
@@ -47,6 +48,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     var doc = new Docs({
       title: this.title,
       content: this.content,
+      prot: this.prot,
       main_doc:[],
       attachment:[]
       	
@@ -66,6 +68,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
         // Clear form fields
       $scope.title = '';
       $scope.content = '';
+      $scope.prot = null;
       $scope.main_doc = [];
       $scope.attachment = [];
     }, function (errorResponse) {
