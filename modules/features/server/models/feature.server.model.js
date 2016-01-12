@@ -27,12 +27,12 @@ var FeatureSchema = new Schema({
   },
   img: {
     type:String,
-    default:"",
+    default:'',
     trim:true
   },
   deadline:{
     type:Date,
-      },
+  },
   priority:{
     type:Number,
     default:5
