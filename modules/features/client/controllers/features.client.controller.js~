@@ -4,7 +4,6 @@
 angular.module('features').controller('FeaturesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Features',
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
-
     // Create new Feature
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -15,17 +14,17 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
         return false;
       }
 
-      // Create new Feature object
+	// Create new Feature object
       var feature = new Features({
         title: this.title,
         content: this.content
       });
 
-      // Redirect after save
+	  // Redirect after save
       feature.$save(function (response) {
         $location.path('features/' + response._id);
 
-        // Clear form fields
+              // Clear form fields
         $scope.title = '';
         $scope.content = '';
       }, function (errorResponse) {
@@ -33,7 +32,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       });
     };
 
-    // Remove existing Feature
+      // Remove existing Feature
     $scope.remove = function (feature) {
       if (feature) {
         feature.$remove();
@@ -50,7 +49,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       }
     };
 
-    // Update existing Feature
+      // Update existing Feature
     $scope.update = function (isValid) {
       $scope.error = null;
 
@@ -69,12 +68,12 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       });
     };
 
-    // Find a list of Features
+      // Find a list of Features
     $scope.find = function () {
       $scope.features = Features.query();
     };
 
-    // Find existing Feature
+      // Find existing Feature
     $scope.findOne = function () {
       $scope.feature = Features.get({
         featureId: $stateParams.featureId

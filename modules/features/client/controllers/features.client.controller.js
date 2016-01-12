@@ -17,7 +17,10 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
 	// Create new Feature object
       var feature = new Features({
         title: this.title,
-        content: this.content
+        content: this.content,
+        img: this.img,
+        deadline: this.dedline,
+        priority: this.priority
       });
 
 	  // Redirect after save
@@ -27,6 +30,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
               // Clear form fields
         $scope.title = '';
         $scope.content = '';
+        
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
