@@ -1,7 +1,7 @@
 'use strict';
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs',function ($scope, $stateParams, $location, Authentication, Docs) {
+angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
   $scope.authentication = Authentication;
     // pagination
   $scope.currentPage = 1;
@@ -12,14 +12,14 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
   };
     
-    // month filter
+/*    // month filter
   $scope.selectedMonth = '';
   $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   $scope.selectedMonthFilter = function(element) {
     if(!$scope.selectedMonth) return true;
     return element.created.getMonth() === $scope.selectedMonth;
   };
-      // picker stuff
+  */// picker stuff
   $scope.files = [];
   $scope.onLoaded = function () {
     console.log('Google Picker loaded!');
@@ -113,7 +113,13 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
   $scope.find = function () {
     $scope.docs = Docs.query();
   };
- 
+
+  $scope.findWithParams = function() {
+    $scope.docs = Docs2.query({
+      param1: $scope.aYearFromNow,
+      param2: $scope.aMonthAgo
+    });
+  };
     // Find existing Doc
   $scope.findOne = function () {
     $scope.doc = Docs.get({

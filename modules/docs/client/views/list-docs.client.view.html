@@ -1,18 +1,17 @@
 <section ng-controller="DocsController" ng-init="find()">
   <div class="page-header">
     <h1>Docs</h1>
-      <tt>{{$item}}</tt>
   </div>
   <div class="form-group">
     <input type="text"  ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Search documents...">
   </div>
-  <div class="form-group">
-    <select ng-model="selectedMonth" class="form-control" ng-options="month as month for month in months">
-      <option></option>
-    </select>  
-   </div>
+  <!-- <div class="form-group"> -->
+  <!--   <select ng-model="selectedMonth" class="form-control" ng-options="month as month for month in months"> -->
+  <!--     <option></option> -->
+  <!--   </select>   -->
+  <!--  </div> -->
   <div class="list-group">
-    <a ng-repeat="doc in docs | filter:selectedMonthFilter| limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
+    <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
       <small class="list-group-item-text">
         Posted on
         <span ng-bind="doc.created | date:'mediumDate'"></span>

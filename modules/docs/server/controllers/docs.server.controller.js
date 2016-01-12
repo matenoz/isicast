@@ -87,6 +87,28 @@ exports.list = function (req, res) {
 };
 
 /**
+ * Doc search with params
+ */
+
+exports.listWithParams = function(req, res) {
+  Doc.find()
+    .where('created')
+    .lt(req.params.param1)
+    .gt(req.params.param2)
+    .sort('-created').populate('user', 'displayName')
+    .exec(function(err, docs) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.jsonp(docs);
+      }
+    });
+};
+
+
+/**
  * Doc middleware
  */
 exports.docByID = function (req, res, next, id) {
