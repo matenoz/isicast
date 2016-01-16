@@ -7,7 +7,7 @@
       <fieldset>
         <div class="form-group" show-errors>
           <label for="prot">Protocollo</label>
-          <input name="prot" type="number" ng-model="prot" id="prot" class="form-control" placeholder="Protocollo" required>
+          <input name="prot" type="number" ng-model="prot" id="prot" class="form-control" min="0" placeholder="Protocollo" required>
           <div ng-messages="docForm.prot.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Doc protocol is required.</p>
           </div>

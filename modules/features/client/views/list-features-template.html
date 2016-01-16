@@ -1,12 +1,17 @@
-<div class="list-group">
-        <a data-ng-repeat="feature in features" ui-sref="features.view({featureId: feature._id})" class="list-group-item">
-                        <small class="list-group-item-text">
-                                Posted on
-                                <span data-ng-bind="feature.created | date:'medium'"></span>
-                                by
-                                <span data-ng-bind="feature.user.displayName"></span>
-                        </small>
-                        <h4 class="list-group-item-heading" data-ng-bind="feature.name"></h4>
-        </a>
+<div class="panel-group" ng-repeat="feature in features">
+  <a  ui-sref="features.view({featureId: feature._id})">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<h4 ng-bind="feature.title.toUpperCase()" class="panel-title"></h4>
+      </div>
+      <div class="panel-body">
+	<img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
+	<p ng-bind="feature.content" class="panel-content"></p>
+	<small>
+	  <span ng-bind="feature.created | date:'medium'"></span>
+	</small>
+      </div>
     </div>
+  </a>
+</div>
 

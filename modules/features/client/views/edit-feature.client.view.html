@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Edit Feature</h1>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-8">
     <form name="featureForm" class="form-horizontal" ng-submit="update(featureForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -11,6 +11,14 @@
           <div ng-messages="featureForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Feature title is required.</p>
           </div>
+        </div>
+	<div class="form-group">
+	  <label for="deadline">Scadenza</label>
+          <input type="date" ng-model="featur.deadline" class="form-control" name="deadline" id="deadline">
+        </div>
+	<div class="form-group">
+	  <label for="priority">Priorità</label>
+          <input type="number" ng-model="feature.priority" id="priority" class="form-control" min="1" max="5">
         </div>
         <div class="form-group">
           <label for="content">Content</label>

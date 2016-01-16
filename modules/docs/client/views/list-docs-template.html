@@ -9,9 +9,8 @@
     <h4 class="list-group-item-heading" data-ng-bind="doc.name"></h4>
   </a>
 </div> --> 
-<div class="panel-group">
- <a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize"
-	ui-sref="docs.view({docId: doc._id})">
+<div class="panel-group" ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize">
+ <a ui-sref="docs.view({docId: doc._id})">
        <div class="panel panel-default">
 	 <div class="panel-heading"><small>
 	     Documento prot:<span ng-bind="doc.prot"></span> del

@@ -4,6 +4,19 @@
 angular.module('features').controller('FeaturesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Features',
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
+
+    $scope.files = [];
+    $scope.onLoaded = function () {
+      console.log('Google Picker loaded!');
+    }; 
+    $scope.onPicked = function (docs) {
+      angular.forEach(docs, function (file, index) {
+        $scope.files.push(file);
+      });
+    };
+    $scope.onCancel = function () {
+      console.log('Google picker close/cancel!');
+    };    
     // Create new Feature
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -22,6 +35,11 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
         deadline: this.dedline,
         priority: this.priority
       });
+      angular.forEach($scope.files, function(file,index){
+        if(index === 0){
+          feature.img=file.downloadUrl;
+        }
+      });  
 
 	  // Redirect after save
       feature.$save(function (response) {

@@ -22,11 +22,7 @@ public/dist/
 uploads
 modules/users/client/img/profile/uploads
 config/env/local.js
-<<<<<<< HEAD
-modules/docs/client/config/docs.client.picker.js
-=======
 config/env/local-*.js
->>>>>>> 9220662f4e6d6a2d71378e7df0917ddde380fed5
 *.pem
 
 # Ignoring MEAN.JS's gh-pages branch for documenation
