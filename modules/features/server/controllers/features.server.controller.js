@@ -42,6 +42,7 @@ exports.update = function (req, res) {
   feature.title = req.body.title;
   feature.content = req.body.content;
   feature.img = req.body.img;
+  feature.link = req.body.link;
   feature.deadline = req.body.deadline;
   feature.priority = req.body.priority;
   feature.save(function (err) {

@@ -14,7 +14,7 @@
         </div>
 	<div class="form-group">
 	  <label for="deadline">Scadenza</label>
-          <input type="date" ng-model="featur.deadline" class="form-control" name="deadline" id="deadline">
+          <input type="date" ng-model="feature.deadline" class="form-control" name="deadline" id="deadline">
         </div>
 	<div class="form-group">
 	  <label for="priority">Priorità</label>
@@ -23,6 +23,10 @@
         <div class="form-group">
           <label for="content">Content</label>
           <textarea name="content" ng-model="feature.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+        </div>
+	<div class="form-group">
+	  <label for="link">Link</label>
+          <input type="text" ng-model="feature.link" class="form-control" name="link" id="link">
         </div>
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">

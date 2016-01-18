@@ -30,12 +30,19 @@ var FeatureSchema = new Schema({
     default:'',
     trim:true
   },
+  link: {
+    type:String,
+    default:'',
+    trim:true
+  },
   deadline:{
     type:Date,
+    trim: true
   },
   priority:{
     type:Number,
-    default:5
+    default:5,
+    trim: true  
   },
   user: {
     type: Schema.ObjectId,

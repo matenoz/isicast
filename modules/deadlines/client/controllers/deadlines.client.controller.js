@@ -4,7 +4,8 @@
 angular.module('deadlines').controller('DeadlinesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Deadlines',
   function ($scope, $stateParams, $location, Authentication, Deadlines) {
     $scope.authentication = Authentication;
-       // Create new Deadline
+    $scope.pre_dead = new Date();
+    // Create new Deadline
     $scope.create = function (isValid) {
       $scope.error = null;
 

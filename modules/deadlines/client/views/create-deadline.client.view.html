@@ -1,9 +1,8 @@
-
 <section ng-controller="DeadlinesController">
   <div class="page-header">
     <h1>New Deadline</h1>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <form name="deadlineForm" class="form-horizontal" ng-submit="create(deadlineForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -11,7 +10,7 @@
 	  <input name="event_date" id="event_date" type="date" class="form-control" datepicker-popup ng-model="event_date"/>
 	</div>
 	<div ng-messages="deadlineForm.event_date.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Deadline title is required.</p>
+          <p class="help-block error-text" ng-message="required">Deadline title is required.</p>
         </div>
 	<div class="form-group" show-errors>
 	  <label for="event">Impegno</label>
@@ -19,7 +18,7 @@
           <div ng-messages="deadlineForm.event.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Deadline title is required.</p>
           </div>
-	  </div>
+	</div>
         <div class="form-group">
           <label for="content">Descrizione</label>
           <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
@@ -27,8 +26,7 @@
 	<div class="form-group">
           <label for="classes">Classi</label>
           <input type="text" name="classes" ng-model="classes" id="classes" ng-list=", " class="form-control"  placeholder="Classe">
-        </div>
-      
+        </div>      
 	<div class="form-group">
           <input type="submit" class="btn btn-default">
         </div>

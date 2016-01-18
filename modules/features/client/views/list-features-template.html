@@ -1,17 +1,21 @@
 <div class="panel-group" ng-repeat="feature in features">
-  <a  ui-sref="features.view({featureId: feature._id})">
-    <div class="panel panel-default">
+  <!-- <a  ui-sref="features.view({featureId: feature._id})"> -->
+    <div ng-if="(pre_dead | date) <= (feature.deadline | date)" class="panel panel-default">
       <div class="panel-heading">
-	<h4 ng-bind="feature.title.toUpperCase()" class="panel-title"></h4>
+	<h6 ng-bind="feature.title.toUpperCase()" class="panel-title"></h6>
       </div>
       <div class="panel-body">
 	<img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
-	<p ng-bind="feature.content" class="panel-content"></p>
-	<small>
+	<div align="left" style="padding-left:140px">
+	  <p ng-bind="feature.content" class="panel-content"></p>
+	  <a ng-href="{{feature.link}}"><button class="btn btn-xs" >link</button></a>
+        </div>
+	 <hr>
+	 <small>
 	  <span ng-bind="feature.created | date:'medium'"></span>
 	</small>
       </div>
     </div>
-  </a>
+ <!-- </a>-->
 </div>
 

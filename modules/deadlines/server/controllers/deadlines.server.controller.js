@@ -74,7 +74,7 @@ exports.delete = function (req, res) {
  * List of Deadlines
  */
 exports.list = function (req, res) {
-  Deadline.find().sort('-created').populate('user', 'displayName').exec(function (err, deadlines) {
+  Deadline.find().sort('event_date').populate('user', 'displayName').exec(function (err, deadlines) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

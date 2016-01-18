@@ -76,5 +76,5 @@ table{
 }
 
 th, td {
-    overflow: hidden;
+    overflow: hidden;-
 }

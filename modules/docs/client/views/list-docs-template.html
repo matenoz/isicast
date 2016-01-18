@@ -1,28 +1,18 @@
-<!-- <div class="list-group">
-<a data-ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize" ui-sref="docs.view({docId: doc._id})" class="list-group-item">
-    <small class="list-group-item-text">
-      Posted on
-      <span data-ng-bind="doc.created | date:'medium'"></span>
-      by
-      <span data-ng-bind="doc.user.displayName"></span>
-    </small>
-    <h4 class="list-group-item-heading" data-ng-bind="doc.name"></h4>
-  </a>
-</div> --> 
 <div class="panel-group" ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize">
  <a ui-sref="docs.view({docId: doc._id})">
        <div class="panel panel-default">
 	 <div class="panel-heading"><small>
-	     Documento prot:<span ng-bind="doc.prot"></span> del
-	     <span data-ng-bind="doc.created | date:'medium'"></span>
-	     Resp. proc.to
+	     Protocollo n°<span ng-bind="doc.prot"></span> del
+	     <span data-ng-bind="doc.created | date"></span>
+	     Resp. procedimento
 	     <span data-ng-bind="doc.user.displayName"></span>
 	   </small>
 	 </div>
 	 <div class="panel-body">
 	   <h5 data-ng-bind="doc.title"></h5>
 	   <p data-ng-bind="doc.content"></p>
-     ...leggi
+	   ...leggi
+	   <p ng-if="doc.attachment.length > 0"><span class="glyphicon glyphicon-paperclip"></span> sono presenti allegati </p>
 	 </div>
        </div>
      </a>

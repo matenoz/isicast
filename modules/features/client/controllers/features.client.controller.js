@@ -4,7 +4,7 @@
 angular.module('features').controller('FeaturesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Features',
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
-
+    $scope.pre_dead = new Date();
     $scope.files = [];
     $scope.onLoaded = function () {
       console.log('Google Picker loaded!');
@@ -32,7 +32,8 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
         title: this.title,
         content: this.content,
         img: this.img,
-        deadline: this.dedline,
+        link: this.link, 
+        deadline: this.deadline,
         priority: this.priority
       });
       angular.forEach($scope.files, function(file,index){
@@ -48,7 +49,9 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
               // Clear form fields
         $scope.title = '';
         $scope.content = '';
-        
+        $scope.deadline = null; 
+        $scope.link = '';
+	  
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
