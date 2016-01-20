@@ -8,231 +8,277 @@
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
+  <div class="navbar navbar-default">
+    <div class="container">
       <div class="navbar-header">
+	<button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
 	<a class="navbar-brand" href="#">
           <img alt="Brand" src="modules/core/client/img/brand/brand.png">
 	</a>
-
-	<!-- <form class="navbar-form navbar-left" role="search">
-	     <div class="form-group">
-               <input type="text" class="form-control" placeholder="Search">
-	     </div>
-	     <button 
-
-		type="submit" class="btn btn-default">Submit</button>
-	</form>-->
-	<ul class="nav navbar-nav"> 
+      </div>
+      <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+        <ul class="nav navbar-nav">
 	  <li dropdown>
-            <a href="/#!/" dropdown-toggle>Amm.ne Trasparente
+	    <a href="#" dropdown-toggle>
+	      <span class="glyphicon glyphicon-tower"></span> La Scuola<span class="caret"></span>
+            </a>
+	    <ul class="dropdown-menu"  role="menu">
+	      <li><a ng-href="#">L'istituto</a></li>
+	      <li><a ng-href="#">Piano dell'offerta formativa</a></li>
+	      <li><a ng-href="#">Regolamento d'istituto</a></li>
+	      <li><a ng-href="#">Carta dei servizi</a></li>
+	      <li><a ng-href="#">Regolamento</a></li>
+	      <li class="divider"></li>
+	      <li class="dropdown-header">Sezioni</li>
+	      <li><a ng-href="#">Diurno</a></li>
+	      <li><a ng-href="#">Serale</a></li>
+	      <li class="divider"></li>
+	      <li class="dropdown-header">Organizzazione</li>
+	      <li><a ng-href="#">Organigramma</a></li>
+	      <li><a ng-href="#">Orario scolastico</a></li>
+	      <li><a ng-href="#">Organico docenti</a></li>
+	      <li><a ng-href="#">Consigli di classe</a></li>
+	      <li><a ng-href="#">Organico non docenti</a></li>
+	    </ul>
+	</ul>
+	<ul class="nav navbar-nav">
+	  <li dropdown>
+	    <a href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-blackboard"></span> Didattica
 	      <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="http://isicast.dyndns.org/wordpress">Amm.ne Trasparente</a></li>
-              <li><a href="http://isicast.dyndns.org/wordpress/?page_id=45">Albo Pretorio</a></li>
-              <li><a href="#">Bacheca Sindacale</a></li>
-              <li><a href="#">Cirocolari</a></li>
-              <li><a href="#">News</a></li>
+	    <ul class="dropdown-menu" role="menu">
+	      <li><a ng-href="http://isicast.dyndns.org/moodle">MoodleCast</a></li>
+	      <li><a ng-href="http://isicast.dyndns.org/dokuwiki/">Isicast wiki</a></li>
+	      <li><a ng-href="https://classroom.google.com/">Google Classroom</a></li>
+	    </ul>
+	  <li><a ng-href="/docs"><span class="glyphicon glyphicon-user"></span> Genitori</a></li>
+	  </li>
+	</ul>
+	<ul class="nav navbar-nav">
+	  <li dropdown>
+	    <a href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-certificate"></span> Certificazioni
+	      <span class="caret"></span></a>
+	    <ul class="dropdown-menu" role="menu">
+	      <li><a ng-href="http://www.trinitycollege.it/">Trinity</a></li>
+	      <li><a ng-href="http://www.cvcl.it/categorie/categoria-64?explicit=SI">CELI</a></li>
+	      <li><a ng-href="#">ECDL</a></li>
 	    </ul>
 	  </li>
 	</ul>
-      </div>
+	<ul class="nav navbar-nav">
+	  <li dropdown>
+	    <a href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-eye-open"></span> Trasparenza
+	      <span class="caret"></span></a>
+	    <ul class="dropdown-menu" role="menu">
+	      <li><a href="http://isicast.dyndns.org/wordpress"> Amm.ne Trasparente</a></li>
+	      <li><a href="http://isicast.dyndns.org/wordpress/?page_id=45">Albo Pretorio</a></li>
+	      <li><a href="#">Bacheca Sindacale</a></li>
+	      <li><a href="#">Cirocolari</a></li>
+	      <li><a href="#">News</a></li>
+	    </ul>
+	  </li>
+	  
+	</ul>
+	<form class="navbar-form navbar-left" role="search">
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Search">
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
     </div>
-  </nav>
-  <!-- body start -->
-  <div class='row'>
-    <!-- lsidemenu start -->
-    <div class='col-md-3'>
-      <!--<h6 align="center"> <strong>On line</strong></h6>-->
-
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a href="http://webmaildomini.aruba.it/">
-            <span class="glyphicon glyphicon-envelope" >
-            </span>  Web mail
+    </nav>
+  </div>
+</div>
+<!-- body start -->
+<div class='row'>
+  <!-- lsidemenu start -->
+  <div class='col-md-3'>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="http://webmaildomini.aruba.it/">
+          <span class="glyphicon glyphicon-envelope" >
+          </span>  Web mail
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="https://www.google.com/a/isicast.net/">
+          <span class="glyphicon glyphicon-cloud" >
+          </span>  Google Apps isicast.net
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="agenda.php">
+          <span class="glyphicon glyphicon-calendar" >
+          </span>  Agenda d'istituto
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="http://scuole.registroelettronico.com/isicast_bo">
+          <span class="glyphicon glyphicon-pencil" >
+          </span>  Registro on line
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="orario.php"> 
+          <span class="glyphicon glyphicon-bell" >
+          </span> Orario scolastico
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="programmazioni.php">
+          <span class="glyphicon glyphicon-dashboard" >
+          </span> Programmazioni docenti
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="http://www.isicast.org/biblio2/biblio.htm">
+          <span class="glyphicon glyphicon-book" >
+          </span> Biblioteca
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="monitoraggi.php">
+          <span class="glyphicon glyphicon-stats" >
+          </span> Rilevazioni e monitoraggi
+        </a>
+      </li>
+    </ul>
+    <!--<h6 align="center"> <strong>Segreteria-URP</strong></h6>-->
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=ufficio-relazioni-con-il-pubblico">
+          <span class="glyphicon glyphicon-globe" >
+          </span> U.R.P.
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="#">
+          <span class="glyphicon glyphicon-time" >
+          </span> Orari di apertura
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="#">
+          <span class="glyphicon glyphicon-list" >
+          </span> Libri di testo
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="#">
+          <span class="glyphicon glyphicon-file" >
+          </span> Modulistica
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="#"><span class="glyphicon glyphicon-flash" >
+          </span> Assicurazione
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="#">
+          <span class="glyphicon glyphicon-euro" >
+          </span> IBAN e pagamenti informatici
+        </a>
+      </li>
+      <li class="list-group-item">
+        <a href="#">
+          <span class="glyphicon glyphicon-credit-card" >
+          </span> Fatturazione elettronica
+        </a>
+      </li>
+    </ul>
+  </div><!-- lsidemenu end -->
+  <!-- content start -->
+  <div class="col-md-6">
+    <tabset justified="true">
+      <tab heading="Features" data-ng-controller="FeaturesController" data-ng-init="find()"><home-features></home-features></tab>
+      <tab heading="Impegni" data-ng-controller="DeadlinesController" data-ng-init="find()"><home-deadlines></home-deadlines></tab>
+      <tab heading="Documenti" data-ng-controller="DocsController" data-ng-init="find()"><home-docs></home-docs>
+	<pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
+      </tab>
+    </tabset>
+  </div> <!-- content end -->
+  <!-- rsidemenu start-->
+  <div class="col-md-3">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <a class="thumbnail">
+            <img src="modules/core/client/img/brand/logols.png" align="center">
           </a>
-        </li>
-        <li class="list-group-item">
-          <a href="https://www.google.com/a/isicast.net/">
-            <span class="glyphicon glyphicon-cloud" >
-            </span>  Google Apps isicast.net
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="agenda.php">
-            <span class="glyphicon glyphicon-calendar" >
-            </span>  Agenda d'istituto
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="http://scuole.registroelettronico.com/isicast_bo">
-            <span class="glyphicon glyphicon-pencil" >
-            </span>  Registro on line
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="orario.php"> 
-            <span class="glyphicon glyphicon-bell" >
-            </span> Orario scolastico
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="programmazioni.php">
-            <span class="glyphicon glyphicon-dashboard" >
-            </span> Programmazioni docenti
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="http://www.isicast.org/biblio2/biblio.htm">
-            <span class="glyphicon glyphicon-book" >
-            </span> Biblioteca
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="monitoraggi.php">
-            <span class="glyphicon glyphicon-stats" >
-            </span> Rilevazioni e monitoraggi
-          </a>
-        </li>
-      </ul>
-      <!--<h6 align="center"> <strong>Segreteria-URP</strong></h6>-->
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=ufficio-relazioni-con-il-pubblico">
-            <span class="glyphicon glyphicon-globe" >
-            </span> U.R.P.
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">
-            <span class="glyphicon glyphicon-time" >
-            </span> Orari di apertura
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">
-            <span class="glyphicon glyphicon-list" >
-            </span> Libri di testo
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">
-            <span class="glyphicon glyphicon-file" >
-            </span> Modulistica
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="#"><span class="glyphicon glyphicon-flash" >
-            </span> Assicurazione
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">
-            <span class="glyphicon glyphicon-euro" >
-            </span> IBAN e pagamenti informatici
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">
-            <span class="glyphicon glyphicon-credit-card" >
-            </span> Fatturazione elettronica
-          </a>
-        </li>
-      </ul>
-
-    </div><!-- lsidemenu end -->
-
-    <!-- content start -->
-    <div class="col-md-6">
-      <tabset justified="true">
-	<tab heading="Features" data-ng-controller="FeaturesController" data-ng-init="find()"><home-features></home-features></tab>
-	<tab heading="Impegni" data-ng-controller="DeadlinesController" data-ng-init="find()"><home-deadlines></home-deadlines></tab>
-	<tab heading="Documenti" data-ng-controller="DocsController" data-ng-init="find()"><home-docs></home-docs>
-	  <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
-	</tab>
-      </tabset>
-
-    </div> <!-- content end -->
-    <!-- rsidemenu start-->
-    <div class="col-md-3">
-      <div class="container-fluid">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <a class="thumbnail">
-              <img src="modules/core/client/img/brand/logols.png" align="center">
+          <address class="center-block">
+            <small>  via Toscana, 21<br>
+	      Castiglione dei Pepoli<br>
+	      40035 Bologna<br>
+	      <abbr title="Phone">tel:</abbr> 0534-803511<br>
+	      <abbr title="Phone">fax:</abbr>  0534-92004<br>
+	      <a href="mailto:#">bois009009@istruzione.it</a><br>
+	      <a href="mailto:#">bois009009@pec.istruzione.it</a><br>
+	      cod.min.: BOIS009009 <br>
+	      Dirigente Scolastico:<br>
+	      Fernanda Vaccari<br></small>
+          </address>
+        </div>
+      </div>
+    </div> 
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-body">        
+          <a href="http://isicast.dyndns.org/wordpress" class="thumbnail">
+            <img  src="modules/core/client/img/brand/Amministrazione.png" class="img-thumbnail" align="center" > 
+            <a/>
+            <a href="http://isicast.dyndns.org/wordpress/?page_id=45"class="thumbnail"> 
+	      <img src="modules/core/client/img/brand/albopretorio.jpg" align="center">
             </a>
-
-
-            <address class="center-block">
-              <small>  via Toscana, 21<br>
-                Castiglione dei Pepoli<br>
-                40035 Bologna<br>
-                <abbr title="Phone">tel:</abbr> 0534-803511<br>
-                <abbr title="Phone">fax:</abbr>  0534-92004<br>
-                <a href="mailto:#">bois009009@istruzione.it</a><br>
-                <a href="mailto:#">bois009009@pec.istruzione.it</a><br>
-                cod.min.: BOIS009009 <br>
-                Dirigente Scolastico:<br>
-                Fernanda Vaccari<br></small>
-            </address>
-          </div>
-        </div>
-      </div> 
-      <div class="container-fluid">
-        <div class="panel panel-default">
-          <div class="panel-body">        
-            <a href="http://isicast.dyndns.org/wordpress" class="thumbnail">
-              <img  src="modules/core/client/img/brand/Amministrazione.png" class="img-thumbnail" align="center" > 
-              <a/>
-              <a href="http://isicast.dyndns.org/wordpress/?page_id=45"class="thumbnail"> 
-                <img src="modules/core/client/img/brand/albopretorio.jpg" align="center">
-              </a>
-          </div>  
-        </div>
-      </div>
-
-    </div> <!-- rsidemenu end-->
-  </div> <!-- body end -->
-  <!--footer start -->
-  <div class="container text-center">
-    <hr />
-    <div class="row">
-      <div class="col-lg-12">
-	<div class="col-md-3">
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Chi siamo</a></li>
-            <li><a href="#">Dove siamo</a></li>
-          </ul>
-	</div>
-	<div class="col-md-3">
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Dirigente scolastico</a></li>
-            <li><a href="#">DSGA</a></li>
-          </ul>
-	</div>
-	<div class="col-md-3">
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Informatica-isicast</a></li>
-            <li><a href="#">Presentazione</a></li>
-          </ul>
-	</div>
-	<div class="col-md-3">
-          <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Guida all navigazione</a></li>
-            <li><a href="#">Social@isicast.net</a></li>
-          </ul>
-	</div>
+        </div>  
       </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="nav nav-pills nav-justified">
-          <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=elenco-siti-tematici">Elenco siti tematici</a></li>
-          <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=note-legali">Note Legali</a></li>
-          <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=privacy">Privacy</a></li>
+  </div> <!-- rsidemenu end-->
+</div> <!-- body end -->
+<!--footer start -->
+<div class="container text-center">
+  <hr />
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Chi siamo</a></li>
+          <li><a href="#">Dove siamo</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Dirigente scolastico</a></li>
+          <li><a href="#">DSGA</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Informatica-isicast</a></li>
+          <li><a href="#">Presentazione</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Guida all navigazione</a></li>
+          <li><a href="#">social@isicast.net</a></li>
         </ul>
       </div>
     </div>
   </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-12">
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=elenco-siti-tematici">Elenco siti tematici</a></li>
+        <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=note-legali">Note Legali</a></li>
+        <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=privacy">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 </section>
