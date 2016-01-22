@@ -12,15 +12,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
   };
     
-/*    // month filter
-  $scope.selectedMonth = '';
-  $scope.months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  $scope.selectedMonthFilter = function(element) {
-    if(!$scope.selectedMonth) return true;
-    return element.created.getMonth() === $scope.selectedMonth;
-  };
-  */// picker stuff
-
+  // picker stuff
   $scope.files = [];
   $scope.onLoaded = function () {
     console.log('Google Picker loaded!');
@@ -117,10 +109,11 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     $scope.docs = Docs.query();
   };
 
+  // find docs between two dates
   $scope.findWithParams = function() {
     $scope.docs = Docs2.query({
-      param1: $scope.aYearFromNow,
-      param2: $scope.aMonthAgo
+      param1: $scope.endDate,
+      param2: $scope.startDate
     });
   };
     // Find existing Doc

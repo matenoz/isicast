@@ -21,7 +21,7 @@ module.exports = function (app) {
   // Finish by binding the doc middleware
   app.param('docId', docs.docByID);
 
-  app.route('/api/docs/:param1/:param2').all(docsPolicy.isAllowed)
+  app.route('/api/docs/:param1/:param2')
     .get(docs.listWithParams);
 
 };
