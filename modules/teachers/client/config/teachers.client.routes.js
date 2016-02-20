@@ -31,6 +31,26 @@ angular.module('teachers').config(['$stateProvider',
         data: {
           roles: ['user', 'admin']
         }
+      })
+      .state('absences', {
+        abstract: true,
+        url: '/absences',
+        template: '<ui-view/>'
+      })
+      .state('absences.list', {
+        url: '',
+        templateUrl: 'modules/teachers/client/views/list-absences.client.view.html'
+      })
+      .state('absences.view', {
+        url: '/:teacherId',
+        templateUrl: 'modules/teachers/client/views/view-absence.client.view.html'
+      })
+      .state('absences.edit', {
+        url: '/:teacherId/edit',
+        templateUrl: 'modules/teachers/client/views/edit-absence.client.view.html',
+        data: {
+          roles: ['user', 'admin']
+        }
       });
   }
 ]);

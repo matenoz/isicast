@@ -31,6 +31,20 @@ var TeacherSchema = new Schema({
     type:Array,
     default:[]
   },
+  absences:[{
+    date:{
+      type:Date,
+      trim:true
+    },
+    cause:{
+      type:String,
+      trim:true
+    },
+    type:{
+      type:String,
+      trim:true
+    }  
+  }],
   teacher_timetable: {
     type: Schema.Types.ObjectId,
     ref: 'Teacher_timetable'

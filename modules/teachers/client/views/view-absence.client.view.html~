@@ -1,0 +1,27 @@
+<section ng-controller="AbsencesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1 ng-bind="teacher.name"></h1>
+  </div>
+  <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
+    <a class="btn btn-primary" ui-sref="absences.edit({teacherId: teacher._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+  </div>
+  <h5>Absence Summary Report</h5>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+	<th>data</th>
+	<th>tipologia</th>
+	<th>motivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="absence in teacher.absences">
+  	<td ng-bind="absence.date | date "></td>
+	<td ng-bind="absence.cause"></td>
+	<td ><p ng-bind=""></p></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

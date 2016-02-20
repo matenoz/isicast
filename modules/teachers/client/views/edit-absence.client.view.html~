@@ -1,0 +1,49 @@
+<section ng-controller="AbsencesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Absences</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
+      <fieldset>
+	<form name="absenceForm">
+	<div class="form-group">
+	  <input type="date" name="date" id="absence.date" ng-model="absence.date" class="form-control">
+	</div>
+	<div class="form-group">
+	  <select name="type" id="absence.type" ng-model="absence.type" class="form-control" ng-options="type as type for type in abstypes"></select>
+	</div>
+	<div class="form-group">
+	  <input name="cause" id="absence.cause" type="text" ng-model="absence.cause" class="form-control">
+	</div>
+	
+	<div class="form-group">
+	  <input class="btn btn-default" value="Add Absence" ng-click="addAbsence(absenceForm)">
+	</div>
+	</form>
+   
+	<table class="table table-bordered">
+    <thead>
+      <tr>
+	<th>data</th>
+	<th>tipologia</th>
+	<th>motivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="absence in absences">
+  	<td ng-bind="absence.date | date "></td>
+	<td ng-bind="absence.type"></td>
+	<td ng-bind="ambsence.cause"></td>
+      </tr>
+    </tbody>
+  </table>
+	<div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

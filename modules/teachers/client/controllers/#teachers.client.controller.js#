@@ -30,7 +30,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
 
         // Clear form fields
         $scope.name = '';
-        $scope.materia = '';
+         $scope.materia = '';
         $scope.coordinator = '';
         $scope.classes = '';
         $scope.teacher_timetable = '';

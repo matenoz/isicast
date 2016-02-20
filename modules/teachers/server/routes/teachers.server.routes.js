@@ -18,6 +18,14 @@ module.exports = function (app) {
     .put(teachers.update)
     .delete(teachers.delete);
 
+  // teacher absences routes
+  app.route('/api/absences')
+    .get(teachers.list);
+    
+  app.route('/api/absences/:teacherId')
+    .get(teachers.read)
+    .put(teachers.update);
+    
   // Finish by binding the teacher middleware
   app.param('teacherId', teachers.teacherByID);
 };

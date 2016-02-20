@@ -26,14 +26,14 @@
 	<div class="form-group">
 	  <!-- <a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-default">Attachments</a>   -->
 	  <br></br>
-	  <div class="row dashed-border col-md-4" ng-switch="doc.main_doc.length > 0">
+	  <div class="row dashed-border col-md-8" ng-switch="doc.main_doc.length > 0">
 	    <div class="text-center" ng-switch-when="false">
 	      <div class="none">No files selected yet</div>
 	    </div>
 	    <div ng-switch-when="true">
 	      <ul class="list-group">
-		<li class="list-group-item" ng-repeat="f in doc.main_doc"><a href="{{f.url}}"><img ng-src="{{f.iconUrl}}"> {{f.name}}</a></li>
-		<li class="list-group-item" ng-repeat="file in doc.attachment"><a href="{{file.url}}"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a></li>
+		<li class="list-group-item" ng-repeat="f in doc.main_doc"><a ng-href="{{f.url}}"><img ng-src="{{f.iconUrl}}"> {{f.name}}</a></li>
+		<li class="list-group-item" ng-repeat="file in doc.attachment"><a ng-href="{{file.url}}"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a></li>
 	      </ul>
  	    </div>
 	  </div>

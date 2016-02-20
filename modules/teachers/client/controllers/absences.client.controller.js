@@ -1,10 +1,15 @@
 'use strict';
 
 // Teachers controller
-angular.module('teachers').controller('TeachersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Teachers',
-  function ($scope, $stateParams, $location, Authentication, Teachers) {
+angular.module('teachers').controller('AbsencesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Absences',
+  function ($scope, $stateParams, $location, Authentication, Absences) {
     $scope.authentication = Authentication;
-
+    $scope.ab_sences=[];
+    $scope.addAbsence = function(){
+      $scope.ab_sences.push({ date:$scope.absence.date,type:$scope.absence.type,cause:$scope.absence.cause });
+    };
+  
+    $scope.abstypes =['ferie','malattia','permesso','assente','altro'];
     // Create new Teacher
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -16,24 +21,19 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
 
       // Create new Teacher object
-      var teacher = new Teachers({
+      var teacher = new Absences({
         name: this.name,
-        materia: this.materia,
-	coordinator:this.coordinator,
-	classes:this.classes,
-	teacher_timetable:this.teacher_timetable  
+        absences:[]  
       });
+
 
       // Redirect after save
       teacher.$save(function (response) {
-        $location.path('teachers/' + response._id);
+        $location.path('absences/' + response._id);
 
         // Clear form fields
         $scope.name = '';
-        $scope.materia = '';
-	$scope.coordinator = '';
-	$scope.classes = '';
-	$scope.teacher_timetable = '';
+        $scope.absences =[];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -67,9 +67,12 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
 
       var teacher = $scope.teacher;
-
+      angular.forEach($scope.ab_sences,function(absence,index){
+        teacher.absences.push({ date:absence.date,type:absence.type,cause:absence.cause });  
+      });
+      	
       teacher.$update(function () {
-        $location.path('teachers/' + teacher._id);
+        $location.path('absences/' + teacher._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -77,12 +80,12 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
 
     // Find a list of Teachers
     $scope.find = function () {
-      $scope.teachers = Teachers.query();
+      $scope.teachers = Absences.query();
     };
 
     // Find existing Teacher
     $scope.findOne = function () {
-      $scope.teacher = Teachers.get({
+      $scope.teacher = Absences.get({
         teacherId: $stateParams.teacherId
       });
     };

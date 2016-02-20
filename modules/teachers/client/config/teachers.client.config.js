@@ -23,5 +23,11 @@ angular.module('teachers').run(['Menus',
       state: 'teachers.create',
       roles: ['user']
     });
+
+    Menus.addSubMenuItem('topbar', 'teachers', {
+      title: 'List absecens',
+      state: 'absences.list',
+      roles: ['user']
+    });
   }
 ]);

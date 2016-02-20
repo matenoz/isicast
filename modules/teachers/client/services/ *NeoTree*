@@ -1,0 +1,70 @@
+.. (up a dir)
+<es/work/isicast/modules/
++chat/
+-class_timetables/
+  -client/
+    +config/
+    -controllers/
+      class_timetables.client.controller.js
+    -services/
+      class_timetables.client.services.js
+    +views/
+    class_timetables.client.module.js
+  -server/
+    +config/
+    -controllers/
+      class_timetables.server.controller.js
+    -models/
+      class_timetable.server.model.js
+    +policies/
+    -routes/
+      class_timetables.server.routes.js
+  +tests/
++classes/
++core/
++deadlines/
+-docs/
+  -client/
+    +config/
+    +controllers/
+    +directives/
+    +filters/
+    -services/
+      docs.client.services.js
+      docs.client.services2.js
+    +views/
+    docs.client.module.js
+  -server/
+    +config/
+    -controllers/
+      docs.server.controller.js
+    +models/
+    +policies/
+    -routes/
+      docs.server.routes.js
+  +tests/
++features/
+-teachers/
+  -client/
+    -config/
+      teachers.client.config.js
+      teachers.client.routes.js
+    -controllers/
+      teachers.client.controller.js
+    -services/
+      teachers.client.services.js
+    +views/
+    teachers.client.module.js
+  -server/
+    -config/
+      teachers.server.config.js
+    -controllers/
+      teachers.server.controller.js
+    -models/
+      teacher.server.model.js
+    -policies/
+      teachers.server.policy.js
+    -routes/
+      teachers.server.routes.js
+  +tests/
++users/
