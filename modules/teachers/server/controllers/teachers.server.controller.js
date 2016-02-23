@@ -44,7 +44,7 @@ exports.update = function (req, res) {
   teacher.coordinator = req.body.coordinator;
   teacher.classes = req.body.classes;  
   teacher.absences = req.body.absences;
-  teacher.teacher_timetable = req.body.teacher_timetable;
+  teacher.timetable = req.body.timetable;
 
   teacher.save(function (err) {
     if (err) {

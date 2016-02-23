@@ -1,0 +1,91 @@
+'use strict';
+
+// Teachers controller
+angular.module('teachers').controller('TimetablesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Timetables',
+  function ($scope, $stateParams, $location, Authentication, Timetables) {
+    $scope.authentication = Authentication;
+    // $scope.t_table = [];
+    // $scope.addTable = function(){
+    //   $scope.t_table.push({ nome_ora:$scope.timetable[0].nome_ora,lunedi:$scope.timetable[0].lunedi,martedi:$scope.timetable[0].martedi, mercoledi:$scope.timetable[0].mercoledi,giovedi:$scope.timetable[0].giovedi,venerdi:$scope.timetable[0].venerdi }, { nome_ora:$scope.timetable[1].nome_ora,lunedi:$scope.timetable[1].lunedi,martedi:$scope.timetable[1].martedi, mercoledi:$scope.timetable[1].mercoledi,giovedi:$scope.timetable[1].giovedi,venerdi:$scope.timetable[1].venerdi },{ nome_ora:$scope.timetable[2].nome_ora,lunedi:$scope.timetable[2].lunedi,martedi:$scope.timetable[2].martedi, mercoledi:$scope.timetable[2].mercoledi,giovedi:$scope.timetable[2].giovedi,venerdi:$scope.timetable[2].venerdi }, { nome_ora:$scope.timetable[3].nome_ora,lunedi:$scope.timetable[3].lunedi,martedi:$scope.timetable[3].martedi, mercoledi:$scope.timetable[3].mercoledi,giovedi:$scope.timetable[3].giovedi,venerdi:$scope.timetable[3].venerdi }, { nome_ora:$scope.timetable[4].nome_ora,lunedi:$scope.timetable[4].lunedi,martedi:$scope.timetable[4].martedi, mercoledi:$scope.timetable[4].mercoledi,giovedi:$scope.timetable[4].giovedi,venerdi:$scope.timetable[4].venerdi }, { nome_ora:$scope.timetable[5].nome_ora,lunedi:$scope.timetable[5].lunedi,martedi:$scope.timetable[5].martedi, mercoledi:$scope.timetable[5].mercoledi,giovedi:$scope.timetable[5].giovedi,venerdi:$scope.timetable[5].venerdi }, { nome_ora:$scope.timetable[6].nome_ora,lunedi:$scope.timetable[6].lunedi,martedi:$scope.timetable[6].martedi, mercoledi:$scope.timetable[6].mercoledi,giovedi:$scope.timetable[6].giovedi,venerdi:$scope.timetable[6].venerdi }, { nome_ora:$scope.timetable[7].nome_ora,lunedi:$scope.timetable[7].lunedi,martedi:$scope.timetable[7].martedi, mercoledi:$scope.timetable[7].mercoledi,giovedi:$scope.timetable[7].giovedi,venerdi:$scope.timetable[7].venerdi });
+//	    };  
+    // Create new Teacher
+    $scope.create = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'teacherForm');
+
+        return false;
+      }
+
+      // Create new Teacher object
+      var teacher = new Timetables({
+        timetable:[]  
+      });
+
+
+      // Redirect after save
+      teacher.$save(function (response) {
+        $location.path('timetables/' + response._id);
+
+        // Clear form fields
+	$scope.timetable =[];
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    // Remove existing Teacher
+    $scope.remove = function (teacher) {
+      if (teacher) {
+        teacher.$remove();
+
+        for (var i in $scope.teachers) {
+          if ($scope.teachers[i] === teacher) {
+            $scope.teachers.splice(i, 1);
+          }
+          }
+      } else {
+        $scope.teacher.$remove(function () {
+          $location.path('teachers');
+        });
+      }
+    };
+
+    // Update existing Teacher
+    $scope.update = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'teacherForm');
+
+        return false;
+      }
+
+     var teacher = $scope.teacher;
+     teacher.timetable.push({ nome_ora:$scope.timetable[0].nome_ora,lunedi:$scope.timetable[0].lunedi,martedi:$scope.timetable[0].martedi, mercoledi:$scope.timetable[0].mercoledi,giovedi:$scope.timetable[0].giovedi,venerdi:$scope.timetable[0].venerdi }, { nome_ora:$scope.timetable[1].nome_ora,lunedi:$scope.timetable[1].lunedi,martedi:$scope.timetable[1].martedi, mercoledi:$scope.timetable[1].mercoledi,giovedi:$scope.timetable[1].giovedi,venerdi:$scope.timetable[1].venerdi },{ nome_ora:$scope.timetable[2].nome_ora,lunedi:$scope.timetable[2].lunedi,martedi:$scope.timetable[2].martedi, mercoledi:$scope.timetable[2].mercoledi,giovedi:$scope.timetable[2].giovedi,venerdi:$scope.timetable[2].venerdi }, { nome_ora:$scope.timetable[3].nome_ora,lunedi:$scope.timetable[3].lunedi,martedi:$scope.timetable[3].martedi, mercoledi:$scope.timetable[3].mercoledi,giovedi:$scope.timetable[3].giovedi,venerdi:$scope.timetable[3].venerdi }, { nome_ora:$scope.timetable[4].nome_ora,lunedi:$scope.timetable[4].lunedi,martedi:$scope.timetable[4].martedi, mercoledi:$scope.timetable[4].mercoledi,giovedi:$scope.timetable[4].giovedi,venerdi:$scope.timetable[4].venerdi }, { nome_ora:$scope.timetable[5].nome_ora,lunedi:$scope.timetable[5].lunedi,martedi:$scope.timetable[5].martedi, mercoledi:$scope.timetable[5].mercoledi,giovedi:$scope.timetable[5].giovedi,venerdi:$scope.timetable[5].venerdi }, { nome_ora:$scope.timetable[6].nome_ora,lunedi:$scope.timetable[6].lunedi,martedi:$scope.timetable[6].martedi, mercoledi:$scope.timetable[6].mercoledi,giovedi:$scope.timetable[6].giovedi,venerdi:$scope.timetable[6].venerdi }, { nome_ora:$scope.timetable[7].nome_ora,lunedi:$scope.timetable[7].lunedi,martedi:$scope.timetable[7].martedi, mercoledi:$scope.timetable[7].mercoledi,giovedi:$scope.timetable[7].giovedi,venerdi:$scope.timetable[7].venerdi });
+	
+/*	angular.forEach($scope.t_table,function(table,index){
+	  teacher.timetable.push(table { nome_ora:table.nome_ora, lunedi:table.lunedi,martedi:table.martedi, mercoledi:table.mercoledi, giovedi:table.giovedi, venerdi:table.venerdi }); 
+	});*/
+	
+      teacher.$update(function () {
+        $location.path('timetables/' + teacher._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    // Find a list of Teachers
+    $scope.find = function () {
+      $scope.teachers = Timetables.query();
+    };
+
+    // Find existing Teacher
+    $scope.findOne = function () {
+      $scope.teacher = Timetables.get({
+        teacherId: $stateParams.teacherId
+      });
+    };
+  }
+]);

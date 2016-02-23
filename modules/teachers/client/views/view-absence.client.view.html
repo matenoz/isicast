@@ -4,10 +4,11 @@
   </div>
   <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
     <a class="btn btn-primary" ui-sref="absences.edit({teacherId: teacher._id})">
-      <i class="glyphicon glyphicon-edit"></i>
+      <i class="glyphicon glyphicon-edit"></i> Add 
     </a>
   </div>
-  <h5>Absence Summary Report</h5>
+  <div class="col-md-10">
+    <h5>Absence Summary Report</h5>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -24,4 +25,5 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </section>

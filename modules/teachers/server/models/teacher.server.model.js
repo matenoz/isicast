@@ -45,10 +45,38 @@ var TeacherSchema = new Schema({
       trim:true
     }  
   }],
-  teacher_timetable: {
-    type: Schema.Types.ObjectId,
-    ref: 'Teacher_timetable'
-  },
+  timetable :[{
+    nome_ora:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    lunedi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    martedi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    mercoledi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    giovedi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    venerdi:{
+      type:String,
+      trim:true,
+      default:''
+    }
+  }],
   user: {
     type: Schema.ObjectId,
     ref: 'User'

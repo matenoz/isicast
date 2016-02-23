@@ -25,7 +25,15 @@ module.exports = function (app) {
   app.route('/api/absences/:teacherId')
     .get(teachers.read)
     .put(teachers.update);
+
+  // teacher timetables routes
+  app.route('/api/timetables')
+    .get(teachers.list);
     
+  app.route('/api/timetables/:teacherId')
+    .get(teachers.read)
+    .put(teachers.update);  
+
   // Finish by binding the teacher middleware
   app.param('teacherId', teachers.teacherByID);
 };

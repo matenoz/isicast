@@ -1,5 +1,5 @@
 <div class="panel-group" ng-repeat="deadline in deadlines">
-  <div ng-if="(pre_dead | date) <= (deadline.event_date | date)" class="panel panel-default">
+  <div ng-if="(pre_dead | date) < (deadline.event_date | date)" class="panel panel-default">
     <div class="panel-body">
     <table class="table table-striped table-hover">
 	<thead >

@@ -51,6 +51,26 @@ angular.module('teachers').config(['$stateProvider',
         data: {
           roles: ['user', 'admin']
         }
+      })
+      .state('timetables', {
+        abstract: true,
+        url: '/timetables',
+        template: '<ui-view/>'
+      })
+      .state('timetables.list', {
+        url: '',
+        templateUrl: 'modules/teachers/client/views/list-timetables.client.view.html'
+      })
+      .state('timetables.view', {
+        url: '/:teacherId',
+        templateUrl: 'modules/teachers/client/views/view-timetable.client.view.html'
+      })
+      .state('timetables.edit', {
+        url: '/:teacherId/edit',
+        templateUrl: 'modules/teachers/client/views/edit-timetable.client.view.html',
+        data: {
+          roles: ['user', 'admin']
+        }
       });
   }
 ]);

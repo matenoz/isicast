@@ -39,6 +39,11 @@ var DocSchema = new Schema({
     default:[],
     trim:true
   },
+  tags:{
+    type:Array,
+    default:[],
+    trim:true
+  },  
   user: {
     type: Schema.ObjectId,
     ref: 'User'

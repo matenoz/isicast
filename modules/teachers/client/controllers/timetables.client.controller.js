@@ -1,11 +1,10 @@
 'use strict';
 
 // Teachers controller
-angular.module('teachers').controller('AbsencesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Absences',
-  function ($scope, $stateParams, $location, Authentication, Absences) {
+angular.module('teachers').controller('TimetablesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Timetables',
+  function ($scope, $stateParams, $location, Authentication, Timetables) {
     $scope.authentication = Authentication;
-    $scope.absences=[];
-    $scope.abstypes =["ferie","malattia","permesso","assente","altro"];
+
     // Create new Teacher
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -17,19 +16,17 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
       }
 
       // Create new Teacher object
-      var teacher = new Absences({
-        name: this.name,
-        absences:[]  
+      var teacher = new Timetables({
+        timetable:[]  
       });
 
 
       // Redirect after save
       teacher.$save(function (response) {
-        $location.path('absences/' + response._id);
+        $location.path('timetables/' + response._id);
 
         // Clear form fields
-        $scope.name = '';
-	$scope.absences =[];
+        $scope.timetable =[];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -63,12 +60,9 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
       }
 
       var teacher = $scope.teacher;
-      $scope.addAbsence = function(absence){
-	  teacher.absences.push({date:$scope.absence.date});
-	};
-	
+      
       teacher.$update(function () {
-        $location.path('absences/' + teacher._id);
+        $location.path('timetables/' + teacher._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -76,12 +70,12 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
 
     // Find a list of Teachers
     $scope.find = function () {
-      $scope.teachers = Absences.query();
+      $scope.teachers = Timetables.query();
     };
 
     // Find existing Teacher
     $scope.findOne = function () {
-      $scope.teacher = Absences.get({
+      $scope.teacher = Timetables.get({
         teacherId: $stateParams.teacherId
       });
     };

@@ -29,5 +29,11 @@ angular.module('teachers').run(['Menus',
       state: 'absences.list',
       roles: ['user']
     });
+      
+    Menus.addSubMenuItem('topbar', 'teachers', {
+      title: 'Timetables',
+      state: 'timetables.list',
+      roles: ['user']
+    });  
   }
 ]);

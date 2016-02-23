@@ -15,7 +15,7 @@ module.exports = function (config) {
     callbackURL: config.google.callbackURL,
     passReqToCallback: true
   },
-  function (req, accessToken, refreshToken, profile, done) {
+  function (req, accessToken, refreshToken, profile,done) {
     if(profile._json.domain === 'isicast.net'){
       // Set the provider data and include tokens
       var providerData = profile._json;

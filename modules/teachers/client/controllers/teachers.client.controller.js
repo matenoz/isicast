@@ -21,9 +21,10 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         materia: this.materia,
         coordinator:this.coordinator,
         classes:this.classes,
-        teacher_timetable:this.teacher_timetable  
+        timetable:[]  
       });
-
+      // create a empty timetable
+      teacher.timetable.push({ nome_ora:'08 - 09', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'09 - 10', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'10 - 11', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'11 - 12', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'12 - 13', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'13 - 14', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'14 - 15', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'15 - 16', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' });
       // Redirect after save
       teacher.$save(function (response) {
         $location.path('teachers/' + response._id);
@@ -33,7 +34,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         $scope.materia = '';
         $scope.coordinator = '';
         $scope.classes = '';
-        $scope.teacher_timetable = '';
+        $scope.timetable = [];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
