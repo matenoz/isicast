@@ -1,0 +1,106 @@
+<section ng-controller="CtimetablesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Classes timetable</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="classeForm" class="form-horizontal" ng-submit="update(classeForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label>Nome Classe</label>
+          <p ng-bind="classe.nome_classe"></p>
+         <div ng-messages="classeForm.nome_classe.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">teache nome is required.</p>
+          </div>
+        </div>
+       <div class="form-group">
+          <label for="timetable">Timetable </label>
+          <table  class="table table-bordered"  name="timetable" id="timetable" ng-model="timetable">
+	    <thead > 
+	      <tr>
+		<th>ora</th>
+		<th>lunedi</th>
+		<th>martedi</th>
+		<th>mercoledi</th>
+		<th>giovedi</th>
+		<th>venerdi</th>
+	      </tr>
+	    </thead>
+	    <tbody >
+	      <tt><tt>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[0].nome_ora"></p></td>
+		    <td><select name="timetable.lunedi" id="timetable" class="form-control" ng-model="classe.timetable[0].lunedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[0].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[0].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[0].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[0].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+	          <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[1].nome_ora"></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[1].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[1].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[1].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[1].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[1].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[2].nome_ora"></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[2].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[2].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[2].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[2].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[2].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[3].nome_ora"></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[3].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[3].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[3].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[3].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[3].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[4].nome_ora"></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[4].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[4].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[4].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[4].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[4].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[5].nome_ora" ></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[5].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[5].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[5].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[5].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[5].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[6].nome_ora"></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[6].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[6].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[6].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[6].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[6].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+		  <tr>
+		    <td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="classe.timetable[7].nome_ora"></p></td>
+		    <td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="classe.timetable[7].lunedi" ng-options="o as o for o in classe.docenti" ></select></td>
+		    <td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="classe.timetable[7].martedi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="classe.timetable[7].mercoledi" ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="classe.timetable[7].giovedi"  ng-options="o as o for o in classe.docenti"></select></td>
+		    <td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="classe.timetable[7].venerdi"  ng-options="o as o for o in classe.docenti"></select></td>
+		  </tr>
+	    </tbody>
+	  </table>
+        </div>
+       <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -18,6 +18,14 @@ module.exports = function (app) {
     .put(classes.update)
     .delete(classes.delete);
 
+  // class timetables routes
+  app.route('/api/ctimetables')
+    .get(classes.list);
+    
+  app.route('/api/ctimetables/:classeId')
+    .get(classes.read)
+    .put(classes.update);  
+    
   // Finish by binding the classe middleware
   app.param('classeId', classes.classeByID);
 };

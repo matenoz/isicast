@@ -1,0 +1,10 @@
+<section ng-controller="CtimetablesController" ng-init="find()">
+  <div class="page-header">
+    <h1>Timetables</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="classe in classes" ui-sref="ctimetables.view({classeId: classe._id})" class="list-group-item">
+       <p class="list-group-item-text" ng-bind="classe.nome_classe"></p>
+    </a>
+  </div>
+</section>

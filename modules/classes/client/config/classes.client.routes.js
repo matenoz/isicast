@@ -31,6 +31,26 @@ angular.module('classes').config(['$stateProvider',
         data: {
           roles: ['user', 'admin']
         }
+      })
+      .state('ctimetables', {
+        abstract: true,
+        url: '/ctimetables',
+        template: '<ui-view/>'
+      })
+      .state('ctimetables.list', {
+        url: '',
+        templateUrl: 'modules/classes/client/views/list-timetables.client.view.html'
+      })
+      .state('ctimetables.view', {
+        url: '/:classeId',
+        templateUrl: 'modules/classes/client/views/view-timetable.client.view.html'
+      })
+      .state('ctimetables.edit', {
+        url: '/:classeId/edit',
+        templateUrl: 'modules/classes/client/views/edit-timetable.client.view.html',
+        data: {
+          roles: ['user', 'admin']
+        }
       });
   }
 ]);

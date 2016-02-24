@@ -43,7 +43,7 @@ exports.update = function (req, res) {
   classe.indirizzo = req.body.indirizzo;
   classe.docenti = req.body.docenti;  
   classe.coordinatore = req.body.coordinatore;
-  classe.orario_classe= req.body.orario_classe;
+  classe.timetable = req.body.timetable;
     
 
   classe.save(function (err) {

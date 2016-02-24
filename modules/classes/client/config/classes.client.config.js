@@ -23,5 +23,11 @@ angular.module('classes').run(['Menus',
       state: 'classes.create',
       roles: ['user']
     });
+ 
+    Menus.addSubMenuItem('topbar', 'classes', {
+      title: 'Timetables',
+      state: 'ctimetables.list',
+      roles: ['user']
+    });   
   }
 ]);

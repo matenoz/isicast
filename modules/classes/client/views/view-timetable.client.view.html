@@ -1,0 +1,40 @@
+<section ng-controller="CtimetablesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1 ng-bind="classe.nome_classe"></h1>
+  </div>
+   <div class="container">
+    <div class="row">
+  <label for="timetable">Timetable </label>
+          <table  class="table table-bordered">
+	    <thead > 
+	      <tr>
+		<th>ora</th>
+		<th>lunedi</th>
+		<th>martedi</th>
+		<th>mercoledi</th>
+		<th>giovedi</th>
+		<th>venerdi</th>
+	    </tr>
+	    </thead>
+	    <tbody > <!--"ora in ['08.00','09.00','10.00','11.00','12.00','13.00','14.00','15.00']-->
+	      <tr ng-repeat="timetable in classe.timetable">
+		<td ><p>{{timetable.nome_ora}}</p></td>
+		 <td><p>{{timetable.lunedi}}</p></td>
+		<td><p >{{timetable.martedi}}</p></td>
+		<td><p >{{timetable.mercoledi}}</p></td>
+		<td><p > {{timetable.giovedi}}</p></td>
+		<td><p >{{timetable.venerdi}}</p></td>
+	      </tr>
+	    </tbody>
+	  </table>
+       </div>
+   </div>
+    <div class="pull-right" ng-show="authentication.user._id == classe.user._id">
+    <a class="btn btn-primary" ui-sref="ctimetables.edit({classeId: classe._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+</section>

@@ -22,17 +22,46 @@ var ClasseSchema = new Schema({
     trim: true
   },
   docenti: {
-    type:Array, default:['','','','','' ]
+    type:Array,
+    default:[]
   },
   coordinatore:{
     type: String,
     default:'',
     trim: true
   },
-  orario_classe:{
-    type:Schema.Types.ObjectId,
-    ref: 'Class_timetable'
-  },
+  timetable :[{
+    nome_ora:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    lunedi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    martedi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    mercoledi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    giovedi:{
+      type:String,
+      trim:true,
+      default:''
+    },
+    venerdi:{
+      type:String,
+      trim:true,
+      default:''
+    }
+  }],
   user: {
     type: Schema.ObjectId,
     ref: 'User'

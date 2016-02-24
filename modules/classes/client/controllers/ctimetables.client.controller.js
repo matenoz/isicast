@@ -1,8 +1,8 @@
 'use strict';
 
 // Classes controller
-angular.module('classes').controller('ClassesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Classes',
-  function ($scope, $stateParams, $location, Authentication, Classes) {
+angular.module('classes').controller('CtimetablesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ctimetables',
+  function ($scope, $stateParams, $location, Authentication, Ctimetables) {
     $scope.authentication = Authentication;
   
     // Create new Classe
@@ -16,24 +16,22 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
       }
 
       // Create new Classe object
-      var classe = new Classes({
+      var classe = new Ctimetables({
         nome_classe: this.nome_classe,
         indirizzo: this.indirizzo,
         docenti:this.docenti,
         coordinatore:this.coordinatore,  
         timetable:[]  
       });
-      // create a empty timetable
-      classe.timetable.push({ nome_ora:'08 - 09', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'09 - 10', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'10 - 11', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'11 - 12', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'12 - 13', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'13 - 14', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'14 - 15', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'15 - 16', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' });
-	
+
       // Redirect after save
       classe.$save(function (response) {
-        $location.path('classes/' + response._id);
+        $location.path('ctimetables/' + response._id);
 
         // Clear form fields
         $scope.nome_classe = '';
         $scope.indirizzo = '';
-        $scope.docenti = '';
+        $scope.docenti = [];
         $scope.coordinatore = '';
         $scope.timetable = [];
       }, function (errorResponse) {
@@ -71,7 +69,7 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
       var classe = $scope.classe;
 
       classe.$update(function () {
-        $location.path('classes/' + classe._id);
+        $location.path('ctimetables/' + classe._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -79,15 +77,14 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
 
     // Find a list of Classes
     $scope.find = function () {
-      $scope.classes = Classes.query();
+      $scope.classes = Ctimetables.query();
     };
 
     // Find existing Classe
     $scope.findOne = function () {
-      $scope.classe = Classes.get({
+      $scope.classe = Ctimetables.get({
         classeId: $stateParams.classeId
       });
     };
   }
 ]);
-
