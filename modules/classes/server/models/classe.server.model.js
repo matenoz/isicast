@@ -21,10 +21,16 @@ var ClasseSchema = new Schema({
     default: '',
     trim: true
   },
-  docenti: {
-    type:Array,
-    default:[]
-  },
+  teachers: [{
+    name:{
+      type:String,
+      trim:true
+    },
+    materia:{
+      type:String,
+      trim:true
+    }	    
+  }],
   coordinatore:{
     type: String,
     default:'',

@@ -27,10 +27,16 @@ var TeacherSchema = new Schema({
     default:'',
     trim:true
   },
-  classes:{
-    type:Array,
-    default:[]
-  },
+  classes:[{
+    name:{
+      type:String,
+      trim:true
+    },
+    indirizzo:{
+      type:String,
+      trim:true
+    }  
+  }],
   absences:[{
     date:{
       type:Date,

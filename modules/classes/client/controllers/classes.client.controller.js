@@ -2,9 +2,16 @@
 
 // Classes controller
 angular.module('classes').controller('ClassesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Classes',
-  function ($scope, $stateParams, $location, Authentication, Classes) {
+  function ($scope, $stateParams, $location, Authentication,Classes) {
     $scope.authentication = Authentication;
-  
+    $scope._teachers = [];
+    $scope.addTeacher = function(){
+      $scope._teachers.push({ name:$scope.teacher.name, materia:$scope.teacher.materia });
+    };
+
+    $scope.removeTeacher = function(index){
+      $scope._teachers.splice(index, 1);
+    };
     // Create new Classe
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -16,15 +23,20 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
       }
 
       // Create new Classe object
-      var classe = new Classes({
+      var classe = new Classes.c({
         nome_classe: this.nome_classe,
         indirizzo: this.indirizzo,
-        docenti:this.docenti,
+        teachers:[],
         coordinatore:this.coordinatore,  
         timetable:[]  
       });
       // create a empty timetable
       classe.timetable.push({ nome_ora:'08 - 09', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'09 - 10', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'10 - 11', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'11 - 12', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'12 - 13', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'13 - 14', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'14 - 15', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'15 - 16', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' });
+
+      // push element in classes   
+      angular.forEach($scope._teachers, function(teacher,index){
+        classe.teachers.push({ name:teacher.name,materia:teacher.materia });
+      });		
 	
       // Redirect after save
       classe.$save(function (response) {
@@ -33,7 +45,7 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         // Clear form fields
         $scope.nome_classe = '';
         $scope.indirizzo = '';
-        $scope.docenti = '';
+        $scope.teachers = [];
         $scope.coordinatore = '';
         $scope.timetable = [];
       }, function (errorResponse) {
@@ -69,7 +81,10 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
       }
 
       var classe = $scope.classe;
-
+      angular.forEach($scope._teachers, function(teacher,index){
+        classe.teachers.push({ name:teacher.name,materia:teacher.materia });
+      });		
+	
       classe.$update(function () {
         $location.path('classes/' + classe._id);
       }, function (errorResponse) {
@@ -79,12 +94,16 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
 
     // Find a list of Classes
     $scope.find = function () {
-      $scope.classes = Classes.query();
+      $scope.classes = Classes.c.query();
     };
+      
+    $scope.find_t = function () {
+      $scope.teachers_ = Classes.t.query();
+    };  
 
     // Find existing Classe
     $scope.findOne = function () {
-      $scope.classe = Classes.get({
+      $scope.classe = Classes.c.get({
         classeId: $stateParams.classeId
       });
     };

@@ -9,7 +9,7 @@
   </div>
   <div class="col-md-10">
     <h5>Absence Summary Report</h5>
-  <table class="table table-bordered">
+  <table class="table table-bordered" ng-if="teacher.absences > 0">
     <thead>
       <tr>
 	<th>data</th>
@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="absence in teacher.absences">
+      <tr ng-repeat="absence in teacher.absences|orderBy:'-date'">
   	<td ng-bind="absence.date | date"></td>
 	<td ng-bind="absence.type"></td>
 	<td ng-bind="absence.cause"></td>

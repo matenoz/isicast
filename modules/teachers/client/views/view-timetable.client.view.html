@@ -25,7 +25,7 @@
 		<th>venerdi</th>
 	    </tr>
 	    </thead>
-	    <tbody > <!--"ora in ['08.00','09.00','10.00','11.00','12.00','13.00','14.00','15.00']-->
+	    <tbody >
 	      <tr ng-repeat="timetable in teacher.timetable">
 		<td ><p>{{timetable.nome_ora}}</p></td>
 		 <td><p>{{timetable.lunedi}}</p></td>
@@ -41,9 +41,6 @@
     <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
     <a class="btn btn-primary" ui-sref="timetables.edit({teacherId: teacher._id})">
       <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="remove();">
-      <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
 

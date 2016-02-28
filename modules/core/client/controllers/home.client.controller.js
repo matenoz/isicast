@@ -8,8 +8,8 @@ angular.module('core').controller('HomeController', ['$scope','$http','Authentic
     // search controller
     $scope.callRestService= function() {
       $http({ method: 'GET', url: '/' })
-	 .success(function(data, status, headers, config) {
-	     $scope.results.push(data);
+	.success(function(data, status, headers, config) {
+	  $scope.results.push(data);
 	});
     };
      

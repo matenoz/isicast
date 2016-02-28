@@ -1,4 +1,4 @@
-<section ng-controller="ClassesController">
+<section ng-controller="ClassesController" ng-init="find_t()">
   <div class="page-header">
     <h1>New Classe</h1>
   </div>
@@ -17,13 +17,37 @@
           <input name="indirizzo" ng-model="indirizzo" id="indirizzo" class="form-control" placeholder="Indirizzo">
         </div>
 	<div class="form-group">
-	  <label for="docenti">Docenti</label>
-	  <input name="docenti" ng-model="docenti" ng-list=", " id="docenti" class="form-control" placeholder="Docenti">
-	</div>
-	<div class="form-group">
           <label for="coordinatore">Coordinatore</label>
           <input name="coordinatore" ng-model="coordinatore" id="coordinatore" class="form-control" placeholder="Coordinatore">
-        </div>                                                           
+        </div>
+        <form class="horizontal-form">
+	  <div class="form-group">
+	    <label for="docente e materia">Docente e Materia</label>
+            <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ><option value="">--</option></select>
+          </div>
+	  <div class="form-group">
+            <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
+</div>
+<div class="form-group">
+  <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
+</div>
+</form>
+<table class="table table-bordered" ng-if="_teachers.length > 0">
+  <thead>
+    <tr>
+      <th>Docente</th>
+      <th>Materia</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="teacher in _teachers">
+      <td ng-bind="teacher.name"></td>
+      <td ng-bind="teacher.materia"></td>
+      <td><span ng-click="removeTeacher($index)" class="glyphicon glyphicon-remove-sign" ></span></td>
+    </tr>
+  </tbody>
+</table>
         <div class="form-group">
           <input type="submit" class="btn btn-default">
         </div>

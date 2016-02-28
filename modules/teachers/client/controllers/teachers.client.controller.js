@@ -4,7 +4,17 @@
 angular.module('teachers').controller('TeachersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Teachers','Absences',
   function ($scope, $stateParams, $location, Authentication, Teachers, Absences) {
     $scope.authentication = Authentication;
-        
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];
+    $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari'];
+    $scope._class = [];
+    $scope.addClass = function(){
+      $scope._class.push({ name:$scope.classe.name, indirizzo:$scope.classe.indirizzo });
+    };
+
+    $scope.removeClass = function(index){
+      $scope._class.splice(index, 1);
+    };
+    
     // Create new Teacher
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -20,11 +30,17 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         name: this.name,
         materia: this.materia,
         coordinator:this.coordinator,
-        classes:this.classes,
+        classes:[],
         timetable:[]  
       });
+      
       // create a empty timetable
       teacher.timetable.push({ nome_ora:'08 - 09', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'09 - 10', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'10 - 11', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'11 - 12', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'12 - 13', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'13 - 14', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'14 - 15', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' },{ nome_ora:'15 - 16', lunedi:'',martedi:'',mercoledi:'',giovedi:'',venerdi:'' });
+    
+      // push element in classes   
+      angular.forEach($scope._class, function(classe,index){
+        teacher.classes.push({ name:classe.name,indirizzo:classe.indirizzo });
+      });	
       // Redirect after save
       teacher.$save(function (response) {
         $location.path('teachers/' + response._id);
@@ -33,7 +49,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         $scope.name = '';
         $scope.materia = '';
         $scope.coordinator = '';
-        $scope.classes = '';
+        $scope.classes = [];
         $scope.timetable = [];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
@@ -44,7 +60,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
     $scope.remove = function (teacher) {
       if (teacher) {
         teacher.$remove();
-
+ 
         for (var i in $scope.teachers) {
           if ($scope.teachers[i] === teacher) {
             $scope.teachers.splice(i, 1);
@@ -57,6 +73,8 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
     };
 
+
+    
     // Update existing Teacher
     $scope.update = function (isValid) {
       $scope.error = null;
@@ -68,14 +86,32 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
 
       var teacher = $scope.teacher;
-
+      angular.forEach($scope._class, function(classe,index){
+        teacher.classes.push({ name:classe.name,indirizzo:classe.indirizzo });
+      });
+	
+      $scope.remove2 = function(teacher){
+        if(teacher){
+          teacher.classe.$remove2();  
+	  for(var i in $scope.teacher.classes){
+	    if($scope.teacher.classes[i] === teacher.classe){
+	      $scope.teacher.classes.splice(i, 1);	
+	    }
+	  }  
+	} else {
+          $scope.teacher.classes.$remove(function () {
+            $location.path('teachers/'+ teacher._id);
+          });
+	}     	     
+      };    
+      	
       teacher.$update(function () {
         $location.path('teachers/' + teacher._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
     };
-
+     
     // Find a list of Teachers
     $scope.find = function () {
       $scope.teachers = Teachers.query();

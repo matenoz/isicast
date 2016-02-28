@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Edit Teacher</h1>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-8">
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -20,16 +20,42 @@
           <label for="coordinator">Coordinator</label>
           <input name="coordinator" ng-model="coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
         </div>
+	<form class="horizontal-form">
+	  <div class="form-group">
+	    <label for="classe e indirizzo">Classe e Indirizzo</label>
+            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o as o for o in classarray" ><option value="">--</option></select>
+          </div>
+	  <div class="form-group">
+            <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>
+</div>
+<div class="form-group">
+  <input ng-click="addClass()" value="add class" class="btn btn-default">
+</div>
+<div class="form-group">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+	<th>Classe</th>
+	<th>Indirizzo</th>
+	<th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="classe in teacher.classes">
+	<td id="classe" ng-bind="classe.name"></td>
+	<td id="classe" ng-bind="classe.indirizzo"></td>
+	<td><button class="btn btn-remove" ng-click="remove2()" ><span  class="glyphicon glyphicon-remove-sign"></span></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</form>
 	<div class="form-group">
-          <label for="classes">Classes</label>
-          <input name="classes" ng-model="classes" ng-list  id="classes" class="form-control"  placeholder="Classes"></input>
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Update" class="btn btn-default">
-        </div>
-        <div ng-show="error" class="text-danger">
-          <strong ng-bind="error"></strong>
-        </div>
+	  <input type="submit" value="Update" class="btn btn-default">
+	</div>
+	<div ng-show="error" class="text-danger">
+	  <strong ng-bind="error"></strong>
+	</div>
       </fieldset>
     </form>
   </div>

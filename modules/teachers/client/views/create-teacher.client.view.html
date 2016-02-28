@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>New Teacher</h1>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-8">
     <form name="teacherForm" class="form-horizontal" ng-submit="create(teacherForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -20,17 +20,41 @@
           <label for="coordinator">Coordinator</label>
           <input name="coordinator" ng-model="coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
         </div>
-	<div class="form-group">
-          <label for="classes">Classes</label>
-          <input name="classes" ng-model="classes" id="classes" ng-list=", " class="form-control"  placeholder="Classes"></input>
-        </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-default">
-        </div>
-        <div ng-show="error" class="text-danger">
-          <strong ng-bind="error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+	<form class="horizontal-form inline-form">
+	  <div class="form-group">
+	    <label for="classe e indirizzo">Classe e Indirizzo</label>
+            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o as o for o in classarray" ><option value="">--</option></select>
+          </div>
+	  <div class="form-group">
+            <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>
+</div>
+<div class="form-group">
+  <input ng-click="addClass()" value="add class" class="btn btn-default">
+</div>
+</form>
+<table class="table table-bordered" ng-if="_class.length > 0">
+  <thead>
+    <tr>
+      <th>Classe</th>
+      <th>Indirizzo</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="classe in _class">
+      <td ng-bind="classe.name"></td>
+      <td ng-bind="classe.indirizzo"></td>
+      <td><span ng-click="removeClass($index)" class="glyphicon glyphicon-remove-sign" ></span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="form-group">
+  <input type="submit" class="btn btn-default">
+</div>
+<div ng-show="error" class="text-danger">
+  <strong ng-bind="error"></strong>
+</div>
+</fieldset>
+</form>
+</div>
 </section>

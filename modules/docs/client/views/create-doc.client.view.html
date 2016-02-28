@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>New Doc</h1>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <form name="docForm" class="form-horizontal" ng-submit="create(docForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -25,14 +25,14 @@
         </div>
         <div class="form-group">
 	 </br>
-	 <div class="row dashed-border col-md-4" ng-switch="files.length > 0">
+	 <div class="row dashed-border col-md-6" ng-switch="files.length > 0">
 	   <div class="text-center" ng-switch-when="false">
 	     <div class="none">No files selected yet
 	     </div>
 	   </div>
 	   <div ng-switch-when="true">
 	     <ul class="form-group" ng-repeat="file in files">
-	       <li class="form-group-item"><a href="{{file.downloadUrl}}"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a></li>
+	       <li class="form-group-item"><a href="{{file.downloadUrl}}"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a> <span class="glyphicon glyphicon-remove-sign" ng-click="removeFile($index)"></span></li>
 	     </ul>
  	   </div>
 	 </div>

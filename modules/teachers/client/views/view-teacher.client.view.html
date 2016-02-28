@@ -10,15 +10,15 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="teacher.created | date:'mediumDate'"></span>
-      by
-      <span ng-bind="teacher.user.displayName"></span>
-    </em>
-  </small>
+  <h4><strong>Disciplina</strong></h4>
   <p class="lead" ng-bind="teacher.materia"></p>
+  <h4><strong>Coordinamento classe:</strong></h4>
   <p class="lead" ng-bind="teacher.coordinator"></p>
-   <p class="lead" ng-bind="teacher.classes"></p>
+  <h4><strong>Classi</strong></h4>
+  <ul class="lead" ng-repeat="class in teacher.classes">
+    <li>{{class.name}} {{class.indirizzo}}</li>
+  </ul>
+  <section ng-controller="TimetablesController">
+    <a ui-sref="timetables.view({teacherId: teacher._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
+  </section>  
 </section>

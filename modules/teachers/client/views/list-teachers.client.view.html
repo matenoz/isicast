@@ -2,19 +2,13 @@
   <div class="page-header">
     <h1>Teachers</h1>
   </div>
-  <div class="list-group">
+  <div class="list-group col-md-8">
     <a ng-repeat="teacher in teachers" ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="teacher.created | date:'mediumDate'"></span>
-        by
-        <span ng-bind="teacher.user.displayName"></span>
-      </small>
+      <h4>Nome Docente</h4>
       <p class="list-group-item-heading" ng-bind="teacher.name"></p>
+      <h4>Disciplina</h4>
       <p class="list-group-item-text" ng-bind="teacher.materia"></p>
-      <p class="list-group-item-text" ng-bind="teacher.coordinator"></p>
-       <p class="list-group-item-text" ng-bind="teacher.classes"></p>
-    </a>
+      </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="teachers.$resolved && !teachers.length">
     No teachers yet, why don't you <a ui-sref="teachers.create">create one</a>?

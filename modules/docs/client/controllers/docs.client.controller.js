@@ -25,7 +25,9 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
   $scope.onCancel = function () {
     console.log('Google picker close/cancel!');
   };    
-    
+  $scope.removeFile = function(index){
+    $scope.files.splice(index, 1);
+  };  
     // Create new Doc
   $scope.create = function (isValid) {
     $scope.error = null;

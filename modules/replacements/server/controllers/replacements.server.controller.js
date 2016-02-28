@@ -5,110 +5,106 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Classe = mongoose.model('Classe'),
+  Replacement = mongoose.model('Replacement'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Create a classe
+ * Create a replacement
  */
 exports.create = function (req, res) {
-  var classe = new Classe(req.body);
-  classe.user = req.user;
+  var replacement = new Replacement(req.body);
+  replacement.user = req.user;
 
-  classe.save(function (err) {
+  replacement.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(classe);
+      res.json(replacement);
     }
   });
 };
 
 /**
- * Show the current classe
+ * Show the current replacement
  */
 exports.read = function (req, res) {
-  res.json(req.classe);
+  res.json(req.replacement);
 };
 
 /**
- * Update a classe
+ * Update a replacement
  */
 exports.update = function (req, res) {
-  var classe = req.classe;
+  var replacement = req.replacement;
 
-  classe.nome_classe = req.body.nome_classe;
-  classe.indirizzo = req.body.indirizzo;
-  classe.teachers = req.body.teachers;  
-  classe.coordinatore = req.body.coordinatore;
-  classe.timetable = req.body.timetable;
-    
+  replacement.title = req.body.title;
+  replacement.content = req.body.content;
 
-  classe.save(function (err) {
+  replacement.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(classe);
+      res.json(replacement);
     }
   });
 };
 
 /**
- * Delete an classe
+ * Delete an replacement
  */
 exports.delete = function (req, res) {
-  var classe = req.classe;
+  var replacement = req.replacement;
 
-  classe.remove(function (err) {
+  replacement.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(classe);
+      res.json(replacement);
     }
   });
 };
 
 /**
- * List of Classes
+ * List of Replacements
  */
 exports.list = function (req, res) {
-  Classe.find().sort('-created').populate('user', 'displayName').exec(function (err, classes) {
+  Replacement.find().sort('-created').populate('user', 'displayName').exec(function (err, replacements) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(classes);
+      res.json(replacements);
     }
   });
 };
 
 /**
- * Classe middleware
+ * Replacement middleware
  */
-exports.classeByID = function (req, res, next, id) {
+exports.replacementByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Classe is invalid'
+      message: 'Replacement is invalid'
     });
   }
 
-  Classe.findById(id).sort('-created').populate('user', 'displayName').exec(function (err, classe) {
+  Replacement.findById(id).populate('user', 'displayName').exec(function (err, replacement) {
     if (err) {
       return next(err);
-    } else if (!classe) {
+    } else if (!replacement) {
       return res.status(404).send({
-        message: 'No classe with that identifier has been found'
+        message: 'No replacement with that identifier has been found'
       });
     }
-    req.classe = classe;
+    req.replacement = replacement;
     next();
   });
 };

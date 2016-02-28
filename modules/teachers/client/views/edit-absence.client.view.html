@@ -19,12 +19,13 @@
 	    <input class="btn btn-default" value="Add Absence" ng-click="addAbsence()">
 	  </div>
 	</form>
-	<table class="table table-bordered">
+	<table class="table table-bordered" ng-if="ab_sences.length > 0">
 	  <thead>
 	    <tr>
 	      <th>data</th>
 	      <th>tipologia</th>
 	      <th>motivo</th>
+	      <th>delete</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -32,6 +33,7 @@
   	      <td ng-bind="absence.date | date "></td>
 	      <td ng-bind="absence.type"></td>
 	      <td ng-bind="absence.cause"></td>
+	      <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAbsence($index)"></span></td>
 	    </tr>
 	  </tbody>
 	</table>
