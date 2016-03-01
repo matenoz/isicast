@@ -35,7 +35,12 @@ var TeacherSchema = new Schema({
     indirizzo:{
       type:String,
       trim:true
-    }  
+    },
+    isActive:{
+      type:Boolean,
+      trim:true,
+      default:true
+    }   
   }],
   absences:[{
     date:{

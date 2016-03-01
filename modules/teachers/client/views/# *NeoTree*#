@@ -1,0 +1,66 @@
+.. (up a dir)
+<es/work/isicast/modules/
++chat/
+-classes/
+  -client/
+    -config/
+      classes.client.config.js
+      classes.client.routes.js
+    -controllers/
+      classes.client.controller.js
+      ctimetables.client.controller.js
+    -services/
+      classes.client.services.js
+      ctimetables.client.services.js
+    -views/
+      create-classe.client.view.html
+      edit-classe.client.view.html
+      edit-timetable.client.view.html
+      list-classes.client.view.html
+      list-timetables.client.view.html
+      view-classe.client.view.html
+      view-timetable.client.view.html
+    classes.client.module.js
+  -server/
+    +config/
+    -controllers/
+      classes.server.controller.js
+    +models/
+    +policies/
+    +routes/
+  +tests/
++core/
++deadlines/
++docs/
++features/
++replacements/
+-teachers/
+  -client/
+    +config/
+    -controllers/
+      absences.client.controller.js
+      teachers.client.controller.js
+      timetables.client.controller.js
+    +services/
+    -views/
+       *NeoTree*
+      create-teacher.client.view.html
+      edit-absence.client.view.html
+      edit-teacher.client.view.html
+      edit-timetable.client.view.html
+      list-absences.client.view.html
+      list-teachers.client.view.html
+      list-timetables.client.view.html
+      view-absence.client.view.html
+      view-teacher.client.view.html
+      view-timetable.client.view.html
+    teachers.client.module.js
+  -server/
+    +config/
+    -controllers/
+      teachers.server.controller.js
+    +models/
+    +policies/
+    +routes/
+  +tests/
++users/

@@ -1,8 +1,8 @@
 'use strict';
 
 // Teachers controller
-angular.module('teachers').controller('TeachersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Teachers','Absences',
-  function ($scope, $stateParams, $location, Authentication, Teachers, Absences) {
+angular.module('teachers').controller('TeachersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Teachers',
+  function ($scope, $stateParams, $location, Authentication, Teachers) {
     $scope.authentication = Authentication;
     $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];
     $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari'];
@@ -86,24 +86,16 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
 
       var teacher = $scope.teacher;
+
       angular.forEach($scope._class, function(classe,index){
         teacher.classes.push({ name:classe.name,indirizzo:classe.indirizzo });
       });
-	
-      $scope.remove2 = function(teacher){
-        if(teacher){
-          teacher.classe.$remove2();  
-	  for(var i in $scope.teacher.classes){
-	    if($scope.teacher.classes[i] === teacher.classe){
-	      $scope.teacher.classes.splice(i, 1);	
-	    }
-	  }  
-	} else {
-          $scope.teacher.classes.$remove(function () {
-            $location.path('teachers/'+ teacher._id);
-          });
-	}     	     
-      };    
+      angular.forEach(teacher.classes,function(classe,index){
+	if(classe.isActive === false){
+	  teacher.classes.splice(index, 1);
+	}
+      });	
+
       	
       teacher.$update(function () {
         $location.path('teachers/' + teacher._id);

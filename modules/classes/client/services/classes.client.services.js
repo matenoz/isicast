@@ -5,15 +5,15 @@ angular.module('classes').factory('Classes', ['$resource',
   function ($resource) {
     return {
       c:  $resource('api/classes/:classeId', {
-       classeId: '@_id'
+        classeId: '@_id'
       }, {
         update: {
 	  method: 'PUT'
 	}
       }),
-     t:  $resource('api/teachers/:teacherId', {
-      teacherId: '@_id'
-     })
+      t:  $resource('api/teachers/:teacherId', {
+        teacherId: '@_id'
+      })
     };
   }
 ]);

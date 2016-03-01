@@ -11,17 +11,15 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <small>
-    <em class="text-muted">
-    <!--  Posted on
-      <span ng-bind="classe.created | date:'mediumDate'"></span>
-      by-->
-      <span ng-bind="classe.user.displayName"></span>
-    </em>
-  </small>
+  <h4><strong>Indirizzo</strong></h4>
   <p class="lead" ng-bind="classe.indirizzo"></p>
-  <p class="lead" ng-bind="classe.docenti"></p>
+   <h4><strong>Coordinatore:</strong></h4>
   <p class="lead" ng-bind="classe.coordinatore"></p>
-  <p class="lead" ng-bind="classe.orario_classe"></p>
-  
+   <h4><strong>Consiglio di classe:</strong></h4>
+   <ul class="lead" ng-repeat="teacher in classe.teachers">
+     <li>{{teacher.name}} {{teacher.materia}}</li>
+   </ul>
+  <section ng-controller="CtimetablesController">
+    <a ui-sref="ctimetables.view({classeId: classe._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
+  </section>  
 </section>

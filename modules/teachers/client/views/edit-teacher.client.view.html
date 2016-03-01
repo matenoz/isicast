@@ -17,8 +17,8 @@
           <input name="materia" ng-model="teacher.materia" id="materia" class="form-control"  placeholder="Materia"></input>
         </div>
 	<div class="form-group">
-          <label for="coordinator">Coordinator</label>
-          <input name="coordinator" ng-model="coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
+          <label for="coordinator">Coordinamento</label>
+          <input name="coordinator" ng-model="teacher.coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
         </div>
 	<form class="horizontal-form">
 	  <div class="form-group">
@@ -32,7 +32,7 @@
   <input ng-click="addClass()" value="add class" class="btn btn-default">
 </div>
 <div class="form-group">
-  <table class="table table-bordered">
+  <table class="table table-bordered" ng-if="teacher.classes.length > 0">
     <thead>
       <tr>
 	<th>Classe</th>
@@ -44,7 +44,7 @@
       <tr ng-repeat="classe in teacher.classes">
 	<td id="classe" ng-bind="classe.name"></td>
 	<td id="classe" ng-bind="classe.indirizzo"></td>
-	<td><button class="btn btn-remove" ng-click="remove2()" ><span  class="glyphicon glyphicon-remove-sign"></span></button></td>
+	<td><input type="checkbox" ng-model="teacher.classes[$index].isActive" ng-change="change($index)" > uncheck to delete</td>
       </tr>
     </tbody>
   </table>

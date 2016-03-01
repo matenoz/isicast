@@ -4,6 +4,8 @@
 angular.module('classes').controller('ClassesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Classes',
   function ($scope, $stateParams, $location, Authentication,Classes) {
     $scope.authentication = Authentication;
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];
+    $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari'];
     $scope._teachers = [];
     $scope.addTeacher = function(){
       $scope._teachers.push({ name:$scope.teacher.name, materia:$scope.teacher.materia });
@@ -83,7 +85,12 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
       var classe = $scope.classe;
       angular.forEach($scope._teachers, function(teacher,index){
         classe.teachers.push({ name:teacher.name,materia:teacher.materia });
-      });		
+      });
+      angular.forEach(classe.teachers,function(teacher,index){
+	if(teacher.isActive === false){
+	  classe.teachers.splice(index, 1);
+	}
+      });	
 	
       classe.$update(function () {
         $location.path('classes/' + classe._id);

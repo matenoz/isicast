@@ -29,7 +29,12 @@ var ClasseSchema = new Schema({
     materia:{
       type:String,
       trim:true
-    }	    
+    },
+    isActive:{
+      type:Boolean,
+      trim:true,
+      default:true
+    } 
   }],
   coordinatore:{
     type: String,

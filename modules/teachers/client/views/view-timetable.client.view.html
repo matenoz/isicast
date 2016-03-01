@@ -4,16 +4,7 @@
   </div>
    <div class="container">
     <div class="row">
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="teacher.created | date:'mediumDate'"></span>
-      by
-      <span ng-bind="teacher.user.displayName"></span>
-    </em>
-    
-  </small>
-  <label for="timetable">Timetable </label>
+      <label for="timetable">Timetable </label>
           <table  class="table table-bordered">
 	    <thead > 
 	      <tr>
@@ -39,9 +30,7 @@
        </div>
    </div>
     <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
-    <a class="btn btn-primary" ui-sref="timetables.edit({teacherId: teacher._id})">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
+    <a  class="btn btn-primary" ui-sref="timetables.edit({teacherId: teacher._id})">
+      <i class="glyphicon glyphicon-edit"></i> modifica </a>
   </div>
-
 </section>
