@@ -5,6 +5,11 @@ angular.module('deadlines').controller('DeadlinesController', ['$scope', '$state
   function ($scope, $stateParams, $location, Authentication, Deadlines) {
     $scope.authentication = Authentication;
     $scope.pre_dead = new Date();
+    $scope.compareDates = function(date1, date2) {
+      var dateObj1 = new Date(date1);
+      var dateObj2 = new Date(date2);
+      return (dateObj1 <= dateObj2);
+    };
     // Create new Deadline
     $scope.create = function (isValid) {
       $scope.error = null;

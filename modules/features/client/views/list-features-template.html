@@ -1,6 +1,6 @@
 <div class="panel-group" ng-repeat="feature in features">
   <!-- <a  ui-sref="features.view({featureId: feature._id})"> -->
-    <div ng-if="(pre_dead | date) <= (feature.deadline | date)" class="panel panel-default">
+    <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default">
       <div class="panel-heading">
 	<h6 ng-bind="feature.title.toUpperCase()" class="panel-title"></h6>
       </div>

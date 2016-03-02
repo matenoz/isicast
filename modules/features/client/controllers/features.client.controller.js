@@ -5,6 +5,11 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
     $scope.pre_dead = new Date();
+    $scope.compareDates =  function(date1, date2) {
+      var dateObj1 = new Date(date1);
+      var dateObj2 = new Date(date2);
+      return (dateObj1 <= dateObj2);
+    };
     $scope.files = [];
     $scope.onLoaded = function () {
       console.log('Google Picker loaded!');
