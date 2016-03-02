@@ -8,8 +8,8 @@ angular.module('classes').factory('Classes', ['$resource',
         classeId: '@_id'
       }, {
         update: {
-	  method: 'PUT'
-	}
+          method: 'PUT'
+        }
       }),
       t:  $resource('api/teachers/:teacherId', {
         teacherId: '@_id'

@@ -91,9 +91,9 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         teacher.classes.push({ name:classe.name,indirizzo:classe.indirizzo });
       });
       angular.forEach(teacher.classes,function(classe,index){
-	if(classe.isActive === false){
-	  teacher.classes.splice(index, 1);
-	}
+        if(classe.isActive === false){
+          teacher.classes.splice(index, 1);
+        }
       });	
 
       	

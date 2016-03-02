@@ -87,9 +87,9 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         classe.teachers.push({ name:teacher.name,materia:teacher.materia });
       });
       angular.forEach(classe.teachers,function(teacher,index){
-	if(teacher.isActive === false){
-	  classe.teachers.splice(index, 1);
-	}
+        if(teacher.isActive === false){
+          classe.teachers.splice(index, 1);
+        }
       });	
 	
       classe.$update(function () {
