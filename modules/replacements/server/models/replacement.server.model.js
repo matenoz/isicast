@@ -14,17 +14,34 @@ var ReplacementSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
-    type: String,
-    default: '',
+  rep_date: {
+    type: Date,
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Date cannot be blank'
   },
-  content: {
-    type: String,
-    default: '',
-    trim: true
-  },
+  daily_reps:[{
+    hour:{
+      type:String,
+      trim:true
+    },
+    classe:{
+      type:String,
+      trim:true
+    },
+    absent:{
+      type:String,
+      trim:true
+    },
+    substitute:{
+      type:String,
+      trim:true
+    },
+    isActive:{
+      type:Boolean,
+      trim:true,
+      default:true
+    }   
+  }],
   user: {
     type: Schema.ObjectId,
     ref: 'User'

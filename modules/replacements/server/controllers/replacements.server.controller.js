@@ -39,8 +39,8 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var replacement = req.replacement;
 
-  replacement.title = req.body.title;
-  replacement.content = req.body.content;
+  replacement.rep_date = req.body.rep_date;
+  replacement.daily_reps = req.body.daily_reps;
 
   replacement.save(function (err) {
     if (err) {

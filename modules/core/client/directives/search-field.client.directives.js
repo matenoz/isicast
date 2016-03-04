@@ -8,7 +8,7 @@ angular.module('core').directive('searchField', function () {
   return function (scope, element, attrs) {
     element.bind('keydown keypress', function (event) {
       scope.$apply(function (){
-        scope.$eval(attrs.ngEnter);
+        scope.$eval(attrs.searchField);
       });
       event.preventDefault();
     });

@@ -1,4 +1,4 @@
-<div class="panel-group" ng-repeat="feature in features">
+<div class="panel-group" ng-repeat="feature in features|orderBy:'-priority'">
   <!-- <a  ui-sref="features.view({featureId: feature._id})"> -->
     <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default">
       <div class="panel-heading">

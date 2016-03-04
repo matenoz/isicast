@@ -62,7 +62,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
         // Clear form fields
       $scope.title = '';
       $scope.content = '';
-      $scope.prot = null;
+      $scope.prot = '';
       $scope.main_doc = [];
       $scope.attachment = [];
     }, function (errorResponse) {

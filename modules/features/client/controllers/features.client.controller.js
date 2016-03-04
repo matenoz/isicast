@@ -5,7 +5,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
     $scope.pre_dead = new Date();
-    $scope.compareDates =  function(date1, date2) {
+    $scope.compareDates = function(date1, date2) {
       var dateObj1 = new Date(date1);
       var dateObj2 = new Date(date2);
       return (dateObj1 <= dateObj2);
@@ -54,8 +54,9 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
               // Clear form fields
         $scope.title = '';
         $scope.content = '';
-        $scope.deadline = null; 
+        $scope.deadline = ''; 
         $scope.link = '';
+	$scope.priority = '';  
 	  
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;

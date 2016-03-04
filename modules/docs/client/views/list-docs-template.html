@@ -3,13 +3,13 @@
        <div class="panel panel-default">
 	 <div class="panel-heading"><small>
 	     Protocollo n°<span ng-bind="doc.prot"></span> del
-	     <span data-ng-bind="doc.created | date"></span>
+	     <span ng-bind="doc.created | date"></span>
 	     Resp. procedimento
-	     <span data-ng-bind="doc.user.displayName"></span>
+	     <span ng-bind="doc.user.displayName"></span>
 	   </small>
 	 </div>
 	 <div class="panel-body">
-	   <h5 data-ng-bind="doc.title"></h5>
+	   <h5 ng-bind="doc.title"></h5>
 	   <!-- <p data-ng-bind="doc.content"></p> -->
 	   <!-- ...leggi -->
 	   <p ng-if="doc.attachment.length > 0"><span class="glyphicon glyphicon-paperclip"></span> sono presenti allegati </p>

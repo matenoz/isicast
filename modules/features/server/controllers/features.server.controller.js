@@ -77,7 +77,7 @@ exports.delete = function (req, res) {
  * List of Features
  */
 exports.list = function (req, res) {
-  Feature.find().sort('-priority').populate('user', 'displayName').exec(function (err, features) {
+  Feature.find().sort('-created').populate('user', 'displayName').exec(function (err, features) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

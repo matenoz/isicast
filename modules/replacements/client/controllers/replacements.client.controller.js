@@ -4,7 +4,15 @@
 angular.module('replacements').controller('ReplacementsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Replacements',
   function ($scope, $stateParams, $location, Authentication, Replacements) {
     $scope.authentication = Authentication;
-
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];  
+    $scope.hoursarray = ['08 - 09','09 - 10','10 - 11','11 - 12','12 - 13','13 - 14','14 - 15','15 - 16'];
+    $scope.dailyreps = [];
+    $scope.addRep = function(){
+      $scope.dailyreps.push({ hour:$scope.rep.hour, classe:$scope.rep.classe, absent:$scope.rep.absent, substitute:$scope.rep.substitute }); 	
+    };
+    $scope.removeRep = function(index){
+      $scope.dailyreps.splice(index, 1);
+    };  
     // Create new Replacement
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -16,18 +24,22 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
       }
 
       // Create new Replacement object
-      var replacement = new Replacements({
-        title: this.title,
-        content: this.content
+      var replacement = new Replacements.r({
+        rep_date: this.rep_date,
+        daily_reps: []
       });
 
+      angular.forEach($scope.dailyreps,function(rep,index){
+	replacement.daily_reps.push({ hour:rep.hour, classe:rep.classe, absent:rep.absent, substitute:rep.substitute });
+      });	
+	
       // Redirect after save
       replacement.$save(function (response) {
         $location.path('replacements/' + response._id);
 
         // Clear form fields
-        $scope.title = '';
-        $scope.content = '';
+        $scope.rep_date = '';
+        $scope.daily_reps = [];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -61,7 +73,15 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
       }
 
       var replacement = $scope.replacement;
-
+      angular.forEach($scope.dailyreps,function(rep,index){
+	replacement.daily_reps.push({ hour:rep.hour, classe:rep.classe, absent:rep.absent, substitute:rep.substitute });
+      });	
+      angular.forEach(replacement.daily_reps,function(rep,index){
+	if(rep.isActive === false){
+	  replacement.daily_reps.splice(index, 1);
+	}
+      });
+	
       replacement.$update(function () {
         $location.path('replacements/' + replacement._id);
       }, function (errorResponse) {
@@ -71,12 +91,17 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
 
     // Find a list of Replacements
     $scope.find = function () {
-      $scope.replacements = Replacements.query();
+      $scope.replacements = Replacements.r.query();
     };
 
+    // Find a list of Teachers
+    $scope.findt = function(){
+      $scope.teachers = Replacements.t.query();
+    };  
+      
     // Find existing Replacement
     $scope.findOne = function () {
-      $scope.replacement = Replacements.get({
+      $scope.replacement = Replacements.r.get({
         replacementId: $stateParams.replacementId
       });
     };
