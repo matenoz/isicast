@@ -56,7 +56,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
         $scope.content = '';
         $scope.deadline = ''; 
         $scope.link = '';
-	$scope.priority = '';  
+        $scope.priority = '';  
 	  
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;

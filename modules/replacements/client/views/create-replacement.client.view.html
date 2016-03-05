@@ -1,6 +1,6 @@
 <section ng-controller="ReplacementsController" ng-init="findt()">
   <div class="page-header">
-    <h1>Sostituzioni giornalier</h1>
+    <h2>Sostituzioni del: <span ng-bind="rep_date| date"></span></h2>
   </div>
   <div class="col-md-8">
     <form name="replacementForm" class="form-horizontal" ng-submit="create(replacementForm.$valid)" novalidate>
@@ -12,7 +12,6 @@
             <p class="help-block error-text" ng-message="required">Replacement date is required.</p>
           </div>
         </div>
-	<form name="hour_rep">
         <div class="form-group">
           <label for="rep.hour">Seleziona ora:</label>
           <select name="rep.hour" ng-options="hour as hour for hour in hoursarray" ng-model="rep.hour" id="rep.hour" class="form-control"><option value="">--</option></select>
@@ -32,7 +31,7 @@
 	<div class="form-group">
           <input ng-click="addRep()" value="inserisci" class="btn btn-default">
         </div>
-	</form>
+	<div class="form-group">
 	<table class="table table-bordered" ng-if="dailyreps.length > 0">
 	  <thead>
 	    <th>Ora</th>
@@ -49,6 +48,7 @@
 	    <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeRep($index)"></span></td>
 	  </tbody>
 	</table>
+	</div>
         <div class="form-group">
           <input type="submit" class="btn btn-default">
         </div>

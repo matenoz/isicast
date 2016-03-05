@@ -2,16 +2,10 @@
   <div class="page-header">
     <h1>Replacements</h1>
   </div>
-  <div class="list-group">
+  <div class="list-group col-md-8">
     <a ng-repeat="replacement in replacements" ui-sref="replacements.view({replacementId: replacement._id})" class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="replacement.created | date:'mediumDate'"></span>
-        by
-        <span ng-bind="replacement.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="replacement.title"></h4>
-      <p class="list-group-item-text" ng-bind="replacement.content"></p>
+      <h4 class="list-group-item-heading"> Sostituzioni del:  {{replacement.rep_date | date:medium}} </h4>
+     
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="replacements.$resolved && !replacements.length">

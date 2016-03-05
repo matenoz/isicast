@@ -5,7 +5,7 @@ angular.module('replacements').factory('Replacements', ['$resource',
   function ($resource) {
     return {
       r:  $resource('api/replacements/:replacementId', {
-        classeId: '@_id'
+        replacementId: '@_id'
       }, {
         update: {
           method: 'PUT'

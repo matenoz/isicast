@@ -1,7 +1,26 @@
 <section ng-controller="ReplacementsController" ng-init="findOne()">
   <div class="page-header">
-    <h1 ng-bind="replacement.title"></h1>
+    <h2>Sostituzione del: {{replacement.rep_date | date:medium}}</h2>
   </div>
+  <div>
+    	 <table class="table table-bordered" ng-if="replacement.daily_reps.length > 0">
+	  <thead>
+	    <th>Ora</th>
+	    <th>Classe</th>
+	    <th>Assente</th>
+	    <th>Sostituto</th>
+	    <th>Firma</th>
+	  </thead>
+	  <tbody ng-repeat="rep in replacement.daily_reps">
+	    <td ng-bind="rep.hour"></td>
+	    <td ng-bind="rep.classe"></td>
+	    <td ng-bind="rep.absent"></td>
+	    <td ng-bind="rep.substitute"></td>
+	    <td>.........................</td>
+	  </tbody>
+	</table>
+  </div>
+  <hr>
   <div class="pull-right" ng-show="authentication.user._id == replacement.user._id">
     <a class="btn btn-primary" ui-sref="replacements.edit({replacementId: replacement._id})">
       <i class="glyphicon glyphicon-edit"></i>
@@ -10,13 +29,4 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="replacement.created | date:'mediumDate'"></span>
-      by
-      <span ng-bind="replacement.user.displayName"></span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="replacement.content"></p>
 </section>
