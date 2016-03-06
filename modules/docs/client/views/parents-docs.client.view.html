@@ -1,0 +1,43 @@
+<section ng-controller="DocsController" ng-init="find()">
+  <div class="page-header">
+    <h1>Docs</h1>
+  </div>
+  <div class="col-md-4 panel panel-default">
+    <h5>Ricerca per oggetto</h5>
+     <div class="form-group">
+    <input type="text"  ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Cerca documento...">
+     </div>
+      <h5>Ricerca per range di date</h5>
+   <div class="form-group">
+     <label for="date">Seleziona data inizio ricerca</label>
+   <input type="date" class="form-control" ng-model="startDate">
+ </div>
+   <div class="form-group">
+      <label for="date">Seleziona data fine ricerca</label>
+   <input type="date" class="form-control" ng-model="endDate">
+ </div>
+  <div class="form-group">
+   <button class="btn btn-default" ng-click="findWithParams()">cerca</button>
+ </div>
+
+   </div>
+  <div class="col-md-8">
+ <div class="list-group">
+    <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
+      <small class="list-group-item-text">
+        Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
+        <span ng-bind="doc.created | date:'mediumDate'"></span>
+        Resp. proc.to
+        <span ng-bind="doc.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="doc.title"></h4>
+      <p class="list-group-item-text" ng-bind="doc.content"></p>
+      ...leggi
+    </a>
+ </div>
+  <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
+  </div>
+   <div class="alert alert-warning text-center" ng-if="docs.$resolved && !docs.length">
+    No docs yet, why don't you <a ui-sref="docs.create">create one</a>
+  </div>
+</section>

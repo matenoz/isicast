@@ -23,5 +23,9 @@ angular.module('docs').run(['Menus',
       state: 'docs.create',
       roles: ['user']
     });
+    Menus.addSubMenuItem('topbar', 'docs', {
+      title: 'genitori',
+      state: 'docs.parents'
+    });  
   }
 ]);
