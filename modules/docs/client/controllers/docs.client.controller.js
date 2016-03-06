@@ -3,7 +3,7 @@
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
   $scope.authentication = Authentication;
-    // pagination
+  // pagination
   $scope.currentPage = 1;
   $scope.pageSize =10;
   $scope.offset = 0;
