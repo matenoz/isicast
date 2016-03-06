@@ -2,12 +2,12 @@
   <div class="page-header">
     <h1>Edit Classe</h1>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8 col-xs-12">
     <form name="classeForm" class="form-horizontal" ng-submit="update(classeForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label for="nome_classe">Nome Classe</label>
-         <input name="nome_classe" type="text" ng-model="classe.nome_classe" id="nome_classe" class="form-control" placeholder="Classe" required>
+          <input name="nome_classe" type="text" ng-model="classe.nome_classe" id="nome_classe" class="form-control" placeholder="Classe" required>
           <div ng-messages="classeForm.nome_classe.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Classe nome_classe is required.</p>
           </div>
@@ -20,13 +20,12 @@
           <label for="coordinatore">Coordinatore</label>
           <input name="coordinatore" ng-model="classe.coordinatore" id="coordinatore" class="form-control" placeholder="Coordinatore">
         </div>
-       	<!-- <form name="teachers" class="form-horizontal"> -->
-	  <div class="form-group">
-	    <label for="Docente e Materia">Docente e Materia</label>
-            <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ><option value="">--</option></select>
-          </div>
-	  <div class="form-group">
-            <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
+	<div class="form-group">
+	  <label for="Docente e Materia">Docente e Materia</label>
+          <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ><option value="">--</option></select>
+        </div>
+	<div class="form-group">
+          <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
 </div>
 <div class="form-group">
   <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
@@ -49,14 +48,19 @@
     </tbody>
   </table>
 </div>
-<!-- </form> -->
-        <div class="form-group">
-          <input type="submit" value="Update" class="btn btn-default">
-        </div>
-        <div ng-show="error" class="text-danger">
-          <strong ng-bind="error"></strong>
-        </div>
-      </fieldset>
-    </form>
+<div class="form-group">
+  <input type="submit" value="Update" class="btn btn-default">
+</div>
+<div ng-show="error" class="text-danger">
+  <strong ng-bind="error"></strong>
+</div>
+</fieldset>
+</form>
+</div>
+<div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
+  <div ng-repeat="alert in alerts">
+    <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+    </alert>
   </div>
+<div>
 </section>

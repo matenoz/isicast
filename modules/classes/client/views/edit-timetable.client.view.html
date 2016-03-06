@@ -1,19 +1,18 @@
 <section ng-controller="CtimetablesController" ng-init="findOne()">
   <div class="page-header">
-    <h1>Edit Classes timetable</h1>
+    <h3>Modifica orario settimanale classe: {{classe.nome_classe}}</h3>
   </div>
   <div class="col-md-12">
     <form name="classeForm" class="form-horizontal" ng-submit="update(classeForm.$valid)" novalidate>
       <fieldset>
-        <div class="form-group">
-          <label>Nome Classe</label>
-          <p ng-bind="classe.nome_classe"></p>
-         <div ng-messages="classeForm.nome_classe.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">teache nome is required.</p>
-          </div>
-        </div>
+        <!-- <div class="form-group"> -->
+        <!--   <label>Nome Classe</label> -->
+        <!--   <p ng-bind="classe.nome_classe"></p> -->
+        <!--  <div ng-messages="classeForm.nome_classe.$error" role="alert"> -->
+        <!--     <p class="help-block error-text" ng-message="required"> nome is required.</p> -->
+        <!--   </div> -->
+        <!-- </div> -->
        <div class="form-group">
-          <label for="timetable">Timetable </label>
           <table  class="table table-bordered"  name="timetable" id="timetable" ng-model="timetable">
 	    <thead > 
 	      <tr>

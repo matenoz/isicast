@@ -1,43 +1,45 @@
 <section ng-controller="AbsencesController" ng-init="findOne()">
   <div class="page-header">
-    <h1>Edit Absences</h1>
+    <h3>Inserisci assenze docente:{{teacher.name}}</h3>
   </div>
   <div class="col-md-8">
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
-      <fieldset>
-	<form name="absenceForm">
-	  <div class="form-group">
-	    <input type="date" name="date" id="absence.date" ng-model="absence.date" class="form-control">
-	  </div>
-	  <div class="form-group">
-	    <select name="type" id="absence.type" ng-model="absence.type" class="form-control" ng-options="type as type for type in abstypes"></select>
-	  </div>
-	  <div class="form-group">
-	    <input name="cause" id="absence.cause" type="text" ng-model="absence.cause" class="form-control">
-	  </div>	  
-	  <div class="form-group">
-	    <input class="btn btn-default" value="Add Absence" ng-click="addAbsence()">
-	  </div>
-	</form>
-	<table class="table table-bordered" ng-if="ab_sences.length > 0">
-	  <thead>
-	    <tr>
-	      <th>data</th>
-	      <th>tipologia</th>
-	      <th>motivo</th>
-	      <th>delete</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr ng-repeat="absence in ab_sences">
-  	      <td ng-bind="absence.date | date "></td>
-	      <td ng-bind="absence.type"></td>
-	      <td ng-bind="absence.cause"></td>
-	      <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAbsence($index)"></span></td>
-	    </tr>
-	  </tbody>
-	</table>
-	
+      <fieldset>	
+	<div class="form-group">
+	  <label for="date">Inserisci data assenza</label>
+	  <input type="date" name="date" id="absence.date" ng-model="absence.date" class="form-control">
+	</div>
+	<div class="form-group">
+	   <label for="type">Inserisci tipo assenza</label>
+	  <select name="type" id="absence.type" ng-model="absence.type" class="form-control" ng-options="type as type for type in abstypes"></select>
+	</div>
+	<div class="form-group">
+	   <label for="cause">Inserisci motivo assenza</label>
+	  <input name="cause" id="absence.cause" type="text" ng-model="absence.cause" class="form-control">
+	</div>	  
+	<div class="form-group">
+	  <input class="btn btn-default" value="Inserisci" ng-click="addAbsence()">
+	</div>
+	<div class="form-group">
+	  <table class="table table-bordered" ng-if="ab_sences.length > 0">
+	    <thead>
+	      <tr>
+		<th>data</th>
+		<th>tipologia</th>
+		<th>motivo</th>
+		<th>delete</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="absence in ab_sences">
+  		<td ng-bind="absence.date | date "></td>
+		<td ng-bind="absence.type"></td>
+		<td ng-bind="absence.cause"></td>
+		<td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAbsence($index)"></span></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
 	<div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>

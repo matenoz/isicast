@@ -9,11 +9,18 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
     $scope._teachers = [];
     $scope.addTeacher = function(){
       $scope._teachers.push({ name:$scope.teacher.name, materia:$scope.teacher.materia });
+      $scope.alerts.push({ msg:'Docente associato correttamente. Clicca Update per aggiornare o associa altro Docente' });
     };
 
     $scope.removeTeacher = function(index){
       $scope._teachers.splice(index, 1);
     };
+
+    $scope.alerts = [];
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+  
     // Create new Classe
     $scope.create = function (isValid) {
       $scope.error = null;

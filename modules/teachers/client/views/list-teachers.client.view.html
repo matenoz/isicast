@@ -3,13 +3,18 @@
     <h1>Teachers</h1>
   </div>
   <div class="list-group col-md-8">
-    <a ng-repeat="teacher in teachers" ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item">
+    <div class="form-group">
+    <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="teacherSearch($item)" placeholder="Search teachers...">
+  </div>
+    <a ng-repeat="teacher in teachers | limitTo: offset - teachers.length | limitTo: pageSize " ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item">
       <h4>Nome Docente</h4>
       <p class="list-group-item-heading" ng-bind="teacher.name"></p>
       <h4>Disciplina</h4>
       <p class="list-group-item-text" ng-bind="teacher.materia"></p>
-      </a>
+    </a>
+      <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
   </div>
+  
   <div class="alert alert-warning text-center" ng-if="teachers.$resolved && !teachers.length">
     No teachers yet, why don't you <a ui-sref="teachers.create">create one</a>?
   </div>

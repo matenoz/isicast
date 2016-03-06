@@ -124,7 +124,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
       docId: $stateParams.docId
     });	
   };
-        // Search for documents
+  // Search for documents
   $scope.docSearch = function(doc) {
     $location.path('docs/' + doc._id);
   };

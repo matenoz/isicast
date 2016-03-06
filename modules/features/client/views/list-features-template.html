@@ -1,21 +1,17 @@
 <div class="panel-group" ng-repeat="feature in features|orderBy:'-priority'">
-  <!-- <a  ui-sref="features.view({featureId: feature._id})"> -->
-    <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default">
-      <div class="panel-heading">
-	<h6 ng-bind="feature.title.toUpperCase()" class="panel-title"></h6>
-      </div>
-      <div class="panel-body">
-	<img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
-	<div align="left" style="padding-left:140px">
-	  <p ng-bind="feature.content" class="panel-content"></p>
-	  <a ng-href="{{feature.link}}"><button class="btn btn-xs" >link</button></a>
-        </div>
-	 <hr>
-	 <small>
-	  <span ng-bind="feature.created | date:'medium'"></span>
-	</small>
-      </div>
+  <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default">
+    <div class="panel-heading">
+       <h5 ng-bind="feature.title" class="panel-title"></h5>
     </div>
- <!-- </a>-->
+    <div class="panel-body">
+      <img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
+      <p ng-bind="feature.content" class="panel-content"></p>
+      <a  ng-href="{{feature.link}}"><button  class="btn btn-xs btn-info pull-right" >link</button></a>
+    </div>
+    <div class="panel-footer">
+      <small>
+	<span ng-bind="feature.created | date:'medium'"></span>
+      </small> 
+    </div>
 </div>
 

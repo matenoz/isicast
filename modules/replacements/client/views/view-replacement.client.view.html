@@ -1,27 +1,27 @@
 <section ng-controller="ReplacementsController" ng-init="findOne()">
   <div class="page-header">
-    <h2>Sostituzione del: {{replacement.rep_date | date:medium}}</h2>
+    <h2>Sostituzioni del: {{replacement.rep_date | date:medium}}</h2>
   </div>
   <div>
-    	 <table class="table table-bordered" ng-if="replacement.daily_reps.length > 0">
+    	 <table class="table table-striped table-hover" ng-if="replacement.daily_reps.length > 0">
 	  <thead>
 	    <th>Ora</th>
 	    <th>Classe</th>
 	    <th>Assente</th>
 	    <th>Sostituto</th>
-	    <th>Firma</th>
+	    <th class="visible-print-block">Firma</th>
 	  </thead>
 	  <tbody ng-repeat="rep in replacement.daily_reps">
 	    <td ng-bind="rep.hour"></td>
 	    <td ng-bind="rep.classe"></td>
 	    <td ng-bind="rep.absent"></td>
 	    <td ng-bind="rep.substitute"></td>
-	    <td>.........................</td>
+	    <td class="visible-print-block">.........................</td>
 	  </tbody>
 	</table>
   </div>
   <hr>
-  <div class="pull-right" ng-show="authentication.user._id == replacement.user._id">
+  <div class="pull-right hidden-print" ng-show="authentication.user._id == replacement.user._id">
     <a class="btn btn-primary" ui-sref="replacements.edit({replacementId: replacement._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>

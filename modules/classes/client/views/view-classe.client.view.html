@@ -2,15 +2,6 @@
   <div class="page-header">
     <h1 ng-bind="classe.nome_classe"></h1>
   </div>
-  <div class="pull-right" ng-show="authentication.user._id==classe.user._id">
-  <!-- <div class="pull-right"> -->
-    <a class="btn btn-primary" ui-sref="classes.edit({classeId: classe._id})">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="remove();">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
   <h4><strong>Indirizzo</strong></h4>
   <p class="lead" ng-bind="classe.indirizzo"></p>
    <h4><strong>Coordinatore:</strong></h4>
@@ -19,7 +10,17 @@
    <ul class="lead" ng-repeat="teacher in classe.teachers">
      <li>{{teacher.name}} {{teacher.materia}}</li>
    </ul>
+   <br>
   <section ng-controller="CtimetablesController">
     <a ui-sref="ctimetables.view({classeId: classe._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
-  </section>  
+  </section>
+  <br>
+  <div class="pull-right" ng-show="authentication.user._id==classe.user._id">
+   <a class="btn btn-primary" ui-sref="classes.edit({classeId: classe._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
 </section>

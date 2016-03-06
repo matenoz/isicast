@@ -4,17 +4,30 @@
 angular.module('teachers').controller('TeachersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Teachers',
   function ($scope, $stateParams, $location, Authentication, Teachers) {
     $scope.authentication = Authentication;
+    // pagination
+    $scope.currentPage = 1;
+    $scope.pageSize =10;
+    $scope.offset = 0;
+    // Page changed handle
+    $scope.pageChanged = function() {
+      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+    };
+    // insert and remove class  
     $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];
     $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari'];
     $scope._class = [];
     $scope.addClass = function(){
       $scope._class.push({ name:$scope.classe.name, indirizzo:$scope.classe.indirizzo });
+      $scope.alerts.push({ msg:'Classe associata correttamente. Clicca Update per aggiornare o associa altra Classe' });
     };
 
     $scope.removeClass = function(index){
       $scope._class.splice(index, 1);
     };
-    
+    $scope.alerts = [];
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };    
     // Create new Teacher
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -115,5 +128,9 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         teacherId: $stateParams.teacherId
       });
     };
+     // Search for teachers
+    $scope.teacherSearch = function(teacher) {
+      $location.path('teachers/' + teacher._id);
+    };   
   }
 ]);

@@ -2,14 +2,6 @@
   <div class="page-header">
     <h1 ng-bind="teacher.name"></h1>
   </div>
-  <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
-    <a class="btn btn-primary" ui-sref="teachers.edit({teacherId: teacher._id})">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="remove();">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
   <h4><strong>Disciplina</strong></h4>
   <p class="lead" ng-bind="teacher.materia"></p>
   <h4><strong>Coordinamento classe:</strong></h4>
@@ -20,5 +12,14 @@
   </ul>
   <section ng-controller="TimetablesController">
     <a ui-sref="timetables.view({teacherId: teacher._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
-  </section>  
+  </section>
+  <br>
+  <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
+    <a class="btn btn-primary" ui-sref="teachers.edit({teacherId: teacher._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
 </section>

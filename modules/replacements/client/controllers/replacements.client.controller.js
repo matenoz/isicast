@@ -9,14 +9,13 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
     $scope.dailyreps = [];
     $scope.addRep = function(){
       $scope.dailyreps.push({ hour:$scope.rep.hour, classe:$scope.rep.classe, absent:$scope.rep.absent, substitute:$scope.rep.substitute }); 	
-    $scope.alerts.push({ msg:'Sostituzione inserita correttamente. Clicca Update per aggiornare o inserisci altra sostituzione' });	
+      $scope.alerts.push({ msg:'Sostituzione inserita correttamente. Clicca Update per aggiornare o inserisci altra sostituzione' });	
     };
     $scope.removeRep = function(index){
       $scope.dailyreps.splice(index, 1);
-    };  
+    };
+      
     $scope.alerts = [];
-
-    
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
     };
@@ -85,8 +84,8 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
       });	
       angular.forEach(replacement.daily_reps,function(rep,index){
         if(rep.isActive === false){
-	  replacement.daily_reps.splice(index, 1);
-	}
+          replacement.daily_reps.splice(index, 1);
+        }
       });
 	
       replacement.$update(function () {

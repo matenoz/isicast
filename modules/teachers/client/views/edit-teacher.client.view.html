@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Edit Teacher</h1>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8 col-xs-12">
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -20,7 +20,6 @@
           <label for="coordinator">Coordinamento</label>
           <input name="coordinator" ng-model="teacher.coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
         </div>
-	<form class="horizontal-form">
 	  <div class="form-group">
 	    <label for="classe e indirizzo">Classe e Indirizzo</label>
             <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o as o for o in classarray" ><option value="">--</option></select>
@@ -49,7 +48,6 @@
     </tbody>
   </table>
 </div>
-</form>
 	<div class="form-group">
 	  <input type="submit" value="Update" class="btn btn-default">
 	</div>
@@ -59,4 +57,10 @@
       </fieldset>
     </form>
   </div>
+<div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
+  <div ng-repeat="alert in alerts">
+    <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+    </alert>
+  </div>
+  <div>
 </section>

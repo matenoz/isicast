@@ -2,6 +2,21 @@
   <div class="page-header">
     <h1 ng-bind="feature.title"></h1>
   </div>
+  <div>
+    <small>
+      <em class="text-muted">
+	Posted on
+	<span ng-bind="feature.created | date:'mediumDate'"></span>
+	by
+	<span ng-bind="feature.user.displayName"></span>
+      </em>
+    </small>
+    <img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
+    <p class="lead" ng-bind="feature.content"></p>
+    <br>
+    <a  ng-href="{{feature.link}}"><button  class="btn btn-link" >maggiori info...</button></a>
+  </div>
+  <br>
   <div class="pull-right" ng-show="authentication.user._id == feature.user._id">
     <a class="btn btn-primary" ui-sref="features.edit({featureId: feature._id})">
       <i class="glyphicon glyphicon-edit"></i>
@@ -10,13 +25,4 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="feature.created | date:'mediumDate'"></span>
-      by
-      <span ng-bind="feature.user.displayName"></span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="feature.content"></p>
 </section>

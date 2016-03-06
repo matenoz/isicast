@@ -4,6 +4,15 @@
 angular.module('teachers').controller('AbsencesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Absences',
   function ($scope, $stateParams, $location, Authentication, Absences) {
     $scope.authentication = Authentication;
+    // pagination
+    $scope.currentPage = 1;
+    $scope.pageSize =10;
+    $scope.offset = 0;
+    // Page changed handle
+    $scope.pageChanged = function() {
+      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+    };
+    // insert and remove absence  
     $scope.ab_sences=[];
     $scope.addAbsence = function(){
       $scope.ab_sences.push({ date:$scope.absence.date,type:$scope.absence.type,cause:$scope.absence.cause });
@@ -46,5 +55,9 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
         teacherId: $stateParams.teacherId
       });
     };
+    // Search for documents
+    $scope.absenceSearch = function(teacher) {
+      $location.path('absences/' + teacher._id);
+    };  
   }
 ]);

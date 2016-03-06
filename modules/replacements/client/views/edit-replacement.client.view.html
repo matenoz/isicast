@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Edit Replacement</h1>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8 col-sm-6 col-xs-12">
     <form name="replacementForm" class="form-horizontal" ng-submit="update(replacementForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
@@ -55,7 +55,7 @@
       </fieldset>
     </form>
   </div>
-  <div class="col-md-4" ng-if="alerts.length > 0">
+  <div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
     <div ng-repeat="alert in alerts">
       <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
     </alert>
