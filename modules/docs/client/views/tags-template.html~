@@ -1,5 +1,0 @@
-<div class="tags">
-  <a ng-repeat="(idx, tag) in tags" class="tag" ng-click="remove(idx)">{{tag}}</a>
-</div>
-<input type="text" placeholder="Add a tag..." ng-model="new_value"></input>
-<a class="btn" ng-click="add()">Add</a>
