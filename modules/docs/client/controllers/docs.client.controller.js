@@ -3,6 +3,15 @@
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
   $scope.authentication = Authentication;
+  // toggle button
+  $scope.v = 'toggled';  
+  $scope.togC = function(){
+    if($scope.v !== 'toggled'){
+      $scope.v = 'toggled';	
+    } else {
+      $scope.v = 'else';
+    } 
+  };  
   // pagination
   $scope.currentPage = 1;
   $scope.pageSize =10;

@@ -23,6 +23,7 @@
   <meta property="og:type" content="website">
 
   <!-- Twitter META -->
+  <meta name="twitter:widgets:autoload" content="on">
   <meta name="twitter:title" content="{{title}}">
   <meta name="twitter:description" content="{{description}}">
   <meta name="twitter:url" content="{{url}}">
@@ -60,7 +61,31 @@
   {% endif %}
   <script src="http://apis.google.com/js/client.js"></script>
   <script src="http://apis.google.com/js/api.js"></script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <script>window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+    t._e.push(f);
+    };
+
+    return t;
+    }(document, "script", "twitter-wjs"));
+    twttr.ready(function (twttr) {
+
+    twttr.widgets.load();
+    setInterval(function() {
+    twttr.widgets.load();
+    console.log("update twitter timeline each second");
+    }, 1000);
+
+    });</script>
 </body>
 
 </html>

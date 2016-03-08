@@ -1,17 +1,15 @@
 <div class="panel-group" ng-repeat="feature in features|orderBy:'-priority'">
   <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default">
     <div class="panel-heading">
-       <h5 ng-bind="feature.title" class="panel-title"></h5>
+      <h3 ng-bind="feature.title" class="panel-title"></h3>
     </div>
     <div class="panel-body">
       <img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
-      <p ng-bind="feature.content" class="panel-content"></p>
+      <p ng-bind="feature.content"  class="panel-content"></p> 
       <a  ng-href="{{feature.link}}"><button  class="btn btn-xs btn-info pull-right" >link</button></a>
-    </div>
-    <div class="panel-footer">
+      <br>
       <small>
 	<span ng-bind="feature.created | date:'medium'"></span>
-      </small> 
+      </small>
     </div>
 </div>
-

@@ -1,43 +1,181 @@
 <section ng-controller="DocsController" ng-init="find()">
-  <div class="page-header">
-    <h1>Docs</h1>
-  </div>
-  <div class="col-md-4 panel panel-default">
-    <h5>Ricerca per oggetto</h5>
-     <div class="form-group">
-    <input type="text"  ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Cerca documento...">
-     </div>
-      <h5>Ricerca per range di date</h5>
-   <div class="form-group">
-     <label for="date">Seleziona data inizio ricerca</label>
-   <input type="date" class="form-control" ng-model="startDate">
- </div>
-   <div class="form-group">
-      <label for="date">Seleziona data fine ricerca</label>
-   <input type="date" class="form-control" ng-model="endDate">
- </div>
-  <div class="form-group">
-   <button class="btn btn-default" ng-click="findWithParams()">cerca</button>
- </div>
-
-   </div>
-  <div class="col-md-8">
- <div class="list-group">
-    <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
-      <small class="list-group-item-text">
-        Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
-        <span ng-bind="doc.created | date:'mediumDate'"></span>
-        Resp. proc.to
-        <span ng-bind="doc.user.displayName"></span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="doc.title"></h4>
-      <p class="list-group-item-text" ng-bind="doc.content"></p>
-      ...leggi
-    </a>
- </div>
-  <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
-  </div>
-   <div class="alert alert-warning text-center" ng-if="docs.$resolved && !docs.length">
-    No docs yet, why don't you <a ui-sref="docs.create">create one</a>
-  </div>
+  <div  class="wrapper" ng-class="v">
+    <!-- Sidebar -->
+    <div  class="sidebar-wrapper">
+      <ul class="sidebar-nav">
+	<li class="sidebar-brand">
+	  <a href="#">
+	    <i class="glyphicon glyphicon-user"></i> Genitori
+	  </a>
+	</li>
+	<li >
+          <a href="agenda.php">
+            <span class="glyphicon glyphicon-calendar" >
+            </span>  Agenda d'istituto
+          </a>
+	</li>
+	<li >
+          <a href="http://scuole.registroelettronico.com/isicast_bo">
+            <span class="glyphicon glyphicon-pencil" >
+            </span>  Registro on line
+          </a>
+	</li>
+	<li >
+          <a href="orario.php"> 
+            <span class="glyphicon glyphicon-bell" >
+            </span> Orario scolastico
+          </a>
+	</li>
+	<li >
+          <a href="programmazioni.php">
+            <span class="glyphicon glyphicon-dashboard" >
+            </span> Programmazioni docenti
+          </a>
+	</li>
+	<li >
+          <a href="http://www.isicast.org/biblio2/biblio.htm">
+            <span class="glyphicon glyphicon-book" >
+            </span> Biblioteca
+          </a>
+	</li>
+	<li >
+          <a href="monitoraggi.php">
+            <span class="glyphicon glyphicon-stats" >
+            </span> Rilevazioni e monitoraggi
+          </a>
+	</li>
+	<li >
+          <a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=ufficio-relazioni-con-il-pubblico">
+            <span class="glyphicon glyphicon-globe" >
+            </span> U.R.P.
+          </a>
+	</li>
+	<li >
+          <a href="#">
+            <span class="glyphicon glyphicon-time" >
+            </span> Orari di apertura
+          </a>
+	</li>
+	<li >
+          <a href="#">
+            <span class="glyphicon glyphicon-list" >
+            </span> Libri di testo
+          </a>
+	</li>
+	<li >
+          <a href="#">
+            <span class="glyphicon glyphicon-file" >
+            </span> Modulistica
+          </a>
+	</li>
+	<li >
+          <a href="#"><span class="glyphicon glyphicon-flash" >
+            </span> Assicurazione
+          </a>
+	</li>
+	<li >
+          <a href="#">
+            <span class="glyphicon glyphicon-euro" >
+            </span> IBAN e pagamenti
+          </a>
+	</li>
+	<li >
+          <a href="#">
+            <span class="glyphicon glyphicon-credit-card" >
+            </span> Fatturazione elettronica
+          </a>
+	</li>
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <div class="page-content-wrapper">
+      <div class="container-fluid">
+	<div class="row">
+	  <div class="col-lg-12">
+	    <div class="page-header">
+	      <div class="row">
+		<div  class="btn btn-lg btn-link col-md-2" ng-switch="v=='toggled'" ng-click="togC()">
+		  <span  ng-switch-when="false" class="glyphicon glyphicon-th-large"> Chiudi</span>
+		  <span  ng-switch-when="true" class="glyphicon glyphicon-th"> Menu</span>
+		</div>
+		<div class="media col-md-10">
+		  <div class="media-left">
+		    <a ng-href="http://www.istruzione.it/iscrizionionline/index_new.shtml">
+		      <img class="media-object" ng-src="modules/core/client/img/brand/banner_iscrizionionline_16-17.png" alt="Responsive image">
+		    </a>
+		  </div>
+		  <div class="media-left">
+		    <a ng-href="http://cercalatuascuola.istruzione.it/cercalatuascuola/istituti/BOIS009009/iis-caduti-della-direttissima/">
+		      <img class="media-object" ng-src="modules/core/client/img/brand/banner_scuolainchiaro.png " alt="Responsive image">
+		    </a>
+		  </div>
+		  <div class="media-left">
+		    <a ng-href="http://www.lineaamica.gov.it/">
+		      <img class="media-object" ng-src="modules/core/client/img/brand/linea_amica.jpg" alt="Responsive image">
+		    </a>
+		  </div>
+		  <div class="media-left">
+		    <a ng-href="http://isicast.dyndns.org/wordpress">
+		      <img class="media-object" ng-src="modules/core/client/img/brand/Amministrazione.png" alt="Responsive image">
+		    </a>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class=" col-md-4 panel-group">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    <h5>Ricerca per oggetto</h5>
+		    <div class="form-group">
+		      <input type="text" style="" ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Cerca documento...">
+		    </div>
+		    <h5>Ricerca per range di date</h5>
+		    <div class="form-group">
+		      <label for="date">Seleziona data inizio ricerca</label>
+		      <input type="date" class="form-control" ng-model="startDate">
+		    </div>
+		    <div class="form-group">
+		      <label for="date">Seleziona data fine ricerca</label>
+		      <input type="date" class="form-control" ng-model="endDate">
+		    </div>
+		    <div class="form-group">
+		      <button class="btn btn-default" ng-click="findWithParams()">cerca</button>
+		    </div>
+		  </div>
+		</div>
+		<div class="panel panel-default">
+		  <a class="twitter-timeline" ng-href="https://twitter.com/IsicastNet" data-widget-id="690513587325001728">Tweet di @IsicastNet</a>
+		  </div>
+	      </div><!--end col-md-4 -->
+	      <div class="col-md-8">
+		<div class="panel-group">
+		  <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()">
+		    <div class="panel panel-default">
+		      <div class="panel-body">
+			<h3 class="panel-title" ng-bind="doc.title"></h3>
+			<small>
+			  Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
+			  <span ng-bind="doc.created | date:'mediumDate'"></span>
+			  Resp. proc.to
+			  <span ng-bind="doc.user.displayName"></span>
+			</small>
+			
+			<p class="list-group-item-text" ng-bind="doc.content"></p>
+			
+		      </div>
+		    </div>
+		  </a>
+		</div>
+		<pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
+	      </div>
+	    </div><!-- end row-->
+	    <div class="alert alert-warning text-center" ng-if="docs.$resolved && !docs.length">
+	      No docs yet, why don't you <a ui-sref="docs.create">create one</a>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <!-- /#wrapper -->
 </section>
