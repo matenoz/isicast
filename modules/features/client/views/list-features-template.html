@@ -4,7 +4,7 @@
       <h3 ng-bind="feature.title" class="panel-title"></h3>
     </div>
     <div class="panel-body">
-      <img ng-src="{{feature.img}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
+      <img ng-repeat="p in feature.img" ng-src="{{p.downloadUrl}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
       <p ng-bind="feature.content"  class="panel-content"></p> 
       <a  ng-href="{{feature.link}}"><button  class="btn btn-xs btn-info pull-right" >link</button></a>
       <br>

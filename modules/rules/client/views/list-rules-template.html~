@@ -1,0 +1,1 @@
+<li ng-repeat="rule in rules" ng-bind="rule.title"><a ui-sref="rules.view({ruleId: rule._id})"></a></li>

@@ -1,0 +1,55 @@
+<section ng-controller="RulesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Rule</h1>
+  </div>
+  <div class="col-md-8">
+    <form name="ruleForm" class="form-horizontal" ng-submit="update(ruleForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="title">Title</label>
+          <input name="title" type="text" ng-model="rule.title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="ruleForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Rule title is required.</p>
+          </div>
+        </div>
+	<div class="form-group">
+	  <div ng-switch="files.length > 0">
+	    <div ng-switch-when="false">
+	      <alert  type="info"  role="alert" ng-repeat="p in rule.document">
+		<img ng-src="{{p.iconUrl}}"> {{p.name}}
+		<a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-right">
+		  modifica
+	          <span class="glyphicon glyphicon-edit" ></span>
+		</a>
+	      </alert>
+	    </div>
+	    <div ng-switch-when="true">
+	      <div ng-repeat="file in files">
+		<alert type="success" role="alert">
+		  <span class="glyphicon glyphicon-ok"></span>
+          	  <img ng-src="{{file.iconUrl}}">
+		  <a ng-href="{{file.downloadUrl}}">
+		    {{file.name}}
+		  </a>
+		  <span class="pull-right"> rimuovi
+	            <span class="glyphicon glyphicon-remove" ng-click="removeFile($index)"></span>
+		  </span>
+		</alert>
+	      </div>
+ 	    </div>
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label for="link">Inserisci eventuale link</label>
+          <input type="text" class="form-control" ng-model="rule.link" id="link" name="link" placeholder="link">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

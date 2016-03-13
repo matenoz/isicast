@@ -22,7 +22,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
   };
     
   // picker stuff
-  $scope.files = [];
+  $scope.files = [];  
   $scope.onLoaded = function () {
     console.log('Google Picker loaded!');
   }; 
@@ -107,7 +107,15 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     }
 
     var doc = $scope.doc;
-
+    angular.forEach($scope.files, function(file,index){
+      if(index === 0){
+        doc.main_doc.push(file);
+      }
+      else {	  
+        doc.attachment.push(file);
+      }
+    });
+      
     doc.$update(function () {
       $location.path('docs/' + doc._id);
     }, function (errorResponse) {

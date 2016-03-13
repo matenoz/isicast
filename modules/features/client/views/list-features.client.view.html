@@ -1,6 +1,10 @@
 <section ng-controller="FeaturesController" ng-init="find()">
   <div class="page-header">
-    <h1>Features</h1>
+    <h3>Elenco news</h3>
+  </div>
+  <div class="form-group">
+    <label>Ricerca per oggetto</label>
+    <input type="text"  ng-model="search" typeahead="feature as feature.title for feature in features | filter: $viewValue"  class="form-control" typeahead-on-select="featureSearch($item)" placeholder="Cerca news...">
   </div>
   <div class="list-group">
     <a ng-repeat="feature in features" ui-sref="features.view({featureId: feature._id})" class="list-group-item">
@@ -14,6 +18,8 @@
       <p class="list-group-item-text" ng-bind="feature.content"></p>
     </a>
   </div>
+  <pagination total-items="features.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="features.length > pageSize"></pagination>
+
   <div class="alert alert-warning text-center" ng-if="features.$resolved && !features.length">
     No features yet, why don't you <a ui-sref="features.create">create one</a>?
   </div>

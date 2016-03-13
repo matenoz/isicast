@@ -26,8 +26,7 @@ var FeatureSchema = new Schema({
     trim: true
   },
   img: {
-    type:String,
-    default:'',
+    type:Array,
     trim:true
   },
   link: {

@@ -1,33 +1,34 @@
 <section ng-controller="ClassesController" ng-init="find_t()">
-  <div class="page-header">
-    <h1>New Classe</h1>
+  <div class="page-header" ng-switch="nome_classe == null ">
+    <h3 ng-switch-when="true">Nuova Classe</h3>
+    <h3 ng-switch-when="false">{{nome_classe}}</h3>
   </div>
   <div class="col-md-8">
     <form name="classeForm" class="form-horizontal" ng-submit="create(classeForm.$valid)" novalidate>
       <fieldset>
-        <div class="form-group" show-errors>
+	<div class="form-group" show-errors>
           <label for="nome_classe">Nome Classe</label>
           <input name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" placeholder="Nome_Classe" required>
           <div ng-messages="classeForm.nome_classe.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Classe nome_classe is required.</p>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="indirizzo">Indirizzo</label>
-          <input name="indirizzo" ng-model="indirizzo" id="indirizzo" class="form-control" placeholder="Indirizzo">
-        </div>
+	</div>
 	<div class="form-group">
-          <label for="coordinatore">Coordinatore</label>
-          <input name="coordinatore" ng-model="coordinatore" id="coordinatore" class="form-control" placeholder="Coordinatore">
-        </div>
-        <form class="horizontal-form">
+          <label for="indirizzo">Indirizzo</label>
+          <select name="indirizzo" ng-model="indirizzo" id="indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</option></select>       
+	</div>
+	<div class="form-group">
+	  <label for="coordinatore">Coordinatore</label>
+	  <input name="coordinatore" ng-model="coordinatore" id="coordinatore" class="form-control" placeholder="Coordinatore">
+	</div>
+	<form class="horizontal-form">
 	  <div class="form-group">
 	    <label for="docente e materia">Docente e Materia</label>
             <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ><option value="">--</option></select>
-          </div>
+	  </div>
 	  <div class="form-group">
-            <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
-</div>
+	    <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
+</div> 
 <div class="form-group">
   <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
 </div>
@@ -48,13 +49,13 @@
     </tr>
   </tbody>
 </table>
-        <div class="form-group">
-          <input type="submit" class="btn btn-default">
-        </div>
-        <div ng-show="error" class="text-danger">
-          <strong ng-bind="error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+<div class="form-group">
+  <input type="submit" class="btn btn-default">
+</div>
+<div ng-show="error" class="text-danger">
+  <strong ng-bind="error"></strong>
+</div>
+</fieldset>
+</form>
+</div>
 </section>

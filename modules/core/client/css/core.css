@@ -100,7 +100,7 @@ th, td {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #fff;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -146,7 +146,8 @@ th, td {
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #adb2b8;
+    background:#fff;
     background: rgba(255,255,255,0.2);
 }
 

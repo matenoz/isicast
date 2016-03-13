@@ -1,0 +1,30 @@
+<section ng-controller="PlanesController" ng-init="find()">
+  <div class="page-header">
+    <h1>Programmazionie anno 2015-2016</h1>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+	<th>data</th>
+	<th>docente</th>
+	<th>classe</th>
+	<th>asse culturale</th>
+	<th>disciplina</th>
+	 <th>documento</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="plane in planes">
+      <tr ng-repeat="p in plane.content">
+	<td ng-bind="plane.updated | date"></td>
+	<td ng-bind="plane.user.displayName"></td>
+	<td ng-bind="plane.classes"></td>
+	<td ng-bind="plane.department"></td>
+	<td ng-bind="plane.materia"></td>
+	<td ><a ng-href="{{p.url}}"> scarica <i class="glyphicon glyphicon-download-alt"></i></a><span ng-if="plane.user._id == authentication.user._id"><a ui-sref="planes.edit({planeId: plane._id})"> modifica <i class="glyphicon glyphicon-edit"></i></a></span></td>
+      </tr>
+    </tboby>
+  </table>
+   <div class="alert alert-warning text-center" ng-if="planes.$resolved && !planes.length">
+    No planes yet, why don't you <a ui-sref="planes.create">create one</a>?
+  </div>
+</section>

@@ -126,11 +126,11 @@
 	      <div class=" col-md-4 panel-group">
 		<div class="panel panel-default">
 		  <div class="panel-body">
-		    <h5>Ricerca per oggetto</h5>
+		    <h4>Ricerca per oggetto</h4>
 		    <div class="form-group">
 		      <input type="text" style="" ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Cerca documento...">
 		    </div>
-		    <h5>Ricerca per range di date</h5>
+		    <h4>Ricerca per range di date</h4>
 		    <div class="form-group">
 		      <label for="date">Seleziona data inizio ricerca</label>
 		      <input type="date" class="form-control" ng-model="startDate">
@@ -149,6 +149,7 @@
 		  </div>
 	      </div><!--end col-md-4 -->
 	      <div class="col-md-8">
+		<h3 align="center">Elenco documenti famiglie e alunni</h3>
 		<div class="panel-group">
 		  <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()">
 		    <div class="panel panel-default">

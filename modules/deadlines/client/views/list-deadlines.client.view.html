@@ -1,6 +1,6 @@
 <section ng-controller="DeadlinesController" ng-init="find()">
   <div class="page-header">
-    <h1>Deadlines</h1>
+    <h3>Impegni</h3>
   </div>
   <div class="alert alert-warning text-center" ng-if="deadlines.$resolved && !deadlines.length">
     No deadlines yet, why don't you <a ui-sref="deadlines.create">create one</a>?
@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="deadline in deadlines">
+      <tr ng-repeat="deadline in deadlines| orderBy:'-event_date'">
   	<td ng-bind="deadline.event_date | date "></td>
 	<td ng-bind="deadline.event"></td>
 	<td ><p ng-bind="deadline.content"></p></td>

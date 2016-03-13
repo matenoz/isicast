@@ -4,6 +4,15 @@
 angular.module('features').controller('FeaturesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Features',
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
+     // pagination
+    $scope.currentPage = 1;
+    $scope.pageSize = 10;
+    $scope.offset = 0;
+    // Page changed handle
+    $scope.pageChanged = function() {
+      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+    };
+
     $scope.pre_dead = new Date();
     $scope.compareDates = function(date1, date2) {
       var dateObj1 = new Date(date1);
@@ -21,6 +30,9 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
     };
     $scope.onCancel = function () {
       console.log('Google picker close/cancel!');
+    };
+    $scope.removeFile = function(index){
+      $scope.files.splice(index, 1);
     };    
     // Create new Feature
     $scope.create = function (isValid) {
@@ -36,28 +48,24 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       var feature = new Features({
         title: this.title,
         content: this.content,
-        img: this.img,
+        img: [],
         link: this.link, 
         deadline: this.deadline,
         priority: this.priority
       });
-      angular.forEach($scope.files, function(file,index){
-        if(index === 0){
-          feature.img=file.downloadUrl;
-        }
-      });  
-
-	  // Redirect after save
+      angular.forEach($scope.files,function(file,index){
+        feature.img.push(file);
+      }); 
+      // Redirect after save
       feature.$save(function (response) {
         $location.path('features/' + response._id);
 
               // Clear form fields
         $scope.title = '';
         $scope.content = '';
-        $scope.deadline = ''; 
         $scope.link = '';
         $scope.priority = '';  
-	  
+        $scope.img = [];  
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -91,7 +99,9 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       }
 
       var feature = $scope.feature;
-
+      if($scope.files.length > 0){
+        feature.img = $scope.files;
+      }
       feature.$update(function () {
         $location.path('features/' + feature._id);
       }, function (errorResponse) {
@@ -109,6 +119,10 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       $scope.feature = Features.get({
         featureId: $stateParams.featureId
       });
+    };
+    // Search for documents
+    $scope.featureSearch = function(feature) {
+      $location.path('features/' + feature._id);
     };
   }
 ]);

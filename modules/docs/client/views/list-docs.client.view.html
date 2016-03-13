@@ -1,13 +1,13 @@
 <section ng-controller="DocsController" ng-init="find()">
   <div class="page-header">
-    <h1>Docs</h1>
+    <h3>Elenco documenti</h3>
   </div>
   <div class="col-md-4 panel panel-default">
-    <h5>Ricerca per oggetto</h5>
-     <div class="form-group">
+    <div class="form-group">
+       <label>Ricerca per oggetto</label>
     <input type="text"  ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Cerca documento...">
      </div>
-      <h5>Ricerca per range di date</h5>
+      <h4>Ricerca per range di date</h4>
    <div class="form-group">
      <label for="date">Seleziona data inizio ricerca</label>
    <input type="date" class="form-control" ng-model="startDate">

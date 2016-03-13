@@ -1,6 +1,6 @@
 <section ng-controller="DocsController">
   <div class="page-header">
-    <h1>New Doc</h1>
+    <h3>Nuovo documento</h3>
   </div>
   <div class="col-md-8">
     <form name="docForm" class="form-horizontal" ng-submit="create(docForm.$valid)" novalidate>
@@ -24,25 +24,45 @@
           <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
         </div>
         <div class="form-group">
-	 </br>
-	 <div class="row dashed-border col-md-6" ng-switch="files.length > 0">
-	   <div class="text-center" ng-switch-when="false">
-	     <div class="none">No files selected yet
-	     </div>
-	   </div>
-	   <div ng-switch-when="true">
-	     <ul class="form-group" ng-repeat="file in files">
-	       <li class="form-group-item"><a href="{{file.downloadUrl}}"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a> <span class="glyphicon glyphicon-remove-sign" ng-click="removeFile($index)"></span></li>
-	     </ul>
- 	   </div>
-	 </div>
+	  <div ng-switch="files.length > 0">
+	    <div ng-switch-when="false">
+	      <alert  type="warning"  role="alert">
+		Nessun documento caricato
+		<a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-right">
+		  carica
+	          <span class="glyphicon glyphicon-upload" ></span>
+		</a>
+	      </alert>
+	    </div>
+	    <div ng-switch-when="true">
+	      <div ng-repeat="file in files">
+		<alert type="success" role="alert">
+		  <span class="glyphicon glyphicon-ok"></span>
+          	  <img ng-src="{{file.iconUrl}}">
+		  <a ng-href="{{file.downloadUrl}}">
+		    {{file.name}}
+		  </a>
+		  <span class="pull-right"> rimuovi
+	            <span class="glyphicon glyphicon-remove" ng-click="removeFile($index)"></span>
+		  </span>
+		</alert>
+	      </div>
+	      <alert  type="info"  role="alert" ng-switch="files.length >= 0 && files.length < 2">
+		<span ng-switch-when="true">
+		Nessun allegato secondario  caricato
+		</span>
+		<span ng-switch-when="false">
+		Carica altro allegato
+		</span>
+		<a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-right">
+		  carica
+	          <span class="glyphicon glyphicon-upload" ></span>
+		</a>
+	      </alert>
+ 	    </div>
+	  </div>
 	</div>
 	<div class="form-group">
-       </br>
-       <a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-default">Attachments</a>
-	</div>
-	</br>
-        <div class="form-group">
           <input type="submit" class="btn btn-default">
         </div>
         <div ng-show="error" class="text-danger">

@@ -1,13 +1,13 @@
 <section ng-controller="DeadlinesController" ng-init="findOne()">
   <div class="page-header">
-    <h1>Edit Deadline</h1>
+    <h3>Modifica impegno del {{deadline.event_date | date}}</h3>
   </div>
   <div class="col-md-8">
     <form name="deadlineForm" class="form-horizontal" ng-submit ="update(deadlineForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label for="event_date">Data impegno</label>
-	  <input name="event_date" id="event_date" type="date" class="form-control" ng-model="deadline.event_date"/>
+	  <input name="event_date" id="event_date" type="date" class="form-control" ng-model="deadline.event_date">
 	</div>
 	<div ng-messages="deadlineForm.event_date.$error" role="alert">
           <p class="help-block error-text" ng-message="required">Deadline title is required.</p>
@@ -21,11 +21,11 @@
 	</div>
         <div class="form-group">
           <label for="content">Descrizione</label>
-          <textarea name="content" ng-model="deadline.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          <textarea name="content" ng-model="deadline.content" id="content" class="form-control" cols="30" rows="10" placeholder="Descrizione"></textarea>
         </div>
 	<div class="form-group">
           <label for="classes">Classi</label>
-          <input type="text" name="classes" ng-list=", " ng-model="deadline.classes" id="classes" class="form-control"  placeholder="Classe">
+          <input type="text" name="classes" ng-list=", " ng-model="deadline.classes" id="classes" class="form-control">
         </div>
 	<div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">

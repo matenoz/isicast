@@ -1,16 +1,57 @@
 <section ng-controller="ClassesController" ng-init="find()">
   <div class="page-header">
-    <h1>Classes</h1>
+    <h3>Classi e indirizzi di studio</h3>
   </div>
-  <div class="list-group col-md-8">
-    <a ng-repeat="classe in classes" ui-sref="classes.view({classeId: classe._id})" class="list-group-item">
-       <h4>Classe</h4>
-       <p class="list-group-item-heading" ng-bind="classe.nome_classe"></p>
-       <h4>Indirizzo</h4>
-      <p class="list-group-item-text" ng-bind="classe.indirizzo"></p>
+  <div class="row">
+    <h4 align="center">Corso diurno</h4>
+    <hr/>
+    <div class="col-md-3">
+      <label>Amm.ne Finanza & Marketing</label>
+      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Amministrazione Finanza & Marketing'">
+	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
+	  <p class="list-group-item-text" ng-bind="classe.nome_classe"></p> <i class="glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label>Liceo Scientifico</label>
+      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Liceo Scientifico'">
+	<a class="list-group-item" ui-sref="classes.view({classeId: classe._id})">
+	  <p class="list-group-item-text" ng-bind="classe.nome_classe"></p> <i class="glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label>Manut.ne e Assitenza Tecnica</label>
+      <div class="list-group"  ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Manutenzione e Assistenza Tecnica'">
+	<a class="list-group-item" ui-sref="classes.view({classeId: classe._id})">
+	  <p class="list-group-item-text" ng-bind="classe.nome_classe"></p> <i class="glyphicon glyphicon-chevron-right"></i>
+	</a>
+</li>
+</div>
+</div>
+<div class="col-md-3">
+  <label>Servizi Commerciali</label>
+  <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Servizi Commerciali'">
+    <a class="list-group-item" ui-sref="classes.view({classeId: classe._id})">
+      <p class="list-group-item-text" ng-bind="classe.nome_classe"></p> <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+  </div>
+</div>
+</div>
+<div class="row">
+  <h4 align="center">Corso serale</h4>
+  <hr/>
+  <div class="col-md-3">
+    <label>Servizi Socio Sanitari</label>
+    <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Servizi Socio Sanitari'">
+      <a class="list-group-item" ui-sref="classes.view({classeId: classe._id})">
+	<p class="list-group-item-text" ng-bind="classe.nome_classe"></p> <i class="glyphicon glyphicon-chevron-right"></i>
       </a>
+    </div>
   </div>
-  <div class="alert alert-warning text-center" ng-if="classes.$resolved && !classes.length">
-    No classes yet, why don't you <a ui-sref="classes.create">create one</a>?
-  </div>
+</div>
+<div class="alert alert-warning text-center" ng-show="classes.$resolved && !classes.length">
+  No classes yet, why don't you <a ui-sref="classes.create">create one</a>?
+</div>
 </section>

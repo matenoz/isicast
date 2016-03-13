@@ -1,6 +1,6 @@
 <section ng-controller="ReplacementsController" ng-init="findOne()">
   <div class="page-header">
-    <h2>Sostituzioni del: {{replacement.rep_date | date:medium}}</h2>
+    <h3>Sostituzioni del: {{replacement.rep_date | date:medium}}</h3>
   </div>
   <div>
     	 <table class="table table-striped table-hover" ng-if="replacement.daily_reps.length > 0">
