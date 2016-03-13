@@ -5,23 +5,23 @@ angular.module('deadlines').run(['Menus',
   function (Menus) {
     // Add the deadlines dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Deadlines',
+      title: 'Impegni',
       state: 'deadlines',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['doc', 'ata']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'deadlines', {
-      title: 'List Deadlines',
+      title: 'Agenda',
       state: 'deadlines.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'deadlines', {
-      title: 'Create Deadlines',
+      title: 'Crea Impegno',
       state: 'deadlines.create',
-      roles: ['user']
+      roles: ['doc','ata']
     });
   }
 ]);

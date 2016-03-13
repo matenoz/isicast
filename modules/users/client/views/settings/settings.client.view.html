@@ -1,25 +1,60 @@
 <section ng-controller="SettingsController">
   <div class="page-header">
-    <h1>Settings</h1>
+    <h3>Dashboard utente</h3>
   </div>
   <div class="row">
     <nav class="col-sm-3 col-md-3">
       <ul class="nav nav-pills nav-stacked">
+        <!-- <li ui-sref-active="active"> -->
+        <!--   <a ui-sref="settings.profile">Edit Profile</a> -->
+        <!-- </li> -->
+        <!-- <li ui-sref-active="active"> -->
+        <!--   <a ui-sref="settings.picture">Change Profile Picture</a> -->
+        <!-- </li> -->
+        <!-- <li ui-sref-active="active" ng-show="user.provider === 'local'"> -->
+        <!--   <a ui-sref="settings.password">Change Password</a> -->
+	<!-- </li> -->
         <li ui-sref-active="active">
-          <a ui-sref="settings.profile">Edit Profile</a>
+          <a ui-sref="settings.accounts" ng-show="check('admin', user.roles)">Manage Social Accounts</a>
         </li>
-        <li ui-sref-active="active">
-          <a ui-sref="settings.picture">Change Profile Picture</a>
+	 <li ui-sref-active="active">
+          <a ui-sref="settings.class" ng-show="check('admin', user.roles)">Crea classe</a>
         </li>
-        <li ui-sref-active="active" ng-show="user.provider === 'local'">
-          <a ui-sref="settings.password">Change Password</a>
+	  <li ui-sref-active="active">
+          <a ui-sref="settings.teacher" ng-show="check('admin', user.roles)">Crea docente</a>
         </li>
-        <li ui-sref-active="active">
-          <a ui-sref="settings.accounts">Manage Social Accounts</a>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.abs" ng-show="check('abs', user.roles) || check('admin', user.roles)">Inserisci assenze</a>
         </li>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.doc" ng-show="check('public', user.roles) || check('admin', user.roles)">Inserisci documento</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.fea" ng-show="check('public', user.roles) || check('admin', user.roles)">Inserisci news</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.subs" ng-show="check('sost', user.roles) || check('admin', user.roles)">Inserisci sostituzione</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.dead" ng-show="check('ata', user.roles)|| check('doc', user.roles) || check('admin', user.roles)">Inserisci impegno</a>
+	</li>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.prog" ng-show="check('doc', user.roles) || check('admin', user.roles)">Inserisci programmazione</a>
+	  </li>
+	<li ui-sref-active="active">
+          <a ng-href="http://isicast.dyndns.org/wordpress/wp-login.php" ng-show="check('ata', user.roles) || check('admin', user.roles)">Amm.ne traparente</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ng-href="https://isicast.dyndns.org/mastercom" ng-show="check('doc', user.roles)|| check('admin', user.roles)">Registro elettronico</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ng-href="https://isicast.registroelettronico.com/quaderno/" ng-show="check('stud', user.roles)">Quaderno elettronico</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ng-href="https://classroom.google.com/" ng-show="check('stud', user.roles) || check('doc', user.roles) ">Classroom</a>
       </ul>
     </nav>
-    <div class="col-sm-9 col-md-8 settings-view">
+    <div class="col-sm-9 col-md-9 settings-view">
       <div ui-view></div>
     </div>
   </div>

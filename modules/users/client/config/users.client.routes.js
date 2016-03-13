@@ -29,6 +29,62 @@ angular.module('users').config(['$stateProvider',
         url: '/picture',
         templateUrl: 'modules/users/client/views/settings/change-profile-picture.client.view.html'
       })
+      .state('settings.abs', {
+        url: '/absences',
+        templateUrl: 'modules/teachers/client/views/list-absences.client.view.html',
+	data: {
+          roles: ['abs', 'admin']
+        }
+      })
+       .state('settings.doc', {
+        url: '/docs',
+        templateUrl: 'modules/docs/client/views/create-doc.client.view.html',
+	data: {
+          roles: ['public', 'admin']
+        }
+       })
+      .state('settings.dead', {
+        url: '/deadlines',
+        templateUrl: 'modules/deadlines/client/views/create-deadline.client.view.html',
+	data: {
+          roles: ['ata', 'doc', 'admin']
+        }
+      })
+      .state('settings.prog', {
+        url: '/planes',
+        templateUrl: 'modules/planes/client/views/create-plane.client.view.html',
+	data: {
+          roles: ['doc', 'admin']
+        }
+      })
+       .state('settings.subs', {
+        url: '/replacements',
+        templateUrl: 'modules/replacements/client/views/create-replacement.client.view.html',
+	data: {
+          roles: ['sost', 'admin']
+        }
+       })
+      .state('settings.class', {
+        url: '/replacements',
+        templateUrl: 'modules/classes/client/views/create-classe.client.view.html',
+	data: {
+          roles: ['admin']
+        }
+      })
+      .state('settings.teacher', {
+        url: '/teachers',
+        templateUrl: 'modules/teachers/client/views/create-teacher.client.view.html',
+	data: {
+          roles: ['admin']
+        }
+      })
+      .state('settings.fea', {
+        url: '/teachers',
+        templateUrl: 'modules/features/client/views/create-feature.client.view.html',
+	data: {
+          roles: ['public', 'admin']
+        }
+      })
       .state('authentication', {
         abstract: true,
         url: '/authentication',

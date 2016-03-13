@@ -43,9 +43,8 @@
 	      <li class="divider"></li>
 	      <li class="dropdown-header">Organizzazione</li>
 	      <li><a ng-href="#">Organigramma</a></li>
-	      <li><a ng-href="#">Orario scolastico</a></li>
-	      <li><a ng-href="#">Organico docenti</a></li>
-	      <li><a ng-href="#">Consigli di classe</a></li>
+	      <li><a ui-sref="teachers.list">Organico docenti</a></li>
+	      <li><a ui-sref="classes.list">Consigli di classe</a></li>
 	      <li><a ng-href="#">Organico non docenti</a></li>
 	    </ul>
 	</ul>
@@ -80,8 +79,8 @@
 	      <li><a href="http://isicast.dyndns.org/wordpress"> Amm.ne Trasparente</a></li>
 	      <li><a href="http://isicast.dyndns.org/wordpress/?page_id=45">Albo Pretorio</a></li>
 	      <li><a href="#">Bacheca Sindacale</a></li>
-	      <li><a href="#">Cirocolari</a></li>
-	      <li><a href="#">News</a></li>
+	      <li><a ui-sref="docs.list">Cirocolari</a></li>
+	      <li><a ui-sref="features.list">News</a></li>
 	    </ul>
 	  </li>
 	</ul>
@@ -122,7 +121,7 @@
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="agenda.php">
+          <a ui-sref="deadlines.list">
             <span class="glyphicon glyphicon-calendar" >
             </span>  Agenda d'istituto
           </a>
@@ -134,13 +133,13 @@
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="orario.php"> 
-            <span class="glyphicon glyphicon-bell" >
-            </span> Orario scolastico
-          </a>
+	  <a ng-href="#" popover-placement="right" popover-template="popover.templateUrl">
+	  <span class="glyphicon glyphicon-bell">
+          </span> Orario scolastico
+	  </a>
 	</li>
 	<li class="list-group-item">
-          <a href="programmazioni.php">
+          <a ui-sref="planes.list">
             <span class="glyphicon glyphicon-dashboard" >
             </span> Programmazioni docenti
           </a>

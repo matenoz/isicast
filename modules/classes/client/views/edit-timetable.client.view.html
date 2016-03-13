@@ -5,14 +5,7 @@
   <div class="col-md-12">
     <form name="classeForm" class="form-horizontal" ng-submit="update(classeForm.$valid)" novalidate>
       <fieldset>
-        <!-- <div class="form-group"> -->
-        <!--   <label>Nome Classe</label> -->
-        <!--   <p ng-bind="classe.nome_classe"></p> -->
-        <!--  <div ng-messages="classeForm.nome_classe.$error" role="alert"> -->
-        <!--     <p class="help-block error-text" ng-message="required"> nome is required.</p> -->
-        <!--   </div> -->
-        <!-- </div> -->
-       <div class="form-group">
+	<div class="form-group">
           <table  class="table table-bordered"  name="timetable" id="timetable" ng-model="timetable">
 	    <thead > 
 	      <tr>
@@ -93,7 +86,7 @@
 	    </tbody>
 	  </table>
         </div>
-       <div class="form-group">
+	<div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>
         <div ng-show="error" class="text-danger">

@@ -5,23 +5,23 @@ angular.module('features').run(['Menus',
   function (Menus) {
     // Add the features dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Features',
+      title: 'News',
       state: 'features',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['public']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'features', {
-      title: 'List Features',
+      title: 'Archivio',
       state: 'features.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'features', {
-      title: 'Create Features',
+      title: 'Crea',
       state: 'features.create',
-      roles: ['user']
+      roles: ['public']
     });
   }
 ]);

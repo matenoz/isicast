@@ -1,10 +1,17 @@
 <section ng-controller="TimetablesController" ng-init="find()">
   <div class="page-header">
-    <h1>Timetables</h1>
+    <h3>Orario settimanale docenti</h3>
+  </div>
+  <div class="col-md-4">
+  <div class="form-group">
+    <label>Ricerca per nome docente</label>
+    <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="timetableSearch($item)" placeholder="Cerca docente...">
   </div>
   <div class="list-group">
-    <a ng-repeat="teacher in teachers" ui-sref="timetables.view({teacherId: teacher._id})" class="list-group-item">
-       <p class="list-group-item-text" ng-bind="teacher.name"></p>
+    <a ng-repeat="teacher in teachers |orderBy:'name'" ui-sref="timetables.view({teacherId: teacher._id})" class="list-group-item">
+       {{teacher.name}} <span class="pull-right glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
+   <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
+</div>
 </section>

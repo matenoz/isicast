@@ -5,29 +5,29 @@ angular.module('classes').run(['Menus',
   function (Menus) {
     // Add the classes dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Classes',
+      title: 'Classi',
       state: 'classes',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['admin','god']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'classes', {
-      title: 'List Classes',
+      title: 'Elenco',
       state: 'classes.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'classes', {
-      title: 'Create Classes',
+      title: 'Crea Classe',
       state: 'classes.create',
-      roles: ['user']
+      roles: ['admin','god']
     });
  
     Menus.addSubMenuItem('topbar', 'classes', {
-      title: 'Timetables',
+      title: 'Orario',
       state: 'ctimetables.list',
-      roles: ['user']
+      roles: ['admin','user']
     });   
   }
 ]);

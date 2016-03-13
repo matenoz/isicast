@@ -1,12 +1,12 @@
 <section ng-controller="TeachersController" ng-init="findOne()">
   <div class="page-header">
-    <h1>Edit Teacher</h1>
+    <h3>Modifica dati docente:{{teacher.name}}</h3>
   </div>
   <div class="col-md-8 col-xs-12">
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="name">Name</label>
+          <label for="name">Cognome e Nome</label>
           <input name="name" type="text" ng-model="teacher.name" id="name" class="form-control" placeholder="Name" required>
           <div ng-messages="teacherForm.name.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Teacher name is required.</p>
@@ -28,7 +28,7 @@
             <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>
 </div>
 <div class="form-group">
-  <input ng-click="addClass()" value="add class" class="btn btn-default">
+  <input ng-click="addClass()" value="Associa classe" class="btn btn-default">
 </div>
 <div class="form-group">
   <table class="table table-bordered" ng-if="teacher.classes.length > 0">

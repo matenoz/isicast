@@ -18,7 +18,7 @@ angular.module('teachers').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/teachers/client/views/create-teacher.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['god', 'admin']
         }
       })
       .state('teachers.view', {
@@ -29,7 +29,7 @@ angular.module('teachers').config(['$stateProvider',
         url: '/:teacherId/edit',
         templateUrl: 'modules/teachers/client/views/edit-teacher.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['god', 'admin']
         }
       })
       .state('absences', {
@@ -49,7 +49,7 @@ angular.module('teachers').config(['$stateProvider',
         url: '/:teacherId/edit',
         templateUrl: 'modules/teachers/client/views/edit-absence.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['abs', 'admin']
         }
       })
       .state('timetables', {
@@ -69,7 +69,7 @@ angular.module('teachers').config(['$stateProvider',
         url: '/:teacherId/edit',
         templateUrl: 'modules/teachers/client/views/edit-timetable.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['god', 'admin']
         }
       });
   }

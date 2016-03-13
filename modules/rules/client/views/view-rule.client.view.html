@@ -1,7 +1,22 @@
 <section ng-controller="RulesController" ng-init="findOne()">
   <div class="page-header">
-    <h1 ng-bind="rule.title"></h1>
+    <h3 ng-bind="rule.title"></h3>
   </div>
+ <h3>
+    <em class="text-muted">
+      Pubblicato il:   <span ng-bind="rule.created | date:'mediumDate'"></span>
+    </em>
+ </h3>
+ <h3>
+   <em class="text-muted">
+      da:  <span ng-bind="rule.user.displayName"></span>
+ </em>
+ </h3>
+  <a ng-href="{{p.url}}" ng-repeat="p in rule.document">
+    <img ng-src="{{p.iconUrl}}"> {{p.name}}
+	 </a>
+ 
+  <hr/>
   <div class="pull-right" ng-show="authentication.user._id == rule.user._id">
     <a class="btn btn-primary" ui-sref="rules.edit({ruleId: rule._id})">
       <i class="glyphicon glyphicon-edit"></i>
@@ -10,13 +25,4 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="rule.created | date:'mediumDate'"></span>
-      by
-      <span ng-bind="rule.user.displayName"></span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="rule.content"></p>
 </section>

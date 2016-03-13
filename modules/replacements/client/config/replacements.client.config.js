@@ -5,23 +5,23 @@ angular.module('replacements').run(['Menus',
   function (Menus) {
     // Add the replacements dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Replacements',
+      title: 'Sostituzioni',
       state: 'replacements',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['sost']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'replacements', {
-      title: 'List Replacements',
+      title: 'Elenco',
       state: 'replacements.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'replacements', {
-      title: 'Create Replacements',
+      title: 'Crea',
       state: 'replacements.create',
-      roles: ['user']
+      roles: ['sost']
     });
   }
 ]);

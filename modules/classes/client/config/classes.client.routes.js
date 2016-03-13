@@ -18,7 +18,7 @@ angular.module('classes').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/classes/client/views/create-classe.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['admin']
         }
       })
       .state('classes.view', {
@@ -29,7 +29,7 @@ angular.module('classes').config(['$stateProvider',
         url: '/:classeId/edit',
         templateUrl: 'modules/classes/client/views/edit-classe.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['admin','god']
         }
       })
       .state('ctimetables', {
@@ -49,7 +49,7 @@ angular.module('classes').config(['$stateProvider',
         url: '/:classeId/edit',
         templateUrl: 'modules/classes/client/views/edit-timetable.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['admin', 'god']
         }
       });
   }

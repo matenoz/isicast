@@ -22,7 +22,7 @@ angular.module('docs').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/docs/client/views/create-doc.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['public', 'admin']
         }
       })
       .state('docs.view', {
@@ -33,7 +33,7 @@ angular.module('docs').config(['$stateProvider',
         url: '/:docId/edit',
         templateUrl: 'modules/docs/client/views/edit-doc.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['public', 'admin']
         }
       });
   }

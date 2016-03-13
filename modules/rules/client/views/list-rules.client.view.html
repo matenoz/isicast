@@ -1,13 +1,13 @@
 <section ng-controller="RulesController" ng-init="find()">
   <div class="page-header">
-    <h1>Rules</h1>
+    <h3>Offerta formativa, organizzazione e regolamenti</h3>
   </div>
   <div class="list-group">
     <a ng-repeat="rule in rules" ui-sref="rules.view({ruleId: rule._id})" class="list-group-item">
       <small class="list-group-item-text">
-        Posted on
+        Pubblicato il:
         <span ng-bind="rule.created | date:'mediumDate'"></span>
-        by
+        da:
         <span ng-bind="rule.user.displayName"></span>
       </small>
       <h4 class="list-group-item-heading" ng-bind="rule.title"></h4>

@@ -1,6 +1,6 @@
 'use strict';
 
-// Configuring the Chat module
+/*// Configuring the Chat module
 angular.module('chat').run(['Menus',
   function (Menus) {
     // Set top bar menu items
@@ -10,3 +10,4 @@ angular.module('chat').run(['Menus',
     });
   }
 ]);
+*/

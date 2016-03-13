@@ -5,26 +5,26 @@ angular.module('docs').run(['Menus',
   function (Menus) {
     // Add the docs dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Docs',
+      title: 'Documenti',
       state: 'docs',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['public']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'docs', {
-      title: 'List Docs',
+      title: 'Elenco',
       state: 'docs.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'docs', {
-      title: 'Create Docs',
+      title: 'Crea',
       state: 'docs.create',
-      roles: ['user']
+      roles: ['public']
     });
     Menus.addSubMenuItem('topbar', 'docs', {
-      title: 'genitori',
+      title: 'Genitori',
       state: 'docs.parents'
     });  
   }

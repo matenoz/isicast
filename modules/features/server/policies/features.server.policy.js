@@ -47,9 +47,7 @@ exports.invokeRolesPolicies = function () {
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
-/*  var check = function(value, array) {
-   return array.indexOf(value) > -1;
-  };*/
+
   // If an feature is being processed and the current user created it then allow any manipulation
   if (req.feature && req.user && req.feature.user.id === req.user.id) {
     return next();

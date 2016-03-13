@@ -5,35 +5,35 @@ angular.module('teachers').run(['Menus',
   function (Menus) {
     // Add the teachers dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Teachers',
+      title: 'Docenti',
       state: 'teachers',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['god','abs']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'List Teachers',
+      title: 'Elenco',
       state: 'teachers.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'Create Teachers',
+      title: 'Crea',
       state: 'teachers.create',
-      roles: ['user']
+      roles: ['god']
     });
 
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'List absecens',
+      title: 'Assenze',
       state: 'absences.list',
-      roles: ['user']
+      roles: ['abs']
     });
       
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'Timetables',
+      title: 'Orario',
       state: 'timetables.list',
-      roles: ['user']
+      roles: ['god']
     });  
   }
 ]);

@@ -4,6 +4,14 @@
 angular.module('teachers').controller('TimetablesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Timetables',
   function ($scope, $stateParams, $location, Authentication, Timetables) {
     $scope.authentication = Authentication;
+    // pagination
+    $scope.currentPage = 1;
+    $scope.pageSize =15;
+    $scope.offset = 0;
+    // Page changed handle
+    $scope.pageChanged = function() {
+      $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+    };
     $scope.dis = ['prog','disp','ric','funz','p'];  
    
     // Update existing Teacher
@@ -35,6 +43,10 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       $scope.teacher = Timetables.get({
         teacherId: $stateParams.teacherId
       });	
+    };
+    // Search for documents
+    $scope.timetableSearch = function(teacher) {
+      $location.path('timetables/' + teacher._id);
     };
   }
 ]);

@@ -18,7 +18,7 @@ angular.module('planes').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/planes/client/views/create-plane.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['doc', 'admin']
         }
       })
       .state('planes.view', {
@@ -29,7 +29,7 @@ angular.module('planes').config(['$stateProvider',
         url: '/:planeId/edit',
         templateUrl: 'modules/planes/client/views/edit-plane.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['doc', 'admin']
         }
       });
   }

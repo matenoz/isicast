@@ -1,6 +1,6 @@
 <section ng-controller="PlanesController" ng-init="find()">
   <div class="page-header">
-    <h1>Programmazionie anno 2015-2016</h1>
+    <h1>Programmazioni a.s. 2015-2016</h1>
   </div>
   <table class="table table-bordered">
     <thead>
@@ -13,7 +13,7 @@
 	 <th>documento</th>
       </tr>
     </thead>
-    <tbody ng-repeat="plane in planes">
+    <tbody ng-repeat="plane in planes|orderBy:'user.lastName'">
       <tr ng-repeat="p in plane.content">
 	<td ng-bind="plane.updated | date"></td>
 	<td ng-bind="plane.user.displayName"></td>

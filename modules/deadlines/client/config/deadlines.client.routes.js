@@ -17,7 +17,7 @@ angular.module('deadlines').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/deadlines/client/views/create-deadline.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['doc', 'ata', 'admin']
         }
       })
       .state('deadlines.view', {
@@ -28,7 +28,7 @@ angular.module('deadlines').config(['$stateProvider',
         url: '/:deadlineId/edit',
         templateUrl: 'modules/deadlines/client/views/edit-deadline.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['ata', 'doc', 'admin']
         }
       });
   }

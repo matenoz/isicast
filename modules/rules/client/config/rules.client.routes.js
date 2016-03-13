@@ -18,7 +18,7 @@ angular.module('rules').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/rules/client/views/create-rule.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['god', 'admin']
         }
       })
       .state('rules.view', {
@@ -29,7 +29,7 @@ angular.module('rules').config(['$stateProvider',
         url: '/:ruleId/edit',
         templateUrl: 'modules/rules/client/views/edit-rule.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['god', 'admin']
         }
       });
   }

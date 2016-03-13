@@ -1,10 +1,53 @@
 <section ng-controller="CtimetablesController" ng-init="find()">
   <div class="page-header">
-    <h1>Timetables</h1>
+    <h3> Orario settimanale classi</h3>
   </div>
-  <div class="list-group">
-    <a ng-repeat="classe in classes" ui-sref="ctimetables.view({classeId: classe._id})" class="list-group-item">
-       <p class="list-group-item-text" ng-bind="classe.nome_classe"></p>
-    </a>
+  <div class="row">
+    <h4 align="center">Corso diurno</h4>
+    <hr/>
+    <div class="col-md-3">
+      <label>Amm.ne Finanza & Marketing</label>
+      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Amministrazione Finanza & Marketing'">
+	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
+	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label>Liceo Scientifico</label>
+      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Liceo Scientifico'">
+	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
+	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label>Manut.ne e Assitenza Tecnica</label>
+      <div class="list-group"  ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Manutenzione e Assistenza Tecnica'">
+	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
+	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label>Servizi Commerciali</label>
+      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Servizi Commerciali'">
+	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
+	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h4 align="center">Corso serale</h4>
+    <hr/>
+    <div class="col-md-3">
+      <label>Servizi Socio Sanitari</label>
+      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Servizi Socio Sanitari'">
+	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
+	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
   </div>
 </section>

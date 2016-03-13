@@ -1,12 +1,12 @@
 <section ng-controller="TeachersController">
   <div class="page-header">
-    <h1>New Teacher</h1>
+    <h3>Nuovo docente</h3>
   </div>
   <div class="col-md-8">
     <form name="teacherForm" class="form-horizontal" ng-submit="create(teacherForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="name">Nome e Cognome</label>
+          <label for="name">Cognome e Nome</label>
           <input name="name" type="text" ng-model="name" id="name" class="form-control" placeholder="Name" required>
           <div ng-messages="teacherForm.name.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Teacher name is required.</p>

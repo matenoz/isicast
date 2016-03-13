@@ -5,23 +5,23 @@ angular.module('planes').run(['Menus',
   function (Menus) {
     // Add the planes dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Planes',
+      title: 'Programmazioni',
       state: 'planes',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['doc']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'planes', {
-      title: 'List Planes',
+      title: 'Elenco',
       state: 'planes.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'planes', {
-      title: 'Create Planes',
+      title: 'Crea',
       state: 'planes.create',
-      roles: ['user']
+      roles: ['doc']
     });
   }
 ]);

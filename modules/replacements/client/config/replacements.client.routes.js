@@ -18,7 +18,7 @@ angular.module('replacements').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/replacements/client/views/create-replacement.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['sost', 'admin']
         }
       })
       .state('replacements.view', {
@@ -29,7 +29,7 @@ angular.module('replacements').config(['$stateProvider',
         url: '/:replacementId/edit',
         templateUrl: 'modules/replacements/client/views/edit-replacement.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['sost', 'admin']
         }
       });
   }

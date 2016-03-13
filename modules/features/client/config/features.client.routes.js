@@ -18,7 +18,7 @@ angular.module('features').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/features/client/views/create-feature.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['public', 'admin']
         }
       })
       .state('features.view', {
@@ -29,7 +29,7 @@ angular.module('features').config(['$stateProvider',
         url: '/:featureId/edit',
         templateUrl: 'modules/features/client/views/edit-feature.client.view.html',
         data: {
-          roles: ['user', 'admin']
+          roles: ['public', 'admin']
         }
       });
   }

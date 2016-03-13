@@ -1,9 +1,9 @@
 <section ng-controller="AbsencesController" ng-init="findOne()">
   <div class="page-header">
-    <h1 ng-bind="teacher.name"></h1>
+    <h3>Assenze del docente: {{teacher.name}}</h3>
   </div>
    <div class="col-md-10">
-    <h5>Absence Summary Report</h5>
+    <h5>Riepilgo assenze</h5>
   <table class="table table-bordered" ng-if="teacher.absences.length > 0">
     <thead>
       <tr>
@@ -24,7 +24,7 @@
   <br>
   <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
     <a class="btn btn-primary" ui-sref="absences.edit({teacherId: teacher._id})">
-      <i class="glyphicon glyphicon-edit"></i> Add 
+      <i class="glyphicon glyphicon-edit"></i> inserisci 
     </a>
   </div>
 </section>
