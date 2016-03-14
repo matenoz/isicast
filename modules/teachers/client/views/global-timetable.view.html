@@ -1,0 +1,109 @@
+<section ng-controller="TeachersController" ng-init="find()">
+  <div class="page-header">
+    <h1>Vista orario completo</h1>
+  </div> <!--ng-repeat="teacher in teachers"-->
+  <table class="table table-bordered  table-responsive">
+    <thead>
+      <tr>
+	<th></th>
+	<th colspan="8">lunedì</th>
+	<th colspan="8">martedì</th>
+	<th colspan="8">mercoledì</th>
+	<th colspan="8">giovedì</th>
+	<th colspan="8">venerdì</th>
+      </tr>
+       <tr>
+	 <th>Docente</th>
+	 <th>prima</th>
+	 <th>seconda</th>
+	 <th>terza</th>
+	 <th>quarta</th>
+	 <th>quinta</th>
+	 <th>sesta</th>
+	 <th>settima</th>
+	 <th>ottava</th>
+	 <th>prima</th>
+	 <th>seconda</th>
+	 <th>terza</th>
+	 <th>quarta</th>
+	 <th>quinta</th>
+	 <th>sesta</th>
+	 <th>settima</th>
+	 <th>ottava</th> 
+	 <th>prima</th>
+	 <th>seconda</th>
+	 <th>terza</th>
+	 <th>quarta</th>
+	 <th>quinta</th>
+	 <th>sesta</th>
+	 <th>settima</th>
+	 <th>ottava</th>
+	 <th>prima</th>
+	 <th>seconda</th>
+	 <th>terza</th>
+	 <th>quarta</th>
+	 <th>quinta</th>
+	 <th>sesta</th>
+	 <th>settima</th>
+	 <th>ottava</th>
+	 <th>prima</th>
+	 <th>seconda</th>
+	 <th>terza</th>
+	 <th>quarta</th>
+	 <th>quinta</th>
+	 <th>sesta</th>
+	 <th>settima</th>
+	 <th>ottava</th>
+       </tr>
+     </thead>
+    <tbody ng-repeat="teacher in teachers |orderBy:'name'">
+      <tr >
+	<td ng-bind="teacher.name"></td>
+	<td ng-bind="teacher.timetable[0].lunedi"></td>
+	<td ng-bind="teacher.timetable[1].lunedi"></td>	
+	<td ng-bind="teacher.timetable[2].lunedi"></td>
+	<td ng-bind="teacher.timetable[3].lunedi"></td>
+	<td ng-bind="teacher.timetable[4].lunedi"></td>
+	<td ng-bind="teacher.timetable[5].lunedi"></td>
+	<td ng-bind="teacher.timetable[6].lunedi"></td>
+	<td ng-bind="teacher.timetable[7].lunedi"></td>
+
+	<td ng-bind="teacher.timetable[0].martedi"></td>
+	<td ng-bind="teacher.timetable[1].martedi"></td>	
+	<td ng-bind="teacher.timetable[2].martedi"></td>
+	<td ng-bind="teacher.timetable[3].martedi"></td>
+	<td ng-bind="teacher.timetable[4].martedi"></td>
+	<td ng-bind="teacher.timetable[5].martedi"></td>
+	<td ng-bind="teacher.timetable[6].martedi"></td>
+	<td ng-bind="teacher.timetable[7].martedi"></td>
+	
+	<td ng-bind="teacher.timetable[0].mercoledi"></td>
+	<td ng-bind="teacher.timetable[1].mercoledi"></td>	
+	<td ng-bind="teacher.timetable[2].mercoledi"></td>
+	<td ng-bind="teacher.timetable[3].mercoledi"></td>
+	<td ng-bind="teacher.timetable[4].mercoledi"></td>
+	<td ng-bind="teacher.timetable[5].mercoledi"></td>
+	<td ng-bind="teacher.timetable[6].mercoledi"></td>
+	<td ng-bind="teacher.timetable[7].mercoledi"></td>
+	
+	<td ng-bind="teacher.timetable[0].giovedi"></td>
+	<td ng-bind="teacher.timetable[1].giovedi"></td>	
+	<td ng-bind="teacher.timetable[2].giovedi"></td>
+	<td ng-bind="teacher.timetable[3].giovedi"></td>
+	<td ng-bind="teacher.timetable[4].giovedi"></td>
+	<td ng-bind="teacher.timetable[5].giovedi"></td>
+	<td ng-bind="teacher.timetable[6].giovedi"></td>
+	<td ng-bind="teacher.timetable[7].giovedi"></td>
+	
+	<td ng-bind="teacher.timetable[0].venerdi"></td>
+	<td ng-bind="teacher.timetable[1].venerdi"></td>	
+	<td ng-bind="teacher.timetable[2].venerdi"></td>
+	<td ng-bind="teacher.timetable[3].venerdi"></td>
+	<td ng-bind="teacher.timetable[4].venerdi"></td>
+	<td ng-bind="teacher.timetable[5].venerdi"></td>
+	<td ng-bind="teacher.timetable[6].venerdi"></td>
+	<td ng-bind="teacher.timetable[7].venerdi"></td>
+      </tr>
+     </tbody>
+  </table>
+</section>

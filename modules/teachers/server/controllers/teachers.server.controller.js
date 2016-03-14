@@ -46,7 +46,7 @@ exports.update = function (req, res) {
   teacher.classes = req.body.classes;  
   teacher.absences = req.body.absences;
   teacher.timetable = req.body.timetable;
-
+  teacher.isActive = req.body.isActive;
   teacher.save(function (err) {
     if (err) {
       return res.status(400).send({

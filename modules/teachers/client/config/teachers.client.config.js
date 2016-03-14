@@ -16,7 +16,7 @@ angular.module('teachers').run(['Menus',
       title: 'Elenco',
       state: 'teachers.list'
     });
-
+            
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'teachers', {
       title: 'Crea',
@@ -34,6 +34,12 @@ angular.module('teachers').run(['Menus',
       title: 'Orario',
       state: 'timetables.list',
       roles: ['god']
-    });  
+    });
+      
+    Menus.addSubMenuItem('topbar', 'teachers', {
+      title: 'G view',
+      state: 'timetables.global'
+    });
+
   }
 ]);

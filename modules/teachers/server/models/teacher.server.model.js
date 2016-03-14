@@ -18,8 +18,7 @@ var TeacherSchema = new Schema({
     required: 'Name cannot be blank'
   },
   materia: {
-    type: String,
-    default: '',
+    type: Array,
     trim: true
   },
   coordinator:{
@@ -88,6 +87,11 @@ var TeacherSchema = new Schema({
       default:''
     }
   }],
+  isActive:{
+      type:Boolean,
+      trim:true,
+      default:true
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

@@ -8,7 +8,9 @@ angular.module('deadlines').controller('DeadlinesController', ['$scope', '$state
     $scope.compareDates = function(date1, date2) {
       var dateObj1 = new Date(date1);
       var dateObj2 = new Date(date2);
-      return (dateObj1 <= dateObj2);
+      if(dateObj1 < dateObj2 || dateObj1 == dateObj2){
+	return true;
+      }
     };
     // Create new Deadline
     $scope.create = function (isValid) {

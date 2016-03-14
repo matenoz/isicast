@@ -42,10 +42,13 @@
           <a ui-sref="settings.prog" ng-show="check('doc', user.roles) || check('admin', user.roles)">Inserisci programmazione</a>
 	  </li>
 	<li ui-sref-active="active">
+          <a ng-href="https://isicast.dyndns.org/mastercom" ng-show="check('doc', user.roles)|| check('admin', user.roles)">Registro elettronico</a>
+        </li>
+	<li ui-sref-active="active">
           <a ng-href="http://isicast.dyndns.org/wordpress/wp-login.php" ng-show="check('ata', user.roles) || check('admin', user.roles)">Amm.ne traparente</a>
         </li>
 	<li ui-sref-active="active">
-          <a ng-href="https://isicast.dyndns.org/mastercom" ng-show="check('doc', user.roles)|| check('admin', user.roles)">Registro elettronico</a>
+          <a ng-href="https://noipa.mef.gov.it" ng-show="check('ata', user.roles) || check('doc', user.roles)">NoiPa</a>
         </li>
 	<li ui-sref-active="active">
           <a ng-href="https://isicast.registroelettronico.com/quaderno/" ng-show="check('stud', user.roles)">Quaderno elettronico</a>

@@ -61,6 +61,10 @@ angular.module('teachers').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/teachers/client/views/list-timetables.client.view.html'
       })
+      .state('timetables.global', {
+        url: '/globalview',
+        templateUrl: 'modules/teachers/client/views/global-timetable.view.html'
+      })
       .state('timetables.view', {
         url: '/:teacherId',
         templateUrl: 'modules/teachers/client/views/view-timetable.client.view.html'

@@ -5,6 +5,13 @@
   <div class="col-md-8 col-xs-12">
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
       <fieldset>
+	<div class="form-group">
+	  <span ng-switch="teacher.isActive">
+	  <label ng-switch-when="true" for="disable">Disabilita</label>
+          <label ng-switch-when="false" for="disable">Abilita</label>
+	  </span>
+	  <input name="disable" type="checkbox" ng-model="teacher.isActive" ng-change="change()" >
+	</div>
         <div class="form-group" show-errors>
           <label for="name">Cognome e Nome</label>
           <input name="name" type="text" ng-model="teacher.name" id="name" class="form-control" placeholder="Name" required>
