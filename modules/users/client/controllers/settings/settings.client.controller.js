@@ -7,7 +7,7 @@ angular.module('users').controller('SettingsController', ['$scope', 'Authenticat
     // match roles
     $scope.check = function(value, array) {
       if(array.indexOf(value) > -1){
-	return true;
+        return true;
       }
     };  
   }

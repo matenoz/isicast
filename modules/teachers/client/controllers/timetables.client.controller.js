@@ -7,7 +7,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
     $scope.setdisp = false;
     $scope.changeList = function(list){
       if($scope.setdisp === false){
-        return  list ;
+        return list ;
       }
       return $scope.dis;
     };  

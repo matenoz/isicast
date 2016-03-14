@@ -88,9 +88,9 @@ var TeacherSchema = new Schema({
     }
   }],
   isActive:{
-      type:Boolean,
-      trim:true,
-      default:true
+    type:Boolean,
+    trim:true,
+    default:true
   },
   user: {
     type: Schema.ObjectId,

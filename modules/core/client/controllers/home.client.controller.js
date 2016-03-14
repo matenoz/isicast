@@ -25,8 +25,8 @@ angular.module('core').controller('HomeController', ['$scope','$http','Authentic
     });  
 
     // Popover
-      $scope.popover = {
-	templateUrl: 'modules/core/client/views/popover-template.html'	  
-      };
+    $scope.popover = {
+      templateUrl: 'modules/core/client/views/popover-template.html'	  
+    };
   }
 ]);
