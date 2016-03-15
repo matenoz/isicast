@@ -8,7 +8,7 @@
     <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="absenceSearch($item)" placeholder="Cerca docente...">
   </div>
   <div class="list-group">
-    <a ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize " ui-sref="absences.view({teacherId: teacher._id})" class="list-group-item">
+    <a ng-show="isActive" ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize " ui-sref="absences.view({teacherId: teacher._id})" class="list-group-item">
       <p class="list-group-item-text" ng-bind="teacher.name"></p>
     </a>
   </div>

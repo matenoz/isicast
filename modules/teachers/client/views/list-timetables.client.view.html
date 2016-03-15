@@ -8,7 +8,7 @@
     <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="timetableSearch($item)" placeholder="Cerca docente...">
   </div>
   <div class="list-group">
-    <a ng-repeat="teacher in teachers |orderBy:'name'" ui-sref="timetables.view({teacherId: teacher._id})" class="list-group-item">
+    <a ng-show="isActive" ng-repeat="teacher in teachers |orderBy:'name'" ui-sref="timetables.view({teacherId: teacher._id})" class="list-group-item">
        {{teacher.name}} <span class="pull-right glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
