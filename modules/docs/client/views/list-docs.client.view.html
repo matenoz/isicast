@@ -3,8 +3,8 @@
     <h3>Elenco documenti</h3>
   </div>
   <div class="col-md-4 panel panel-default">
+    <h4>Ricerca per oggetto</h4>
     <div class="form-group">
-       <label>Ricerca per oggetto</label>
     <input type="text"  ng-model="search" typeahead="doc as doc.title for doc in docs | filter: $viewValue"  class="form-control" typeahead-on-select="docSearch($item)" placeholder="Cerca documento...">
      </div>
       <h4>Ricerca per range di date</h4>
