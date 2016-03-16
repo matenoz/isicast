@@ -7,7 +7,7 @@
     <hr/>
     <div class="col-md-3">
       <label>Amm.ne Finanza & Marketing</label>
-      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Amministrazione Finanza & Marketing'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Amministrazione Finanza & Marketing'">
 	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-3">
       <label>Liceo Scientifico</label>
-      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Liceo Scientifico'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Liceo Scientifico'">
 	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-3">
       <label>Manut.ne e Assitenza Tecnica</label>
-      <div class="list-group"  ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Manutenzione e Assistenza Tecnica'">
+      <div class="list-group"  ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Manutenzione e Assistenza Tecnica'">
 	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-3">
       <label>Servizi Commerciali</label>
-      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Servizi Commerciali'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Servizi Commerciali'">
 	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -43,7 +43,7 @@
     <hr/>
     <div class="col-md-3">
       <label>Servizi Socio Sanitari</label>
-      <div class="list-group" ng-repeat="classe in classes" ng-show="classe.indirizzo == 'Servizi Socio Sanitari'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Servizi Socio Sanitari'">
 	<a class="list-group-item"  ui-sref="ctimetables.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
