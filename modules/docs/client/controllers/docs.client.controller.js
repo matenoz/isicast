@@ -3,6 +3,13 @@
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
   $scope.authentication = Authentication;
+  // tags ctrl
+  $scope._tags = [
+    { text: 'famiglia' },
+    { text: 'alunni' },
+    { text: 'ata' },
+    { text: 'docenti' }
+  ];
   // toggle button
   $scope.v = 'toggled';  
   $scope.togC = function(){
@@ -53,8 +60,8 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
       content: this.content,
       prot: this.prot,
       main_doc:[],
-      attachment:[]
-      	
+      attachment:[],
+      tags:[]	
     });
     angular.forEach($scope.files, function(file,index){
       if(index === 0){
@@ -63,6 +70,9 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
       else {	  
         doc.attachment.push(file);
       }
+    });
+    angular.forEach($scope._tags,function(tag,index){
+      doc.tags.push(tag);
     });  
       // Redirect after save
     doc.$save(function (response) {

@@ -152,20 +152,20 @@
 		<h3 align="center">Elenco documenti famiglie e alunni</h3>
 		<div class="panel-group">
 		  <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()">
-		    <div class="panel panel-default">
-		      <div class="panel-body">
-			<h3 class="panel-title" ng-bind="doc.title"></h3>
-			<small>
-			  Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
-			  <span ng-bind="doc.created | date:'mediumDate'"></span>
-			  Resp. proc.to
-			  <span ng-bind="doc.user.displayName"></span>
-			</small>
-			
-			<p class="list-group-item-text" ng-bind="doc.content"></p>
-			
+		    <span ng-repeat="tag in doc.tags" ng-show="tag.text=='famiglia'">
+		      <div class="panel panel-default">
+			<div class="panel-body">
+			  <h3 class="panel-title" ng-bind="doc.title"></h3>
+			  <small>
+			    Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
+			    <span ng-bind="doc.created | date:'mediumDate'"></span>
+			    Resp. proc.to
+			    <span ng-bind="doc.user.displayName"></span>
+			  </small>
+			  <p class="list-group-item-text" ng-bind="doc.content"></p>
+			</div>
 		      </div>
-		    </div>
+		    </span>
 		  </a>
 		</div>
 		<pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
