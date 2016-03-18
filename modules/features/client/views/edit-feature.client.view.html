@@ -33,7 +33,7 @@
 	    <div ng-switch-when="false">
 	      <alert  type="info"  role="alert" ng-repeat="p in feature.img">
 		<img ng-src="{{p.iconUrl}}"> {{p.name}}
-		<a href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-right">
+		<a ng-href="javascript:;" lk-google-picker on-picked="onPicked(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-right">
 		  modifica
 	          <span class="glyphicon glyphicon-edit" ></span>
 		</a>

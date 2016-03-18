@@ -56,7 +56,7 @@
 	 <th>VIII</th>
        </tr>
      </thead>
-    <tbody ng-repeat="teacher in teachers |orderBy:'name'">
+    <tbody ng-show="teacher.isActive" ng-repeat="teacher in teachers |orderBy:'name'">
       <tr >
 	<td ng-bind="teacher.name"></td>
 	<td ng-bind="teacher.timetable[0].lunedi"></td>

@@ -23,8 +23,10 @@ angular.module('core').controller('HomeController', ['$scope','$http','Authentic
     $scope.$on('$stateChangeSuccess', function () {
       $scope.isCollapsed = false;
     });  
-
-    // Popover
+    $scope.popoveRegistro = {
+      templateUrl: 'modules/core/client/views/registro-template.html'	  
+    };
+    // Popover orario
     $scope.popover = {
       templateUrl: 'modules/core/client/views/popover-template.html'	  
     };

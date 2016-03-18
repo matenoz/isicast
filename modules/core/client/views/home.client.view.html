@@ -1,9 +1,9 @@
-<section data-ng-controller="HomeController">
+<section ng-controller="HomeController">
   <div class="row">
     <br>
     <div class="col-md-12 ">
       <div class="well well-lg bann">
-	<img href="rep" src="modules/core/client/img/brand/rep2.png" class="img-circle" alt="Responsive image" align="left">
+	<img ng-src="modules/core/client/img/brand/rep2.png" class="img-circle" alt="Responsive image" align="left">
         <h1 class="text-center"align='middle'>Istituto Statale d'Istruzione Superiore    </h1>
         <h1 class="text-center" align='middle'>Caduti della Direttissima   </h1>
       </div>
@@ -18,25 +18,19 @@
 	  <span class="icon-bar"></span>
 	  <span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="#">
-          <img alt="Brand" src="modules/core/client/img/brand/brand.png">
+	<a class="navbar-brand" ng-href="#">
+          <img alt="Brand" ng-src="modules/core/client/img/brand/brand.png">
 	</a>
       </div>
       <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
         <ul class="nav navbar-nav">
 	  <li dropdown>
-	    <a href="#" dropdown-toggle>
+	    <a ng-href="#" dropdown-toggle>
 	      <span class="glyphicon glyphicon-tower"></span> La Scuola<span class="caret"></span>
             </a>
 	    <ul class="dropdown-menu"  role="menu" ng-controller="RulesController" ng-init="find()">
 	      <li class="dropdown-header">L'istituto</li>
-	      <!-- <li> <home-rules></home-rules></li> -->
-	      <li ng-repeat="rule in rules"><a ui-sref="rules.view({ruleId: rule._id})"><span ng-bind="rule.title"</span></a></li>
-	      <!-- <li><a ng-href="#">Piano dell'offerta formativa</a></li> -->
-	      <!-- <li><a ng-href="#">Regolamento d'istituto</a></li> -->
-	      <!-- <li><a ng-href="#">Carta dei servizi</a></li> -->
-	      <!-- <li><a ng-href="#">Regolamento</a></li> -->
-	      <li class="divider"></li>
+	      <li ng-repeat="rule in rules"><a ui-sref="rules.view({ruleId: rule._id})"><span ng-bind="rule.title"</span></a></li>					              <li class="divider"></li>
 	      <li class="dropdown-header">Sezioni</li>
 	      <li><a ng-href="#">Diurno</a></li>
 	      <li><a ng-href="#">Serale</a></li>
@@ -50,7 +44,7 @@
 	</ul>
 	<ul class="nav navbar-nav">
 	  <li dropdown>
-	    <a href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-blackboard"></span> Didattica
+	    <a ng-href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-blackboard"></span> Didattica
 	      <span class="caret"></span></a>
 	    <ul class="dropdown-menu" role="menu">
 	      <li><a ng-href="http://isicast.dyndns.org/moodle">MoodleCast</a></li>
@@ -62,7 +56,7 @@
 	</ul>
 	<ul class="nav navbar-nav">
 	  <li dropdown>
-	    <a href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-certificate"></span> Certificazioni
+	    <a ng-href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-certificate"></span> Certificazioni
 	      <span class="caret"></span></a>
 	    <ul class="dropdown-menu" role="menu">
 	      <li><a ng-href="http://www.trinitycollege.it/">Trinity</a></li>
@@ -73,12 +67,12 @@
 	</ul>
 	<ul class="nav navbar-nav">
 	  <li dropdown>
-	    <a href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-eye-open"></span> Trasparenza
+	    <a ng-href="/#!/" dropdown-toggle><span class="glyphicon glyphicon-eye-open"></span> Trasparenza
 	      <span class="caret"></span></a>
 	    <ul class="dropdown-menu" role="menu">
-	      <li><a href="http://isicast.dyndns.org/wordpress"> Amm.ne Trasparente</a></li>
-	      <li><a href="http://isicast.dyndns.org/wordpress/?page_id=45">Albo Pretorio</a></li>
-	      <li><a href="#">Bacheca Sindacale</a></li>
+	      <li><a ng-href="http://isicast.dyndns.org/wordpress"> Amm.ne Trasparente</a></li>
+	      <li><a ng-href="http://isicast.dyndns.org/wordpress/?page_id=45">Albo Pretorio</a></li>
+	      <li><a ng-href="#">Bacheca Sindacale</a></li>
 	      <li><a ui-sref="docs.list">Cirocolari</a></li>
 	      <li><a ui-sref="features.list">News</a></li>
 	    </ul>
@@ -109,13 +103,13 @@
     <div class="col-md-3 col-md-pull-6">
       <ul class="list-group">
 	<li class="list-group-item">
-          <a href="http://webmaildomini.aruba.it/">
+          <a ng-href="http://webmaildomini.aruba.it/">
             <span class="glyphicon glyphicon-envelope" >
             </span>  Web mail
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="https://www.google.com/a/isicast.net/">
+          <a ng-href="https://www.google.com/a/isicast.net/">
             <span class="glyphicon glyphicon-cloud" >
             </span>  Google Apps isicast.net
           </a>
@@ -127,7 +121,7 @@
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="http://scuole.registroelettronico.com/isicast_bo">
+	  <a ng-href="#" popover-placement="right" popover-template="popoveRegistro.templateUrl">
             <span class="glyphicon glyphicon-pencil" >
             </span>  Registro on line
           </a>
@@ -145,13 +139,13 @@
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="http://www.isicast.org/biblio2/biblio.htm">
+          <a ng-href="http://www.isicast.org/biblio2/biblio.htm">
             <span class="glyphicon glyphicon-book" >
             </span> Biblioteca
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="monitoraggi.php">
+          <a ng-href="monitoraggi.php">
             <span class="glyphicon glyphicon-stats" >
             </span> Rilevazioni e monitoraggi
           </a>
@@ -159,42 +153,42 @@
       </ul>
       <ul class="list-group">
 	<li class="list-group-item">
-          <a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=ufficio-relazioni-con-il-pubblico">
+          <a ng-href="http://isicast.dyndns.org/wordpress/?amm-trasparente=ufficio-relazioni-con-il-pubblico">
             <span class="glyphicon glyphicon-globe" >
             </span> U.R.P.
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="#">
+          <a ng-href="#">
             <span class="glyphicon glyphicon-time" >
             </span> Orari di apertura
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="#">
+          <a ng-href="#">
             <span class="glyphicon glyphicon-list" >
             </span> Libri di testo
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="#">
+          <a ng-href="#">
             <span class="glyphicon glyphicon-file" >
             </span> Modulistica
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="#"><span class="glyphicon glyphicon-flash" >
+          <a ng-href="#"><span class="glyphicon glyphicon-flash" >
             </span> Assicurazione
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="#">
+          <a ng-href="#">
             <span class="glyphicon glyphicon-euro" >
             </span> IBAN e pagamenti informatici
           </a>
 	</li>
 	<li class="list-group-item">
-          <a href="#">
+          <a ng-href="#">
             <span class="glyphicon glyphicon-credit-card" >
             </span> Fatturazione elettronica
           </a>
@@ -230,8 +224,8 @@
 		40035 Bologna<br>
 		<abbr title="Phone">tel:</abbr> 0534-803511<br>
 		<abbr title="Phone">fax:</abbr>  0534-92004<br>
-		<a href="mailto:#">bois009009@istruzione.it</a><br>
-		<a href="mailto:#">bois009009@pec.istruzione.it</a><br>
+		<a ng-href="mailto:#">bois009009@istruzione.it</a><br>
+		<a ng-href="mailto:#">bois009009@pec.istruzione.it</a><br>
 		cod.min.: BOIS009009 <br>
 		Dirigente Scolastico:<br>
 		Fernanda Vaccari<br></small>
@@ -250,7 +244,7 @@
 	</div>
 	<div class="panel panel-default">
           <div class="panel-body">   
-	    <a class="twitter-timeline" href="https://twitter.com/IsicastNet" data-widget-id="690513587325001728">Tweet di @IsicastNet</a>
+	    <a class="twitter-timeline" ng-href="https://twitter.com/IsicastNet" data-widget-id="690513587325001728">Tweet di @IsicastNet</a>
 	  </div>
 	</div>
       </div>
@@ -263,26 +257,26 @@
       <div class="col-lg-12">
 	<div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Chi siamo</a></li>
-            <li><a href="#">Dove siamo</a></li>
+            <li><a ng-href="#">Chi siamo</a></li>
+            <li><a ng-href="#">Dove siamo</a></li>
           </ul>
 	</div>
 	<div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Dirigente scolastico</a></li>
-            <li><a href="#">DSGA</a></li>
+            <li><a ng-href="#">Dirigente scolastico</a></li>
+            <li><a ng-href="#">DSGA</a></li>
           </ul>
 	</div>
 	<div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Informatica-isicast</a></li>
-            <li><a href="#">Presentazione</a></li>
+            <li><a ng-href="#">Informatica-isicast</a></li>
+            <li><a ng-href="#">Presentazione</a></li>
           </ul>
 	</div>
 	<div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">Guida all navigazione</a></li>
-            <li><a href="#">social@isicast.net</a></li>
+            <li><a ng-href="#">Guida all navigazione</a></li>
+            <li><a ng-href="#">social@isicast.net</a></li>
           </ul>
 	</div>
       </div>
@@ -291,9 +285,9 @@
     <div class="row">
       <div class="col-lg-12">
 	<ul class="nav nav-pills nav-justified">
-          <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=elenco-siti-tematici">Elenco siti tematici</a></li>
-          <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=note-legali">Note Legali</a></li>
-          <li><a href="http://isicast.dyndns.org/wordpress/?amm-trasparente=privacy">Privacy</a></li>
+          <li><a ng-href="http://isicast.dyndns.org/wordpress/?amm-trasparente=elenco-siti-tematici">Elenco siti tematici</a></li>
+          <li><a ng-href="http://isicast.dyndns.org/wordpress/?amm-trasparente=note-legali">Note Legali</a></li>
+          <li><a ng-href="http://isicast.dyndns.org/wordpress/?amm-trasparente=privacy">Privacy</a></li>
 	</ul>
       </div>
     </div>

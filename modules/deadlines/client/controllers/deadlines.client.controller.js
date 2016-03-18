@@ -11,7 +11,7 @@ angular.module('deadlines').controller('DeadlinesController', ['$scope', '$state
       if(dateObj1 < dateObj2 || dateObj1 === dateObj2){
         return true;
       }
-    };
+    }; 
     // Create new Deadline
     $scope.create = function (isValid) {
       $scope.error = null;
