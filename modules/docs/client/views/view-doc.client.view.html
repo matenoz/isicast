@@ -2,35 +2,34 @@
   <div class="page-header">
   </div>
   <div class="row">
-  <div class="col-md-8">
-    <h3 class="text-muted">
-      Protocollo: <span ng-bind="doc.prot"></span> del
-      <span ng-bind="doc.created | date:'mediumDate'"></span>
-    </h3>
-    <h3 class="text-muted">
-      Responsabile del procedimento
-      <span ng-bind="doc.user.displayName"></span>
-    </h3>
-  <br>
-  <h3>Oggetto: {{doc.title}}</h3>
-  <h4 class="text-muted" ng-if="doc.content !== ''">Abstract</h4> 
-    <p class="lead" ng-bind="doc.content"></p>
-     <!-- <ul class="list-group"> -->
-       <h4 class="text-muted">Documento principale</h4>
-       <a ng-repeat="f in doc.main_doc" ng-href="{{f.url}}"><img ng-src="{{f.iconUrl}}"> {{f.name}}</a>
-       <br>
-       <h4 class="text-muted" ng-if="doc.attachment.length > 0">Allegati</h4>
-       <a ng-href="{{file.url}}" ng-repeat="file in doc.attachment"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a>
-     <!-- </ul> -->
-  </div>
+    <div class="col-md-8">
+      <h3 class="text-muted">
+	Protocollo: <span ng-bind="doc.prot"></span> del
+	<span ng-bind="doc.created | date:'mediumDate'"></span>
+      </h3>
+      <h3 class="text-muted">
+	Responsabile del procedimento
+	<span ng-bind="doc.user.displayName"></span>
+      </h3>
+      <br>
+      <h3>Oggetto: {{doc.title}}</h3>
+      <h4 class="text-muted" ng-if="doc.content !== ''">Abstract</h4> 
+      <p class="lead" ng-bind="doc.content"></p>
+      
+      <h4 class="text-muted">Documento principale</h4>
+      <a ng-repeat="f in doc.main_doc" ng-href="{{f.url}}"><img ng-src="{{f.iconUrl}}"> {{f.name}}</a>
+      <br>
+      <h4 class="text-muted" ng-if="doc.attachment.length > 0">Allegati</h4>
+      <a ng-href="{{file.url}}" ng-repeat="file in doc.attachment"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a>
+    </div>
   </div>
   <hr/>
-   <div class="pull-right" ng-show="authentication.user._id == doc.user._id">
-     <a class="btn btn-primary" ui-sref="docs.edit({docId: doc._id})">
-       <i class="glyphicon glyphicon-edit"></i>
-     </a>
-     <a class="btn btn-primary" ng-click="remove();">
-       <i class="glyphicon glyphicon-trash"></i>
-     </a>
-   </div>
+  <div class="pull-right" ng-show="authentication.user._id == doc.user._id">
+    <a class="btn btn-primary" ui-sref="docs.edit({docId: doc._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
 </section>

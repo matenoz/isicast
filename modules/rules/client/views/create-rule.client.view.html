@@ -5,6 +5,10 @@
   <div class="col-md-8">
     <form name="ruleForm" class="form-horizontal" ng-submit="create(ruleForm.$valid)" novalidate>
       <fieldset>
+	<div class="form-group">
+	  <label for="isFrame">seleziona per inserire questionario</label>
+	  <input name="isFrame" id="isFrame" type="checkbox" ng-model="isFrame" ng-change="change()" >
+	</div>
         <div class="form-group" show-errors>
           <label for="title">Titolo Documento</label>
           <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
@@ -40,8 +44,8 @@
  	    </div>
 	  </div>
 	</div>
-	<div class="form-group">
-	  <label for="link">Inserisci eventuale link</label>
+	<div ng-show="isFrame" class="form-group">
+	  <label for="link">Inserisci link questionario</label>
           <input type="text" class="form-control" ng-model="link" id="link" name="link" placeholder="link">
         </div>
         <div class="form-group">

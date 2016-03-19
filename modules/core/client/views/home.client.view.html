@@ -30,8 +30,7 @@
             </a>
 	    <ul class="dropdown-menu"  role="menu" ng-controller="RulesController" ng-init="find()">
 	      <li class="dropdown-header">L'istituto</li>
-	      <li ng-repeat="rule in rules"><a ui-sref="rules.view({ruleId: rule._id})"><span ng-bind="rule.title"</span></a></li>					              <li class="divider"></li>
-	      <li class="dropdown-header">Sezioni</li>
+	      <li ng-show="!rule.isFrame" ng-repeat="rule in rules"><a ui-sref="rules.view({ruleId: rule._id})"><span ng-bind="rule.title"</span></a></li>			      <li class="divider"></li>								  <li class="dropdown-header">Sezioni</li>
 	      <li><a ng-href="#">Diurno</a></li>
 	      <li><a ng-href="#">Serale</a></li>
 	      <li class="divider"></li>
@@ -145,7 +144,7 @@
           </a>
 	</li>
 	<li class="list-group-item">
-          <a ng-href="monitoraggi.php">
+          <a ui-sref="rules.quest">
             <span class="glyphicon glyphicon-stats" >
             </span> Rilevazioni e monitoraggi
           </a>

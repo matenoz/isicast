@@ -1,2 +1,5 @@
-<a ng-repeat="rule in rules" ui-sref="rules.view({ruleId: rule._id})">{{rule.title}}</a>
+<a ng-repeat="rule in rules" ui-sref="rules.view({ruleId: rule._id})">
+  <span ng-show="rule.isFrame == false">{{rule.title}}
+  </span>
+</a>
 

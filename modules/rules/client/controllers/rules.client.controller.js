@@ -35,7 +35,8 @@ angular.module('rules').controller('RulesController', ['$scope', '$stateParams',
         title: this.title,
         document: [],
         link: this.link,  
-        updated: this.updated
+        updated: this.updated,
+        isFrame:this.isFrame
       });
       angular.forEach($scope.files,function(file,index){
         rule.document.push(file);

@@ -14,6 +14,10 @@ angular.module('rules').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/rules/client/views/list-rules.client.view.html'
       })
+      .state('rules.quest', {
+        url: '/quest',
+        templateUrl: 'modules/rules/client/views/list-quest.client.view.html'
+      })      
       .state('rules.create', {
         url: '/create',
         templateUrl: 'modules/rules/client/views/create-rule.client.view.html',

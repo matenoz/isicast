@@ -30,6 +30,10 @@ var RuleSchema = new Schema({
   link: {
     type: String,
     trim: true
+  },
+  isFrame: {
+    type:Boolean,
+    default:false
   },  
   user: {
     type: Schema.ObjectId,

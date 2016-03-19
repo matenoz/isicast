@@ -3,7 +3,7 @@
     <h3>Offerta formativa, organizzazione e regolamenti</h3>
   </div>
   <div class="list-group">
-    <a ng-repeat="rule in rules" ui-sref="rules.view({ruleId: rule._id})" class="list-group-item">
+    <a ng-show="!rule.isFrame" ng-repeat="rule in rules" ui-sref="rules.view({ruleId: rule._id})" class="list-group-item">
       <small class="list-group-item-text">
         Pubblicato il:
         <span ng-bind="rule.created | date:'mediumDate'"></span>

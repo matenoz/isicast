@@ -43,6 +43,7 @@ exports.update = function (req, res) {
   rule.document = req.body.document;
   rule.updated = req.body.updated;
   rule.link = req.body.link;
+  rule.isFrame = req.body.isFrame;
   rule.save(function (err) {
     if (err) {
       return res.status(400).send({
