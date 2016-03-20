@@ -3,9 +3,8 @@
     <h3>Elenco sostituzioni</h3>
   </div>
   <div class="list-group col-md-8">
-    <a ng-repeat="replacement in replacements" ui-sref="replacements.view({replacementId: replacement._id})" class="list-group-item">
-      <h4 class="list-group-item-heading"> Sostituzioni del:  {{replacement.rep_date | date:medium}} </h4>
-     
+    <a ng-repeat="replacement in replacements |orderBy:'-rep_date'" ui-sref="replacements.view({replacementId: replacement._id})" class="list-group-item">
+       Sostituzioni del:  {{replacement.rep_date | date:medium}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="replacements.$resolved && !replacements.length">
