@@ -39,11 +39,17 @@ angular.module('teachers').config(['$stateProvider',
       })
       .state('absences.list', {
         url: '',
-        templateUrl: 'modules/teachers/client/views/list-absences.client.view.html'
+        templateUrl: 'modules/teachers/client/views/list-absences.client.view.html',
+        data: {
+          roles: ['abs', 'admin']
+        }
       })
       .state('absences.view', {
         url: '/:teacherId',
-        templateUrl: 'modules/teachers/client/views/view-absence.client.view.html'
+        templateUrl: 'modules/teachers/client/views/view-absence.client.view.html',
+	data: {
+          roles: ['abs', 'admin']
+        }
       })
       .state('absences.edit', {
         url: '/:teacherId/edit',
