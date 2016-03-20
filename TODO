@@ -4,4 +4,4 @@
 *<!-- Sezione assenze docenti;--> DONE
 *<!-- Sezione Istituto;--> DONE
 *<!-- Permessi e autorizzazioni;--> DONE
-Centos Atomic Host 7 x86_64 HVM EBS 20160130_01 - ami-40d6cd2c
+CentOS 7.1 x86_64 with cloud-init (HVM) (ami-1effc703)

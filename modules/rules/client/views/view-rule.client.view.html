@@ -2,17 +2,19 @@
   <div class="page-header">
     <h3 ng-bind="rule.title"></h3>
   </div>
- <h3>
+ <h4>
     <em class="text-muted">
       Pubblicato il:   <span ng-bind="rule.created | date:'mediumDate'"></span>
     </em>
- </h3>
- <h3>
+ </h4>
+ <h4>
    <em class="text-muted">
       da:  <span ng-bind="rule.user.displayName"></span>
  </em>
- </h3>
+</h4>
+<h4>
  <a ng-show="rule.isFrame" ng-href="{{rule.link}}"><span class="glyphicon glyphicon-check"></span> {{rule.title}}</a>
+</h4>
  <a ng-href="{{p.url}}" ng-repeat="p in rule.document">
     <img ng-src="{{p.iconUrl}}"> {{p.name}}
 	 </a>
