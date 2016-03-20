@@ -18,7 +18,7 @@ angular.module('classes').config(['$stateProvider',
         url: '/create',
         templateUrl: 'modules/classes/client/views/create-classe.client.view.html',
         data: {
-          roles: ['admin']
+          roles: ['admin','god']
         }
       })
       .state('classes.view', {
