@@ -47,7 +47,7 @@ angular.module('teachers').config(['$stateProvider',
       .state('absences.view', {
         url: '/:teacherId',
         templateUrl: 'modules/teachers/client/views/view-absence.client.view.html',
-	data: {
+        data: {
           roles: ['abs', 'admin']
         }
       })
