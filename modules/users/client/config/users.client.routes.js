@@ -65,21 +65,21 @@ angular.module('users').config(['$stateProvider',
         }
       })
       .state('settings.class', {
-        url: '/replacements',
+        url: '/class',
         templateUrl: 'modules/classes/client/views/create-classe.client.view.html',
         data: {
           roles: ['admin']
         }
       })
       .state('settings.teacher', {
-        url: '/teachers',
+        url: '/teacher',
         templateUrl: 'modules/teachers/client/views/create-teacher.client.view.html',
         data: {
           roles: ['admin']
         }
       })
       .state('settings.fea', {
-        url: '/teachers',
+        url: '/feature',
         templateUrl: 'modules/features/client/views/create-feature.client.view.html',
         data: {
           roles: ['public', 'admin']

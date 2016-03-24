@@ -15,7 +15,7 @@
         <!--   <a ui-sref="settings.password">Change Password</a> -->
 	<!-- </li> -->
         <li ui-sref-active="active">
-          <a ui-sref="settings.accounts" ng-show="check('admin', user.roles)">Manage Social Accounts</a>
+          <a ui-sref="settings.accounts" ng-show="check('admin', user.roles) || check('doc', user.roles)">Registro elettronico</a>
         </li>
 	 <li ui-sref-active="active">
           <a ui-sref="settings.class" ng-show="check('admin', user.roles)">Crea classe</a>
