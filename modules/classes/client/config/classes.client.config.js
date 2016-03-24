@@ -8,7 +8,7 @@ angular.module('classes').run(['Menus',
       title: 'Classi',
       state: 'classes',
       type: 'dropdown',
-      roles: ['admin','god']
+      roles: ['god']
     });
 
     // Add the dropdown list item
@@ -21,13 +21,13 @@ angular.module('classes').run(['Menus',
     Menus.addSubMenuItem('topbar', 'classes', {
       title: 'Crea Classe',
       state: 'classes.create',
-      roles: ['admin','god']
+      roles: ['god']
     });
  
     Menus.addSubMenuItem('topbar', 'classes', {
       title: 'Orario',
       state: 'ctimetables.list',
-      roles: ['admin','user']
+      roles: ['god']
     });   
   }
 ]);

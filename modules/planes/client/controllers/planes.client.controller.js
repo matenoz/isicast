@@ -5,8 +5,15 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
   function ($scope, $stateParams, $location, Authentication, Planes) {
     $scope.authentication = Authentication;
     // list classes
-    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS','II periodo MAT','III periodo MAT'];
     $scope.axis = ['Asse dei linguaggi','Asse matematico','Asse storico - sociale','Asse scientifico - tecnologico'];
+    // date comparision  
+    $scope.compareDates = function(date1, date2) {
+      var dateObj1 = new Date(date1);
+      var dateObj2 = new Date(date2);
+      return (dateObj1 <= dateObj2);
+    };
+      
     // picker stuff
     $scope.files = [];
     $scope.onLoaded = function () {

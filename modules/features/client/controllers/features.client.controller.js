@@ -6,7 +6,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
     $scope.authentication = Authentication;
      // pagination
     $scope.currentPage = 1;
-    $scope.pageSize = 10;
+    $scope.pageSize = 20;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {
@@ -19,6 +19,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
       var dateObj2 = new Date(date2);
       return (dateObj1 <= dateObj2);
     };
+    // google picker
     $scope.files = [];
     $scope.onLoaded = function () {
       console.log('Google Picker loaded!');

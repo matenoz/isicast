@@ -1,5 +1,6 @@
-<section class="row" ng-controller="SocialAccountsController">
-  <!-- <h3 class="col-md-12 text-center" ng-show="hasConnectedAdditionalSocialAccounts()">Connected social accounts:</h3> -->
+<section class="row" ng-controller="SettingsController">
+  <!-- <section class="row" ng-controller="SocialAccountsController">
+<h3 class="col-md-12 text-center" ng-show="hasConnectedAdditionalSocialAccounts()">Connected social accounts:</h3> -->
   <!-- <div class="col-md-12 text-center"> -->
   <!--   <div ng-repeat="(providerName, providerData) in user.additionalProvidersData" class="social-account-container"> -->
   <!--     <img ng-src="/modules/users/client/img/buttons/{{providerName}}.png"> -->
@@ -47,7 +48,7 @@
   <!--     </a> -->
   <!--   </div> -->
   <!-- </div> -->
-  <nav class="navbar navbar-default navbar-static-top">
+  <nav ng-show="check('doc', user.roles)" class="navbar navbar-default navbar-static-top">
     <div class="container">
       <ul class="nav navbar-nav">
 	<li><a ng-href="https://192.168.1.235/registro"><span class="glyphicon glyphicon-tower"></span> Nuova modalità scuola</a></li>

@@ -4,22 +4,23 @@
 angular.module('teachers').controller('TimetablesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Timetables',
   function ($scope, $stateParams, $location, Authentication, Timetables) {
     $scope.authentication = Authentication;
+    // disposizioni
     $scope.setdisp = false;
     $scope.changeList = function(list){
       if($scope.setdisp === false){
         return list ;
       }
       return $scope.dis;
-    };  
+    };
+    $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'ric' },{ name:'funz' },{ name:'alt' }];  
     // pagination
     $scope.currentPage = 1;
-    $scope.pageSize =15;
+    $scope.pageSize = 20;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {
       $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
-    };
-    $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'ric' },{ name:'funz' }];  
+    };  
    
     // Update existing Teacher
     $scope.update = function (isValid) {

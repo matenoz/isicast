@@ -6,7 +6,7 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
     $scope.authentication = Authentication;
     // pagination
     $scope.currentPage = 1;
-    $scope.pageSize = 15;
+    $scope.pageSize = 20;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {
