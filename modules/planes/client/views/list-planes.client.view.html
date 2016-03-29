@@ -1,6 +1,13 @@
 <section ng-controller="PlanesController" ng-init="find()">
   <div class="page-header">
-    <h1>Programmazioni a.s. 2015-2016</h1>
+    <h3 align="center">Programmazioni a.s. {{currYear}}</h3>
+    <tt>{{currentYear}}</tt>
+    <nav>
+      <ul class="pager">
+	<li class="previous"><a class="btn" ng-click="prev()"><span aria-hidden="true">&larr;</span> prec</a></li>
+	<li class="next"><a class="btn" ng-click="next()">succ <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+    </nav>
   </div>
   <table class="table table-bordered">
     <thead>
@@ -13,7 +20,7 @@
 	 <th>documento</th>
       </tr>
     </thead>
-    <tbody ng-repeat="plane in planes|orderBy:'user.lastName'">
+    <tbody ng-if="compareDates(plane.updated, currentYear)" ng-repeat="plane in planes|orderBy:'user.lastName'">
       <tr ng-repeat="p in plane.content">
 	<td ng-bind="plane.updated | date"></td>
 	<td ng-bind="plane.user.displayName"></td>

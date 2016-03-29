@@ -26,7 +26,7 @@ angular.module('users').config(['$stateProvider',
         templateUrl: 'modules/users/client/views/settings/manage-social-accounts.client.view.html',
         data: {
           roles: ['user', 'admin']
-	}
+        }
       })
       .state('settings.picture', {
         url: '/picture',
