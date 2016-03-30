@@ -9,22 +9,32 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
     $scope.axis = ['Asse dei linguaggi','Asse matematico','Asse storico - sociale','Asse scientifico - tecnologico'];
     // show current year planes date
     $scope.currentYear = new Date();
-    $scope.currentYear.setYear($scope.currentYear.getFullYear());  
+    $scope.nextYear = new Date();  
+    $scope.currentYear.setYear($scope.currentYear.getFullYear());
+    $scope.nextYear.setYear($scope.nextYear.getFullYear()+1);  
     $scope.currYear = $filter('date')($scope.currentYear,'yyyy');
-      
+    $scope.next_Year = $filter('date')($scope.nextYear,'yyyy');  
     $scope.prev = function(){
       $scope.currentYear.setYear($scope.currentYear.getFullYear()-1);
       $scope.currYear = $filter('date')($scope.currentYear,'yyyy');	 
+      $scope.nextYear.setYear($scope.nextYear.getFullYear()-1);	
+      $scope.next_Year = $filter('date')($scope.nextYear,'yyyy');
     };
     $scope.next = function(){
       $scope.currentYear.setYear($scope.currentYear.getFullYear()+1);     
       $scope.currYear = $filter('date')($scope.currentYear,'yyyy');
+      $scope.nextYear.setYear($scope.nextYear.getFullYear()+1);	
+      $scope.next_Year = $filter('date')($scope.nextYear,'yyyy');
     };   
     // date comparision  
     $scope.compareDates = function(dateP, dateC) {
       var progdate = new Date(dateP);
-      var current  = new Date (dateC);
-      return (progdate.getFullYear() === current.getFullYear());   	
+      var current = new Date (dateC);
+      if (current.getMonth() <= 10) {
+        return (progdate.getFullYear()-1 === current.getFullYear()-1);
+      } else {
+        return (progdate.getFullYear() === current.getFullYear());   	
+      }
     };      
       
     // picker stuff
