@@ -9,9 +9,14 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
     $scope.axis = ['Asse dei linguaggi','Asse matematico','Asse storico - sociale','Asse scientifico - tecnologico'];
     // show current year planes date
     $scope.currentYear = new Date();
-    $scope.nextYear = new Date();  
-    $scope.currentYear.setYear($scope.currentYear.getFullYear());
-    $scope.nextYear.setYear($scope.nextYear.getFullYear()+1);  
+    $scope.nextYear = new Date();
+    if ($scope.currentYear.getMonth()<= 10){
+      $scope.currentYear.setYear($scope.currentYear.getFullYear()-1);
+      $scope.nextYear.setYear($scope.nextYear.getFullYear());
+    } else {
+      $scope.currentYear.setYear($scope.currentYear.getFullYear());
+      $scope.nextYear.setYear($scope.nextYear.getFullYear()+1);
+    }
     $scope.currYear = $filter('date')($scope.currentYear,'yyyy');
     $scope.next_Year = $filter('date')($scope.nextYear,'yyyy');  
     $scope.prev = function(){
