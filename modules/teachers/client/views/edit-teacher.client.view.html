@@ -7,28 +7,28 @@
       <fieldset>
 	<div class="form-group">
 	  <span ng-switch="teacher.isActive">
-	  <label ng-switch-when="true" for="disable">Disabilita</label>
-          <label ng-switch-when="false" for="disable">Abilita</label>
+	  <label class="label label-default"ng-switch-when="true" for="disable">Disabilita</label>
+          <label class="label label-default"ng-switch-when="false" for="disable">Abilita</label>
 	  </span>
 	  <input name="disable" type="checkbox" ng-model="teacher.isActive" ng-change="change()" >
 	</div>
         <div class="form-group" show-errors>
-          <label for="name">Cognome e Nome</label>
+          <label class="label label-default"for="name">Cognome e Nome</label>
           <input name="name" type="text" ng-model="teacher.name" id="name" class="form-control" placeholder="Name" required>
           <div ng-messages="teacherForm.name.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Teacher name is required.</p>
           </div>
         </div>
         <div class="form-group">
-          <label for="materia">Materia</label>
+          <label class="label label-default"for="materia">Materia</label>
           <input name="materia" ng-model="teacher.materia" id="materia" class="form-control"  placeholder="Materia"></input>
         </div>
 	<div class="form-group">
-          <label for="coordinator">Coordinamento</label>
+          <label class="label label-default"for="coordinator">Coordinamento</label>
           <input name="coordinator" ng-model="teacher.coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
         </div>
 	  <div class="form-group">
-	    <label for="classe e indirizzo">Classe e Indirizzo</label>
+	    <label class="label label-default"for="classe e indirizzo">Classe e Indirizzo</label>
             <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o as o for o in classarray" ><option value="">--</option></select>
           </div>
 	  <div class="form-group">

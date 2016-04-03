@@ -6,7 +6,7 @@
     <form name="ruleForm" class="form-horizontal" ng-submit="update(ruleForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="title">Titolo</label>
+          <label class="label label-default"for="title">Titolo</label>
           <input name="title" type="text" ng-model="rule.title" id="title" class="form-control" placeholder="Title" required>
           <div ng-messages="ruleForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Rule title is required.</p>
@@ -47,7 +47,7 @@
 	  </div>
 	</div>
 	<div class="form-group">
-	  <label for="link">Inserisci eventuale link</label>
+	  <label class="label label-default"for="link">Inserisci eventuale link</label>
           <input type="text" class="form-control" ng-model="rule.link" id="link" name="link" placeholder="link">
         </div>
         <div class="form-group">

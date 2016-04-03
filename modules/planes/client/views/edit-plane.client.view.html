@@ -6,18 +6,18 @@
     <form name="planeForm" class="form-horizontal" ng-submit="update(planeForm.$valid)" novalidate>
       <fieldset>
 	<div class="form-group" show-errors>
-          <label for="classes">Seleziona classe</label>
+          <label class="label label-default"for="classes">Seleziona classe</label>
           <select name="classes" ng-options="c as c for c in classarray" ng-model="plane.classes" id="classes" class="form-control"  required><option value="">--</option></select>
           <div ng-messages="planeForm.classes.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Plane classes is required.</p>
           </div>
         </div>
 	<div class="form-group">
-          <label for="department">Seleziona asse culturale</label>
+          <label class="label label-default"for="department">Seleziona asse culturale</label>
           <select name="department" ng-options="c as c for c in axis" ng-model="plane.department" id="department" class="form-control"><option value="">--</option></select>
 	</div>
 	<div class="form-group">
-	  <label for="materia">Disciplina</label>
+	  <label class="label label-default"for="materia">Disciplina</label>
 	  <input type="text" name="materia" ng-model="plane.materia" id="materia" class="form-control">
 	</div>
 	<div class="form-group">

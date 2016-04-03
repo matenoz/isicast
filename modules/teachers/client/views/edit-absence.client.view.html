@@ -6,15 +6,15 @@
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
       <fieldset>	
 	<div class="form-group">
-	  <label for="date">Inserisci data assenza</label>
+	  <label class="label label-default"for="date">Inserisci data assenza</label>
 	  <input type="date" name="date" id="absence.date" ng-model="absence.date" class="form-control">
 	</div>
 	<div class="form-group">
-	   <label for="type">Inserisci tipo assenza</label>
+	   <label class="label label-default"for="type">Inserisci tipo assenza</label>
 	  <select name="type" id="absence.type" ng-model="absence.type" class="form-control" ng-options="type as type for type in abstypes"></select>
 	</div>
 	<div class="form-group">
-	   <label for="cause">Inserisci motivo assenza</label>
+	   <label class="label label-default"for="cause">Inserisci motivo assenza</label>
 	  <input name="cause" id="absence.cause" type="text" ng-model="absence.cause" class="form-control">
 	</div>	  
 	<div class="form-group">

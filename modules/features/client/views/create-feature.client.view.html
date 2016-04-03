@@ -6,26 +6,26 @@
     <form name="featureForm" class="form-horizontal" ng-submit="create(featureForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="title">Titolo</label>
+          <label class="label label-default"for="title">Titolo</label>
           <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Titolo" required>
           <div ng-messages="featureForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Feature title is required.</p>
           </div>
         </div>
 	<div class="form-group">
-	  <label for="deadline">Scadenza</label>
+	  <label class="label label-default"for="deadline">Scadenza</label>
           <input type="date" ng-model="deadline" class="form-control" name="deadline" id="deadline">
         </div>
 	<div class="form-group">
-	  <label for="priority">Priorità</label>
+	  <label class="label label-default"for="priority">Priorità</label>
           <input type="number" ng-model="priority" id="priority" class="form-control" min="1" max="5">
         </div>
         <div class="form-group">
-          <label for="content">Corpo</label>
+          <label class="label label-default"for="content">Corpo</label>
           <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Contenuto"></textarea>
         </div>
 	<div class="form-group">
-	  <label for="link">Link</label>
+	  <label class="label label-default"for="link">Link</label>
           <input type="text" ng-model="link" class="form-control" name="link" id="link">
         </div>
 	<div class="form-group">

@@ -6,21 +6,21 @@
     <form name="docForm" class="form-horizontal" ng-submit="update(docForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="prot">Protocollo</label>
+          <label class="label label-default"for="prot">Protocollo</label>
           <input name="prot" type="number" ng-model="doc.prot" id="prot" class="form-control" min="0" placeholder="Protocollo" required>
           <div ng-messages="docForm.prot.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Doc protocol is required.</p>
           </div>
 	</div>
         <div class="form-group" show-errors>
-          <label for="title">Oggetto</label>
+          <label class="label label-default"for="title">Oggetto</label>
           <input name="title" type="text" ng-model="doc.title" id="title" class="form-control" placeholder="Title" required>
           <div ng-messages="docForm.title.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Doc title is required.</p>
           </div>
         </div>
         <div class="form-group">
-          <label for="content">Corpo</label>
+          <label class="label label-default"for="content">Corpo</label>
           <textarea  name="content" ng-model="doc.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
         </div>
 	<br>
