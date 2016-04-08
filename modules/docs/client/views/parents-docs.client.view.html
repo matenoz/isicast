@@ -133,11 +133,21 @@
 		    <h4>Ricerca per range di date</h4>
 		    <div class="form-group">
 		      <label class="label label-default"for="date">Seleziona data inizio ricerca</label> <hr/>
-		      <input type="date" class="form-control" ng-model="startDate">
+		      <p class="input-group">
+			<input type="date" datepicker-popup is-open="popup" class="form-control" ng-model="startDate" ng-required="true" close-text="Close">
+			<span class="input-group-btn">
+			  <button type="button" class="btn btn-flat" ng-click="popup=true"><i class="glyphicon glyphicon-calendar"></i></button>
+			</span>
+		      </p>
 		    </div>
 		    <div class="form-group">
 		      <label class="label label-default"for="date">Seleziona data fine ricerca</label><hr/>
-		      <input type="date" class="form-control" ng-model="endDate">
+		      <p class="input-group">
+			<input type="date" datepicker-popup is-open="popu" class="form-control" ng-model="endDate" ng-required="true" close-text="Close">
+			<span class="input-group-btn">
+			  <button type="button" class="btn btn-flat" ng-click="popu=true"><i class="glyphicon glyphicon-calendar"></i></button>
+			</span>
+		      </p>
 		    </div>
 		    <div class="form-group">
 		      <button class="btn btn-flat" ng-click="findWithParams()">cerca</button>
@@ -146,7 +156,7 @@
 		</div>
 		<div class="panel panel-default">
 		  <a class="twitter-timeline" ng-href="https://twitter.com/IsicastNet" data-widget-id="690513587325001728">Tweet di @IsicastNet</a>
-		  </div>
+		</div>
 	      </div><!--end col-md-4 -->
 	      <div class="col-md-8">
 		<h3 align="center">Elenco documenti famiglie e alunni</h3>
