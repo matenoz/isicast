@@ -37,7 +37,7 @@ a:hover .header-profile-image {
 }
 .bann {
    margin: 0;
-   background-image: url('../img/brand/bann2.jpg');
+   background-image: url('/modules/core/client/img/brand/bann2.jpg');
    background-repeat:no-repeat;
 }
 

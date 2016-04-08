@@ -8,7 +8,7 @@
       <fieldset>
 	<div class="form-group" show-errors>
           <label class="label label-default"for="nome_classe">Nome Classe</label>
-          <input name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" placeholder="Nome_Classe" required>
+          <select name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" ng-options="o as o for o in classarray" required><option value="">--</option></select>
           <div ng-messages="classeForm.nome_classe.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Classe nome_classe is required.</p>
           </div>

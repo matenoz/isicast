@@ -6,6 +6,8 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+        'public/lib/ng-tags-input/ng-tags-input.min.css',  
+        'public/lib/ng-tags-input/ng-tags-input.bootstrap.min.css'    
       ],
       js: [
         'public/lib/angular/angular.min.js',
@@ -16,7 +18,10 @@ module.exports = {
         'public/lib/angular-ui-utils/ui-utils.min.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
         'public/lib/angular-file-upload/angular-file-upload.min.js',
-        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js'
+        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/angular-google-picker/dist/google-picker.min.js',
+        'public/lib/ng-tags-input/ng-tags-input.min.js',
+        'public/lib/angular/angular_it-it.js ',	  
       ]
     },
     css: 'public/dist/application.min.css',
