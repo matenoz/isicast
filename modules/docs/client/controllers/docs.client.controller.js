@@ -2,7 +2,7 @@
 
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
-  $scope.authentication = Authentication;
+  $scope.authentication = Authentication; 
   // tags ctrl
   $scope._tags = [
     { text: 'famiglia' },

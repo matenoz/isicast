@@ -6,7 +6,7 @@
     <div class="panel-body">
       <img ng-repeat="p in feature.img" ng-src="{{p.downloadUrl}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
       <p ng-bind="feature.content"  class="panel-content"></p> 
-      <a  ng-href="{{feature.link}}"><button  class="btn btn-xs btn-info pull-right" >link</button></a>
+      <a  ng-href="{{feature.link}}"><button  class="btn btn-xs btn-flat btn-info pull-right" >link</button></a>
       <br>
       <small>
 	<span ng-bind="feature.created | date:'medium'"></span>
