@@ -23,6 +23,7 @@ uploads
 modules/users/client/img/profile/uploads
 config/env/local.js
 config/env/local-*.js
+config/.sslcerts/
 *.pem
 
 # Ignoring MEAN.JS's gh-pages branch for documenation

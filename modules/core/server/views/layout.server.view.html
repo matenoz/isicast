@@ -22,7 +22,12 @@
   <meta property="og:image" content="{{logo}}">
   <meta property="og:type" content="website">
 
-  <!-- Twitter META -->
+  <!-- Fav Icon -->
+  <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Application CSS Files -->
+  {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+    <!-- Twitter META -->
   <meta name="twitter:widgets:autoload" content="on">
   <meta name="twitter:title" content="{{title}}">
   <meta name="twitter:description" content="{{description}}">
@@ -30,11 +35,6 @@
   <meta name="twitter:image" content="{{logo}}">
   <!--cockies policy -->
   <script type="text/javascript" src="https://nibirumail.com/docs/scripts/nibirumail.cookie.min.js"></script>
-  <!-- Fav Icon -->
-  <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
-
-  <!-- Application CSS Files -->
-  {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 </head>
 
 <body class="ng-cloak">
