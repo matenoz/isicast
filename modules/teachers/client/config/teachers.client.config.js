@@ -8,7 +8,7 @@ angular.module('teachers').run(['Menus',
       title: 'Docenti',
       state: 'teachers',
       type: 'dropdown',
-      roles: ['god','abs']
+      roles: ['god','abs','sost']
     });
 
     // Add the dropdown list item
@@ -27,7 +27,7 @@ angular.module('teachers').run(['Menus',
     Menus.addSubMenuItem('topbar', 'teachers', {
       title: 'Assenze',
       state: 'absences.list',
-      roles: ['abs']
+      roles: ['abs', 'sost']
     });
       
     Menus.addSubMenuItem('topbar', 'teachers', {
