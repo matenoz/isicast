@@ -39,7 +39,8 @@ module.exports = function (config) {
       users.saveOAuthUserProfile(req, providerUserProfile, done);
     }
     else {
-      done(new Error('Nome domino non valido: per accedere ai servizi è necessario un account con dominio isicast.net. Contatta amministratore@isicast.net per segnalare il problema'));
+      var err = new Error('Nome domino non valido: per accedere ai servizi è necessario un account con dominio isicast.net. Contatta amministratore@isicast.net per segnalare il problema');
+      return err.message;
     }
   }));
 };

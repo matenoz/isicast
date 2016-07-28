@@ -65,6 +65,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
         $scope.title = '';
         $scope.content = '';
         $scope.link = '';
+        $scope.deadline = '';  
         $scope.priority = '';  
         $scope.img = [];  
       }, function (errorResponse) {
