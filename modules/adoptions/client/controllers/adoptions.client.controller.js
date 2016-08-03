@@ -42,7 +42,7 @@ angular.module('adoptions').controller('AdoptionsController', ['$scope', '$state
         address: this.address,
         classe: this.classe,
 	year: this.year,
-	document: []  
+        document: []  
       });
       angular.forEach($scope.files,function(file,index){
         adoption.document.push(file);
@@ -54,8 +54,8 @@ angular.module('adoptions').controller('AdoptionsController', ['$scope', '$state
         // Clear form fields
         $scope.address = '';
         $scope.classe = '';
-	$scope.year = '';
-	$scope.document = [];  
+        $scope.year = '';
+        $scope.document = [];  
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
