@@ -41,7 +41,7 @@ angular.module('adoptions').controller('AdoptionsController', ['$scope', '$state
       var adoption = new Adoptions({
         address: this.address,
         classe: this.classe,
-	year: this.year,
+        year: this.year,
         document: []  
       });
       angular.forEach($scope.files,function(file,index){
