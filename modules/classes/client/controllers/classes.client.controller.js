@@ -20,7 +20,12 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
     };
-  
+    // check if role exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };  
     // Create new Classe
     $scope.create = function (isValid) {
       $scope.error = null;

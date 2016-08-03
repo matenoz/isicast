@@ -1,0 +1,16 @@
+<section ng-controller="AdoptionsController" ng-init="findOne()">
+  <div class="page-header">
+    <h3>Adozioni classe: {{adoption.classe}} - {{adoption.address}}</h3>
+  </div>
+  <div class="pull-right" ng-if="check('org', authentication.user.roles) || check('admin', authentication.user.roles)">
+    <a class="btn btn-primary" ui-sref="adoptions.edit({adoptionId: adoption._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <a ng-href="{{p.url}}" ng-repeat="p in adoption.document">
+    <img ng-src="{{p.iconUrl}}"> {{p.name}}
+	 </a>
+</section>

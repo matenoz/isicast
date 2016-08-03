@@ -1,0 +1,20 @@
+<section ng-controller="AdoptionsController" ng-init="find()">
+  <div class="page-header">
+    <h1>Adoptions</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="adoption in adoptions" ui-sref="adoptions.view({adoptionId: adoption._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="adoption.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="adoption.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="adoption.title"></h4>
+      <p class="list-group-item-text" ng-bind="adoption.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="adoptions.$resolved && !adoptions.length">
+    No adoptions yet, why don't you <a ui-sref="adoptions.create">create one</a>?
+  </div>
+</section>

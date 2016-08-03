@@ -1,0 +1,110 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var path = require('path'),
+  mongoose = require('mongoose'),
+  Adoption = mongoose.model('Adoption'),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+
+/**
+ * Create a adoption
+ */
+exports.create = function (req, res) {
+  var adoption = new Adoption(req.body);
+  adoption.user = req.user;
+
+  adoption.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(adoption);
+    }
+  });
+};
+
+/**
+ * Show the current adoption
+ */
+exports.read = function (req, res) {
+  res.json(req.adoption);
+};
+
+/**
+ * Update a adoption
+ */
+exports.update = function (req, res) {
+  var adoption = req.adoption;
+
+  adoption.title = req.body.title;
+  adoption.content = req.body.content;
+
+  adoption.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(adoption);
+    }
+  });
+};
+
+/**
+ * Delete an adoption
+ */
+exports.delete = function (req, res) {
+  var adoption = req.adoption;
+
+  adoption.remove(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(adoption);
+    }
+  });
+};
+
+/**
+ * List of Adoptions
+ */
+exports.list = function (req, res) {
+  Adoption.find().sort('-created').populate('user', 'displayName').exec(function (err, adoptions) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(adoptions);
+    }
+  });
+};
+
+/**
+ * Adoption middleware
+ */
+exports.adoptionByID = function (req, res, next, id) {
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send({
+      message: 'Adoption is invalid'
+    });
+  }
+
+  Adoption.findById(id).populate('user', 'displayName').exec(function (err, adoption) {
+    if (err) {
+      return next(err);
+    } else if (!adoption) {
+      return res.status(404).send({
+        message: 'No adoption with that identifier has been found'
+      });
+    }
+    req.adoption = adoption;
+    next();
+  });
+};

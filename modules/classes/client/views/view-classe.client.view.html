@@ -8,14 +8,15 @@
   <p class="lead" ng-bind="classe.coordinatore"></p>
    <h4><strong>Consiglio di classe:</strong></h4>
    <ul class="lead" ng-repeat="teacher in classe.teachers">
-     <li>{{teacher.name}} {{teacher.materia}}</li>
+     <li>{{teacher.name}} - {{teacher.materia}}</li>
    </ul>
    <br>
   <section ng-controller="CtimetablesController">
     <a ui-sref="ctimetables.view({classeId: classe._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
   </section>
   <br>
-  <div class="pull-right" ng-show="authentication.user._id==classe.user._id">
+  <div class="pull-right" ng-show="check('god', authentication.user.roles)">
+  <!-- <div class="pull-right" ng-show="authentication.user._id==classe.user._id">  --> 
    <a class="btn btn-primary" ui-sref="classes.edit({classeId: classe._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>

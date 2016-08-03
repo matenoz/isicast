@@ -1,4 +1,9 @@
-#! /bin/dash
+xcase  in
+*)
+    
+esac
+
+	#! /bin/sh
 #title           :rude-v-mod.generator.sh
 #description     :This script will make a vertical crud module .
 #author          :matenoz

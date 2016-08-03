@@ -1,0 +1,48 @@
+<section ng-controller="AdoptionsController" ng-init="find()">
+  <div class="page-header">
+    <h1>Adozioni libri di testo a.s. </h1>
+  </div>
+   <div class="row">
+    <h4 align="center">Corso diurno</h4>
+    <hr/>
+    <div class="col-md-3">
+      <label class="label label-default">Amm.ne Finanza & Marketing</label>
+      <hr/>
+      <div class="list-group" ng-repeat="adoption in adoptions|orderBy:'classe'" ng-show="adoption.address== 'Amministrazione Finanza & Marketing'">
+	<a class="list-group-item"  ui-sref="adoptions.view({adoptionId: adoption._id})">
+	  {{adoption.classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label class="label label-default">Liceo Scientifico</label>
+      <hr/>
+      <div class="list-group" ng-repeat="adoption in adoptions |orderBy:'classe'" ng-show="adoption.address== 'Liceo Scientifico'">
+	<a class="list-group-item"  ui-sref="adoptions.view({adoptionId: adoption._id})">
+	  {{adoption.classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label class="label label-default">Manut.ne e Assitenza Tecnica</label>
+      <hr/>
+      <div class="list-group"  ng-repeat="adoption in adoptions |orderBy:'classe'" ng-show="adoption.address== 'Manutenzione e Assistenza Tecnica'">
+	<a class="list-group-item"  ui-sref="adoptions.view({adoptionId: adoption._id})">
+	  {{adoption.classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label class="label label-default">Servizi Commerciali</label>
+      <hr/>
+      <div class="list-group" ng-repeat="adoption in adoptions |orderBy:'classe'" ng-show="adoption.address== 'Servizi Commerciali'">
+	<a class="list-group-item"  ui-sref="adoptions.view({adoptionId: adoption._id})">
+	  {{adoption.classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
+	</a>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="adoptions.$resolved && !adoptions.length">
+    No adoptions yet, why don't you <a ui-sref="adoptions.create">create one</a>?
+  </div>
+</section>
