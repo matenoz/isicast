@@ -25,6 +25,7 @@ config/env/local.js
 config/env/local-*.js
 config/.sslcerts/
 *.pem
+startserver.sh
 
 # Ignoring MEAN.JS's gh-pages branch for documenation
 _site/
