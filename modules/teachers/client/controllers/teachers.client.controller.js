@@ -4,6 +4,12 @@
 angular.module('teachers').controller('TeachersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Teachers',
   function ($scope, $stateParams, $location, Authentication, Teachers) {
     $scope.authentication = Authentication;
+    // check if role exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 20;

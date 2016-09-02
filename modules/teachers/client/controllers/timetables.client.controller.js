@@ -4,6 +4,12 @@
 angular.module('teachers').controller('TimetablesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Timetables',
   function ($scope, $stateParams, $location, Authentication, Timetables) {
     $scope.authentication = Authentication;
+    // check if role exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };
     // disposizioni
     $scope.setdisp = false;
     $scope.changeList = function(list){

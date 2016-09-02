@@ -7,6 +7,12 @@ angular.module('classes').controller('CtimetablesController', ['$scope', '$state
     $scope.props = function(o){
       return o.materia +' ('+ o.name +')';
     };
+    // check if role exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };
     // Update existing Classe
     $scope.update = function (isValid) {
       $scope.error = null;

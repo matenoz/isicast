@@ -28,7 +28,7 @@
       </table>
     </div>
   </div>
-  <div class="pull-right" ng-show="authentication.user._id == classe.user._id">
+  <div class="pull-right" ng-if="check('god', authentication.user.roles)||check('admin', authentication.user.roles)">
     <a class="btn btn-primary" ui-sref="ctimetables.edit({classeId: classe._id})">
       <i class="glyphicon glyphicon-edit"></i> modifica
     </a>

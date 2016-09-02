@@ -14,7 +14,7 @@
     <a ui-sref="timetables.view({teacherId: teacher._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
   </section>
   <br>
-  <div class="pull-right" ng-show="authentication.user._id == teacher.user._id">
+  <div class="pull-right" ng-if="check('god', authentication.user.roles)||check('admin',authentication.user.roles)">
     <a class="btn btn-primary" ui-sref="teachers.edit({teacherId: teacher._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
