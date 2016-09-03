@@ -1,5 +1,6 @@
-<div class="panel-group" ng-repeat="feature in features|orderBy:'-priority'">
-  <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default">
+<div class="panel-group" ng-repeat="feature in features|orderBy:'-priority'" ng-if="compareDates(pre_dead,feature.deadline)">
+  <!-- <div ng-if="compareDates(pre_dead,feature.deadline)" class="panel panel-default"> -->
+  <div class="panel panel-default">
     <div class="panel-heading">
       <h3 ng-bind="feature.title" class="panel-title"></h3>
     </div>

@@ -4,7 +4,7 @@
 angular.module('adoptions').controller('AdoptionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adoptions',
   function ($scope, $stateParams, $location, Authentication, Adoptions) {
     $scope.authentication = Authentication;
-    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC (promozione commerciale pubblicitaria)','IV SC (promozione commerciale pubblicitaria)','V SC (promozione commerciale pubblicitaria)','I MAT','II MAT','III MAT (apparati, impianti, servizi ind)','III MAT (manutenzione mezzi di trasporto)','IV MAT (apparati, impianti, servizi ind)','IV MAT (manutenzione mezzi di trasporto)','V MAT (apparati, impianti, servizi ind)','V MAT (manutenzione mezzi di trasporto)','II periodo SSS','III periodo SSS'];
     $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari','MAT Serale'];
     $scope.files = [];
     $scope.onLoaded = function () {
