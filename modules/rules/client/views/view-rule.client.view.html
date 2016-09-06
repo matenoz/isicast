@@ -19,7 +19,7 @@
     <img ng-src="{{p.iconUrl}}"> {{p.name}}
 	 </a>
   <hr/>
-  <div class="pull-right" ng-show="authentication.user._id == rule.user._id">
+  <div class="pull-right" ng-if="authentication.user._id == rule.user._id">
     <a class="btn btn-primary" ui-sref="rules.edit({ruleId: rule._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>

@@ -10,7 +10,7 @@
       <p ng-bind="plane.user.displayName"></p>
     <a class="lead" ng-href="{{p.url}}" ng-repeat="p in plane.content"><img ng-src="{{p.iconUrl}}"> {{p.name}}</a>
     <br>
-  <div class="pull-right" ng-show="authentication.user._id == plane.user._id">
+  <div class="pull-right" ng-if="authentication.user._id == plane.user._id">
     <a class="btn btn-primary" ui-sref="planes.edit({planeId: plane._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>

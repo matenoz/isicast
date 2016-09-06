@@ -2,7 +2,7 @@
   <div class="page-header">
     <h3 ng-bind="deadline.event"></h3>
   </div>
-  <div class="pull-right" ng-show="authentication.user._id == deadline.user._id">
+  <div class="pull-right" ng-if="authentication.user._id == deadline.user._id">
     <a class="btn btn-primary" ui-sref="deadlines.edit({deadlineId: deadline._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
