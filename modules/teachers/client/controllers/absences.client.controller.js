@@ -12,7 +12,7 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
     };
     // pagination
     $scope.currentPage = 1;
-    $scope.pageSize = 20;
+    $scope.pageSize = 10;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {

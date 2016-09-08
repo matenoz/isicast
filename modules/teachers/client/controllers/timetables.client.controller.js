@@ -21,7 +21,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
     $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'ric' },{ name:'funz' },{ name:'alt' }];  
     // pagination
     $scope.currentPage = 1;
-    $scope.pageSize = 20;
+    $scope.pageSize = 10;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {
