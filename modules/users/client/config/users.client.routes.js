@@ -39,6 +39,20 @@ angular.module('users').config(['$stateProvider',
           roles: ['abs', 'admin']
         }
       })
+      .state('settings.userdoc', {
+        url: '/userdocs',
+        templateUrl: 'modules/userdocs/client/views/list-userdocs.client.view.html',
+        data: {
+          roles: ['doc', 'admin']
+        }
+      })
+      .state('settings.docris', {
+        url: '/userdocs',
+        templateUrl: 'modules/userdocs/client/views/create-userdoc.client.view.html',
+        data: {
+          roles: ['god', 'admin']
+        }
+      })
       .state('settings.doc', {
         url: '/docs',
         templateUrl: 'modules/docs/client/views/create-doc.client.view.html',

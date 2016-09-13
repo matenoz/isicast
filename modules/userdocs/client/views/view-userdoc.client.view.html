@@ -1,0 +1,24 @@
+<section ng-controller="UserdocsController" ng-init="findOne()">
+  <div class="page-header">
+    <h3 ng-bind="userdoc.title"></h3>
+  </div>
+  <div class="pull-right" ng-show="authentication.user._id == userdoc.user._id">
+    <a class="btn btn-primary" ui-sref="userdocs.edit({userdocId: userdoc._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Creato
+      <span ng-bind="userdoc.created | date:'mediumDate'"></span>
+      da
+      <span ng-bind="userdoc.user.displayName"></span>
+    </em>
+  </small>
+  <a ng-href="{{p.url}}" ng-repeat="p in userdoc.document">
+    <img ng-src="{{p.iconUrl}}"> {{p.name}}
+  </a>
+</section>

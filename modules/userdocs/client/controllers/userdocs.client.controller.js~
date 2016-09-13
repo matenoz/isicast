@@ -1,0 +1,84 @@
+'use strict';
+
+// Userdocs controller
+angular.module('userdocs').controller('UserdocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Userdocs',
+  function ($scope, $stateParams, $location, Authentication, Userdocs) {
+    $scope.authentication = Authentication;
+
+    // Create new Userdoc
+    $scope.create = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'userdocForm');
+
+        return false;
+      }
+
+      // Create new Userdoc object
+      var userdoc = new Userdocs({
+        title: this.title,
+        content: this.content
+      });
+
+      // Redirect after save
+      userdoc.$save(function (response) {
+        $location.path('userdocs/' + response._id);
+
+        // Clear form fields
+        $scope.title = '';
+        $scope.content = '';
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    // Remove existing Userdoc
+    $scope.remove = function (userdoc) {
+      if (userdoc) {
+        userdoc.$remove();
+
+        for (var i in $scope.userdocs) {
+          if ($scope.userdocs[i] === userdoc) {
+            $scope.userdocs.splice(i, 1);
+          }
+        }
+      } else {
+        $scope.userdoc.$remove(function () {
+          $location.path('userdocs');
+        });
+      }
+    };
+
+    // Update existing Userdoc
+    $scope.update = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'userdocForm');
+
+        return false;
+      }
+
+      var userdoc = $scope.userdoc;
+
+      userdoc.$update(function () {
+        $location.path('userdocs/' + userdoc._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    // Find a list of Userdocs
+    $scope.find = function () {
+      $scope.userdocs = Userdocs.query();
+    };
+
+    // Find existing Userdoc
+    $scope.findOne = function () {
+      $scope.userdoc = Userdocs.get({
+        userdocId: $stateParams.userdocId
+      });
+    };
+  }
+]);

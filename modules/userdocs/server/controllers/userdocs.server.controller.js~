@@ -1,0 +1,110 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var path = require('path'),
+  mongoose = require('mongoose'),
+  Userdoc = mongoose.model('Userdoc'),
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+
+/**
+ * Create a userdoc
+ */
+exports.create = function (req, res) {
+  var userdoc = new Userdoc(req.body);
+  userdoc.user = req.user;
+
+  userdoc.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(userdoc);
+    }
+  });
+};
+
+/**
+ * Show the current userdoc
+ */
+exports.read = function (req, res) {
+  res.json(req.userdoc);
+};
+
+/**
+ * Update a userdoc
+ */
+exports.update = function (req, res) {
+  var userdoc = req.userdoc;
+
+  userdoc.title = req.body.title;
+  userdoc.content = req.body.content;
+
+  userdoc.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(userdoc);
+    }
+  });
+};
+
+/**
+ * Delete an userdoc
+ */
+exports.delete = function (req, res) {
+  var userdoc = req.userdoc;
+
+  userdoc.remove(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(userdoc);
+    }
+  });
+};
+
+/**
+ * List of Userdocs
+ */
+exports.list = function (req, res) {
+  Userdoc.find().sort('-created').populate('user', 'displayName').exec(function (err, userdocs) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(userdocs);
+    }
+  });
+};
+
+/**
+ * Userdoc middleware
+ */
+exports.userdocByID = function (req, res, next, id) {
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send({
+      message: 'Userdoc is invalid'
+    });
+  }
+
+  Userdoc.findById(id).populate('user', 'displayName').exec(function (err, userdoc) {
+    if (err) {
+      return next(err);
+    } else if (!userdoc) {
+      return res.status(404).send({
+        message: 'No userdoc with that identifier has been found'
+      });
+    }
+    req.userdoc = userdoc;
+    next();
+  });
+};

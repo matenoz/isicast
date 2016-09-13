@@ -1,0 +1,16 @@
+<section ng-controller="UserdocsController" ng-init="find()">
+  <div class="page-header">
+    <h3>Documenti riservati</h3>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="userdoc in userdocs" ui-sref="userdocs.view({userdocId: userdoc._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Pubblicato
+        <span ng-bind="userdoc.created | date:'mediumDate'"></span>
+        Da
+        <span ng-bind="userdoc.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="userdoc.title"></h4>
+    </a>
+  </div>
+</section>

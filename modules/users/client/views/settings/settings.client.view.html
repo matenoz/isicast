@@ -30,6 +30,12 @@
           <a ui-sref="settings.rule" ng-show="check('god', user.roles) || check('admin', user.roles)">Documenti organizzazione</a>
         </li>
 	<li ui-sref-active="active">
+          <a ui-sref="settings.userdoc" ng-show="check('god', user.roles) || check('doc', user.roles)">Documenti riservati</a>
+        </li>
+	<li ui-sref-active="active">
+          <a ui-sref="settings.docris" ng-show="check('god', user.roles) || check('admin', user.roles)">Inserisci doc. ris.</a>
+        </li>
+	<li ui-sref-active="active">
           <a ui-sref="settings.doc" ng-show="check('public', user.roles) || check('admin', user.roles)">Inserisci documento</a>
         </li>
 	<li ui-sref-active="active">

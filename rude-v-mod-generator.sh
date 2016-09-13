@@ -4,7 +4,7 @@
 #author          :matenoz
 #date            :25-11-2015
 #version         :0.1
-#usage           :sh rude-v-mod.generator.sh my_module_name
+#usage           :bash rude-v-mod.generator.sh my_module_name
 #notes           :MEAN.js version 0.4.2
 ## Author name   : Massimo
 ####################################################################
