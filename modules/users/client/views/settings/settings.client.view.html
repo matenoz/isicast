@@ -27,6 +27,9 @@
           <a ui-sref="settings.abs" ng-show="check('abs', user.roles) || check('admin', user.roles)">Inserisci assenze</a>
         </li>
 	<li ui-sref-active="active">
+          <a ui-sref="settings.rule" ng-show="check('god', user.roles) || check('admin', user.roles)">Documenti organizzazione</a>
+        </li>
+	<li ui-sref-active="active">
           <a ui-sref="settings.doc" ng-show="check('public', user.roles) || check('admin', user.roles)">Inserisci documento</a>
         </li>
 	<li ui-sref-active="active">
@@ -42,7 +45,7 @@
           <a ui-sref="settings.prog" ng-show="check('doc', user.roles) || check('admin', user.roles)">Inserisci programmazione</a>
 	  </li>
 	<li ui-sref-active="active">
-          <a ng-href="http://isicast.dyndns.org/wordpress/wp-login.php" ng-show="check('ata', user.roles) || check('admin', user.roles)">Amm.ne traparente</a>
+          <a ng-href="http://isicast.dyndns.org/wordpress/wp-login.php" ng-show="check('ata', user.roles) || check('admin', user.roles)">Amm.ne trasparente</a>
         </li>
 	<li ui-sref-active="active">
           <a ng-href="https://noipa.mef.gov.it" ng-show="check('ata', user.roles) || check('doc', user.roles)">NoiPa</a>

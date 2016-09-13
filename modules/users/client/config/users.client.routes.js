@@ -88,6 +88,13 @@ angular.module('users').config(['$stateProvider',
           roles: ['public', 'admin']
         }
       })
+      .state('settings.rule', {
+        url: '/rules',
+        templateUrl: 'modules/rules/client/views/create-rule.client.view.html',
+        data: {
+          roles: ['god', 'admin']
+        }
+      })
       .state('authentication', {
         abstract: true,
         url: '/authentication',
