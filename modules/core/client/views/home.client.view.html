@@ -30,7 +30,14 @@
             </a>
 	    <ul class="dropdown-menu"  role="menu" ng-controller="RulesController" ng-init="find()">
 	      <li class="dropdown-header">L'istituto</li>
-	      <li ng-show="!rule.isFrame" ng-repeat="rule in rules"><a ui-sref="rules.view({ruleId: rule._id})"><span ng-bind="rule.title"</span></a></li>			      <li class="divider"></li>								  <li class="dropdown-header">Sezioni</li>
+	      <li ng-show="!rule.isFrame" ng-repeat="rule in rules">
+		<a ui-sref="rules.view({ruleId: rule._id})">
+		  <span ng-bind="rule.title">
+		  </span>
+		</a>
+	      </li>
+	      <li class="divider"></li>
+	      <li class="dropdown-header">Sezioni</li>
 	      <li><a ng-href="#">Diurno</a></li>
 	      <li><a ng-href="#">Serale</a></li>
 	      <li class="divider"></li>
@@ -127,8 +134,8 @@
 	</li>
 	<li class="list-group-item">
 	  <a ng-href="#" popover-placement="right" popover-template="popover.templateUrl">
-	  <span class="glyphicon glyphicon-bell">
-          </span> Orario scolastico
+	    <span class="glyphicon glyphicon-bell">
+            </span> Orario scolastico
 	  </a>
 	</li>
 	<li class="list-group-item">
@@ -176,7 +183,7 @@
           </a>
 	</li>
 	<li class="list-group-item">
-          <a ng-href="#">
+          <a ng-href="https://drive.google.com/drive/folders/0B60wZ_vqmiNfQU1zSjZRSG9QNFk?usp=sharing">
             <span class="glyphicon glyphicon-file" >
             </span> Modulistica
           </a>
@@ -207,7 +214,7 @@
 	    </a>
 	    <a ng-href="http://www.istruzione.it" class="thumbnail">
 	      <img ng-src="modules/core/client/img/brand/miur.png" class="img-thumbnail" align="center">
-	      </a>
+	    </a>
 	    <a ng-href="http://www.istruzioneer.it" class="thumbnail">
 	      <img ng-src="modules/core/client/img/brand/ister.png" class="img-thumbnail" align="center">
 	    </a>
