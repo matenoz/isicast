@@ -19,6 +19,12 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
     };
+    // check if object exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };
     // Create new Replacement
     $scope.create = function (isValid) {
       $scope.error = null;
