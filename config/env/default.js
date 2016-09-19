@@ -3,8 +3,8 @@
 module.exports = {
   app: {
     title: 'Isicast',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-    keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
+    description: 'IISS Caduti della Direttissima, Istruzione Scientifica Tecnica Professionale, Via toscana 21, Castiglione dei Pepoli (BO) Codice mnisteriale BOIS009009',
+    keywords: 'Isicast, Caduti della Direttissima, AFM, Liceo scientifico, MAT, Castiglione, informatica, PON',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
   port: process.env.PORT || 3000,
