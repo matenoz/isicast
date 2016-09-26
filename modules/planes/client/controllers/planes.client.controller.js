@@ -5,7 +5,7 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
   function ($scope, $stateParams, $location, $filter, Authentication, Planes) {
     $scope.authentication = Authentication;
     // list classes
-    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS','II periodo MAT','III periodo MAT'];
+    $scope.classarray = ['I AFM','II AFM','III AFM','III AFM A','III AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT', 'I ART. MAT/SC','II MAT','III MAT impianti','IV MAT impianti','V MAT impianti','III MAT mezzi trasp.','IV MAT mezzi trasp.','V MAT mezzi trasp.','II periodo SSS','III periodo SSS'];  
     $scope.axis = ['Asse dei linguaggi','Asse matematico','Asse storico - sociale','Asse scientifico - tecnologico'];
     // show current year planes date
     $scope.currentYear = new Date();

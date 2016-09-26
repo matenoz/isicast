@@ -4,7 +4,7 @@
 angular.module('replacements').controller('ReplacementsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Replacements',
   function ($scope, $stateParams, $location, Authentication, Replacements) {
     $scope.authentication = Authentication;
-    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT','II MAT','III MAT','IV MAT','V MAT','II periodo SSS','III periodo SSS'];  
+    $scope.classarray = ['I AFM','II AFM','III AFM','III AFM A','III AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT', 'I ART. MAT/SC','II MAT','III MAT impianti','IV MAT impianti','V MAT impianti','III MAT mezzi trasp.','IV MAT mezzi trasp.','V MAT mezzi trasp.','II periodo SSS','III periodo SSS'];  
     $scope.hoursarray = ['08 - 09','09 - 10','10 - 11','11 - 12','12 - 13','13 - 14','14 - 15','15 - 16'];
     $scope.dailyreps = [];
     $scope.addRep = function(){
