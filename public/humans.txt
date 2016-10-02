@@ -3,11 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    <name> Massimo Esposito <role> referente tecnologie <twitter> @ma221m0
 
 # THANKS
 
-    <name>
+    <name> Massimo Esposito
 
 # TECHNOLOGY COLOPHON
 

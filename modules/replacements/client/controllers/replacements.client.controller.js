@@ -106,7 +106,7 @@ angular.module('replacements').controller('ReplacementsController', ['$scope', '
       $scope.replacements = Replacements.r.query();
     };
 
-    // Find a list of Teachers
+    // Find a list of Teachers 
     $scope.findt = function(){
       $scope.teachers = Replacements.t.query();
     };  

@@ -90,6 +90,7 @@ exports.list = function (req, res) {
   });
 };
 
+
 /**
  * Teacher middleware
  */

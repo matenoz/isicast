@@ -85,11 +85,10 @@
 	    </ul>
 	  </li>
 	</ul>
-	<!-- <form class="navbar-form navbar-left" role="search"> -->
+	<!-- <form class="navbar-form navbar-left"> -->
 	<!--   <div class="form-group"> -->
-	<!--     <input type="text" search-field="callRestService()" class="form-control search-form" placeholder="Search"> -->
+	<!--      <button ng-if="check('admin', user.roles)" type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button> -->
 	<!--   </div> -->
-	<!--   <button type="submit" class="btn btn-default search-btn"><span class="glyphicon glyphicon-search"></span></button> -->
 	<!-- </form> -->
       </nav>
     </div>
@@ -98,6 +97,17 @@
   <div class="row">
     <!-- content start -->
     <div class="col-md-6 col-md-push-3">
+      <!-- <div style="height: 305px"> -->
+      <!-- 	<carousel active="active" interval="myInterval" no-wrap="noWrapSlides"> -->
+      <!-- 	  <slide ng-repeat="slide in slides track by slide.id" index="slide.id"> -->
+      <!-- 	    <img ng-src="{{slide.image}}" style="margin:auto;"> -->
+      <!-- 	    <div class="carousel-caption"> -->
+      <!-- 	      <h4>Slide {{slide.id}}</h4> -->
+      <!-- 	      <p>{{slide.text}}</p> -->
+      <!-- 	    </div> -->
+      <!-- 	  </slide> -->
+      <!-- 	</carousel> -->
+      <!-- </div> -->
       <tabset justified="true">
 	<tab heading="News" ng-controller="FeaturesController" ng-init="find()"><home-features></home-features></tab>
 	<tab heading="Impegni" ng-controller="DeadlinesController" ng-init="find()"><home-deadlines></home-deadlines></tab>
@@ -277,7 +287,7 @@
 	<div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><a ng-href="#">Chi siamo</a></li>
-            <li><a ng-href="#">Dove siamo</a></li>
+            <li><a href="https://goo.gl/maps/q7t4nkYqLJN2">Dove siamo</a></li>
           </ul>
 	</div>
 	<div class="col-md-3">
@@ -295,7 +305,7 @@
 	<div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><a ng-href="#">Guida all navigazione</a></li>
-            <li><a ng-href="#">social@isicast.net</a></li>
+            <li><a href="https://plus.google.com/u/0/100256108509268118556">social@isicast.net</a></li>
           </ul>
 	</div>
       </div>
