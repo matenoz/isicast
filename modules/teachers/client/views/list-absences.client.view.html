@@ -16,7 +16,9 @@
   <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
   </div>
   <div class="col-md-8">
-    <table class="table table-bordered">
+    <button type="button" class="btn btn-xs btn-flat" ng-click="find_ab()"> Riepilogo assenze docenti</button>
+    <hr/>
+    <table ng-if="t_absence.length > 0" class="table table-bordered">
       <thead>
 	<tr>
 	<th>Data</th>
@@ -25,10 +27,10 @@
 	<th>Motivo</th>
 	</tr>
       </thead>
-      <tbody ng-repeat="teacher in teachers">
-	 <tr ng-repeat="absence in teacher.absences |orderBy:'-date'">
+      <tbody>
+	 <tr ng-repeat="absence in t_absence |orderBy:'-date'">
 	  <td ng-bind="absence.date | date"></td>
-	  <td ng-bind="teacher.name"></td>  
+	  <td ng-bind="absence.name"></td>  
 	  <td ng-bind="absence.type"></td>
 	  <td ng-bind="absence.cause"></td>
 	</tr>
