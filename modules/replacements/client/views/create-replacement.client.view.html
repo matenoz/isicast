@@ -1,32 +1,32 @@
 <section ng-controller="ReplacementsController" ng-init="findt()">
   <div class="page-header">
-    <h3>Sostituzioni del: <span ng-bind="rep_date| date"></span></h3>
+    <h3>Sostituzioni del: <span ng-bind="rep_date| date:'fullDate'"></span></h3>
   </div>
   <div class="col-xs-12 col-md-8">
     <form name="replacementForm" class="form-horizontal" ng-submit="create(replacementForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="label label-default"for="rep_date">Sostituzione del:</label>
-          <input name="rep_date" type="date" ng-model="rep_date" id="rep_date" class="form-control"  required>
+          <input name="rep_date" type="date" ng-model="rep_date" id="rep_date" class="form-control" ng-change="checkabsence(rep_date)" required>
           <div ng-messages="replacementForm.rep_date.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Replacement date is required.</p>
           </div>
+	  </div>
+	<div class="form-group">
+          <label class="label label-default"for="rep.absent">Seleziona docente da sostitutire:</label>
+          <select name="rep.absent" ng-options="hour.name as hour.name for hour in teachers_absent" ng-model="rep.absent" id="rep.absent" class="form-control" ng-change="checkhours(rep.absent,rep_date)"><option value="">--</option></select>
         </div>
         <div class="form-group">
           <label class="label label-default"for="rep.hour">Seleziona ora:</label>
-          <select name="rep.hour" ng-options="hour as hour for hour in hoursarray" ng-model="rep.hour" id="rep.hour" class="form-control"><option value="">--</option></select>
+          <select name="rep.hour" ng-options="hour.ora as hour.ora for hour in ab_hours" ng-model="rep.hour" id="rep.hour" class="form-control" ng-change="substitute(rep.hour,rep_date)"><option value="">--</option></select>
         </div>
 	<div class="form-group">
           <label class="label label-default"for="rep.classe">Seleziona classe:</label>
-          <select name="rep.classe" ng-options="hour as hour for hour in classarray" ng-model="rep.classe" id="rep.classe" class="form-control"><option value="">--</option></select>
-        </div>
-	<div class="form-group">
-          <label class="label label-default"for="rep.absent">Seleziona docente da sostitutire:</label>
-          <select name="rep.absent" ng-options="hour.name as hour.name for hour in teachers" ng-model="rep.absent" id="rep.absent" class="form-control"><option value="">--</option></select>
+          <select name="rep.classe" ng-options="hour.classe as hour.classe for hour in ab_hours" ng-model="rep.classe" id="rep.classe" class="form-control"><option value="">--</option></select>
         </div>
 	<div class="form-group">
           <label class="label label-default"for="rep.substitute">Seleziona docente sostituto:</label>
-          <select name="rep.substitute" ng-options="hour.name as hour.name for hour in teachers" ng-model="rep.substitute" id="rep.substitute" class="form-control"><option value="">--</option></select>
+          <select name="rep.substitute" ng-options="hour.name as hour.name for hour in sub_teachers" ng-model="rep.substitute" id="rep.substitute" class="form-control"><option value="">--</option></select>
         </div>
 	<div class="form-group">
           <input ng-click="addRep()" value="inserisci" class="btn btn-default">
@@ -58,4 +58,10 @@
       </fieldset>
     </form>
   </div>
+  <div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
+    <div ng-repeat="alert in alerts">
+      <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+      </alert>
+    </div>
+   <div>
 </section>

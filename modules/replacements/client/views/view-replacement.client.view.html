@@ -1,6 +1,6 @@
 <section ng-controller="ReplacementsController" ng-init="findOne()">
   <div class="page-header">
-    <h3>Sostituzioni del: {{replacement.rep_date | date:medium}}</h3>
+    <h3>Sostituzioni del: {{replacement.rep_date | date:'fullDate'}}</h3>
   </div>
   <div>
     	 <table class="table table-striped table-hover" ng-if="replacement.daily_reps.length > 0">
@@ -11,7 +11,7 @@
 	    <th>Sostituto</th>
 	    <th class="visible-print-block">Firma</th>
 	  </thead>
-	  <tbody ng-repeat="rep in replacement.daily_reps">
+	  <tbody ng-repeat="rep in replacement.daily_reps|orderBy:'hour'">
 	    <td ng-bind="rep.hour"></td>
 	    <td ng-bind="rep.classe"></td>
 	    <td ng-bind="rep.absent"></td>
