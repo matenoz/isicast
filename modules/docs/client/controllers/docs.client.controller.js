@@ -44,7 +44,8 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
   $scope.removeFile = function(index){
     $scope.files.splice(index, 1);
   };  
-    // Create new Doc
+
+  // Create new Doc
   $scope.create = function (isValid) {
     $scope.error = null;
 

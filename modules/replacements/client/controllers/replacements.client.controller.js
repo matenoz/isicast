@@ -6,11 +6,16 @@ angular.module('replacements').controller('ReplacementsController', ['$filter','
   $scope.dailyreps = [];
   $scope.addRep = function(){
     $scope.dailyreps.push({ hour:$scope.rep.hour, classe:$scope.rep.classe, absent:$scope.rep.absent, substitute:$scope.rep.substitute });  
-    $scope.alerts.push({ msg:'Sostituzione inserita correttamente. Clicca Update per aggiornare o inserisci altra sostituzione' });	
+    $scope.alerts.push({ msg:'Sostituzione inserita correttamente. Clicca Invia o Update per aggiornare, oppure inserisci altra sostituzione' });	
   };
   $scope.removeRep = function(index){
     $scope.dailyreps.splice(index, 1);
+    $scope.alerts.push({ msg:'Sostituzione rimossa correttamente. Cliccare invia per salvare o continua ad aggiornare le sostituzioni.' });  
   };
+  $scope.removeUpdate = function(index){
+    $scope.replacement.daily_reps.splice(index, 1);
+    $scope.alerts.push({ msg:'Sostituzione rimossa correttamente. Cliccare update oppure continua ad aggiornare le sostituzioni.' });  
+  };   
       
   $scope.alerts = [];
   $scope.closeAlert = function(index) {

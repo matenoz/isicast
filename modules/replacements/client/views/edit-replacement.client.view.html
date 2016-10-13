@@ -30,22 +30,22 @@
           <input ng-click="addRep()" value="inserisci" class="btn btn-default">
         </div>
 	<div class="form-group">
-	   <table class="table table-bordered" ng-if="replacement.daily_reps.length > 0">
-	  <thead>
-	    <th>Ora</th>
-	    <th>Classe</th>
-	    <th>Assente</th>
-	    <th>Sostituto</th>
+	  <table class="table table-bordered" ng-if="replacement.daily_reps.length > 0">
+	    <thead>
+	      <th>Ora</th>
+	      <th>Classe</th>
+	      <th>Assente</th>
+	      <th>Sostituto</th>
 	    <th>Delete</th>
-	  </thead>
-	  <tbody ng-repeat="rep in replacement.daily_reps">
-	    <td ng-bind="rep.hour"></td>
-	    <td ng-bind="rep.classe"></td>
-	    <td ng-bind="rep.absent"></td>
-	    <td ng-bind="rep.substitute"></td>
-	    <td><input type="checkbox" ng-model="replacement.daily_reps[$index].isActive" ng-change="change($index)"> uncheck to delete</td>
+	    </thead>
+	    <tbody ng-repeat="rep in replacement.daily_reps">
+	      <td ng-bind="rep.hour"></td>
+	      <td ng-bind="rep.classe"></td>
+	      <td ng-bind="rep.absent"></td>
+	      <td ng-bind="rep.substitute"></td>
+	      <td><input type="checkbox" ng-model="replacement.daily_reps[$index].isActive" ng-change="change($index);removeUpdate($index)"> uncheck to delete</td>
 	  </tbody>
-	</table>
+	  </table>
 	</div>
         <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
