@@ -23,7 +23,7 @@
 	<form class="horizontal-form inline-form">
 	  <div class="form-group">
 	    <label class="label label-default"for="classe e indirizzo">Classe e Indirizzo</label>
-            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o.nome_classe as o.nome_classe for o in _classes" ><option value="">--</option></select>
+            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o.nome_classe as o.nome_classe for o in _classes|orderBy:'nome_classe'" ><option value="">--</option></select>
           </div>
 	  <div class="form-group">
             <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>

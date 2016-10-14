@@ -9,8 +9,8 @@
   <p class="lead" ng-bind="teacher.coordinator"></p>
   </div>
   <h4><strong>Classi</strong></h4>
-  <ul class="lead" ng-repeat="class in teacher.classes">
-    <li>{{class.name}} {{class.indirizzo}}</li>
+  <ul class="lead" ng-repeat="class in teacher.classes|orderBy:'indirizzo'|orderBy:'name'">
+    <li>{{class.name}} - {{class.indirizzo}}</li>
   </ul>
   <section ng-controller="TimetablesController">
     <a ui-sref="timetables.view({teacherId: teacher._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>

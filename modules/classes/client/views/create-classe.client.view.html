@@ -8,7 +8,6 @@
       <fieldset>
 	<div class="form-group" show-errors>
           <label class="label label-default"for="nome_classe">Nome Classe</label>
-          <!-- <select name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" ng-options="o as o for o in classarray" required><option value="">--</option></select> -->
 	  <input name name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" required>
           <div ng-messages="classeForm.nome_classe.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Classe nome_classe is required.</p>
@@ -25,7 +24,7 @@
 	<form class="horizontal-form">
 	  <div class="form-group">
 	    <label class="label label-default"for="docente e materia">Docente e Materia</label>
-            <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ng-change="choosesubject(teacher.name)"><option value="">--</option></select>
+            <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_ |orderBy:'name'" ng-change="choosesubject(teacher.name)"><option value="">--</option></select>
 	  </div>
 	  <div class="form-group">
 	    <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="subject as subject for subject in subjects"><option value="">--</option></select>
