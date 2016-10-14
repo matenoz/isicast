@@ -4,8 +4,10 @@
   </div>
   <h4><strong>Disciplina</strong></h4>
   <p class="lead" ng-bind="teacher.materia"></p>
-  <h4><strong>Coordinamento classe:</strong></h4>
+  <div ng-switch="teacher.coordinator == ''">
+  <h4 ng-switch-when="false"><strong>Coordinamento classe:</strong></h4>
   <p class="lead" ng-bind="teacher.coordinator"></p>
+  </div>
   <h4><strong>Classi</strong></h4>
   <ul class="lead" ng-repeat="class in teacher.classes">
     <li>{{class.name}} {{class.indirizzo}}</li>

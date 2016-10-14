@@ -11,6 +11,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       }
     };
     // disposizioni
+    $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'ric' },{ name:'funz' },{ name:'alt' }];  
     $scope.setdisp = false;
     $scope.changeList = function(list){
       if($scope.setdisp === false){
@@ -18,7 +19,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       }
       return $scope.dis;
     };
-    $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'ric' },{ name:'funz' },{ name:'alt' }];  
+      
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;

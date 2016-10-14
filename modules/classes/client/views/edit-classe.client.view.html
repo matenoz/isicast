@@ -22,45 +22,46 @@
         </div>
 	<div class="form-group">
 	  <label class="label label-default"for="Docente e Materia">Docente e Materia</label>
-          <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ><option value="">--</option></select>
+          <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ng-change="choosesubject(teacher.name)"><option value="">--</option></select>
         </div>
 	<div class="form-group">
-          <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
-</div>
-<div class="form-group">
-  <input ng-click="addTeacher()" value="associa alla classe" class="btn btn-default">
-</div>
-<div class="form-group">
-  <table class="table table-bordered" ng-if="classe.teachers.length > 0">
-    <thead>
-      <tr>
-	<th>Docente</th>
-	<th>Materia</th>
-	<th>Dissocia</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="teacher in classe.teachers">
-	<td id="teacher" ng-bind="teacher.name"></td>
-	<td id="teacher" ng-bind="teacher.materia"></td>
-	<td><input type="checkbox" ng-model="classe.teachers[$index].isActive" ng-change="change($index)">deseleziona per rimuovere</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="form-group">
-  <input type="submit" value="Update" class="btn btn-default">
-</div>
-<div ng-show="error" class="text-danger">
-  <strong ng-bind="error"></strong>
-</div>
-</fieldset>
-</form>
-</div>
-<div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
-  <div ng-repeat="alert in alerts">
-    <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
-    </alert>
+	  <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="subject as subject for subject in subjects"><option value="">--</option></select>
+
+	</div>
+	<div class="form-group">
+	  <input ng-click="addTeacher()" value="associa alla classe" class="btn btn-default">
+	</div>
+	<div class="form-group">
+	  <table class="table table-bordered" ng-if="classe.teachers.length > 0">
+            <thead>
+              <tr>
+		<th>Docente</th>
+		<th>Materia</th>
+		<th>Dissocia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="teacher in classe.teachers">
+		<td id="teacher" ng-bind="teacher.name"></td>
+		<td id="teacher" ng-bind="teacher.materia"></td>
+		<td><input type="checkbox" ng-model="classe.teachers[$index].isActive" ng-change="change($index)">deseleziona per rimuovere</td>
+              </tr>
+	    </tbody>
+	  </table>
+	</div>
+	<div class="form-group">
+	  <input type="submit" value="Update" class="btn btn-default">
+	</div>
+	<div ng-show="error" class="text-danger">
+	  <strong ng-bind="error"></strong>
+	</div>
+      </fieldset>
+    </form>
   </div>
-<div>
+  <div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
+    <div ng-repeat="alert in alerts">
+      <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+      </alert>
+    </div>
+    <div>
 </section>

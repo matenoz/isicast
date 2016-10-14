@@ -13,9 +13,6 @@ angular.module('replacements').factory('Replacements', ['$resource',
       }),
       t:  $resource('api/teachers/:teacherId', {
         teacherId: '@_id',
-/*	date:'',
-	hour:'',      
-	classe:''*/
       })
     };
   }

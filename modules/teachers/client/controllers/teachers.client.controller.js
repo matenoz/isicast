@@ -10,6 +10,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         return true;
       }
     };
+    $scope.subject =[];  
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;
@@ -18,8 +19,8 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
     $scope.pageChanged = function() {
       $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
     };
-    // insert and remove class  
-    $scope.classarray = ['I AFM','II AFM','III AFM','III AFM A','III AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT', 'I ART. MAT/SC','II MAT','III MAT impianti','IV MAT impianti','V MAT impianti','III MAT mezzi trasp.','IV MAT mezzi trasp.','V MAT mezzi trasp.','II periodo SSS','III periodo SSS'];
+    // // insert and remove class  
+    // $scope.classarray = ['I AFM','II AFM','III AFM','III AFM A','III AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT', 'I ART. MAT/SC','II MAT','III MAT impianti','IV MAT impianti','V MAT impianti','III MAT mezzi trasp.','IV MAT mezzi trasp.','V MAT mezzi trasp.','II periodo SSS','III periodo SSS'];
     $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari'];
     $scope._class = [];
     $scope.addClass = function(){
@@ -45,9 +46,9 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
 
       // Create new Teacher object
-      var teacher = new Teachers({
+      var teacher = new Teachers.t({
         name: this.name,
-        materia: this.materia,
+        materia: this.materia,  
         coordinator:this.coordinator,
         classes:[],
         timetable:[]  
@@ -66,7 +67,8 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
 
         // Clear form fields
         $scope.name = '';
-        $scope.materia = '';
+          // $scope.materia = '';
+        $scope.materia = [];  
         $scope.coordinator = '';
         $scope.classes = [];
         $scope.timetable = [];
@@ -105,10 +107,13 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
       }
 
       var teacher = $scope.teacher;
-
       angular.forEach($scope._class, function(classe,index){
         teacher.classes.push({ name:classe.name,indirizzo:classe.indirizzo });
       });
+      // angular.forEach($scope.materia, function(item, index){
+      //   teacher.materia.push(item[index]);
+      // });
+	
       angular.forEach(teacher.classes,function(classe,index){
         if(classe.isActive === false){
           teacher.classes.splice(index, 1);
@@ -125,12 +130,14 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
      
     // Find a list of Teachers
     $scope.find = function () {
-      $scope.teachers = Teachers.query();
+      $scope.teachers = Teachers.t.query();
     };
-
+    $scope.findc = function () {
+      $scope._classes = Teachers.c.query();
+    };
     // Find existing Teacher
     $scope.findOne = function () {
-      $scope.teacher = Teachers.get({
+      $scope.teacher = Teachers.t.get({
         teacherId: $stateParams.teacherId
       });
     };

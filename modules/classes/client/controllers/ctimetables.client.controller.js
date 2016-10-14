@@ -13,6 +13,15 @@ angular.module('classes').controller('CtimetablesController', ['$scope', '$state
         return true;
       }
     };
+    // set substitution
+    $scope.sost = [{ materia:'', name:'sostituzione' },{ materia:'', name:'uscita anticipata' }]; 
+    $scope.setsost = false;
+    $scope.changeList = function(list){
+      if($scope.setsost === false){
+        return list ;
+      }
+      return $scope.sost;
+    };  
     // Update existing Classe
     $scope.update = function (isValid) {
       $scope.error = null;

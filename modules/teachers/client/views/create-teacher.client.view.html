@@ -1,4 +1,4 @@
-<section ng-controller="TeachersController">
+<section ng-controller="TeachersController" ng-init="findc()">
   <div class="page-header">
     <h3>Nuovo docente</h3>
   </div>
@@ -14,16 +14,16 @@
         </div>
         <div class="form-group">
           <label class="label label-default"for="materia">Materia</label>
-          <input name="materia" ng-model="materia" id="materia" class="form-control"  placeholder="Materia"></input>
+         <input name="materia" ng-model="materia" id="materia" class="form-control"  placeholder="Materia"> 
         </div>
 	<div class="form-group">
           <label class="label label-default"for="coordinator">Coordinamento</label>
-          <input name="coordinator" ng-model="coordinator" id="coordinator" class="form-control"  placeholder="Coordinator"></input>
+          <input name="coordinator" ng-model="coordinator" id="coordinator" class="form-control"  placeholder="Coordinator">
         </div>
 	<form class="horizontal-form inline-form">
 	  <div class="form-group">
 	    <label class="label label-default"for="classe e indirizzo">Classe e Indirizzo</label>
-            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o as o for o in classarray" ><option value="">--</option></select>
+            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o.nome_classe as o.nome_classe for o in _classes" ><option value="">--</option></select>
           </div>
 	  <div class="form-group">
             <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>

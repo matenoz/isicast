@@ -8,7 +8,8 @@
       <fieldset>
 	<div class="form-group" show-errors>
           <label class="label label-default"for="nome_classe">Nome Classe</label>
-          <select name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" ng-options="o as o for o in classarray" required><option value="">--</option></select>
+          <!-- <select name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" ng-options="o as o for o in classarray" required><option value="">--</option></select> -->
+	  <input name name="nome_classe" type="text" ng-model="nome_classe" id="nome_classe" class="form-control" required>
           <div ng-messages="classeForm.nome_classe.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Classe nome_classe is required.</p>
           </div>
@@ -24,38 +25,38 @@
 	<form class="horizontal-form">
 	  <div class="form-group">
 	    <label class="label label-default"for="docente e materia">Docente e Materia</label>
-            <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ><option value="">--</option></select>
+            <select name="teacher.name" id="teacher.name"  ng-model="teacher.name" class="form-control" ng-options="teacher.name as teacher.name for teacher in teachers_" ng-change="choosesubject(teacher.name)"><option value="">--</option></select>
 	  </div>
 	  <div class="form-group">
-	    <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="teacher.materia as teacher.materia for teacher in teachers_"><option value="">--</otion></select>
-</div> 
-<div class="form-group">
-  <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
-</div>
-</form>
-<table class="table table-bordered" ng-if="_teachers.length > 0">
-  <thead>
-    <tr>
-      <th>Docente</th>
-      <th>Materia</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="teacher in _teachers">
-      <td ng-bind="teacher.name"></td>
-      <td ng-bind="teacher.materia"></td>
-      <td><span ng-click="removeTeacher($index)" class="glyphicon glyphicon-remove-sign" ></span></td>
-    </tr>
-  </tbody>
-</table>
-<div class="form-group">
-  <input type="submit" class="btn btn-default">
-</div>
-<div ng-show="error" class="text-danger">
-  <strong ng-bind="error"></strong>
-</div>
-</fieldset>
-</form>
-</div>
+	    <select name="teacher.materia" id="teacher.materia"  ng-model="teacher.materia" class="form-control" ng-options="subject as subject for subject in subjects"><option value="">--</option></select>
+	  </div> 
+	  <div class="form-group">
+	    <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
+	  </div>
+	</form>
+	<table class="table table-bordered" ng-if="_teachers.length > 0">
+	  <thead>
+	    <tr>
+	      <th>Docente</th>
+	      <th>Materia</th>
+	      <th>Delete</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="teacher in _teachers">
+	      <td ng-bind="teacher.name"></td>
+	      <td ng-bind="teacher.materia"></td>
+	      <td><span ng-click="removeTeacher($index)" class="glyphicon glyphicon-remove-sign" ></span></td>
+	    </tr>
+	  </tbody>
+	</table>
+	<div class="form-group">
+	  <input type="submit" class="btn btn-default">
+	</div>
+	<div ng-show="error" class="text-danger">
+	  <strong ng-bind="error"></strong>
+	</div>
+      </fieldset>
+    </form>
+  </div>
 </section>
