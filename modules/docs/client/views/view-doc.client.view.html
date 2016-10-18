@@ -20,7 +20,10 @@
       <a ng-repeat="f in doc.main_doc" ng-href="{{f.url}}"><img ng-src="{{f.iconUrl}}"> {{f.name}}</a>
       <br>
       <h4 class="text-muted" ng-if="doc.attachment.length > 0">Allegati</h4>
-      <a ng-href="{{file.url}}" ng-repeat="file in doc.attachment"><img ng-src="{{file.iconUrl}}"> {{file.name}}</a>
+      <a ng-href="{{file.url}}" ng-repeat="file in doc.attachment">
+	<h6>
+	  <img ng-src="{{file.iconUrl}}"> {{file.name}}</a>
+      </h6>
     </div>
   </div>
   <hr/>
