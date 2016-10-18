@@ -21,7 +21,7 @@
 	</table>
   </div>
   <hr>
-  <div class="pull-right hidden-print" ng-if="authentication.user._id == replacement.user._id">
+  <div class="pull-right hidden-print" ng-if="check('sost', authentication.user.roles) || check('admin', authentication.user.roles)">
     <a class="btn btn-primary" ui-sref="replacements.edit({replacementId: replacement._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>

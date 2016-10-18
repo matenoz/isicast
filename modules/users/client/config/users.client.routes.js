@@ -47,7 +47,7 @@ angular.module('users').config(['$stateProvider',
         }
       })
       .state('settings.docris', {
-        url: '/userdocs',
+        url: '/userdocs/create',
         templateUrl: 'modules/userdocs/client/views/create-userdoc.client.view.html',
         data: {
           roles: ['god', 'admin']
