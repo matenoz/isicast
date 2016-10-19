@@ -19,9 +19,10 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
       $scope.v = 'else';
     } 
   };  
-  // pagination
+  // // pagination
   $scope.currentPage = 1;
   $scope.pageSize = 10;
+  $scope.maxSize = 5;
   $scope.offset = 0;
   // Page changed handle
   $scope.pageChanged = function() {

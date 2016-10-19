@@ -50,7 +50,8 @@
 	...leggi
       </a>
     </div>
-    <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
+    <pagination total-items="docs.length" boundary-link="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="docs.length > pageSize"></pagination>
+    <!-- <pagination total-items="docs.length"  ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination> -->
   </div>
   <div class="alert alert-warning text-center" ng-if="docs.$resolved && !docs.length">
     No docs yet, why don't you <a ui-sref="docs.create">create one</a>

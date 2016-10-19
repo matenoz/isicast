@@ -115,7 +115,8 @@
 	<tab heading="News" ng-controller="FeaturesController" ng-init="find()"><home-features></home-features></tab>
 	<tab heading="Impegni" ng-controller="DeadlinesController" ng-init="find()"><home-deadlines></home-deadlines></tab>
 	<tab heading="Documenti" ng-controller="DocsController" ng-init="find()"><home-docs></home-docs>
-	  <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination>
+	  <!-- <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination> -->
+	      <pagination total-items="docs.length" boundary-link="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="docs.length > pageSize"></pagination>
 	</tab>
       </tabset>
     </div> <!-- content end -->
