@@ -4,7 +4,7 @@
 angular.module('features').controller('FeaturesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Features',
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
-     // pagination
+    // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;
     $scope.offset = 0;

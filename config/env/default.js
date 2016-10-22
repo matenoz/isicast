@@ -3,7 +3,7 @@
 module.exports = {
   app: {
     title: 'Isicast',
-    description: 'IISS Caduti della Direttissima, Istruzione Scientifica Tecnica Professionale, Via toscana 21, Castiglione dei Pepoli (BO) Codice mnisteriale BOIS009009',
+    description: 'IISS Caduti della Direttissima, Istruzione Scientifica Tecnica Professionale, Corso Serale Servizi Socio Sanitari, Via toscana 21, Castiglione dei Pepoli (BO) Codice ministeriale BOIS009009',
     keywords: 'Isicast, Caduti della Direttissima, AFM, Liceo scientifico, MAT, Castiglione, informatica, PON',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },

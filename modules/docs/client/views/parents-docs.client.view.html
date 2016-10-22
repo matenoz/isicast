@@ -161,7 +161,8 @@
 	      <div class="col-md-8">
 		<h3 align="center">Elenco documenti famiglie e alunni</h3>
 		<div class="panel-group">
-		  <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()">
+		  <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})">
+		     <!-- <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()"> -->
 		    <span ng-repeat="tag in doc.tags" ng-show="tag.text=='famiglia'">
 		      <div class="panel panel-default">
 			<div class="panel-body">
@@ -178,8 +179,7 @@
 		    </span>
 		  </a>
 		</div>
-		    <pagination total-items="docs.length" boundary-link="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="docs.length > pageSize"></pagination>
-		<!-- <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination> -->
+		    <pagination total-items="docs.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="docs.length > pageSize"></pagination>
 	      </div>
 	    </div><!-- end row-->
 	    <div class="alert alert-warning text-center" ng-if="docs.$resolved && !docs.length">

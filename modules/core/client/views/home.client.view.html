@@ -3,7 +3,7 @@
     <br>
     <div class="col-md-12 ">
       <div class="well well-lg bann">
-	<img ng-src="modules/core/client/img/brand/rep2.png" class="img-circle" alt="Responsive image" align="left">
+	<img ng-src="modules/core/client/img/brand/rep2.png" width="auto" height="auto" class="img-circle" alt="Responsive image" align="left">
         <h1 class="text-center" align="middle">Istituto Statale d'Istruzione Superiore    </h1>
         <h1 class="text-center" align="middle">Caduti della Direttissima   </h1>
 	<h4 class="text-center" align="middle">Liceo Scientifico - Amministrazione Finanza e Marketing - Manutenzione e Assistenza Tecnica - Servizi Commerciali </h4>
@@ -20,7 +20,7 @@
 	  <span class="icon-bar"></span>
 	</button>
 	<a class="navbar-brand" ng-href="#">
-          <img alt="Brand" ng-src="modules/core/client/img/brand/brand.png">
+          <img alt="Brand"width="auto" height="auto" ng-src="modules/core/client/img/brand/brand.png">
 	</a>
       </div>
       <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
@@ -88,11 +88,6 @@
 	    </ul>
 	  </li>
 	</ul>
-	<!-- <form class="navbar-form navbar-left"> -->
-	<!--   <div class="form-group"> -->
-	<!--      <button ng-if="check('admin', user.roles)" type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button> -->
-	<!--   </div> -->
-	<!-- </form> -->
       </nav>
     </div>
   </div>
@@ -100,23 +95,11 @@
   <div class="row">
     <!-- content start -->
     <div class="col-md-6 col-md-push-3">
-      <!-- <div style="height: 305px"> -->
-      <!-- 	<carousel active="active" interval="myInterval" no-wrap="noWrapSlides"> -->
-      <!-- 	  <slide ng-repeat="slide in slides track by slide.id" index="slide.id"> -->
-      <!-- 	    <img ng-src="{{slide.image}}" style="margin:auto;"> -->
-      <!-- 	    <div class="carousel-caption"> -->
-      <!-- 	      <h4>Slide {{slide.id}}</h4> -->
-      <!-- 	      <p>{{slide.text}}</p> -->
-      <!-- 	    </div> -->
-      <!-- 	  </slide> -->
-      <!-- 	</carousel> -->
-      <!-- </div> -->
-      <tabset justified="true">
+     <tabset justified="true">
 	<tab heading="News" ng-controller="FeaturesController" ng-init="find()"><home-features></home-features></tab>
 	<tab heading="Impegni" ng-controller="DeadlinesController" ng-init="find()"><home-deadlines></home-deadlines></tab>
 	<tab heading="Documenti" ng-controller="DocsController" ng-init="find()"><home-docs></home-docs>
-	  <!-- <pagination total-items="docs.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="docs.length > pageSize"></pagination> -->
-	      <pagination total-items="docs.length" boundary-link="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="docs.length > pageSize"></pagination>
+	  <pagination total-items="docs.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="docs.length > pageSize"></pagination>
 	</tab>
       </tabset>
     </div> <!-- content end -->
@@ -225,19 +208,19 @@
 	<div class="panel panel-default">
 	  <div class="panel-body">
 	    <a ng-href="https://docs.google.com/document/d/1E0qbMer70OltbTguC0eZx43lcZ4sPecNlnsuvYMCdtk/edit?usp=sharing" class="thumbnail">
-	      <img ng-src="modules/core/client/img/brand/logo_pon.png" class="img-thumbnail" align="center">
+	      <img ng-src="modules/core/client/img/brand/logo_pon.png" alt="pon" width="auto" height="auto" class="img-thumbnail" align="center">
 	    </a>
 	    <a ng-href="http://www.istruzione.it" class="thumbnail">
-	      <img ng-src="modules/core/client/img/brand/miur.png" class="img-thumbnail" align="center">
+	      <img ng-src="modules/core/client/img/brand/miur.png" alt="miur" width="auto" height="auto" class="img-thumbnail" align="center">
 	    </a>
 	    <a ng-href="http://www.istruzioneer.it" class="thumbnail">
-	      <img ng-src="modules/core/client/img/brand/ister.png" class="img-thumbnail" align="center">
+	      <img ng-src="modules/core/client/img/brand/ister.png" alt="usr" width="auto" height="auto" class="img-thumbnail" align="center">
 	    </a>
 	    <a ng-href="http://bo.istruzioneer.it" class="thumbnail">
-	      <img ng-src="modules/core/client/img/brand/csabo.png" class="img-thumbnail" align="center">
+	      <img ng-src="modules/core/client/img/brand/csabo.png" alt="csa" width="auto" height="auto" class="img-thumbnail" align="center">
 	    </a>
 	    <a ng-href="http://www.indire.it" class="thumbnail">
-	      <img ng-src="modules/core/client/img/brand/indire.jpg" class="img-thumbnail" align="center">
+	      <img ng-src="modules/core/client/img/brand/indire.jpg" alt="indire" width="auto" height="auto" class="img-thumbnail" align="center">
 	    </a>
 	  </div>
 	</div>
@@ -249,7 +232,7 @@
 	<div class="panel panel-default">
           <div class="panel-body">
             <a ng-href="" class="thumbnail">
-              <img src="modules/core/client/img/brand/logols.png" align="center">
+              <img ng-src="modules/core/client/img/brand/logols.png" width="auto" height="auto" alt="isicast" align="center">
             </a>
             <address class="center-block" style="font-size:large">
               <small>  Via Toscana, 21<br>
@@ -268,10 +251,10 @@
 	<div class="panel panel-default">
           <div class="panel-body">        
             <a ng-href="http://isicast.dyndns.org/wordpress" class="thumbnail">
-              <img  ng-src="modules/core/client/img/brand/Amministrazione.png" class="img-thumbnail" align="center"> 
+              <img  ng-src="modules/core/client/img/brand/Amministrazione.png" alt="at" width="auto" height="auto" class="img-thumbnail" align="center"> 
             </a>
             <a ng-href="http://isicast.dyndns.org/wordpress/?page_id=45" class="thumbnail"> 
-	      <img ng-src="modules/core/client/img/brand/albopretorio.jpg" align="center" class="img-thumbnail">
+	      <img ng-src="modules/core/client/img/brand/albopretorio.jpg" align="center" width="auto" height="auto" alt="albo" class="img-thumbnail">
             </a>
           </div>  
 	</div>
