@@ -7,8 +7,8 @@
       <fieldset>
 	<div class="form-group">
 	  <span ng-switch="teacher.isActive">
-	  <label class="label label-default"ng-switch-when="true" for="disable">Disabilita</label>
-          <label class="label label-default"ng-switch-when="false" for="disable">Abilita</label>
+	    <label class="label label-default"ng-switch-when="true" for="disable">Disabilita</label>
+            <label class="label label-default"ng-switch-when="false" for="disable">Abilita</label>
 	  </span>
 	  <input name="disable" type="checkbox" ng-model="teacher.isActive" ng-change="change()" >
 	</div>
@@ -27,34 +27,34 @@
           <label class="label label-default"for="coordinator">Coordinamento</label>
           <input name="coordinator" ng-model="teacher.coordinator" id="coordinator" class="form-control"  placeholder="Coordinator">
         </div>
-	  <div class="form-group">
-	    <label class="label label-default"for="classe e indirizzo">Classe e Indirizzo</label>
-            <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o.nome_classe as o.nome_classe for o in _classes|orderBy:'nome_classe'" ><option value="">--</option></select>
-          </div>
-	  <div class="form-group">
-            <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>
-</div>
-<div class="form-group">
-  <input ng-click="addClass()" value="Associa classe" class="btn btn-default">
-</div>
-<div class="form-group">
-  <table class="table table-bordered" ng-if="teacher.classes.length > 0">
-    <thead>
-      <tr>
-	<th>Classe</th>
-	<th>Indirizzo</th>
-	<th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="classe in teacher.classes">
-	<td id="classe" ng-bind="classe.name"></td>
-	<td id="classe" ng-bind="classe.indirizzo"></td>
-	<td><input type="checkbox" ng-model="teacher.classes[$index].isActive" ng-change="change($index)" > uncheck to delete</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+	<div class="form-group">
+	  <label class="label label-default"for="classe e indirizzo">Classe e Indirizzo</label>
+          <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o.nome_classe as o.nome_classe for o in _classes|orderBy:'nome_classe'" ><option value="">--</option></select>
+        </div>
+	<div class="form-group">
+          <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</option></select>
+	</div>
+	<div class="form-group">
+	  <input ng-click="addClass()" value="Associa classe" class="btn btn-default">
+	</div>
+	<div class="form-group">
+	  <table class="table table-bordered" ng-if="teacher.classes.length > 0">
+	    <thead>
+	      <tr>
+		<th>Classe</th>
+		<th>Indirizzo</th>
+		<th>Delete</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="classe in teacher.classes">
+		<td id="classe" ng-bind="classe.name"></td>
+		<td id="classe" ng-bind="classe.indirizzo"></td>
+		<td><input type="checkbox" ng-model="teacher.classes[$index].isActive" ng-change="change($index)" > uncheck to delete</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
 	<div class="form-group">
 	  <input type="submit" value="Update" class="btn btn-default">
 	</div>
@@ -64,10 +64,10 @@
       </fieldset>
     </form>
   </div>
-<div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
-  <div ng-repeat="alert in alerts">
-    <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
-    </alert>
-  </div>
-  <div>
+  <div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
+    <div ng-repeat="alert in alerts">
+      <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+      </alert>
+    </div>
+    <div>
 </section>

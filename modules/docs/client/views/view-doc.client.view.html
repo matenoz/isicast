@@ -21,9 +21,10 @@
       <br>
       <h4 class="text-muted" ng-if="doc.attachment.length > 0">Allegati</h4>
       <a ng-href="{{file.url}}" ng-repeat="file in doc.attachment">
-	<h6>
-	  <img ng-src="{{file.iconUrl}}"> {{file.name}}</a>
-      </h6>
+	<h6>  
+	  <img ng-src="{{file.iconUrl}}"> {{file.name}}
+	</h6>
+	</a>
     </div>
   </div>
   <hr/>
