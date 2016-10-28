@@ -4,6 +4,12 @@
 angular.module('features').controller('FeaturesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Features',
   function ($scope, $stateParams, $location, Authentication, Features) {
     $scope.authentication = Authentication;
+    // check if object exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;

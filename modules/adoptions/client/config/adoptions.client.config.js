@@ -21,7 +21,7 @@ angular.module('adoptions').run(['Menus',
     Menus.addSubMenuItem('topbar', 'adoptions', {
       title: 'Crea Adozioni',
       state: 'adoptions.create',
-      roles: ['org']
+      roles: ['org','admin']
     });
   }
 ]);

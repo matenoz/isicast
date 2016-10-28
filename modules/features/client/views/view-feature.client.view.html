@@ -17,7 +17,7 @@
     <a href="{{feature.link}}"><button  class="btn btn-link" >maggiori info...</button></a>
   </div>
   <br>
-  <div class="pull-right" ng-if="authentication.user._id == feature.user._id">
+  <div class="pull-right" ng-if="check('public', authentication.user.roles) || check('admin', authentication.user.roles)">
     <a class="btn btn-primary" ui-sref="features.edit({featureId: feature._id})">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
