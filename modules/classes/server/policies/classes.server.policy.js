@@ -21,11 +21,20 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/classes/:classeId',
       permissions: '*'
     }]
+  },{
+    roles: ['god'],
+    allows: [{
+      resources: '/api/classes',
+      permissions: '*'
+    }, {
+      resources: '/api/classes/:classeId',
+      permissions: '*'
+    }]
   }, {
     roles: ['user'],
     allows: [{
       resources: '/api/classes',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/classes/:classeId',
       permissions: ['get']

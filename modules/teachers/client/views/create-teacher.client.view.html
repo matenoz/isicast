@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
           <label class="label label-default"for="materia">Materia</label>
-         <input name="materia" ng-model="materia" id="materia" class="form-control"  placeholder="Materia"> 
+          <input name="materia" ng-model="materia" id="materia" class="form-control"  placeholder="Materia"> 
         </div>
 	<div class="form-group">
           <label class="label label-default"for="coordinator">Coordinamento</label>
@@ -26,35 +26,35 @@
             <select name="classe.name" id="classe.name"  ng-model="classe.name" class="form-control" ng-options="o.nome_classe as o.nome_classe for o in _classes|orderBy:'nome_classe'" ><option value="">--</option></select>
           </div>
 	  <div class="form-group">
-            <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</otion></select>
-</div>
-<div class="form-group">
-  <input ng-click="addClass()" value="add class" class="btn btn-default">
-</div>
-</form>
-<table class="table table-bordered" ng-if="_class.length > 0">
-  <thead>
-    <tr>
-      <th>Classe</th>
-      <th>Indirizzo</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="classe in _class">
-      <td ng-bind="classe.name"></td>
-      <td ng-bind="classe.indirizzo"></td>
-      <td><span ng-click="removeClass($index)" class="glyphicon glyphicon-remove-sign" ></span></td>
-    </tr>
-  </tbody>
-</table>
-<div class="form-group">
-  <input type="submit" class="btn btn-default">
-</div>
-<div ng-show="error" class="text-danger">
-  <strong ng-bind="error"></strong>
-</div>
-</fieldset>
-</form>
-</div>
+            <select name="classe.indirizzo" id="classe.indirizzo"  ng-model="classe.indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</option></select>
+	  </div>
+	  <div class="form-group">
+	    <input ng-click="addClass()" value="add class" class="btn btn-default">
+	  </div>
+	</form>
+	<table class="table table-bordered" ng-if="_class.length > 0">
+	  <thead>
+	    <tr>
+	      <th>Classe</th>
+	      <th>Indirizzo</th>
+	      <th>Delete</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="classe in _class">
+	      <td ng-bind="classe.name"></td>
+	      <td ng-bind="classe.indirizzo"></td>
+	      <td><span ng-click="removeClass($index)" class="glyphicon glyphicon-remove-sign" ></span></td>
+	    </tr>
+	  </tbody>
+	</table>
+	<div class="form-group">
+	  <input type="submit" class="btn btn-default">
+	</div>
+	<div ng-show="error" class="text-danger">
+	  <strong ng-bind="error"></strong>
+	</div>
+      </fieldset>
+    </form>
+  </div>
 </section>

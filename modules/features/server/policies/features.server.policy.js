@@ -21,11 +21,20 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/features/:featureId',
       permissions: '*'
     }]
+  },{
+    roles: ['public'],
+    allows: [{
+      resources: '/api/features',
+      permissions: '*'
+    }, {
+      resources: '/api/features/:featureId',
+      permissions: '*'
+    }]
   }, {
     roles: ['user'],
     allows: [{
       resources: '/api/features',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/features/:featureId',
       permissions: ['get']

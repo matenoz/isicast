@@ -8,7 +8,7 @@ angular.module('rules').run(['Menus',
       title: 'Offerta',
       state: 'rules',
       type: 'dropdown',
-      roles: ['god']
+      roles: ['org']
     });
 
     // Add the dropdown list item
@@ -21,7 +21,7 @@ angular.module('rules').run(['Menus',
     Menus.addSubMenuItem('topbar', 'rules', {
       title: 'Crea',
       state: 'rules.create',
-      roles: ['god']
+      roles: ['org']
     });
   }
 ]);

@@ -73,6 +73,11 @@ var ClasseSchema = new Schema({
       default:''
     }
   }],
+  isActive:{
+    type:Boolean,
+    trim:true,
+    default:true
+  },  
   user: {
     type: Schema.ObjectId,
     ref: 'User'

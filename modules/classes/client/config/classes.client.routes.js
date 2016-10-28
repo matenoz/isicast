@@ -14,10 +14,10 @@ angular.module('classes').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/classes/client/views/list-classes.client.view.html'
       })
-      .state('classes.admin.list', {
+      .state('classes.admin', {
         url: '/admin',
         templateUrl: 'modules/classes/client/views/admin-list-classes.client.view.html',
-	data: {
+        data: {
           roles: ['admin','god']
         }
       })

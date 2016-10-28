@@ -22,10 +22,19 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   }, {
+    roles: ['org'],
+    allows: [{
+      resources: '/api/adoptions',
+      permissions: '*'
+    }, {
+      resources: '/api/adoptions/:adoptionId',
+      permissions: '*'
+    }]
+  }, {
     roles: ['user'],
     allows: [{
       resources: '/api/adoptions',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/adoptions/:adoptionId',
       permissions: ['get']

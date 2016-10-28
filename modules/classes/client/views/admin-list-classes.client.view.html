@@ -1,6 +1,6 @@
 <section ng-controller="ClassesController" ng-init="find()">
   <div class="page-header">
-    <h3>Classi e indirizzi di studio</h3>
+    <h3>Classi e indirizzi di studio con classi fittizie</h3>
   </div>
   <div class="row">
     <h4 align="center">Corso diurno</h4>
@@ -8,7 +8,7 @@
     <div class="col-md-3">
       <label class="label label-default">Amm.ne Finanza & Marketing</label>
       <hr/>
-      <div ng-if="classe.isActive == true" class="list-group" ng-repeat="classe in classes|orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Amministrazione Finanza & Marketing'">
+      <div class="list-group" ng-repeat="classe in classes|orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Amministrazione Finanza & Marketing'">
 	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -17,7 +17,7 @@
     <div class="col-md-3">
       <label class="label label-default">Liceo Scientifico</label>
       <hr/>
-      <div ng-if="classe.isActive == true" class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Liceo Scientifico'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Liceo Scientifico'">
 	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -26,7 +26,7 @@
     <div class="col-md-3">
       <label class="label label-default">Manut.ne e Assitenza Tecnica</label>
       <hr/>
-      <div ng-if="classe.isActive == true" class="list-group"  ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Manutenzione e Assistenza Tecnica'">
+      <div class="list-group"  ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Manutenzione e Assistenza Tecnica'">
 	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -48,7 +48,7 @@
     <div class="col-md-3">
       <label class="label label-default">Servizi Socio Sanitari</label>
       <hr/>
-      <div ng-if="classe.isActive == true" class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Servizi Socio Sanitari'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Servizi Socio Sanitari'">
 	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>
@@ -57,7 +57,7 @@
     <div class="col-md-3">
       <label class="label label-default">Manut.ne e Assistenza Tecnica</label>
       <hr/>
-      <div ng-if="classe.isActive == true" class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'MAT Serale'">
+      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'MAT Serale'">
 	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>

@@ -21,11 +21,20 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/deadlines/:deadlineId',
       permissions: '*'
     }]
+  },{
+    roles: ['doc','ata'],
+    allows: [{
+      resources: '/api/deadlines',
+      permissions: '*'
+    }, {
+      resources: '/api/deadlines/:deadlineId',
+      permissions: '*'
+    }]
   }, {
     roles: ['user'],
     allows: [{
       resources: '/api/deadlines',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/deadlines/:deadlineId',
       permissions: ['get']

@@ -21,11 +21,20 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/planes/:planeId',
       permissions: '*'
     }]
+  },{
+    roles: ['doc'],
+    allows: [{
+      resources: '/api/planes',
+      permissions: '*'
+    }, {
+      resources: '/api/planes/:planeId',
+      permissions: '*'
+    }]
   }, {
     roles: ['user'],
     allows: [{
       resources: '/api/planes',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/planes/:planeId',
       permissions: ['get']

@@ -18,22 +18,22 @@
           <a ui-sref="settings.accounts" ng-show="check('admin', user.roles) || check('doc', user.roles)">Registro elettronico</a>
         </li>
 	 <li ui-sref-active="active">
-          <a ui-sref="settings.class" ng-show="check('admin', user.roles)">Crea classe</a>
+          <a ui-sref="settings.class" ng-show="check('god', user.roles) || check('admin', user.roles)">Crea classe</a>
         </li>
 	  <li ui-sref-active="active">
-          <a ui-sref="settings.teacher" ng-show="check('admin', user.roles)">Crea docente</a>
+          <a ui-sref="settings.teacher" ng-show="check('god', user.roles) || check('admin', user.roles)">Crea docente</a>
         </li>
 	<li ui-sref-active="active">
           <a ui-sref="settings.abs" ng-show="check('abs', user.roles) || check('admin', user.roles)">Inserisci assenze</a>
         </li>
 	<li ui-sref-active="active">
-          <a ui-sref="settings.rule" ng-show="check('god', user.roles) || check('admin', user.roles)">Documenti organizzazione</a>
+          <a ui-sref="settings.rule" ng-show="check('org', user.roles) || check('admin', user.roles)">Documenti organizzazione</a>
         </li>
 	<li ui-sref-active="active">
-          <a ui-sref="settings.userdoc" ng-show="check('god', user.roles) || check('doc', user.roles)">Documenti riservati</a>
+          <a ui-sref="settings.userdoc" ng-show="check('org', user.roles) || check('doc', user.roles)">Documenti riservati</a>
         </li>
 	<li ui-sref-active="active">
-          <a ui-sref="settings.docris" ng-show="check('god', user.roles) || check('admin', user.roles)">Inserisci doc. ris.</a>
+          <a ui-sref="settings.docris" ng-show="check('org', user.roles) || check('admin', user.roles)">Inserisci doc. ris.</a>
         </li>
 	<li ui-sref-active="active">
           <a ui-sref="settings.doc" ng-show="check('public', user.roles) || check('admin', user.roles)">Inserisci documento</a>

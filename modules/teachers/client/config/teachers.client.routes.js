@@ -14,6 +14,13 @@ angular.module('teachers').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/teachers/client/views/list-teachers.client.view.html'
       })
+      .state('teachers.admin', {
+        url: '/admin',
+        templateUrl: 'modules/teachers/client/views/admin-list-teachers.client.view.html',
+        data: {
+          roles: ['god', 'admin']
+        }
+      })
       .state('teachers.create', {
         url: '/create',
         templateUrl: 'modules/teachers/client/views/create-teacher.client.view.html',

@@ -8,7 +8,7 @@ angular.module('teachers').run(['Menus',
       title: 'Docenti',
       state: 'teachers',
       type: 'dropdown',
-      roles: ['god','abs','sost']
+      roles: ['admin','god','abs','sost']
     });
 
     // Add the dropdown list item
@@ -21,19 +21,25 @@ angular.module('teachers').run(['Menus',
     Menus.addSubMenuItem('topbar', 'teachers', {
       title: 'Crea',
       state: 'teachers.create',
-      roles: ['god']
+      roles: ['god','admin']
+    });
+
+    Menus.addSubMenuItem('topbar', 'teachers', {
+      title: 'Lista admin',
+      state: 'teachers.admin',
+      roles: ['god','admin']
     });
 
     Menus.addSubMenuItem('topbar', 'teachers', {
       title: 'Assenze',
       state: 'absences.list',
-      roles: ['abs', 'sost']
+      roles: ['admin','abs', 'sost']
     });
       
     Menus.addSubMenuItem('topbar', 'teachers', {
       title: 'Orario',
       state: 'timetables.list',
-      roles: ['god']
+      roles: ['god','admin']
     });
       
     Menus.addSubMenuItem('topbar', 'teachers', {

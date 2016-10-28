@@ -8,21 +8,21 @@ angular.module('userdocs').run(['Menus',
       title: 'Doc. riservati',
       state: 'userdocs',
       type: 'dropdown',
-      roles: ['doc','god']
+      roles: ['doc','org']
     });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'userdocs', {
       title: 'Elenca',
       state: 'userdocs.list',
-      roles: ['doc','god']
+      roles: ['doc','org']
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'userdocs', {
       title: 'Crea',
       state: 'userdocs.create',
-      roles: ['god']
+      roles: ['org']
     });
   }
 ]);

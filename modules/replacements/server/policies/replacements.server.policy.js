@@ -21,11 +21,20 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/replacements/:replacementId',
       permissions: '*'
     }]
+  },{
+    roles: ['sost'],
+    allows: [{
+      resources: '/api/replacements',
+      permissions: '*'
+    }, {
+      resources: '/api/replacements/:replacementId',
+      permissions: '*'
+    }]
   }, {
     roles: ['user'],
     allows: [{
       resources: '/api/replacements',
-      permissions: ['get', 'post']
+      permissions: ['get']
     }, {
       resources: '/api/replacements/:replacementId',
       permissions: ['get']
