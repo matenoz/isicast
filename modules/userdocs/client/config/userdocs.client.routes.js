@@ -14,28 +14,28 @@ angular.module('userdocs').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/userdocs/client/views/list-userdocs.client.view.html',
         data: {
-          roles: ['god', 'doc']
+          roles: ['org', 'doc']
         }
       })
       .state('userdocs.create', {
         url: '/create',
         templateUrl: 'modules/userdocs/client/views/create-userdoc.client.view.html',
         data: {
-          roles: ['god', 'admin']
+          roles: ['org', 'admin']
         }
       })
       .state('userdocs.view', {
         url: '/:userdocId',
         templateUrl: 'modules/userdocs/client/views/view-userdoc.client.view.html',
         data: {
-          roles: ['god', 'doc']
+          roles: ['org', 'doc']
         }
       })
       .state('userdocs.edit', {
         url: '/:userdocId/edit',
         templateUrl: 'modules/userdocs/client/views/edit-userdoc.client.view.html',
         data: {
-          roles: ['god', 'admin']
+          roles: ['org', 'admin']
         }
       });
   }

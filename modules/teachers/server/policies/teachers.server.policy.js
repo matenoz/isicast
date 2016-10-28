@@ -22,7 +22,7 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   },{
-    roles: ['god','abs','sost'],
+    roles: ['god','abs'],
     allows: [{
       resources: '/api/teachers',
       permissions: '*'

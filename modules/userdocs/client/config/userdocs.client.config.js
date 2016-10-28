@@ -22,7 +22,7 @@ angular.module('userdocs').run(['Menus',
     Menus.addSubMenuItem('topbar', 'userdocs', {
       title: 'Crea',
       state: 'userdocs.create',
-      roles: ['org']
+      roles: ['org','admin']
     });
   }
 ]);

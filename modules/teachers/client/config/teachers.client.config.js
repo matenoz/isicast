@@ -46,6 +46,5 @@ angular.module('teachers').run(['Menus',
       title: 'G view',
       state: 'timetables.global'
     });
-
   }
 ]);

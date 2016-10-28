@@ -48,14 +48,14 @@ angular.module('teachers').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/teachers/client/views/list-absences.client.view.html',
         data: {
-          roles: ['abs', 'admin']
+          roles: ['abs', 'admin','sost']
         }
       })
       .state('absences.view', {
         url: '/:teacherId',
         templateUrl: 'modules/teachers/client/views/view-absence.client.view.html',
         data: {
-          roles: ['abs', 'admin']
+          roles: ['abs','sost','admin']
         }
       })
       .state('absences.edit', {
