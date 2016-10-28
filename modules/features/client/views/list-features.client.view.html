@@ -18,8 +18,7 @@
       <p class="list-group-item-text" ng-bind="feature.content"></p>
     </a>
   </div>
-  <pagination total-items="features.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="features.length > pageSize"></pagination>
-
+  <pagination total-items="features.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="features.length > pageSize"></pagination>
   <div class="alert alert-warning text-center" ng-if="features.$resolved && !features.length">
     No features yet, why don't you <a ui-sref="features.create">create one</a>?
   </div>

@@ -13,6 +13,7 @@ angular.module('features').controller('FeaturesController', ['$scope', '$statePa
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;
+    $scope.maxSize = 5;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {
