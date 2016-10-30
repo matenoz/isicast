@@ -50,7 +50,7 @@ angular.module('users').config(['$stateProvider',
         url: '/userdocs/create',
         templateUrl: 'modules/userdocs/client/views/create-userdoc.client.view.html',
         data: {
-          roles: ['god', 'admin']
+          roles: ['org', 'admin']
         }
       })
       .state('settings.doc', {
@@ -85,14 +85,14 @@ angular.module('users').config(['$stateProvider',
         url: '/class',
         templateUrl: 'modules/classes/client/views/create-classe.client.view.html',
         data: {
-          roles: ['admin']
+          roles: ['admin','god']
         }
       })
       .state('settings.teacher', {
         url: '/teacher',
         templateUrl: 'modules/teachers/client/views/create-teacher.client.view.html',
         data: {
-          roles: ['admin']
+          roles: ['admin','god']
         }
       })
       .state('settings.fea', {
@@ -106,7 +106,7 @@ angular.module('users').config(['$stateProvider',
         url: '/rules',
         templateUrl: 'modules/rules/client/views/create-rule.client.view.html',
         data: {
-          roles: ['god', 'admin']
+          roles: ['org', 'admin']
         }
       })
       .state('authentication', {

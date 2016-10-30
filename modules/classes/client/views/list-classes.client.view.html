@@ -35,7 +35,7 @@
     <div class="col-md-3">
       <label class="label label-default">Servizi Commerciali</label>
       <hr/>
-      <div class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Servizi Commerciali'">
+      <div ng-if="classe.isActive == true" class="list-group" ng-repeat="classe in classes |orderBy:'nome_classe'" ng-show="classe.indirizzo == 'Servizi Commerciali'">
 	<a class="list-group-item"  ui-sref="classes.view({classeId: classe._id})">
 	  {{classe.nome_classe}} <i class="pull-right glyphicon glyphicon-chevron-right"></i>
 	</a>

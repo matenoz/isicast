@@ -37,11 +37,8 @@ module.exports = function (config) {
 
     // Save the user OAuth profile
       users.saveOAuthUserProfile(req, providerUserProfile, done);
-    }
-    else {
-      // var err = new Error('Per accedere ai servizi è necessario un account con dominio isicast.net. Contatta amministratore@isicast.net per segnalare il problema');
-      // return err.message;
-      return done(null, false, {
+    } else {
+      return done(null, false,{
         message: 'Per accedere ai servizi è necessario un account con dominio isicast.net. Contatta amministratore@isicast.net per segnalare il problema'
       });    
     }
