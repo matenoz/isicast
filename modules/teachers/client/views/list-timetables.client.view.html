@@ -9,10 +9,10 @@
     <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="timetableSearch($item)" placeholder="Cerca docente...">
   </div>
   <div class="list-group">
-    <a ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize" ng-show="teacher.isActive" ui-sref="timetables.view({teacherId: teacher._id})" class="list-group-item">
+    <a ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize" ng-show="teacher.isActive" ui-sref="timetables.view({teacherId: teacher._id})" class="list-group-item" num-pages="numPages()">
        {{teacher.name}} <span class="pull-right glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
-   <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
+   <pagination total-items="teachers.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="teachers.length > pageSize"></pagination>
 </div>
 </section>

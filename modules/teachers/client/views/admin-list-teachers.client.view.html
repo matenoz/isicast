@@ -1,4 +1,4 @@
-<section ng-controller="TimetablesController" ng-init="find()">
+<section ng-controller="TeachersController" ng-init="find()">
   <div class="page-header">
     <h3>Visualizzazione amministratore con docenti sospesi o fittizzi</h3>
   </div>
@@ -9,10 +9,10 @@
     <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="teacherSearch($item)" placeholder="Cerca docente...">
   </div>
   <div class="list-group">
-    <a ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize"  ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item">
+    <a ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize"  ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item" num-pages="numPages()">
        {{teacher.name}} <span class="pull-right glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
-   <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
+   <pagination boundary-links="true" total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="teachers.length > pageSize"></pagination>
 </div>
 </section>

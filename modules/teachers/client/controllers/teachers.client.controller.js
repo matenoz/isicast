@@ -14,14 +14,14 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;
+    $scope.maxSize = 5;
     $scope.offset = 0;
     // Page changed handle
     $scope.pageChanged = function() {
       $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
     };
-    // // insert and remove class  
-    // $scope.classarray = ['I AFM','II AFM','III AFM','III AFM A','III AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC','IV SC','V SC','I MAT', 'I ART. MAT/SC','II MAT','III MAT impianti','IV MAT impianti','V MAT impianti','III MAT mezzi trasp.','IV MAT mezzi trasp.','V MAT mezzi trasp.','II periodo SSS','III periodo SSS'];
-    $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari'];
+   
+    $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari','Manut.ne Assist.za Tecnica serale'];
     $scope._class = [];
     $scope.addClass = function(){
       $scope._class.push({ name:$scope.classe.name, indirizzo:$scope.classe.indirizzo });

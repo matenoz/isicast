@@ -10,7 +10,7 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
     // show current year planes date
     $scope.currentYear = new Date();
     $scope.nextYear = new Date();
-    if ($scope.currentYear.getMonth()<= 10){
+    if ($scope.currentYear.getMonth() < 10){
       $scope.currentYear.setYear($scope.currentYear.getFullYear()-1);
       $scope.nextYear.setYear($scope.nextYear.getFullYear());
     } else {
@@ -35,7 +35,7 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
     $scope.compareDates = function(dateP, dateC) {
       var progdate = new Date(dateP);
       var current = new Date (dateC);
-      if (current.getMonth() <= 10) {
+      if (current.getMonth() < 10) {
         return (progdate.getFullYear()-1 === current.getFullYear()-1);
       } else {
         return (progdate.getFullYear() === current.getFullYear());   	

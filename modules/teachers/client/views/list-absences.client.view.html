@@ -9,11 +9,11 @@
     <input type="text"  ng-model="search" typeahead="teacher as teacher.name for teacher in teachers | filter: $viewValue"  class="form-control" typeahead-on-select="absenceSearch($item)" placeholder="Cerca docente...">
   </div>
   <div class="list-group">
-    <a ng-show="teacher.isActive" ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize " ui-sref="absences.view({teacherId: teacher._id})" class="list-group-item">
+    <a ng-show="teacher.isActive" ng-repeat="teacher in teachers |orderBy:'name' | limitTo: offset - teachers.length | limitTo: pageSize " ui-sref="absences.view({teacherId: teacher._id})" class="list-group-item" num-pages="numPages()">
       <p class="list-group-item-text" ng-bind="teacher.name"></p>
     </a>
   </div>
-  <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
+  <pagination total-items="teachers.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="teachers.length > pageSize"></pagination>
   </div>
   <div class="col-md-8">
     <button type="button" class="btn btn-xs btn-flat" ng-click="find_ab()"> Riepilogo assenze docenti</button>

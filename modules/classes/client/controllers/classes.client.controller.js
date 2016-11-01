@@ -36,6 +36,7 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         }
       });
     };  
+      
     // Create new Classe
     $scope.create = function (isValid) {
       $scope.error = null;

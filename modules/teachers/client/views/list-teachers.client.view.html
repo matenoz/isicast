@@ -22,14 +22,14 @@
   </div>
   <div class="col-md-8">    
   <div class="list-group">
-     <a ng-if="teacher.isActive" ng-repeat="teacher in teachers | orderBy:'name'| limitTo: offset - teachers.length | limitTo: pageSize|filter:searchTag " ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item">
+     <a ng-if="teacher.isActive" ng-repeat="teacher in teachers | orderBy:'name'| limitTo: offset - teachers.length | limitTo: pageSize|filter:searchTag " ui-sref="teachers.view({teacherId: teacher._id})" class="list-group-item" num-pages="numPages()">
       <h4>Nome Docente</h4>
       <p class="list-group-item-heading" ng-bind="teacher.name"></p>
       <h4>Disciplina</h4>
       <p class="list-group-item-text" ng-bind="teacher.materia"></p>
      </a>
   </div>
-  <pagination total-items="teachers.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="teachers.length > pageSize"></pagination>
+  <pagination total-items="teachers.length" ng-model="currentPage" boundary-links="true" ng-change="pageChanged()" max-size="maxSize" ng-show="teachers.length > pageSize"></pagination>
   <div>
   <div class="alert alert-warning text-center" ng-if="teachers.$resolved && !teachers.length">
     No teachers yet, why don't you <a ui-sref="teachers.create">create one</a>?
