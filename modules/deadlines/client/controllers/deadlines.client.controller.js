@@ -8,7 +8,7 @@ angular.module('deadlines').controller('DeadlinesController', ['$scope', '$state
     $scope.compareDates = function(date1, date2) {
       var dateObj1 = new Date(date1);
       var dateObj2 = new Date(date2);
-      if(dateObj1 <= dateObj2){
+      if(dateObj1 <= dateObj2 && dateObj2 <= dateObj1.setDate(dateObj1.getDate() + 15)){
         return true;
       }
     }; 
