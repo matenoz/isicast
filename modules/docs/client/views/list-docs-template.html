@@ -1,17 +1,17 @@
 <div class="panel-group" ng-repeat="doc in docs |orderBy:'-prot' | limitTo: offset - docs.length | limitTo: pageSize">
- <a ui-sref="docs.view({docId: doc._id})">
-       <div class="panel panel-default">
-	 <div class="panel-heading"><small>
-	     Protocollo n°<span ng-bind="doc.prot"></span> del
-	     <span ng-bind="doc.created | date"></span>
-	     Resp. procedimento
-	     <span ng-bind="doc.user.displayName"></span>
-	   </small>
-	 </div>
-	 <div class="panel-body">
-	   <h5 ng-bind="doc.title"></h5>
-	   <p ng-if="doc.attachment.length > 0"><span class="glyphicon glyphicon-paperclip"></span> sono presenti allegati </p>
-	 </div>
-       </div>
-     </a>
+  <div class="panel panel-default">
+  	 <div class="panel-heading"><small>
+  	     Protocollo n°<span ng-bind="doc.prot"></span> del
+  	     <span ng-bind="d oc.created | date"></span>
+  	     Resp. procedimento
+  	     <span ng-bind="doc.user.displayName"></span>
+  	   </small>
+  	</div>
+  	<div class="panel-body">
+       <a ui-sref="docs.view({docId: doc._id})">
+  	      <h5 ng-bind="doc.title"></h5>
+  	       <p ng-if="doc.attachment.length > 0"><span class="glyphicon glyphicon-paperclip"></span> sono presenti allegati </p>
+      </a>
+   </div>
+  </div>
 </div>	

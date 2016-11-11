@@ -54,7 +54,7 @@ angular.module('replacements').controller('ReplacementsController', ['$filter','
       }
     });
   };
-
+  
   // check which teacher can replace  
   $scope.substitute = function(sub_hour, absdate){
     $scope.sub_teachers = [];

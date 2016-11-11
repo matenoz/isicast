@@ -1,9 +1,9 @@
 'use strict';
-
+   
 // Create the 'chat' controller
 angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket',
   function ($scope, $location, Authentication, Socket) {
-    // Create a messages array
+    // Create a messages array  
     $scope.messages = [];
     
     // If user is not signed in then redirect back home
