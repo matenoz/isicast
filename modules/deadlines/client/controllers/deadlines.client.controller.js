@@ -1,9 +1,31 @@
 'use strict';
 
 // Deadlines controller
-angular.module('deadlines').controller('DeadlinesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Deadlines',
-  function ($scope, $stateParams, $location, Authentication, Deadlines) {
+angular.module('deadlines').controller('DeadlinesController', ['$scope', '$stateParams', '$location', '$filter','Authentication', 'Deadlines',
+  function ($scope, $stateParams, $location, $filter, Authentication, Deadlines) {
     $scope.authentication = Authentication;
+    $scope.current_date = new Date();
+    $scope.next = function(date){
+      var Objdate = new Date(date);
+      if(Objdate.getMonth() !== 11){
+        $scope.current_date = new Date(Objdate.getFullYear(),Objdate.getMonth() + 1);
+      }
+      $scope.current_date = new Date(Objdate.getFullYear() +1, Objdate.getMonth() -11);
+    };
+    $scope.prev = function(date){
+      var Objdate = new Date(date);
+      if(Objdate.getMonth() !== 0){
+        $scope.current_date = new Date(Objdate.getFullYear(),Objdate.getMonth() -1);
+      }
+      $scope.current_date = new Date(Objdate.getFullYear() -1, Objdate.getMonth() +11);
+    };
+    $scope.compare = function(a,b){
+      var d1 = new Date(a);
+      var d2 = new Date(b);
+      if (d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth()){
+        return true;
+      }
+    };
     $scope.pre_dead = new Date();
     $scope.compareDates = function(date1, date2) {
       var dateObj1 = new Date(date1);

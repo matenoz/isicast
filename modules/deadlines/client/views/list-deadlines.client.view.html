@@ -1,30 +1,39 @@
 <section ng-controller="DeadlinesController" ng-init="find()">
   <div class="page-header">
-    <h3>Impegni</h3>
+    <h3>Impegni di {{current_date | date: 'MMMM-yyyy'}}</h3>
   </div>
-  <div class="alert alert-warning text-center" ng-if="deadlines.$resolved && !deadlines.length">
-    No deadlines yet, why don't you <a ui-sref="deadlines.create">create one</a>?
-  </div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-	<th>data</th>
-	<th>evento</th>
-	<th>descrizione</th>
-	<th>classi</th>
-	<th>pubblicatore</th>
-	<th>dettagli</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="deadline in deadlines| orderBy:'-event_date'">
-  	<td ng-bind="deadline.event_date | date "></td>
-	<td ng-bind="deadline.event"></td>
-	<td ><p ng-bind="deadline.content"></p></td>
-	<td ng-bind="deadline.classes"></td>
-	<td><span ng-bind="deadline.user.displayName"></span></td>
-	<td><button class="btn btn-primary" ui-sref="deadlines.view({deadlineId: deadline._id})">vai</button></td>
-      </tr>
-    </tbody>
-  </table>
+    <div>
+      <nav>
+    	<ul class="pager">
+    	  <li class="previous"><a class="btn" ng-click="prev(current_date)"><span aria-hidden="true">&larr;</span> prec</a></li>
+    	  <li class="next"><a class="btn" ng-click="next(current_date)">succ <span aria-hidden="true">&rarr;</span></a></li>
+    	</ul>
+      </nav>
+    </div>
+    <hr/>
+    <table class="table table-bordered">
+      <thead>
+	<tr>
+	  <th>data</th>
+	  <th>evento</th>
+	  <th>descrizione</th>
+	  <th>classi</th>
+	  <th>pubblicatore</th>
+	  <th>dettagli</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr ng-if="compare(deadline.event_date,current_date)" ng-repeat="deadline in deadlines| orderBy:'-event_date'">
+  	  <td ng-bind="deadline.event_date | date "></td>
+	  <td ng-bind="deadline.event"></td>
+	  <td ><p ng-bind="deadline.content"></p></td>
+	  <td ng-bind="deadline.classes"></td>
+	  <td><span ng-bind="deadline.user.displayName"></span></td>
+	  <td><button class="btn btn-primary" ui-sref="deadlines.view({deadlineId: deadline._id})">vai</button></td>
+	</tr>
+      </tbody>
+    </table>
+    <div class="alert alert-warning text-center" ng-if="deadlines.$resolved && !deadlines.length">
+      No deadlines yet, why don't you <a ui-sref="deadlines.create">create one</a>?
+    </div>
 </section>
