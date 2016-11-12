@@ -23,7 +23,7 @@
 	</tr>
       </thead>
       <tbody>
-	<tr ng-if="compare(deadline.event_date,current_date)" ng-repeat="deadline in deadlines| orderBy:'-event_date'">
+	<tr ng-if="compare(deadline.event_date,current_date)" ng-repeat="deadline in deadlines| orderBy:'event_date'">
   	  <td ng-bind="deadline.event_date | date "></td>
 	  <td ng-bind="deadline.event"></td>
 	  <td ><p ng-bind="deadline.content"></p></td>
