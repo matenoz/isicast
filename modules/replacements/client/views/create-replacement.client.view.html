@@ -3,11 +3,13 @@
     <h3>Sostituzioni del: <span ng-bind="rep_date| date:'fullDate'"></span></h3>
   </div>
   <div class="col-xs-12 col-md-8">
+    <!-- <button type="button" class="btn btn-xs btn-flat" ng-click="availbilityview(rep_date)"> Vista disposizioni</button> -->
+    <!-- <hr/> -->
     <form name="replacementForm" class="form-horizontal" ng-submit="create(replacementForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="label label-default"for="rep_date">Sostituzione del:</label>
-          <input name="rep_date" type="date" ng-model="rep_date" id="rep_date" class="form-control" ng-change="checkabsence(rep_date)" required>
+          <input name="rep_date" type="date" ng-model="rep_date" id="rep_date" class="form-control" ng-change="checkabsence(rep_date);availbilityview(rep_date)" required>
           <div ng-messages="replacementForm.rep_date.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Replacement date is required.</p>
           </div>
@@ -58,10 +60,25 @@
       </fieldset>
     </form>
   </div>
-  <div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
-    <div ng-repeat="alert in alerts">
+  <div class="col-md-4 col-xs-6">
+  <label class="label label-primary" for="available" ng-if="availables.length > 0">Vista disposizioni del {{rep_date| date}}</label> 
+  <table class="table table-bordered" ng-if="availables.length > 0">
+    <thead>
+      <th>Ora</th>
+      <th>Docente</th>
+      <th>Delete</th>
+    </thead>
+    <tbody ng-if="available.day === giorno" ng-repeat="available in availables | orderBy:'hour'">
+      <td ng-bind="available.hour"></td>
+      <td ng-bind="available.teacher"></td>
+      <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAvailable($index)"></span></td>
+    </tbody>
+  </table>
+  <div ng-if="alerts.length > 0">
+   <div ng-repeat="alert in alerts">
       <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
       </alert>
     </div>
    <div>
+  </div>   
 </section>

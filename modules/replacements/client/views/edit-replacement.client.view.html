@@ -8,7 +8,7 @@
         <div class="form-group" show-errors>
           <label class="label label-default" for="rep_date">Sostituzione del:</label>
 	  <!--  <p name="rep_date" id="rep_date" ng-bind="replacement.rep_date | date" class="form-control"></p>-->
-	  <input type="date" name="rep_date" id="rape_date" ng-model="replacement.rep_date" class="form-control" ng-change="checkabsence(replacement.rep_date)">
+	  <input type="date" name="rep_date" id="rape_date" ng-model="replacement.rep_date" class="form-control" ng-change="checkabsence(replacement.rep_date);availbilityview(replacement.rep_date)">
         </div>
 	<div class="form-group">
           <label class="label label-default" for="rep.absent">Seleziona docente da sostitutire:</label>
@@ -36,7 +36,7 @@
 	      <th>Classe</th>
 	      <th>Assente</th>
 	      <th>Sostituto</th>
-	    <th>Delete</th>
+	      <th>Delete</th>
 	    </thead>
 	    <tbody ng-repeat="rep in replacement.daily_reps">
 	      <td ng-bind="rep.hour"></td>
@@ -44,7 +44,7 @@
 	      <td ng-bind="rep.absent"></td>
 	      <td ng-bind="rep.substitute"></td>
 	      <td><input type="checkbox" ng-model="replacement.daily_reps[$index].isActive" ng-change="change($index);removeUpdate($index)"> uncheck to delete</td>
-	  </tbody>
+	    </tbody>
 	  </table>
 	</div>
         <div class="form-group">
@@ -56,10 +56,25 @@
       </fieldset>
     </form>
   </div>
-  <div class="col-md-4 col-xs-6" ng-if="alerts.length > 0">
-    <div ng-repeat="alert in alerts">
-      <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
-      </alert>
-    </div>
-   <div>
+  <div class="col-md-4 col-xs-6">
+    <label class="label label-primary" for="available" ng-if="availables.length > 0">Vista disposizioni del {{replacement.rep_date| date}}</label> 
+    <table class="table table-bordered" ng-if="availables.length > 0">
+      <thead>
+	<th>Ora</th>
+	<th>Docente</th>
+	<th>Delete</th>
+      </thead>
+      <tbody ng-if="available.day === giorno" ng-repeat="available in availables | orderBy:'hour'">
+	<td ng-bind="available.hour"></td>
+	<td ng-bind="available.teacher"></td>
+	<td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAvailable($index)"></span></td>
+      </tbody>
+    </table>
+    <div ng-if="alerts.length > 0">
+      <div ng-repeat="alert in alerts">
+	<alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+	</alert>
+      </div>
+      <div>
+      </div>
 </section>

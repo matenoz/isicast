@@ -27,6 +27,23 @@ angular.module('replacements').controller('ReplacementsController', ['$filter','
       return true;
     }
   };
+  $scope.availbilityview = function(absdate){
+    $scope.availables = [];
+    $scope.giorno = $filter('date')(absdate,'EEEE').replace(/ì/i, 'i');
+    angular.forEach($scope.teachers, function(teacher,index){
+      angular.forEach(teacher.timetable, function(hour, index){
+        angular.forEach(hour, function(value, key){
+          if(hour[key] === 'disp' || hour[key] === 'prog'){
+            $scope.availables.push({ hour:hour.nome_ora, day:key, teacher:teacher.name });
+            console.log({ hour:hour.nome_ora, day:key, teacher:teacher.name });
+          }
+        });
+      });
+    });
+  };
+  $scope.removeAvailable = function(index){
+    $scope.availables.splice(index, 1);
+  };
   // find teacher that matches absence's date
   $scope.checkabsence = function(absdate){
     $scope.teachers_absent = [];
