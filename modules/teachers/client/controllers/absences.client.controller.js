@@ -27,6 +27,9 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
     $scope.removeAbsence = function(index){
       $scope.ab_sences.splice(index, 1);
     };
+    $scope.remAbsence = function(index){
+      $scope.teacher.absences.splice(index, 1);
+    };
     $scope.abstypes =['ferie','malattia','permesso','assente','altro'];
    
     // Update existing Teacher

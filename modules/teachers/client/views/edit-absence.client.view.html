@@ -41,6 +41,28 @@
 	  </table>
 	</div>
 	<div class="form-group">
+	  <label class="label label-primary" ng-if="teacher.absences.length > 0">Assenze già registrate</label>
+	  <table class="table table-bordered" ng-if="teacher.absences.length > 0">
+	    <thead>
+	      <tr>
+		<th>data</th>
+		<th>tipologia</th>
+		<th>motivo</th>
+		<th>delete</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="absence in teacher.absences">
+  		<td ng-bind="absence.date | date "></td>
+		<td ng-bind="absence.type"></td>
+		<td ng-bind="absence.cause"></td>
+		<td><span class="glyphicon glyphicon-remove-sign" ng-click="remAbsence($index)"></span></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+
+	<div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>
         <div ng-show="error" class="text-danger">
