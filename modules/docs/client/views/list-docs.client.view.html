@@ -32,13 +32,13 @@
       </div>
       <h4>Ricerca per tag</h4>
       <div class="form-group">
-	<input type="text" class="form-control" ng-model="searchTag" placeholder="Cerca documento...">
+      	<input type="text" class="form-control" ng-model="tag" placeholder="Cerca documento...">
       </div>
     </div>
   </div>
   <div class="col-md-8">
     <div class="list-group">
-      <a ng-repeat="doc in docs |orderBy:'-prot'| limitTo: offset - docs.length | limitTo: pageSize | filter:searchTag" ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
+      <a ng-repeat="doc in docs |orderBy:'-prot'| limitTo: offset - docs.length | limitTo: pageSize | filter:tag" ui-sref="docs.view({docId: doc._id})" class="list-group-item" num-pages="numPages()"> 
 	<small class="list-group-item-text">
           Documento prot:<span ng-bind="doc.prot"></span> pubblicato il
           <span ng-bind="doc.created | date:'mediumDate'"></span>

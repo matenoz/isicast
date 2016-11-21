@@ -18,6 +18,10 @@ angular.module('docs').config(['$stateProvider',
         url: '/parents',
         templateUrl: 'modules/docs/client/views/parents-docs.client.view.html'
       })
+      .state('docs.ecdl', {
+        url: '/ecdl',
+        templateUrl: 'modules/docs/client/views/ecdl-docs.client.view.html'
+      })
       .state('docs.create', {
         url: '/create',
         templateUrl: 'modules/docs/client/views/create-doc.client.view.html',
