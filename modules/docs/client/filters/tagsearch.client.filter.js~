@@ -1,0 +1,24 @@
+'use strict';
+
+// Docs filter
+angular.module('docs').filter('filterByTags', function () {     
+
+  return function (items, tags) {
+    console.log(items);
+    var filtered = [];
+    /* if (tags.length === 0) {
+     *   filtered = items;
+     * }*/
+    angular.forEach((items || []), function(item, index){
+      angular.forEach(item.tags, function(item_, index){
+        var matches = tags.some(function(tag){
+	  return (item_.text.indexOf(tag.text) > -1);
+        });
+        if(matches){
+	  filtered.push(item);
+        }
+      });
+    });
+    return filtered;
+  };
+});

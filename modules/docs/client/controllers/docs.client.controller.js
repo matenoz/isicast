@@ -1,7 +1,7 @@
 'use strict';
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
+angular.module('docs').controller('DocsController', ['$scope','$stateParams', '$location', 'Authentication', 'Docs', 'Docs2',function ($scope, $stateParams, $location, Authentication, Docs, Docs2) {
   $scope.authentication = Authentication; 
   // tags ctrl
   $scope._tags = [
@@ -10,7 +10,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
     { text: 'ata' },
     { text: 'docenti' }
   ];
-  
+
   // toggle button
   $scope.v = 'toggled';  
   $scope.togC = function(){

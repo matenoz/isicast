@@ -19,7 +19,7 @@
 	 <th>documento</th>
       </tr>
     </thead>
-    <tbody ng-show="compareDates(plane.updated, currentYear)" ng-repeat="plane in planes|orderBy:'user.lastName'">
+    <tbody ng-show="compareDates(plane.updated, currentYear)" ng-repeat="plane in planes|orderBy:'user.displayName'">
       <tr ng-repeat="p in plane.content">
 	<td ng-bind="plane.updated | date"></td>
 	<td ng-bind="plane.user.displayName"></td>
