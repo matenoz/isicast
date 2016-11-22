@@ -10,7 +10,7 @@ angular.module('docs').controller('DocsController', ['$scope','$stateParams', '$
     { text: 'ata' },
     { text: 'docenti' }
   ];
-
+  $scope.tags = [];
   // toggle button
   $scope.v = 'toggled';  
   $scope.togC = function(){
