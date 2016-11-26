@@ -1,13 +1,13 @@
 <section ng-controller="PlanesController">
   <div class="page-header">
-    <h3>Nuova programmazione prof: {{authentication.user.displayName}}</h3>
+    <h3>Nuova programmazione prof: {{authentication.user.lastName}}</h3>
   </div>
   <div class="col-md-8">
     <form name="planeForm" class="form-horizontal" ng-submit="create(planeForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="label label-default"for="classes">Seleziona classe</label>
-          <select name="classes" ng-options="c as c for c in classarray" ng-model="classes" id="classes" class="form-control"  required><option value="">--</option></select>
+          <select name="classes" ng-options="c as c for c in classarray|orderBy: c" ng-model="classes" id="classes" class="form-control"  required><option value="">--</option></select>
           <div ng-messages="planeForm.classes.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Plane classes is required.</p>
           </div>

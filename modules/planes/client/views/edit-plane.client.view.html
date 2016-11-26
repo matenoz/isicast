@@ -7,7 +7,7 @@
       <fieldset>
 	<div class="form-group" show-errors>
           <label class="label label-default"for="classes">Seleziona classe</label>
-          <select name="classes" ng-options="c as c for c in classarray" ng-model="plane.classes" id="classes" class="form-control"  required><option value="">--</option></select>
+          <select name="classes" ng-options="c as c for c in classarray |orderBy:c" ng-model="plane.classes" id="classes" class="form-control"  required><option value="">--</option></select>
           <div ng-messages="planeForm.classes.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Plane classes is required.</p>
           </div>

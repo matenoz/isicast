@@ -19,13 +19,13 @@
 	 <th>documento</th>
       </tr>
     </thead>
-    <tbody ng-show="compareDates(plane.updated, currentYear)" ng-repeat="plane in planes|orderBy:'user.displayName'">
+    <tbody ng-show="compareDates(plane.updated, currentYear)" ng-repeat="plane in planes|orderBy:'user.lastName'">
       <tr ng-repeat="p in plane.content">
 	<td ng-bind="plane.updated | date"></td>
-	<td ng-bind="plane.user.displayName"></td>
+	<td ng-bind="plane.user.lastName"></td>
 	<td ng-bind="plane.classes"></td>
 	<td ng-bind="plane.department"></td>
-	<td ng-bind="plane.materia"></td>
+	<td ng-bind="plane.materia.toLowerCase()"></td>
 	<td ><a ng-href="{{p.url}}"> scarica <i class="glyphicon glyphicon-download-alt"></i></a><span ng-if="plane.user._id == authentication.user._id"><a ui-sref="planes.edit({planeId: plane._id})"> modifica <i class="glyphicon glyphicon-edit"></i></a></span></td>
       </tr>
     </tboby>
