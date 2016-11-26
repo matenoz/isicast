@@ -7,7 +7,7 @@
       Data caricamento
       <p ng-bind="plane.updated | date:'mediumDate'"></p>
       Docente
-      <p ng-bind="plane.user.lastName"></p>
+      <p ng-bind="plane.user.displayName"></p>
     <a class="lead" ng-href="{{p.url}}" ng-repeat="p in plane.content"><img ng-src="{{p.iconUrl}}"> {{p.name}}</a>
     <br>
   <div class="pull-right" ng-if="authentication.user._id == plane.user._id">

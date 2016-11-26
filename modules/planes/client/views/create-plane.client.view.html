@@ -1,6 +1,6 @@
 <section ng-controller="PlanesController">
   <div class="page-header">
-    <h3>Nuova programmazione prof: {{authentication.user.lastName}}</h3>
+    <h3>Nuova programmazione prof: {{authentication.user.displayName}}</h3>
   </div>
   <div class="col-md-8">
     <form name="planeForm" class="form-horizontal" ng-submit="create(planeForm.$valid)" novalidate>
