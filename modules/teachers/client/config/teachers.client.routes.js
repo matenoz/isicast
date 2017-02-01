@@ -74,6 +74,10 @@ angular.module('teachers').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/teachers/client/views/list-timetables.client.view.html'
       })
+      .state('timetables.dis', {
+        url: '/disposizioni',
+        templateUrl: 'modules/teachers/client/views/disp-timetable.view.html'
+      })
       .state('timetables.global', {
         url: '/globalview',
         templateUrl: 'modules/teachers/client/views/global-timetable.view.html'
@@ -82,12 +86,12 @@ angular.module('teachers').config(['$stateProvider',
         url: '/:teacherId',
         templateUrl: 'modules/teachers/client/views/view-timetable.client.view.html'
       })
-      .state('timetables.edit', {
-        url: '/:teacherId/edit',
-        templateUrl: 'modules/teachers/client/views/edit-timetable.client.view.html',
-        data: {
-          roles: ['god', 'admin']
-        }
-      });
+     .state('timetables.edit', {
+       url: '/:teacherId/edit',
+       templateUrl: 'modules/teachers/client/views/edit-timetable.client.view.html',
+       data: {
+         roles: ['god', 'admin']
+       }
+     });
   }
 ]);

@@ -29,7 +29,43 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
     $scope.pageChanged = function() {
       $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
     };  
-   
+
+    var disp_timetable = function(){
+      var disposizioni = [];
+      angular.forEach($scope.teachers, function(teacher,index){
+        angular.forEach(teacher.timetable, function(hour, index){
+          angular.forEach(hour, function(value, key){
+            if(hour[key] === 'disp' || hour[key] === 'prog'){
+              disposizioni.push({ ora:hour.nome_ora, giorno:key, docente:teacher.name });      
+            }
+          });
+        });
+      });
+      return disposizioni;
+
+    };
+    $scope.avail_hours = function(){
+      var p_hours = disp_timetable();
+      $scope.newdisp = [
+	{ nome_ora: 'I', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'II', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'III', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'IV', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'V', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'VI', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'VII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	{ nome_ora: 'VIII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] }
+      ];
+     
+      angular.forEach(p_hours, function(p_hour, index){
+        angular.forEach($scope.newdisp, function(hour_container, index){
+          if (p_hour.ora === hour_container.nome_ora){
+            hour_container[p_hour.giorno].push(p_hour.docente);
+          }
+        });
+      });
+      return true;
+    };
     // Update existing Teacher
     $scope.update = function (isValid) {
       $scope.error = null;

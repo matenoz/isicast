@@ -41,7 +41,11 @@ angular.module('teachers').run(['Menus',
       state: 'timetables.list',
       roles: ['god','admin']
     });
-      
+
+    Menus.addSubMenuItem('topbar', 'teachers', {
+      title: 'Disposizioni',
+      state: 'timetables.dis',
+    });
     Menus.addSubMenuItem('topbar', 'teachers', {
       title: 'G view',
       state: 'timetables.global'
