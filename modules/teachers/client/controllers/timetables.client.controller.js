@@ -29,7 +29,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
     $scope.pageChanged = function() {
       $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
     };  
-
+    // Extract an object for each hour of availability from teacher's timetable
     var disp_timetable = function(){
       var disposizioni = [];
       angular.forEach($scope.teachers, function(teacher,index){
@@ -42,21 +42,37 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
         });
       });
       return disposizioni;
-
     };
+    var container_gen = function(){
+      var container = [];
+      var ore = ['I','II','III','IV','V','VI','VII','VIII'];
+      var giorni = ['lunedi','martedi','mercoledi','giovedi','venerdi'];
+      var ore_disp = {};
+      for (var i=0; i <ore.length; i++){
+        ore_disp.nome_ora = ore[i];
+        for (var j=0; j <giorni.length; j++){
+          ore_disp[giorni[j]] = [];
+        }
+        container.push(ore_disp);
+        ore_disp = {};
+      }
+      return container;
+    }; 
+    // set up a global teachers' availabilty timetable
     $scope.avail_hours = function(){
       var p_hours = disp_timetable();
-      $scope.newdisp = [
-	{ nome_ora: 'I', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'II', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'III', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'IV', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'V', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'VI', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'VII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	{ nome_ora: 'VIII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] }
-      ];
-     
+      $scope.newdisp = container_gen();
+	/*[
+	   { nome_ora: 'I', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'II', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'III', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'IV', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'V', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'VI', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'VII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
+	   { nome_ora: 'VIII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] }
+	];*/
+      
       angular.forEach(p_hours, function(p_hour, index){
         angular.forEach($scope.newdisp, function(hour_container, index){
           if (p_hour.ora === hour_container.nome_ora){
@@ -64,7 +80,6 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
           }
         });
       });
-      return true;
     };
     // Update existing Teacher
     $scope.update = function (isValid) {

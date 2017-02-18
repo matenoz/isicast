@@ -19,9 +19,11 @@ module.exports = function (app, db) {
     // Load SSL key and certificate
     var privateKey = fs.readFileSync(path.resolve(config.secure.privateKey), 'utf8');
     var certificate = fs.readFileSync(path.resolve(config.secure.certificate), 'utf8');
+    var chain = fs.readFileSync(path.resolve(config.secure.ca), 'utf8'); // letsencrypt 
     var options = {
       key: privateKey,
       cert: certificate,
+      ca: chain, // letsencrypt
       //  requestCert : true,
       //  rejectUnauthorized : true,
       secureProtocol: 'TLSv1_method',

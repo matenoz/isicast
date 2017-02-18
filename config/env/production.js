@@ -4,7 +4,8 @@ module.exports = {
   secure: {
     ssl: true,
     privateKey: './config/sslcerts/key.pem',
-    certificate: './config/sslcerts/cert.pem'
+    certificate: './config/sslcerts/cert.pem',
+    ca: './config/sslcerts/chain.pem' //letsencrypt file to add
   },
   port: process.env.PORT || 3000,
   db: {
