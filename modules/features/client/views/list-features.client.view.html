@@ -15,7 +15,7 @@
         <span ng-bind="feature.user.displayName"></span>
       </small>
       <h4 class="list-group-item-heading" ng-bind="feature.title"></h4>
-      <p class="list-group-item-text" ng-bind="feature.content"></p>
+      <p class="list-group-item-text" ng-bind-html="feature.content"></p>
     </a>
   </div>
   <pagination total-items="features.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="features.length > pageSize"></pagination>

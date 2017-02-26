@@ -12,7 +12,7 @@
       </em>
     </small>
     <img ng-repeat="p in feature.img" ng-src="{{p.downloadUrl}}" style="padding-right:20px" class="img-circle" alt="Responsive image" align="left">
-    <p class="lead" ng-bind="feature.content"></p>
+    <p class="lead" ng-bind-html="feature.content"></p>
    <br>
     <a href="{{feature.link}}"><button  class="btn btn-link" >maggiori info...</button></a>
   </div>
