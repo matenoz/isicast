@@ -14,7 +14,7 @@
         </div>
 	<div class="form-group">
 	  <label class="label label-default"for="deadline">Scadenza</label>
-          <input type="date" ng-model="feature.deadline" class="form-control" name="deadline" id="deadline">
+          <input type="date" ng-model="f" ng-change="feature.deadline=f.toISOString()" class="form-control" name="deadline" id="deadline">
         </div>
 	<div class="form-group">
 	  <label class="label label-default"for="priority">Priorità</label>
