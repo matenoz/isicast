@@ -14,7 +14,7 @@
       <br>
       <h3>Oggetto: {{doc.title}}</h3>
       <h4 class="text-muted" ng-if="doc.content !== ''">Abstract</h4> 
-      <p class="lead" ng-bind="doc.content"></p>
+      <p class="lead" ng-bind-html="doc.content"></p>
       
       <h4 class="text-muted">Documento principale</h4>
       <a ng-repeat="f in doc.main_doc" ng-href="{{f.url}}"><img ng-src="{{f.iconUrl}}"> {{f.name}}</a>

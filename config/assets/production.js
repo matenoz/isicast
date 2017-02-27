@@ -25,7 +25,7 @@ module.exports = {
         'public/lib/trix/dist/trix-core.js',
         'public/lib/angular-google-picker/dist/google-picker.min.js', 
         'public/lib/ng-tags-input/ng-tags-input.min.js',
-        'public/lib/angular/angular_it-it.js ',	  
+        'public/lib/angular/angular_it-it.js',	  
       ]
     },
     css: 'public/dist/application.min.css',

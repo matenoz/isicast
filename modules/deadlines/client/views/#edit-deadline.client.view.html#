@@ -7,7 +7,7 @@
       <fieldset>
         <div class="form-group" show-errors>
           <label class="label label-default"for="event_date">Data impegno</label>
-	  <input name="event_date" id="event_date" type="date" class="form-control" ng-model="d" ng-change="deadline.event_date=d.toISOString()">
+	  <input name="event_date" id="event_date" type="date" class="form-control" ng-model="d" ng-change="deadline.event_d">
 	</div>
 	<div ng-messages="deadlineForm.event_date.$error" role="alert">
           <p class="help-block error-text" ng-message="required">Deadline title is required.</p>

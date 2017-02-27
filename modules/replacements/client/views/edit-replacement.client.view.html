@@ -7,7 +7,7 @@
       <fieldset>
         <div class="form-group" show-errors>
           <label class="label label-default" for="rep_date">Sostituzione del:</label>
-	  <input type="date" name="rep_date" id="rape_date" ng-model="replacement.rep_date" class="form-control" ng-change="checkabsence(replacement.rep_date);availbilityview(replacement.rep_date)">
+	  <input type="date" name="rep_date" id="rape_date" ng-model="r" class="form-control" ng-change="replacement.rep_date=r.toISOString();checkabsence(replacement.rep_date);availbilityview(replacement.rep_date)">
         </div>
 	<div class="form-group">
           <label class="label label-default" for="rep.absent">Seleziona docente da sostitutire:</label>

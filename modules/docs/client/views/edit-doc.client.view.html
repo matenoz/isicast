@@ -21,7 +21,8 @@
         </div>
         <div class="form-group">
           <label class="label label-default"for="content">Corpo</label>
-          <textarea  name="content" ng-model="doc.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          <!-- <textarea  name="content" ng-model="doc.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea> -->
+	  <trix-editor angular-trix name="content" ng-model="doc.content" id="content" class="trix-content"></trix-editor>
         </div>
 	<br>
 	<div class="form-group" ng-switch="doc.main_doc.length > 0">
