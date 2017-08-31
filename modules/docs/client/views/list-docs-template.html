@@ -1,4 +1,4 @@
-<div class="panel-group" ng-repeat="doc in docs |orderBy:'-prot' | limitTo: offset - docs.length | limitTo: pageSize">
+<div class="panel-group" ng-repeat="doc in docs |orderBy:'-created' | limitTo: offset - docs.length | limitTo: pageSize">
   <div class="panel panel-default">
     <div class="panel-heading"><small>
   	Protocollo n°<span ng-bind="doc.prot"></span> del

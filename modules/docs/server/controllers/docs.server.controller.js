@@ -77,7 +77,7 @@ exports.delete = function (req, res) {
  * List of Docs
  */
 exports.list = function (req, res) {
-  Doc.find().sort('-created').populate('user', 'displayName').exec(function (err, docs) {
+  Doc.find().sort('-prot').populate('user', 'displayName').exec(function (err, docs) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
