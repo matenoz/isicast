@@ -165,7 +165,7 @@
 	      <div class="col-md-8">
 		<h3 align="center">Elenco documenti famiglie e alunni</h3>
 		<div class="panel-group">
-		  <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" num-pages="numPages()">
+		  <a ng-repeat="doc in docs |orderBy:'-created'| limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" num-pages="numPages()">
 		     <!-- <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()"> -->
 		    <span ng-repeat="tag in doc.tags" ng-show="tag.text=='famiglia'">
 		      <div class="panel panel-default">
