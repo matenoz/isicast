@@ -11,15 +11,9 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       }
     };
     // disposizioni
-    $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'ric' },{ name:'funz' },{ name:'alt' }];  
-    $scope.setdisp = false;
-    $scope.changeList = function(list){
-      if($scope.setdisp === false){
-        return list ;
-      }
-      return $scope.dis;
-    };
-      
+    $scope.dis = [{ name:'prog' },{ name:'disp' }];  
+    $scope.nameOfHours = ['I','II','III','IV','V','VI','VII','VIII'];
+    $scope.nameOfDays = ['lunedi','martedi','mercoledi','giovedi','venerdi'];
     // pagination
     $scope.currentPage = 1;
     $scope.pageSize = 10;
@@ -29,20 +23,8 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
     $scope.pageChanged = function() {
       $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
     };  
-    // Extract an object for each hour of availability from teacher's timetable
-    var disp_timetable = function(){
-      var disposizioni = [];
-      angular.forEach($scope.teachers, function(teacher,index){
-        angular.forEach(teacher.timetable, function(hour, index){
-          angular.forEach(hour, function(value, key){
-            if(hour[key] === 'disp' || hour[key] === 'prog'){
-              disposizioni.push({ ora:hour.nome_ora, giorno:key, docente:teacher.name });      
-            }
-          });
-        });
-      });
-      return disposizioni;
-    };
+
+    // create a hours' container for each hour and day of the week
     var container_gen = function(){
       var container = [];
       var ore = ['I','II','III','IV','V','VI','VII','VIII'];
@@ -57,30 +39,33 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
         ore_disp = {};
       }
       return container;
-    }; 
-    // set up a global teachers' availabilty timetable
-    $scope.avail_hours = function(){
-      var p_hours = disp_timetable();
-      $scope.newdisp = container_gen();
-	/*[
-	   { nome_ora: 'I', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'II', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'III', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'IV', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'V', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'VI', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'VII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] },
-	   { nome_ora: 'VIII', lunedi:[], martedi:[], mercoledi:[], giovedi:[], venerdi:[] }
-	];*/
-      
-      angular.forEach(p_hours, function(p_hour, index){
-        angular.forEach($scope.newdisp, function(hour_container, index){
-          if (p_hour.ora === hour_container.nome_ora){
-            hour_container[p_hour.giorno].push(p_hour.docente);
-          }
-        });
+    };
+
+    $scope.ownsubclass = function(_classe){
+      $scope.ownsub = [];
+      angular.forEach($scope.teacher.classes, function(classe, index){
+        if(_classe === classe.name && classe.subclass !== ''){
+          $scope.ownsub.push(classe.subclass);
+        }
       });
     };
+
+    // create timetable list with hour, day, subject, class and subclass
+    $scope.hours = [];
+    $scope.addHour = function(){
+      $scope.hours.push({ day:$scope.day, hour:$scope.hour, classe:$scope.classe, subclass:$scope.subclass, subject:$scope.subject, availability:$scope.availability });
+    };
+        
+    
+    // remove hour from local timetable
+    $scope.removeHour = function(index){
+      $scope.hours.splice(index, 1);
+    };
+    // remove hour from persistent timetable
+    $scope.removeHours = function(index){
+      $scope.teacher.timetable.splice(index, 1);
+    };
+    
     // Update existing Teacher
     $scope.update = function (isValid) {
       $scope.error = null;
@@ -92,6 +77,9 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       }
 
       var teacher = $scope.teacher;
+      angular.forEach($scope.hours, function(hour,index){
+        teacher.timetable.push({ day:hour.day, hour:hour.hour, classe:hour.classe, subclass:hour.subclass, subject:hour.subject,availability:hour.availability });
+      });      
       
       teacher.$update(function () {
         $location.path('timetables/' + teacher._id);
@@ -100,18 +88,80 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       });
     };
 
+    $scope.generateGlobalTable = function(){
+      $scope.teachers = Timetables.query({}, function(){
+        $scope.globalcontainer = [];
+        var container = {};
+        var day_hours = {};
+        angular.forEach($scope.teachers, function(teacher, index){
+          angular.forEach(teacher.timetable, function(hour, index){
+            if(hour.classe !== ''){
+              container[hour.day] = day_hours;
+              day_hours[hour.hour] = hour.classe;
+              day_hours = {};
+            }
+          },$scope.globalcontainer.push({ name: teacher.name, container:container }));
+          container = {};
+        }); 
+      });
+    };
+        
+    // generate teacher' timetable
+    $scope.generateTable = function(){
+      $scope.teacher = Timetables.get({
+        teacherId: $stateParams.teacherId
+      }, function(){
+        $scope.container = container_gen();
+        angular.forEach($scope.teacher.timetable, function(hour, index){
+          angular.forEach($scope.container, function(hour_container, index){
+            if (hour.hour === hour_container.nome_ora){
+              if(hour.classe !== undefined){ 
+                hour_container[hour.day].push(hour.classe); 
+              }
+              else if (hour.availability !== undefined){
+                hour_container[hour.day].push(hour.availability);
+              }
+            }
+          });
+        });
+      });
+    };
+    
+    // Find a list of teachers' availabilties
+    $scope.getAvailability = function(){
+      $scope.teachers = Timetables.query({}, function(){
+        $scope.container = container_gen();
+        angular.forEach($scope.teachers, function(teacher,index){
+          angular.forEach(teacher.timetable, function(hour,index){
+            angular.forEach($scope.container, function(hour_container,index){
+              if(hour.availability === 'prog' || hour.availability === 'disp'){
+                if(hour.hour === hour_container.nome_ora){
+                  hour_container[hour.day].push(teacher.name); 
+                }
+              }
+            });
+          });	  
+        });
+      });
+    };
+    // initiate getAvailability
+    $scope.showAvailability = function(){
+      $scope.getAvailability();
+    };
     // Find a list of Teachers
     $scope.find = function () {
       $scope.teachers = Timetables.query();
     };
 
-    // Find existing Teacher
-    $scope.findOne = function () {
-      $scope.teacher = Timetables.get({
-        teacherId: $stateParams.teacherId
-      });	
+    $scope.globalTable = function(){
+      $scope.generateGlobalTable();
     };
-    // Search for documents
+    
+    $scope.findOne = function () {
+      $scope.generateTable();
+    };
+    
+      // Search for documents
     $scope.timetableSearch = function(teacher) {
       $location.path('timetables/' + teacher._id);
     };

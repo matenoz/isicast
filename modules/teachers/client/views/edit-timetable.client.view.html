@@ -1,94 +1,91 @@
 <section ng-controller="TimetablesController" ng-init="findOne()">
   <div class="page-header">
-    <h3>Modifca orario settimanale docente: {{teacher.name}}</h3>
+    <h3>Inserisci orario docente: {{teacher.name}}</h3>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-8">
     <form name="teacherForm" class="form-horizontal" ng-submit="update(teacherForm.$valid)" novalidate>
       <fieldset>
 	<div class="form-group">
-	  <label class="label label-default"for="funz">Seleziona per inserire ore p</label>
-	  <input name="funz" type="checkbox" ng-model="setdisp" ng-change="changeList(teacher.classes)">
-	  </div>
-        <div class="form-group">
-          <table  class="table table-bordered"  name="timetable" id="timetable" ng-model="timetable">
-	    <thead> 
+	  <label class="label label-default" for="day">Inserisci giorno</label>
+	  <select  name="day" id="hour.day" class="form-control"  ng-model="day" ng-options="o as o for o in nameOfDays" ><option value="">--</option></select>
+	</div>
+	<div class="form-group">
+	  <label class="label label-default" for="hour">Inserisci ora</label>
+	  <select  name="hour" id="hour.hour" class="form-control"  ng-model="hour" ng-options="o as o for o in nameOfHours" ><option value="">--</option></select>
+	</div>
+	<div class="form-group">
+	  <label class="label label-default" for="classe">Inserisci classe</label>
+	  <select  name="classe" id="hour.classe" class="form-control"  ng-model="classe" ng-options="o.name as o.name for o in teacher.classes" ng-click="ownsubclass(classe)"><option value="">--</option></select>
+	</div>
+	<div ng-show="ownsub.length > 0" class="form-group">
+	  <label class="label label-default" for="classe">Inserisci sottoclasse</label>
+	  <select  name="subclass" id="hour.subclass" class="form-control"  ng-model="subclass" ng-options="o as o for o in ownsub" ><option value="">--</option></select>
+	</div>
+	<div class="form-group">
+	  <label class="label label-default" for="subject">Inserisci materia</label>
+	  <select  name="subject" id="hour.subject" class="form-control"  ng-model="subject" ng-options="o as o for o in teacher.materia" ><option value="">--</option></select>
+	</div>
+	<div class="form-group">
+	  <label class="label label-default" for="availability">Inserisci ore disponibilità</label>
+	  <select  name="availability" id="hour.availability" class="form-control"  ng-model="availability" ng-options="o.name as o.name for o in dis" ><option value="">--</option></select>
+	</div>
+	<div class="form-group">
+	  <input class="btn btn-default" value="Inserisci" ng-click="addHour()">
+	</div>
+	<div class="form-group">
+	  <label class="label label-info" ng-if="hours.length > 0">Ore registrate</label>
+	  <table class="table table-bordered" ng-if="hours.length > 0">
+	    <thead>
 	      <tr>
+		<th>giorno</th>
 		<th>ora</th>
-		<th>lunedi</th>
-		<th>martedi</th>
-		<th>mercoledi</th>
-		<th>giovedi</th>
-		<th>venerdi</th>
+		<th>classe</th>
+		<th>sottoclasse</th>
+		<th>materia</th>
+		<th>disponibilità</th>
+		<th>rimuovi</th>
 	      </tr>
 	    </thead>
-	    <tbody >
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[0].nome_ora"></p></td>
-		<td><select name="timetable.lunedi" id="timetable" class="form-control" ng-model="teacher.timetable[0].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[0].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[0].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[0].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[0].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[1].nome_ora"></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[1].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[1].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[1].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[1].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[1].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[2].nome_ora"></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[2].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[2].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[2].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[2].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[2].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[3].nome_ora"></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[3].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[3].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[3].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[3].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[3].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[4].nome_ora"></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[4].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[4].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[4].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[4].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[4].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[5].nome_ora" ></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[5].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[5].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[5].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[5].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[5].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[6].nome_ora"></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[6].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[6].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[6].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[6].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[6].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-	      </tr>
-	      <tr>
-		<td><p name="timetable.nome_ora" id="timetable" class="form-control" ng-bind="teacher.timetable[7].nome_ora"></p></td>
-		<td><select  name="timetable.lunedi" id="timetable" class="form-control"  ng-model="teacher.timetable[7].lunedi" ng-options="o.name as o.name for o in changeList(teacher.classes)" ><option value="">--</option></select></td>
-		<td><select  name="timetable.martedi" id="timetable" class="form-control" ng-model="teacher.timetable[7].martedi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.mercoledi"  id="timetable" class="form-control"  ng-model="teacher.timetable[7].mercoledi" ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.giovedi" id="timetable" class="form-control" ng-model="teacher.timetable[7].giovedi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
-		<td><select  name="timetable.venerdi" id="timetable" class="form-control" ng-model="teacher.timetable[7].venerdi"  ng-options="o.name as o.name for o in changeList(teacher.classes)"><option value="">--</option></select></td>
+	    <tbody>
+	      <tr ng-repeat="hour in hours">
+  		<td ng-bind="hour.day"></td>
+		<td ng-bind="hour.hour"></td>
+		<td ng-bind="hour.classe"></td>
+		<td ng-bind="hour.subclass"></td>
+		<td ng-bind="hour.subject"></td>
+		<td ng-bind="hour.availability"></td>
+		<td><span class="glyphicon glyphicon-remove-sign" ng-click="removeHour($index)"></span></td>
 	      </tr>
 	    </tbody>
 	  </table>
-        </div>
+	</div>
+	<div class="form-group">
+	  <label class="label label-default" ng-if="teacher.timetable.length > 0">Ore già registrate</label>
+	  <table class="table table-bordered" ng-if="teacher.timetable.length > 0">
+	    <thead>
+	      <tr>
+		<th>giorno</th>
+		<th>ora</th>
+		<th>classe</th>
+		<th>sottoclasse</th>
+		<th>materia</th>
+		<th>disponibilità</th>
+		<th>rimuovi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="hour in teacher.timetable">
+  		<td ng-bind="hour.day"></td>
+		<td ng-bind="hour.hour"></td>
+		<td ng-bind="hour.classe"></td>
+		<td ng-bind="hour.subclass"></td>
+		<td ng-bind="hour.subject"></td>
+		<td ng-bind="hour.availability"></td>
+		<td><span class="glyphicon glyphicon-remove-sign" ng-click="removeHours($index)"></span></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
 	<div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>

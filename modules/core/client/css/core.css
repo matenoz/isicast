@@ -71,9 +71,10 @@ a:hover {
     color: black;
 }
 
-/*table{
-       table-layout: fixed;
-}*/
+/* table { */
+/*        table-layout: fixed; */
+/* } */
+/* table th, table td { overflow: hidden; } */
 
 th {
     overflow: hidden;
@@ -87,7 +88,7 @@ td {
     overflow: hidden;
     color :gray;
     text-align: left;
-    /*white-space: nowrap;*/
+    /* white-space: nowrap; */
 }
 .table-responsive>.fixed-column {
     position: absolute;
@@ -281,3 +282,18 @@ td {
     border-radius: 32px;
     color: black;
 }
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* bootstrap flat */
+

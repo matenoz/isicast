@@ -1,33 +1,31 @@
-<section ng-controller="TimetablesController" ng-init="find()">
+<section ng-controller="TimetablesController" ng-init="showAvailability()">
   <div class="page-header">
     <h3>Quadro settimanale disposizioni</h3>
   </div>
   <div class="container">
      <div class="row">
-       <button type="button" class="btn btn-xs btn-flat"  ng-click="avail_hours()"> Disposizioni docenti</button>
-    <hr/>
-          <table class="table table-bordered">
+       <table class="table table-bordered">
 	    <thead > 
 	      <tr>
-		<th>ora</th>
-		<th>lunedi</th>
-		<th>martedi</th>
-		<th>mercoledi</th>
-		<th>giovedi</th>
-		<th>venerdi</th>
-	    </tr>
+		<th style="width:5%">ora</th>
+		<th style="width:19%">lunedi</th>
+		<th style="width:19%">martedi</th>
+		<th style="width:19%">mercoledi</th>
+		<th style="width:19%">giovedi</th>
+		<th style="width:19%">venerdi</th>
+	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr ng-repeat="disp in newdisp">
-		<td ><p>{{disp.nome_ora}}</p></td>
-		<td ><p>{{disp.lunedi.join(", ")}}</p></td>
-		<td ><p>{{disp.martedi.join(", ")}}</p></td>
-		<td ><p>{{disp.mercoledi.join(", ")}}</p></td>
-		<td ><p>{{disp.giovedi.join(", ")}}</p></td>
-		<td ><p>{{disp.venerdi.join(", ")}}</p></td>
+	      <tr ng-repeat="disp in container">
+		<td ng-bind="disp.nome_ora"></td>
+		<td ng-bind="disp.lunedi.join(', ')"></td>
+		<td ng-bind="disp.martedi.join(', ')"></td>
+		<td ng-bind="disp.mercoledi.join(', ')"></td>
+		<td ng-bind="disp.giovedi.join(', ')"></td>
+		<td ng-bind="disp.venerdi.join(', ')"></td>
 	      </tr>
 	    </tbody>
-	  </table>
-       </div>
-   </div>
+       </table>
+     </div>
+  </div>
 </section>

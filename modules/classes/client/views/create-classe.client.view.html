@@ -14,11 +14,28 @@
           </div>
 	</div>
 	<div class="form-group">
-          <label class="label label-default"for="indirizzo">Indirizzo</label>
+	  <label class="label label-default" for="subclass">Sottoclasse</label>
+	  <div class="right-addon input-group">
+	    <input type="text" name="subclass" ng-model="subclass" class="form-control" id="subclass">
+	       <span  class="input-group-addon btn" ng-click="addSubClass()" >
+	    <i class="glyphicon glyphicon-save"></i>
+	    </span>
+	  </div>
+	</div>
+	<div class="form-group" ng-if="subClasses.length >0">
+	  <span class="label label-info">Sottoclassi inserite</span>
+	  <ul class="list-group" ng-repeat="subclass in subClasses">
+	    <li class="list-group-item list-group-item-info">{{subclass.name}}
+	      <span class="glyphicon glyphicon-remove-sign pull-right"  ng-click="removeSubClass($index)"></span>
+	    </li>
+	    </ul>
+	  </div>
+	<div class="form-group">
+          <label class="label label-default" for="indirizzo">Indirizzo</label>
           <select name="indirizzo" ng-model="indirizzo" id="indirizzo" class="form-control" ng-options="o as o for o in indirizzoarray"><option value="">--</option></select>       
 	</div>
 	<div class="form-group">
-	  <label class="label label-default"for="coordinatore">Coordinatore</label>
+	  <label class="label label-default" for="coordinatore">Coordinatore</label>
 	  <input name="coordinatore" ng-model="coordinatore" id="coordinatore" class="form-control" placeholder="Coordinatore">
 	</div>
 	<form class="horizontal-form">
@@ -33,6 +50,7 @@
 	    <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
 	  </div>
 	</form>
+	<label class="label label-default" for="table">Docente associati</label>
 	<table class="table table-bordered" ng-if="_teachers.length > 0">
 	  <thead>
 	    <tr>

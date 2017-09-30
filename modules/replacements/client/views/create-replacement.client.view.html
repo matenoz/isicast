@@ -11,7 +11,7 @@
           <div ng-messages="replacementForm.rep_date.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Replacement date is required.</p>
           </div>
-	  </div>
+	</div>
 	<div class="form-group">
           <label class="label label-default"for="rep.absent">Seleziona docente da sostitutire:</label>
           <select name="rep.absent" ng-options="hour.name as hour.name for hour in teachers_absent" ng-model="rep.absent" id="rep.absent" class="form-control" ng-change="checkhours(rep.absent,rep_date)"><option value="">--</option></select>
@@ -22,32 +22,45 @@
         </div>
 	<div class="form-group">
           <label class="label label-default"for="rep.classe">Seleziona classe:</label>
-          <select name="rep.classe" ng-options="hour.classe as hour.classe for hour in ab_hours" ng-model="rep.classe" id="rep.classe" class="form-control"><option value="">--</option></select>
+          <select name="rep.classe" ng-options="hour.classe as hour.classe for hour in ab_hours" ng-model="rep.classe" id="rep.classe" class="form-control" ng-click="searchTeamTeaching(rep.absent,rep.hour,rep_date,rep.classe)"><option value="">--</option></select>
         </div>
+	<div class="form-group" ng-if="teamteachers.length >0">
+	  <alert  type="success"  role="alert" ng-bind="teamteachers"></alert>
+	</div>
 	<div class="form-group">
-          <label class="label label-default"for="rep.substitute">Seleziona docente sostituto:</label>
+	  <label ng-if="control===true"class="label label-default" for="control">Deseleziona per scegliere altri docenti:</label>
+	  <label ng-if="control===false"class="label label-default" for="control">Seleziona per scegliere  docenti disponibili:</label>
+	  <br>
+	  <input name="switch" type="checkbox" ng-model="control" ng-change="change()" >
+	</div>
+	<div ng-if="control===true" class="form-group">
+          <label class="label label-default" for="rep.substitute">Seleziona docente da disponibili:</label>
           <select name="rep.substitute" ng-options="hour.name as hour.name for hour in sub_teachers" ng-model="rep.substitute" id="rep.substitute" class="form-control"><option value="">--</option></select>
+        </div>
+	<div ng-if="control===false" class="form-group">
+          <label class="label label-default"for="rep.substitute">Seleziona docente da collegio:</label>
+          <select name="rep.substitute" ng-options="teacher.name as teacher.name for teacher in teachers" ng-model="rep.substitute" id="rep.substitute" class="form-control"><option value="">--</option></select>
         </div>
 	<div class="form-group">
           <input ng-click="addRep()" value="inserisci" class="btn btn-default">
         </div>
 	<div class="form-group">
-	<table class="table table-bordered" ng-if="dailyreps.length > 0">
-	  <thead>
-	    <th>Ora</th>
-	    <th>Classe</th>
-	    <th>Assente</th>
-	    <th>Sostituto</th>
-	    <th>Delete</th>
-	  </thead>
-	  <tbody ng-repeat="rep in dailyreps">
-	    <td ng-bind="rep.hour"></td>
-	    <td ng-bind="rep.classe"></td>
-	    <td ng-bind="rep.absent"></td>
-	    <td ng-bind="rep.substitute"></td>
-	    <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeRep($index)"></span></td>
-	  </tbody>
-	</table>
+	  <table class="table table-bordered" ng-if="dailyreps.length > 0">
+	    <thead>
+	      <th>Ora</th>
+	      <th>Classe</th>
+	      <th>Assente</th>
+	      <th>Sostituto</th>
+	      <th>Delete</th>
+	    </thead>
+	    <tbody ng-repeat="rep in dailyreps">
+	      <td ng-bind="rep.hour"></td>
+	      <td ng-bind="rep.classe"></td>
+	      <td ng-bind="rep.absent"></td>
+	      <td ng-bind="rep.substitute"></td>
+	      <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeRep($index)"></span></td>
+	    </tbody>
+	  </table>
 	</div>
         <div class="form-group">
           <input type="submit" class="btn btn-default">
@@ -59,24 +72,24 @@
     </form>
   </div>
   <div class="col-md-4 col-xs-6">
-  <label class="label label-primary" for="available" ng-if="availables.length > 0">Vista disposizioni del {{rep_date| date}}</label> 
-  <table class="table table-bordered" ng-if="availables.length > 0">
-    <thead>
-      <th>Ora</th>
-      <th>Docente</th>
-      <th>Delete</th>
-    </thead>
-    <tbody ng-if="available.day === giorno" ng-repeat="available in availables | orderBy:'hour'">
-      <td ng-bind="available.hour"></td>
-      <td ng-bind="available.teacher"></td>
-      <td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAvailable($index)"></span></td>
-    </tbody>
-  </table>
-  <div ng-if="alerts.length > 0">
-   <div ng-repeat="alert in alerts">
-      <alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
-      </alert>
-    </div>
-   <div>
-  </div>   
+    <label class="label label-primary" for="available" ng-if="availables.length > 0">Vista disposizioni del {{rep_date| date}}</label> 
+    <table class="table table-bordered" ng-if="availables.length > 0">
+      <thead>
+	<th>Ora</th>
+	<th>Docente</th>
+	<th>Delete</th>
+      </thead>
+      <tbody ng-if="available.day === giorno" ng-repeat="available in availables | orderBy:'hour'">
+	<td ng-bind="available.hour"></td>
+	<td ng-bind="available.teacher"></td>
+	<td><span class="glyphicon glyphicon-remove-sign" ng-click="removeAvailable($index)"></span></td>
+      </tbody>
+    </table>
+    <div ng-if="alerts.length > 0">
+      <div ng-repeat="alert in alerts">
+	<alert  type="success"  role="alert" close="closeAlert($index)" >{{alert.msg}}
+	</alert>
+      </div>
+      <div>
+      </div>   
 </section>

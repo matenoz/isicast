@@ -1,35 +1,35 @@
 <section ng-controller="TimetablesController" ng-init="findOne()">
   <div class="page-header">
-    <h3>Orario settimanale docente: {{teacher.name}}</h3>
+    <h3>Quadro orario settimanale: {{teacher.name}}</h3>
   </div>
-   <div class="container">
+  <div class="container">
     <div class="row">
-          <table  class="table table-bordered">
-	    <thead > 
+     <table ng-if="container" class="table table-bordered">
+	<thead > 
 	      <tr>
-		<th>ora</th>
-		<th>lunedi</th>
-		<th>martedi</th>
-		<th>mercoledi</th>
-		<th>giovedi</th>
-		<th>venerdi</th>
-	    </tr>
-	    </thead>
-	    <tbody >
-	      <tr ng-repeat="timetable in teacher.timetable">
-		<td ><p>{{timetable.nome_ora}}</p></td>
-		 <td><p>{{timetable.lunedi}}</p></td>
-		<td><p >{{timetable.martedi}}</p></td>
-		<td><p >{{timetable.mercoledi}}</p></td>
-		<td><p > {{timetable.giovedi}}</p></td>
-		<td><p >{{timetable.venerdi}}</p></td>
+		<th style="width:5%">ora</th>
+		<th style="width:19%">lunedi</th>
+		<th style="width:19%">martedi</th>
+		<th style="width:19%">mercoledi</th>
+		<th style="width:19%">giovedi</th>
+		<th style="width:19%">venerdi</th>
 	      </tr>
-	    </tbody>
-	  </table>
-       </div>
-   </div>
-    <div class="pull-right" ng-if="check('abs', authentication.user.roles)||check('admin',authentication.user.roles)">
-    <a  class="btn btn-primary" ui-sref="timetables.edit({teacherId: teacher._id})">
+	    </thead>
+	<tbody>
+	  <tr ng-repeat="disp in container">
+	    <td ng-bind="disp.nome_ora"></td>
+	    <td ng-bind="disp.lunedi"></td>
+	    <td ng-bind="disp.martedi"></td>
+	    <td ng-bind="disp.mercoledi"></td>
+	    <td ng-bind="disp.giovedi"></td>
+	    <td ng-bind="disp.venerdi"></td>
+	  </tr>
+	</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pull-right" ng-if="check('abs', authentication.user.roles)||check('admin',authentication.user.roles)">
+    <a class="btn btn-primary" ui-sref="timetables.edit({teacherId: teacher._id})">
       <i class="glyphicon glyphicon-edit"></i> modifica </a>
   </div>
 </section>

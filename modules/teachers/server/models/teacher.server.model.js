@@ -31,6 +31,11 @@ var TeacherSchema = new Schema({
       type:String,
       trim:true
     },
+    subclass:{
+      type:String,
+      default:'',
+      trim:true
+    },
     indirizzo:{
       type:String,
       trim:true
@@ -55,37 +60,67 @@ var TeacherSchema = new Schema({
       trim:true
     }  
   }],
-  timetable :[{
-    nome_ora:{
+  timetable:[{
+    hour:{
       type:String,
       trim:true,
       default:''
     },
-    lunedi:{
+    day:{
       type:String,
       trim:true,
       default:''
     },
-    martedi:{
+    classe:{
       type:String,
       trim:true,
       default:''
     },
-    mercoledi:{
+    subclass:{
       type:String,
       trim:true,
       default:''
     },
-    giovedi:{
+    subject:{
       type:String,
       trim:true,
       default:''
     },
-    venerdi:{
+    availability:{
       type:String,
       trim:true,
       default:''
     }
+    /* nome_ora:{
+     *   type:String,
+     *   trim:true,
+     *   default:''
+     * },
+     * lunedi:{
+     *   type:String,
+     *   trim:true,
+     *   default:''
+     * },
+     * martedi:{
+     *   type:String,
+     *   trim:true,
+     *   default:''
+     * },
+     * mercoledi:{
+     *   type:String,
+     *   trim:true,
+     *   default:''
+     * },
+     * giovedi:{
+     *   type:String,
+     *   trim:true,
+     *   default:''
+     * },
+     * venerdi:{
+     *   type:String,
+     *   trim:true,
+     *   default:''
+     * }*/
   }],
   isActive:{
     type:Boolean,

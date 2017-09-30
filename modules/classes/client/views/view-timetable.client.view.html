@@ -1,36 +1,37 @@
-<section ng-controller="CtimetablesController" ng-init="findOne()">
+<section ng-controller="ClassesController" ng-init="timeTable()">
   <div class="page-header">
-    <h3>Orario settimanale classe {{classe.nome_classe}}</h3>
+    <h3>Quadro orario settimanale classe: {{classe.nome_classe}} </h3>
   </div>
-  <div class="container">
-    <div class="row">
-      <table  class="table table-bordered" style="table-layout: fixed;">
-	<thead > 
-	  <tr>
-	    <th>ora</th>
-	    <th>lunedi</th>
-	    <th>martedi</th>
-	    <th>mercoledi</th>
-	    <th>giovedi</th>
-	    <th>venerdi</th>
-	  </tr>
-	</thead>
-	<tbody >
-	  <tr ng-repeat="timetable in classe.timetable">
-	    <td ><p>{{timetable.nome_ora}}</p></td>
-	    <td><p>{{timetable.lunedi}}</p></td>
-	    <td><p >{{timetable.martedi}}</p></td>
-	    <td><p >{{timetable.mercoledi}}</p></td>
-	    <td><p > {{timetable.giovedi}}</p></td>
-	    <td><p >{{timetable.venerdi}}</p></td>
-	  </tr>
-	</tbody>
-      </table>
+  <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group" ng-repeat="subclass in classe.subclasses">
+      <button class="btn " ng-bind="subclass.name" ng-click="subclassTimetable(subclass.name)"></button><br>
     </div>
-  </div>
-  <div class="pull-right" ng-if="check('god', authentication.user.roles)||check('admin', authentication.user.roles)">
-    <a class="btn btn-primary" ui-sref="ctimetables.edit({classeId: classe._id})">
-      <i class="glyphicon glyphicon-edit"></i> modifica
-    </a>
+  </div> 
+  <hr/>
+  <div class="container">
+     <div class="row">
+       <table class="table table-bordered">
+	    <thead > 
+	      <tr>
+		<th style="width:5%">ora</th>
+		<th style="width:19%">lunedi</th>
+		<th style="width:19%">martedi</th>
+		<th style="width:19%">mercoledi</th>
+		<th style="width:19%">giovedi</th>
+		<th style="width:19%">venerdi</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="disp in container">
+		<td ng-bind="disp.hour"></td>
+		<td ng-bind="disp.lunedi.join(', ')"></td>
+		<td ng-bind="disp.martedi.join(', ')"></td>
+		<td ng-bind="disp.mercoledi.join(', ')"></td>
+		<td ng-bind="disp.giovedi.join(', ')"></td>
+		<td ng-bind="disp.venerdi.join(', ')"></td>
+	      </tr>
+	    </tbody>
+       </table>
+     </div>
   </div>
 </section>

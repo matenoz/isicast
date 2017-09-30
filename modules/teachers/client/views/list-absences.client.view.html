@@ -1,4 +1,4 @@
-<section ng-controller="AbsencesController" ng-init="find()">
+<section ng-controller="AbsencesController" ng-init="find_ab()">
   <div class="page-header">
     <h3>Assenze docenti</h3>
   </div>
@@ -16,8 +16,7 @@
   <pagination total-items="teachers.length" boundary-links="true" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" ng-show="teachers.length > pageSize"></pagination>
   </div>
   <div class="col-md-8">
-    <button type="button" class="btn btn-xs btn-flat" ng-click="find_ab()"> Riepilogo assenze docenti</button>
-    <hr/>
+    <label class="label label-lg label-info" ng-if="t_absence.length > 0">Quadro riepilogativo assenze</label>
     <table ng-if="t_absence.length > 0" class="table table-bordered">
       <thead>
 	<tr>

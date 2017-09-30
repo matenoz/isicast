@@ -56,17 +56,19 @@ angular.module('teachers').controller('AbsencesController', ['$scope', '$statePa
  
     // Find a list of Teachers
     $scope.find = function () {
-      $scope.teachers = Absences.query();		
+      $scope.teachers = Absences.query({}, function(){
+        $scope.t_absence = [];
+        angular.forEach($scope.teachers,function(teacher,index){
+          angular.forEach(teacher.absences,function(absence,index){
+            $scope.t_absence.push({ name:teacher.name, type:absence.type,date:absence.date,cause:absence.cause });
+          });
+        });  
+      });		
     };
 
     // Create a list to sort   
     $scope.find_ab = function (){
-      $scope.t_absence = [];
-      angular.forEach($scope.teachers,function(teacher,index){
-        angular.forEach(teacher.absences,function(absence,index){
-          $scope.t_absence.push({ name:teacher.name, type:absence.type,date:absence.date,cause:absence.cause });
-        });
-      });  
+      $scope.find();
     };  
       
     // Find existing Teacher

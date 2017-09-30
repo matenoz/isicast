@@ -21,6 +21,7 @@
 	  <input class="btn btn-default" value="Inserisci" ng-click="addAbsence()">
 	</div>
 	<div class="form-group">
+	  <label class="label label-info" ng-if="ab_sences.length > 0">Nuova registrazione</label>
 	  <table class="table table-bordered" ng-if="ab_sences.length > 0">
 	    <thead>
 	      <tr>
@@ -41,7 +42,7 @@
 	  </table>
 	</div>
 	<div class="form-group">
-	  <label class="label label-primary" ng-if="teacher.absences.length > 0">Assenze già registrate</label>
+	  <label class="label label-default" ng-if="teacher.absences.length > 0">Assenze già registrate</label>
 	  <table class="table table-bordered" ng-if="teacher.absences.length > 0">
 	    <thead>
 	      <tr>

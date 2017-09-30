@@ -2,8 +2,9 @@
   <div class="page-header">
     <h3>Assenze del docente: {{teacher.name}}</h3>
   </div>
-   <div class="col-md-10">
-    <h5>Riepilgo assenze</h5>
+  <div class="col-md-10">
+    <label class="label label-lg label-info" ng-if="teacher.absences <=0">Nessuna assenza registrata</label>
+     <label class="label label-default" ng-if="teacher.absences.length > 0">riepilogo assenze</label>
   <table class="table table-bordered" ng-if="teacher.absences.length > 0">
     <thead>
       <tr>
