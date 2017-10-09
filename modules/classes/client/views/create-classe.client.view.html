@@ -50,7 +50,7 @@
 	    <input ng-click="addTeacher()" value="add teacher" class="btn btn-default">
 	  </div>
 	</form>
-	<label class="label label-default" for="table">Docente associati</label>
+	<label class="label label-default" for="table" ng-if="_teachers.length > 0">Docenti associati</label>
 	<table class="table table-bordered" ng-if="_teachers.length > 0">
 	  <thead>
 	    <tr>

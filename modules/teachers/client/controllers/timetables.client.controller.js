@@ -115,12 +115,13 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
         angular.forEach($scope.teacher.timetable, function(hour, index){
           angular.forEach($scope.container, function(hour_container, index){
             if (hour.hour === hour_container.nome_ora){
-              if(hour.classe !== undefined){ 
-                hour_container[hour.day].push(hour.classe); 
+              if(hour.classe !== undefined && hour.classe !== ''){ 
+                hour_container[hour.day].push(hour.classe);
               }
               else if (hour.availability !== undefined){
                 hour_container[hour.day].push(hour.availability);
-              }
+		
+	      }
             }
           });
         });
