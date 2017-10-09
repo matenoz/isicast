@@ -121,7 +121,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
               else if (hour.availability !== undefined){
                 hour_container[hour.day].push(hour.availability);
 		
-	      }
+              }
             }
           });
         });
