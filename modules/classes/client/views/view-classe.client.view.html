@@ -15,13 +15,14 @@
     <a ui-sref="ctimetables.view({classeId: classe._id})"><h4><span class="glyphicon glyphicon-calendar"></span> Orario settimanale</h4></a>
   </section>
   <br>
-  <div class="pull-right" ng-if="check('god', authentication.user.roles)||check('admin',authentication.user.roles)">
-  <!-- <div class="pull-right" ng-show="authentication.user._id==classe.user._id">  --> 
-   <a class="btn btn-primary" ui-sref="classes.edit({classeId: classe._id})">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="remove();">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
+  <div ng-if="authentication.user">
+    <div class="pull-right" ng-if="check('god', authentication.user.roles)||check('admin',authentication.user.roles)">
+      <a class="btn btn-primary" ui-sref="classes.edit({classeId: classe._id})">
+	<i class="glyphicon glyphicon-edit"></i>
+      </a>
+      <a class="btn btn-primary" ng-click="remove();">
+	<i class="glyphicon glyphicon-trash"></i>
+      </a>
+    </div>
   </div>
 </section>

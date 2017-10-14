@@ -4,28 +4,30 @@
   </div>
   <div class="col-md-10">
     <label class="label label-lg label-info" ng-if="teacher.absences <=0">Nessuna assenza registrata</label>
-     <label class="label label-default" ng-if="teacher.absences.length > 0">riepilogo assenze</label>
-  <table class="table table-bordered" ng-if="teacher.absences.length > 0">
-    <thead>
-      <tr>
-	<th>data</th>
-	<th>tipologia</th>
-	<th>motivo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="absence in teacher.absences|orderBy:'-date'">
-  	<td ng-bind="absence.date | date"></td>
-	<td ng-bind="absence.type"></td>
-	<td ng-bind="absence.cause"></td>
-      </tr>
-    </tbody>
-  </table>
+    <label class="label label-default" ng-if="teacher.absences.length > 0">riepilogo assenze</label>
+    <table class="table table-bordered" ng-if="teacher.absences.length > 0">
+      <thead>
+	<tr>
+	  <th>data</th>
+	  <th>tipologia</th>
+	  <th>motivo</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr ng-repeat="absence in teacher.absences|orderBy:'-date'">
+  	  <td ng-bind="absence.date | date"></td>
+	  <td ng-bind="absence.type"></td>
+	  <td ng-bind="absence.cause"></td>
+	</tr>
+      </tbody>
+    </table>
   </div>
   <br>
-  <div class="pull-right" ng-if="check('abs', authentication.user.roles)||check('admin',authentication.user.roles)">
-    <a class="btn btn-primary" ui-sref="absences.edit({teacherId: teacher._id})">
-      <i class="glyphicon glyphicon-edit"></i> inserisci 
-    </a>
+  <div ng-if="authentication.user">
+    <div class="pull-right" ng-if="check('abs', authentication.user.roles)||check('admin',authentication.user.roles)">
+      <a class="btn btn-primary" ui-sref="absences.edit({teacherId: teacher._id})">
+	<i class="glyphicon glyphicon-edit"></i> inserisci 
+      </a>
+    </div>
   </div>
 </section>
