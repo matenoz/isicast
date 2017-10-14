@@ -48,38 +48,6 @@ var ClasseSchema = new Schema({
     default:'',
     trim: true
   },
-  timetable:[{
-    /* nome_ora:{
-     *   type:String,
-     *   trim:true,
-     *   default:''
-     * },
-     * lunedi:{
-     *   type:String,
-     *   trim:true,
-     *   default:''
-     * },
-     * martedi:{
-     *   type:String,
-     *   trim:true,
-     *   default:''
-     * },
-     * mercoledi:{
-     *   type:String,
-     *   trim:true,
-     *   default:''
-     * },
-     * giovedi:{
-     *   type:String,
-     *   trim:true,
-     *   default:''
-     * },
-     * venerdi:{
-     *   type:String,
-     *   trim:true,
-     *   default:''
-     * }*/
-  }],
   isActive:{
     type:Boolean,
     trim:true,

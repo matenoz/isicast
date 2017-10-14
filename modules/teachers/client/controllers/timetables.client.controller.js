@@ -40,7 +40,19 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       }
       return container;
     };
-
+    var container_generate = function(){
+      var container = {};
+      var day_hours = {};
+      var hours = ['I','II','III','IV','V','VI','VII','VIII'];
+      var days = ['lunedi','martedi','mercoledi','giovedi','venerdi'];
+      for (var i = 0; i < days.length; i++){
+        container[days[i]] = day_hours;
+        for (var j = 0; j < hours.length; j++){
+          day_hours[hours[j]] = '';
+        }
+      }
+      return container;
+    };
     $scope.ownsubclass = function(_classe){
       $scope.ownsub = [];
       angular.forEach($scope.teacher.classes, function(classe, index){
@@ -91,17 +103,18 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
     $scope.generateGlobalTable = function(){
       $scope.teachers = Timetables.query({}, function(){
         $scope.globalcontainer = [];
-        var container = {};
+        var container = container_generate();
         var day_hours = {};
         angular.forEach($scope.teachers, function(teacher, index){
           angular.forEach(teacher.timetable, function(hour, index){
             if(hour.classe !== ''){
-              container[hour.day] = day_hours;
-              day_hours[hour.hour] = hour.classe;
-              day_hours = {};
+              container[hour.day][hour.hour] = hour.classe;
+              //day_hours[hour.hour] = hour.classe;
+              //day_hours = {};
             }
+	    
           },$scope.globalcontainer.push({ name: teacher.name, container:container }));
-          container = {};
+          container = container_generate();
         }); 
       });
     };

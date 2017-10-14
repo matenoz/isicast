@@ -4,6 +4,10 @@
   </div>
   <div class="container">
     <div class="row">
+      <div ng-if="teacher.notes != ''">
+	<label class="label label-danger" for="notes">Note</label>
+	<p ng-bind="teacher.notes"></p>
+      </div>
      <table ng-if="container" class="table table-bordered">
 	<thead > 
 	      <tr>

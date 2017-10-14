@@ -44,7 +44,6 @@ exports.update = function (req, res) {
   classe.teachers = req.body.teachers;  
   classe.isActive = req.body.isActive;
   classe.coordinatore = req.body.coordinatore;
-  classe.timetable = req.body.timetable;
   classe.subclasses = req.body.subclasses;
 
   classe.save(function (err) {

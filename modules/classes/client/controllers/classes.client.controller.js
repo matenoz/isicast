@@ -65,8 +65,7 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         indirizzo: this.indirizzo,
         subclasses:[],
         teachers:[],
-        coordinatore:this.coordinatore,  
-        timetable:[]  
+        coordinatore:this.coordinatore,    
       });
 
       // push element in classes   
@@ -86,7 +85,6 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
         $scope.subclasses = [];
         $scope.teachers = [];
         $scope.coordinatore = '';
-        $scope.timetable = [];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

@@ -30,6 +30,10 @@
 	  <select  name="availability" id="hour.availability" class="form-control"  ng-model="availability" ng-options="o.name as o.name for o in dis" ><option value="">--</option></select>
 	</div>
 	<div class="form-group">
+          <label class="label label-default" for="notes">Note</label>
+          <input name="notes" ng-model="teacher.notes" id="notes" class="form-control"  placeholder="inserisci nota">
+        </div>
+	<div class="form-group">
 	  <input class="btn btn-default" value="Inserisci" ng-click="addHour()">
 	</div>
 	<div class="form-group">

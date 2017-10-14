@@ -55,6 +55,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         materia: this.materia,  
         coordinator:this.coordinator,
         classes:[],
+        notes:this.notes,
         timetable:[]  
       });
       
@@ -72,6 +73,7 @@ angular.module('teachers').controller('TeachersController', ['$scope', '$statePa
         $scope.materia = [];  
         $scope.coordinator = '';
         $scope.classes = [];
+        $scope.notes = '';
         $scope.timetable = [];
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
