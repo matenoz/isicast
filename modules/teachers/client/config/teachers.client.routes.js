@@ -78,10 +78,10 @@ angular.module('teachers').config(['$stateProvider',
         url: '/disposizioni',
         templateUrl: 'modules/teachers/client/views/disp-timetable.view.html'
       })
-      .state('timetables.global', {
-        url: '/globalview',
-        templateUrl: 'modules/teachers/client/views/global-timetable.view.html'
-      })
+    /* .state('timetables.global', {
+     *   url: '/globalview',
+     *   templateUrl: 'modules/teachers/client/views/global-timetable.view.html'
+     * })*/
       .state('timetables.view', {
         url: '/:teacherId',
         templateUrl: 'modules/teachers/client/views/view-timetable.client.view.html'

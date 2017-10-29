@@ -11,12 +11,12 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-	<th>data</th>
-	<th>docente</th>
-	<th>classe</th>
-	<th>asse culturale</th>
-	<th>disciplina</th>
-	 <th>documento</th>
+	<th style="width:10%">data</th>
+	<th style="width:20%">docente</th>
+	<th style="width:10%">classe</th>
+	<th style="width:20%">asse culturale</th>
+	<th style="width:35%">disciplina</th>
+	<th style="width:5%">documento</th>
       </tr>
     </thead>
     <tbody ng-show="compareDates(plane.updated, currentYear)" ng-repeat="plane in planes|orderBy:'user.displayName'">

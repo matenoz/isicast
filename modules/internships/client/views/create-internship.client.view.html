@@ -1,0 +1,213 @@
+<section ng-controller="InternshipsController" ng-init="setLabel()">
+  <div class="page-header">
+    <h3>{{title}} </h3>
+  </div>
+  <div class="col-md-8">
+    <form name="internshipForm" class="form-horizontal" ng-submit="create(internshipForm.$valid)" novalidate>
+      <fieldset>
+	<h4 align="middle"><label class="label {{label}}" for="table"> Seleziona Indirizzo di studi</label></h4>
+	<table class="table form-group">
+	  <tr>
+	    <td>
+	      <input  type="radio" ng-model="page.type" value="liceo" ng-click="setLabel()">
+	      <label class="label label-info" for="liceo">
+		liceo
+	      </label>
+	    </td>
+	    <td>
+    	      <input  type="radio" ng-model="page.type" value="manutenzione" ng-click="setLabel()">
+	      <label class="label label-success" for="manutenzione">
+		manutenzione
+	      </label>
+	    </td>
+	    <td>
+	      <input  type="radio" ng-model="page.type" value="amministrazione" ng-click="setLabel()">
+	      <label class="label label-danger" for="amministrazione">
+		amministrazione
+	      </label>
+	    </td>
+	    <td>
+	      <input  type="radio" ng-model="page.type" value="servizi" ng-click="setLabel()">
+	      <label class="label label-warning" for="servizi">
+		servizi
+	      </label>
+	    </td>
+	  </tr>
+	</table>
+        <div class="form-group" show-errors>
+          <label  class="label {{label}}" for="title">Indirizzo</label>
+          <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="{{page.type}}" required>
+          <div ng-messages="internshipForm.title.$error" role="alert">
+	    <p class="help-block error-text" ng-message="required">Internship title is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label  class="label {{label}}" for="abstract">Abstract</label>
+          <textarea name="abstract" ng-model="abstract" id="abstract" class="form-control" cols="30" rows="4" placeholder="abstract"></textarea>
+        </div>
+	<div class="form-group">
+          <label class="label {{label}}" for="content">Finalità e obiettivi</label>
+          <trix-editor angular-trix name="content" ng-model="content" id="content" class="trix-content" placeholder="Finalità"></trix-editor>
+        </div>
+	<div class="form-group">
+          <label class="label {{label}}" for="description">Articolazione del Percorso</label>
+          <trix-editor angular-trix name="description" ng-model="description" id="description" class="trix-content" placeholder="Articolazione"></trix-editor>
+        </div>
+	<hr/>
+	<h4 align="middle"><label class="label {{label}}"> Inserimento Attività</label></h4>
+	<div class="form-group">
+	  <label class="label {{label}}" for="classe">classe</label>
+	  <input type="text" class="form-control" ng-model="classe">
+	</div>
+	<div class="form-group">
+	  <label class="label {{label}}" for="activity">attività</label>
+	  <input type="text" class="form-control" ng-model="activity">
+	</div>
+	<div class="form-group">
+	  <label class="label {{label}}" for="start">periodo dal:</label>
+	  <input type="date" class="form-control" ng-model="start">
+	</div>
+	<div class="form-group">
+	  <label class="label {{label}}" for="end">al:</label>
+	  <input type="date" class="form-control" ng-model="end">
+	</div>
+	<div class="form-group">
+	   <input value="salva" ng-click="addActivities()" class="btn btn-sm pull-right btn-{{type}}">
+	</div>
+	<div ng-if="activities.length > 0">
+	  <div  class="form-group">
+	    <table class="table table-condensed">
+	      <thead>
+		<tr>
+		  <th>Classe</th>
+		  <th>Attività</th>
+		  <th>dal</th>
+		  <th>al</th>
+		  <th>rimuovi</th>
+		</tr>
+	      </thead>
+	      <tbody ng-repeat="a in activities">
+		<tr class="{{type}}">
+		  <td ng-bind="a.classe"></td>
+		  <td ng-bind="a.activity"></td>
+		  <td ng-bind="a.start| date"></td>
+		  <td ng-bind="a.end| date"></td>
+		  <td> <i class="glyphicon glyphicon-remove-circle" ng-click="removeActivities(index)"></i></td>
+		</tr>
+	      </tbody>
+	    </table>
+	  </div>
+	</div>
+	<hr/>
+	<h4 align="middle"><label class="label {{label}}"> Inserimento Registri</label></h4>
+	<div class="form-group">
+	  <label class="label {{label}}" for="register">Classe</label>
+	  <input type="text" name="classe" ng-model="register.classe" class="form-control" id="classe" placeholder="classe">
+	  <br>
+	  <div class="right-addon input-group">
+	    <input type="text" name="url" ng-model="register.url" class="form-control" id="url" placeholder="url registro">
+	    <span  class="input-group-addon btn" ng-click="addRegisters()" >
+	      <i class="glyphicon glyphicon-save"></i>
+	    </span>
+	  </div>
+	</div>
+	<div ng-if="registers.length > 0">
+	  <ul>
+	    <li ng-repeat="register in registers">
+	      <a href="{{register.url}}" target="_blank"> registro <span ng-bind="register.classe"></span></a> 
+	      <span class="pull-right"> rimuovi <i class="glyphicon glyphicon-remove-circle" ng-click="removeRegisters(index)"></i></span>
+	    </li>
+	  </ul>
+	</div>
+	<hr/>
+	<h4 align="middle"><label class="label {{label}}"> Inserimento Parteners</label></h4>
+	<div class="form-group">
+	  <!-- <label class="label {{label}}" for="logo"> Logo</label> -->
+	  <a href="javascript:;" lk-google-picker on-picked="onPickedPartnersLogo(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-sm btn-{{type}} pull-left"><i class="glyphicon glyphicon-upload"></i> carica logo del partner
+	  </a>
+	</div>
+	<div class="form-group">
+	  <label class="label {{label}}" for="partner">Partners</label>  
+	  <div class="right-addon input-group">
+	    <input type="text" name="partner" ng-model="partner" class="form-control" id="partner">
+	    <span  class="input-group-addon btn" ng-click="addPartners()" >
+	      <i class="glyphicon glyphicon-save"></i>
+	    </span>
+	  </div>
+	</div>
+	<div ng-if="partners.length > 0">
+	  <div ng-repeat="partner in partners" class="panel-group">
+	    <div  class="panel panel-{{type}}">
+	      <div class="panel-body">
+		<div class="media">
+		  <div class="media-left media-top">
+		    <img class="media-object" src="{{partner.logo}}" alt="...">
+		  </div>
+		  <div class="media-body">
+		    <h4 class="media-heading" ng-bind="partner.name"></h4>
+		    <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="removePartners(index)"></i>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<hr/>
+	<h4 align="middle"><label class="label {{label}}"> Inserimento Immagini e photo gallery</label></h4>
+	<div ng-switch="sectionimages.length > 0">
+	  <div ng-switch-when="false">
+	    <div class="form-group">
+	      <a href="javascript:;" lk-google-picker on-picked="onPickedImages(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-left">  <i class="glyphicon glyphicon-upload"></i> carica immagine sezione
+	      </a>
+	    </div>
+	  </div>
+	  <div ng-switch-when="false">
+	    <p style="color:red;"> immagine di sezione non caricata</p>
+	  </div>
+	  <div ng-switch-when="true">
+	    <div ng-repeat="file in sectionimages" class="form-group">
+	      <span class="glyphicon glyphicon-ok"></span>
+              <img src="{{file.iconUrl}}">
+	      <a target="_blank" ng-href="{{file.url}}">
+		{{file.name}}
+	      </a>
+ 	      <span class="pull-right"> rimuovi
+	        <span class="glyphicon glyphicon-remove-circle" ng-click="removeFileImg(index)"></span>
+	      </span>
+	    </div>
+	  </div>
+	</div>
+	<div ng-switch="pics.length > 0">
+	  <div ng-switch-when="false">
+	    <div class="form-group">
+	      <a href="javascript:;" lk-google-picker on-picked="onPickedPics(docs)" on-loaded="onLoaded()" on-cancel="onCancel()" class="btn btn-link pull-left">  <i class="glyphicon glyphicon-upload"></i> carica photo gallery
+	      </a>
+	    </div>
+	  </div>
+	  <div ng-switch-when="false">
+	    <p style="color:red;"> photo gallery non caricata</p>
+	  </div>
+	  <div ng-switch-when="true">
+	    <div ng-repeat="file in pics" class="form-group">
+	      <span class="glyphicon glyphicon-ok"></span>
+              <img src="{{file.iconUrl}}">
+	      <a target="_blank" ng-href="{{file.url}}">
+		{{file.name}}
+	      </a>
+	      <span class="pull-right"> rimuovi
+	        <span class="glyphicon glyphicon-remove-circle" ng-click="removeFilePics(index)"></span>
+	      </span>
+	    </div>
+	  </div>
+	</div>
+	<br>
+	<div class="form-group">
+          <input type="submit" class="btn btn-{{type}} pull-right">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

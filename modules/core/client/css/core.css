@@ -295,5 +295,20 @@ td {
     pointer-events: none;
 }
 
-/* bootstrap flat */
 
+/* photo gallery*/
+
+.photo {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    -webkit-box-shadow:  2px 6px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow:  2px 6px 2px rgba(0,0,0,0.75);
+    box-shadow:  2px 6px 2px rgba(0,0,0,0.75);
+    margin-bottom:20px;
+}
+
+.photo:hover {
+    filter: none; /* IE6-9 */
+    -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+
+}

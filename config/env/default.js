@@ -5,14 +5,14 @@ module.exports = {
     title: 'Isicast',
     description: 'IISS Caduti della Direttissima, Istruzione Scientifica Tecnica Professionale, Corso Serale Servizi Socio Sanitari, Via toscana 21, Castiglione dei Pepoli (BO) Codice ministeriale BOIS009009',
     keywords: 'Isicast, Caduti della Direttissima, AFM, Liceo scientifico, MAT, Castiglione, informatica, PON',
-    googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
+    googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'UA-87637108-1'
   },
   port: process.env.PORT || 3000,
   templateEngine: 'swig',
   // Session Cookie settings
   sessionCookie: {
     // session expiration is set by default to 24 hours
-    maxAge: 24 * (60 * 60 * 1000),
+    maxAge: 1 * (60 * 60 * 1000),
     // httpOnly flag makes sure the cookie is only accessed
     // through the HTTP protocol and not JS/browser
     httpOnly: true,
@@ -27,7 +27,7 @@ module.exports = {
   // for obsecurity reasons
   sessionKey: 'sessionId',
   sessionCollection: 'sessions',
-  logo: 'modules/core/client/img/brand/logo.png',
+  logo: 'modules/core/client/img/brand/brand.png',
   favicon: 'modules/core/client/img/brand/favicon.ico',
   uploads: {
     profileUpload: {

@@ -100,25 +100,25 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       });
     };
 
-    $scope.generateGlobalTable = function(){
-      $scope.teachers = Timetables.query({}, function(){
-        $scope.globalcontainer = [];
-        var container = container_generate();
-        var day_hours = {};
-        angular.forEach($scope.teachers, function(teacher, index){
-          angular.forEach(teacher.timetable, function(hour, index){
-            if(hour.classe !== ''){
-              container[hour.day][hour.hour] = hour.classe;
-              //day_hours[hour.hour] = hour.classe;
-              //day_hours = {};
-            }
-	    
-          },$scope.globalcontainer.push({ name: teacher.name, container:container }));
-          container = container_generate();
-        }); 
-      });
-    };
-        
+    /* $scope.generateGlobalTable = function(){
+     *   $scope.teachers = Timetables.query({}, function(){
+     *     $scope.globalcontainer = [];
+     *     var container = container_generate();
+     *     var day_hours = {};
+     *     angular.forEach($scope.teachers, function(teacher, index){
+     *       angular.forEach(teacher.timetable, function(hour, index){
+     *         if(hour.classe !== ''){
+     *           container[hour.day][hour.hour] = hour.classe;
+     *           //day_hours[hour.hour] = hour.classe;
+     *           //day_hours = {};
+     *         }
+       
+     *       },$scope.globalcontainer.push({ name: teacher.name, container:container }));
+     *       container = container_generate();
+     *     }); 
+     *   });
+     * };
+     */       
     // generate teacher' timetable
     $scope.generateTable = function(){
       $scope.teacher = Timetables.get({
@@ -167,9 +167,9 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       $scope.teachers = Timetables.query();
     };
 
-    $scope.globalTable = function(){
-      $scope.generateGlobalTable();
-    };
+    /* $scope.globalTable = function(){
+     *   $scope.generateGlobalTable();
+     * };*/
     
     $scope.findOne = function () {
       $scope.generateTable();

@@ -13,7 +13,7 @@ angular.module('teachers').run(['Menus',
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'Elenco',
+      title: 'Elenco Docenti',
       state: 'teachers.list'
     });
             
@@ -31,24 +31,24 @@ angular.module('teachers').run(['Menus',
     });
 
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'Assenze',
+      title: 'Assenze Docenti',
       state: 'absences.list',
       roles: ['admin','abs', 'sost']
     });
       
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'Orario',
+      title: 'Orario Docenti',
       state: 'timetables.list',
       roles: ['god','admin']
     });
 
     Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'Disposizioni',
+      title: 'Disponibilità Docenti',
       state: 'timetables.dis',
     });
-    Menus.addSubMenuItem('topbar', 'teachers', {
-      title: 'G view',
-      state: 'timetables.global'
-    });
+    /* Menus.addSubMenuItem('topbar', 'teachers', {
+     *   title: 'G view',
+     *   state: 'timetables.global'
+     * });*/
   }
 ]);

@@ -1,0 +1,111 @@
+<section ng-controller="InternshipsController" ng-init="findOne()">
+  <br>
+  <ol class="breadcrumb">
+    <li><a ng-href="/internships">Scuola Lavoro</a></li>
+    <li class="active">{{internship.page}}</li>
+  </ol>
+  <div class="page-header">
+    <h3 ng-bind="internship.title"></h3>
+  </div>
+  <div class="row">
+    <div ng-repeat="image in internship.sectionimages" class="col-md-7">
+      <img class="img-responsive photo" ng-src="{{image.url}}"/>
+    </div>
+    <div class="col-md-5">
+      <p style="text-align: justify;text-justify: inter-word;" ng-bind-html="internship.content"></p>
+    </div>
+  </div>
+  <br>
+  <hr/>
+  <div class="container"> 
+    <tabset active="active" justified="true">
+      <tab index="0">
+	<tab-heading><i class="glyphicon glyphicon-road"></i> Percorso
+	</tab-heading>
+	<br>
+	<div class="col-md-8">
+	  <p style="text-align: justify;text-justify: inter-word;" ng-bind-html="internship.description"></p>
+	</div>
+      </tab>
+      <tab index="1">
+	<tab-heading><i class="glyphicon glyphicon-calendar"></i> Calendario Attività
+	</tab-heading>
+	<br>
+	<div class="col-md-8">
+	  <table class="table table-condensed">
+	    <thead>
+	      <tr>
+		<th>Classe</th>
+		<th>Attività</th>
+		<th>dal</th>
+		<th>al</th>
+	      </tr>
+	    </thead>
+	    <tbody ng-repeat="a in internship.activities">
+	      <tr class="{{internship.type}}">
+		<td ng-bind="a.classe"></td>
+		<td ng-bind="a.activity"></td>
+		<td ng-bind="a.start| date"></td>
+		<td ng-bind="a.end| date"></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+      </tab>
+      <tab index="2">
+	<tab-heading><i class="glyphicon glyphicon-user"></i> Partners
+	</tab-heading>
+	<br>
+	<div class="container">
+	  <div class="row">
+	    <div ng-repeat="partner in internship.partners" class="col-md-1 col-xs-3">
+	      <div class="thumbnail">
+		<img class="img-responsive" src="{{partner.logo}}" alt="...">
+	      </div> 
+	    </div>
+	  </div>
+	</div>
+      </tab>
+      <tab index="3">
+	<tab-heading><i class="glyphicon glyphicon-camera"></i> Gallery
+	</tab-heading>
+	<br>
+	<div class="container">
+	  <div class="row">
+	    <div ng-repeat="pic in internship.pics" class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive photo" src="{{pic.url}}" /></div>
+	  </div>
+	</div>
+      </tab>
+      <tab ng-if="authentication.user" ng-show="check('alt', authentication.user.roles) || check('admin', authentication.user.roles)" index="4">
+	<tab-heading><i class="glyphicon glyphicon-book"></i> Registri
+	</tab-heading>
+	<br>
+	<div class="col-md-6">
+	  <ul ng-repeat="register in internship.registers" class="list-group">
+	    <li class="list-group-item">Registro {{register.classe}} <a ng-href="{{register.url}}" target="_blank"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+	  </ul>
+	</div>
+      </tab>
+    </tabset>
+  </div>
+  <div class="container text-center">
+    <hr />
+    <div class="row">
+      <div class="col-lg-12">
+	<div ng-repeat="internship in internships" class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a class="btn btn-link" ui-sref="internships.view({internshipId: internship._id})">{{internship.title}}</a></li>
+          </ul>
+	</div>
+      </div>
+    </div>
+    <hr/>
+    <div class="pull-right" ng-if="authentication.user" ng-show="check('alt', authentication.user.roles) || check('admin', authentication.user.roles)">
+      <a class="btn btn-sm btn-{{internship.type}}" ui-sref="internships.edit({internshipId: internship._id})">
+	<i class="glyphicon glyphicon-edit"></i>
+      </a>
+      <a class="btn btn-sm btn-{{internship.type}}" ng-click="remove();">
+	<i class="glyphicon glyphicon-trash"></i>
+      </a>
+    </div>
+</section>

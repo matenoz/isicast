@@ -15,7 +15,7 @@ module.exports = function (config) {
     callbackURL: config.google.callbackURL,
     passReqToCallback: true
   },
-  function (req, accessToken, refreshToken, profile,done) {
+  function (req, accessToken, refreshToken, profile, done) {
     if(profile._json.domain === 'isicast.net'){
       // Set the provider data and include tokens
       var providerData = profile._json;
@@ -36,11 +36,11 @@ module.exports = function (config) {
       };
 
     // Save the user OAuth profile
-      users.saveOAuthUserProfile(req, providerUserProfile, done);
+      users.saveOAuthUserProfile(req,providerUserProfile, done);
     } else {
       return done(null, false,{
         message: 'Per accedere ai servizi è necessario un account con dominio isicast.net. Contatta amministratore@isicast.net per segnalare il problema'
-      });    
+      });
     }
   }));
 };

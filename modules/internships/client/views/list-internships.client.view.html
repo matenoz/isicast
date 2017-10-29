@@ -1,0 +1,225 @@
+<section ng-controller="InternshipsController" ng-init="find()">
+  <div class="well well-lg">
+    <carousel interval="myInterval" no-wrap="noWrapSlides">
+      <slide ng-repeat="slide in slides" active="slide.active">
+	<img ng-src="{{slide.image}}" style="margin:auto;height:350px;width:100%">
+	<div class="carousel-caption">
+	  <h3>{{slide.text}}</h3>
+	</div>
+      </slide>
+    </carousel>
+  </div>
+  <div class="page-header">
+    <h1>Scuola Lavoro</h1>
+  </div>
+  <tabset type="pills" justified="true">
+    <tab index="0" class="btn-success">
+      <tab-heading><i class="glyphicon glyphicon-road"></i> I percorsi
+      </tab-heading>
+      <div class="row">
+	<div class="col-md-4">
+	  <h2>Impresa Simulata</h2>
+	  <p style="text-align: justify;text-justify: inter-word;">
+	    Il processo formativo attuato nella simulazione della creazione di un’impresa si basa sull'interdisciplinarità e sulla metodologia del “learning by doing”. Nel percorso formativo gli alunni sono coinvolti in situazioni "reali" di lavoro/apprendimento, con le quali devono confrontarsi. Essi sono così stimolati a mettere in campo le loro abilità pregresse o, se non possedute, ad acquisire abilità e competenze che permettano loro di risolvere i problemi. Il docente svolge una funzione di supporto, di indirizzo, di facilitatore, gli alunni conducono in autonomia il lavoro loro assegnato o che loro stessi hanno progettato. Nel docente gli alunni trovano un "esperto" al quale rivolgere quesiti e porre specifiche richieste in relazione alle mansioni da svolgere. Il docente, avendo la visione generale del processo formativo, scandisce tempi definisce ruoli, stimola gli alunni all'esecuzione delle attività previste. Il progetto prevede una serie di attività di formazione su varie tematiche attraverso la partecipazione a seminari ed eventi per  favorire lo sviluppo delle competenze professionali, visite aziendali presso le realtà produttive presenti sul territorio, incontri con imprenditori ed esperti su varie tematiche con valenza formativa in relazione al percorso di impresa simulata che si è intrapreso. 
+	  </p>
+	</div>
+	<div class="col-md-4">
+	  <h2>Tirocinio - Stage</h2>
+	  <p style="text-align: justify;text-justify: inter-word;">
+	    Il progetto ha la finalità di permettere agli allievi di svolgere, durante il loro percorso di studi, un'esperienza formativa e orientativa, in collaborazione con realtà produttive di ambito socio economico pubbliche e private prevalentemente dell’Appennino. Tale esperienza stimola l’etica del lavoro, autonomia e responsabilità, nonchè, le capacità di adattamento alle diverse situazioni ed il rispetto dei tempi e delle mansioni affidate, aspetti che rientrano in pieno tra gli obiettivi formativi che l'istituto con queste attività si prefigge di raggiungere. Gli obiettivi di apprendimento connessi all’esperienza dello stage sono: la conoscenza delle problematiche gestionali delle aziende, l’approccio diretto alle procedure attuate in azienda e lo sviluppo delle capacità logiche e di collegamento tra ciò che gli studenti osservano e ciò che imparano a scuola.
+	    Modalità: la durata dello stage va da una a quattro settimane, a seconda del corso di studi.
+	  </p>
+	</div>
+	<div class="col-md-4">
+	  <h2>Alternanza Scuola-Lavoro all'estero</h2>
+	  <p style="text-align: justify;text-justify: inter-word;">
+	    Da qualche anno il nostro Istituto prevede stage all’estero al fine di arricchire le abilità linguistiche e le competenze applicate nel mondo del lavoro.
+	    All’esperienza della Green Economy a Monaco di Baviera, città che si propone di diventare completamente dipendente da fonti energetiche rinnovabili, si affiancheranno altre proposte.
+	  </p>
+	  <h3>Sicurezza</h3>
+	  <p style="text-align: justify;text-justify: inter-word;">
+	    In ottemperanza alle indicazioni del D.Lgs. 81/2008 e successive integrazioni, la scuola provvede ad assicurare a tutti gli studenti delle classi del triennio, nell’ambito del Progetto “Alternanza Scuola-Lavoro”, dalle 8 alle 12 ore di formazione sulla sicurezza, con test finale e consegna di Attestato di Partecipazione.	    
+	  </p>
+	</div>
+      </div>
+    </tab>
+    <tab class="btn-warning" index="1">
+      <tab-heading><i class="glyphicon glyphicon-search"></i> Indirizzi
+      </tab-heading>
+      <div class="row">
+	<br>
+	<div class="col-md-4">
+	  <div ng-repeat="internship in internships" class="panel-group">
+	    <div ng-if="internship.page== 'liceo'" class="panel panel-info">
+	      <div class="panel-heading"><i class="glyphicon glyphicon-education"></i> Liceo Scientifico</div>
+	      <div class="panel-body">
+		<p ng-bind="internship.abstract"> </p>
+		<a ui-sref="internships.view({internshipId: internship._id})"><button type="button" class="btn btn-sm btn-info">Leggi ancora</button></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="col-md-4">
+	  <div ng-repeat="internship in internships"  class="panel-group">
+	    <div ng-if="internship.page=='manutenzione'" class="panel panel-success">
+	      <div class="panel-heading"><i class="glyphicon glyphicon-cog"></i> Manutenzione e Assistenza Tecnica</div>
+	      <div class="panel-body">
+		<p ng-bind="internship.abstract"> </p>
+		<a ui-sref="internships.view({internshipId: internship._id})"><button type="button" class="btn btn-sm btn-success">Leggi ancora</button></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>  
+	<div class="col-md-4">
+	  <div ng-repeat="internship in internships"  class="panel-group">
+	    <div ng-if="internship.page =='amministrazione'"  class="panel panel-danger">
+	      <div class="panel-heading"><i class="glyphicon glyphicon-stats"></i> Amministrazione Finanza & Marketing</div>
+	      <div class="panel-body">
+		<p ng-bind="internship.abstract"> </p>
+		<a ui-sref="internships.view({internshipId: internship._id})"><button type="button" class="btn btn-sm btn-danger">Leggi ancora</button></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-md-4">
+	  <div ng-repeat="internship in internships"  class="panel-group">
+	    <div ng-if="internship.page =='servizi'" class="panel panel-warning">
+	      <div class="panel-heading"><i class="glyphicon glyphicon-picture"></i> Promozione Commerciale Pubblicitaria</div>
+	      <div class="panel-body">
+		<p ng-bind="internship.abstract"> </p>
+		<a ui-sref="internships.view({internshipId: internship._id})"><button type="button" class="btn btn-sm btn-warning">Leggi ancora</button></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </tab>
+    <tab index="2" class="btn-danger">
+      <tab-heading>
+	<i class="glyphicon glyphicon-user"></i> Partners
+      </tab-heading>
+      <br>
+      <div class="container">
+	<div class="row">
+	  <div ng-repeat="partner in partners" class="col-md-1 col-xs-3">
+	    <div class="thumbnail">
+	      <img class="img-responsive" src="{{partner.logo}}" alt="...">
+	    </div> 
+	  </div>
+	</div>
+      </div>
+    </tab>
+    <tab index="3" class="btn-info">
+      <tab-heading>
+	<i class="glyphicon glyphicon-info-sign"></i> Scuola-Lavoro
+      </tab-heading>
+      <div class="row">
+	<div class="col-md-12">
+	  <h2>Riferimenti normativi</h2>
+	  <p style="text-align: justify;text-justify: inter-word;">
+	    La Legge 107/2015 introduce l’obbligatorietà di percorsi di alternanza scuola-lavoro nel triennio.
+	    Il monte ore previsto è di 400 ore negli Istituti Tecnici e Professionali, di 200 ore nei percorsi Liceali.
+	    Obiettivi:
+	  </p>
+	  <ul>
+	    <li>Attuare modalità di apprendimento flessibile e equivalente sotto il profilo culturale ed educativo, rispetto agli esiti dei percorsi degli istituti che colleghino sistematicamente la formazione in aula con l’esperienza pratica.
+	    </li>	    
+	    <li>Arricchire la formazione acquisita nei percorsi scolastici e formativi con l’acquisizione di competenze spendibili nel mondo del lavoro.
+	    </li>
+	    <li>Favorire l’orientamento dei giovani per valorizzare le vocazioni personali, gli interessi, gli stili di apprendimenti individuali.
+	    </li>
+	    <li>
+	      Realizzare un organico collegamento delle istituzioni scolastiche e formative con il mondo del lavoro e della società civile.
+	    </li>
+	    <li>
+	      Correlare l’offerta formativa allo sviluppo culturale, sociale ed economico del territorio.
+	    </li>
+	  </ul>
+	  <p style="text-align: justify;text-justify: inter-word;">
+	    L’alternanza scuola-lavoro permette di introdurre nella scuola metodologie didattiche innovative che hanno lo scopo di ampliare il processo e i luoghi dell’apprendimento, coinvolgendo in tale processo oltre a studenti ed insegnanti anche esperti ed aziende esterne. La legge 107 del 13 luglio 2015 in merito ai progetti di alternanza scuola-lavoro prevede la realizzazione di percorsi formativi per le classi III, IV e V anche con la modalità dell’impresa formativa simulata o start up, oltre ai tradizionali stage/tirocini e alle molteplici azioni orientative post-diploma. I progetti di Alternanza Scuola-Lavoro devono caratterizzarsi per una forte valenza educativa ed innestarsi in un processo di costruzione della personalità per formare un soggetto orientato verso il futuro. Per rendere possibile la realizzazione di queste esperienze ci si avvale del lavoro di docenti interni (Funzione strumentale e Tutor scolastici preposti) e di formatori esterni. 
+	  </p>
+	</div>
+      </div>
+    </tab>
+  </tabset>  
+  <hr/>
+  <br>
+  <div class="page-header">
+    <h3>Photo Gallery</h3>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div ng-repeat="pic in gallery" class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive photo" src="{{pic.image}}" /></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="page-header">CALENDARIO</h3>
+    </div>
+    <div class="col-md-6">
+      <p>Calendario delle attività delle classi in alternanza per l'anno scolastico in corso</p>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th>Classi in alternanza </th>
+	      <th>Attività </th>
+	      <th>Periodo dal</th>
+	      <th>al</th>
+	    </tr>
+	  </thead>
+	  <tbody ng-repeat="a in activities|orderBy:'-start'">
+	     <tr class="{{a.type}}">
+	      <td ng-bind="a.classe"></td>
+	      <td ng-bind="a.activity"></td>
+	      <td ng-bind="a.start| date"></td>
+	      <td ng-bind="a.end| date"></td>
+	    </tr>
+	  </tbody>
+	</table>
+      </div>
+    </div>
+    <!-- /.row -->
+    <br>
+    <!-- Call to Action Section -->
+    <div class="well">
+      <div class="row">
+	<div class="col-md-8">
+	  <h4>Per qualunque tipo di informazione relativa agli stage, alle aziende, ai calendari rivolgersi al referente </h4>
+	</div>
+	<div class="col-md-4">
+	  <address>
+	    <strong>Referente alternanza scuola - lavoro<br> prof.ssa Cristina Rabaglietti  <a href="mailto:rabaglietti@isicast.net">Indirizzo di posta elettronica</a>.</strong><br>
+	    FAX 053492004  CENTRALINO 0534803500<br>
+	    Via Toscana, 21<br>
+	    Castiglione dei Pepoli
+	  </address>
+	</div>
+      </div>
+    </div>
+    <br>
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+    <hr />
+    <div class="row">
+      <div class="col-lg-12">
+	<div ng-repeat="internship in internships" class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a class="btn btn-link" ui-sref="internships.view({internshipId: internship._id})">{{internship.title}}</a></li>
+          </ul>
+	</div>
+      </div>
+    </div>
+    <hr/>
+    </footer>
+    </div>
+  <div class="alert alert-warning text-center" ng-if="internships.$resolved && !internships.length">
+    No internships yet, why don't you <a ui-sref="internships.create">create one</a>?
+  </div>
+</section>
+
