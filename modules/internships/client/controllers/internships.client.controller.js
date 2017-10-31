@@ -33,7 +33,7 @@ angular.module('internships').controller('InternshipsController', ['$scope', '$s
       }
     };
     $scope.partners = [];
-    $scope.partner = {};
+    //$scope.partner = {};
     $scope.addUpdatePartners = function(){
       angular.forEach($scope.logos, function(image, index){
         $scope.partners.push({ name:$scope.partner.name, logo:image.downloadUrl });

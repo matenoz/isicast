@@ -135,23 +135,17 @@
 	    </span>
 	  </div>
 	</div>
+
 	<div ng-if="partners.length > 0">
-	  <div ng-repeat="partner in partners" class="panel-group">
-	    <div  class="panel panel-{{type}}">
-	      <div class="panel-body">
-		<div class="media">
-		  <div class="media-left media-top">
-		    <img class="media-object" src="{{partner.logo}}" alt="...">
-		  </div>
-		  <div class="media-body">
-		    <h4 class="media-heading" ng-bind="partner.name"></h4>
-		    <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="removePartners(index)"></i>
-		  </div>
-		</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	  <h4 align="middle"><label class="label label-{{type}}"> Nuovi inserimenti</label></h4>
+	  <br>
+	  <ul class="list-group">
+	    <li ng-repeat="partner in partners" class="list-group-item">
+	      <span ng-bind="partner.name"></span>
+	      <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="removePartners(index)"></i>
+	    </li>
+	  </ul>
+	</div>	
 	<hr/>
 	<h4 align="middle"><label class="label {{label}}"> Inserimento Immagini e photo gallery</label></h4>
 	<div ng-switch="sectionimages.length > 0">
