@@ -11,7 +11,7 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
       }
     };
     // disposizioni
-    $scope.dis = [{ name:'prog' },{ name:'disp' }];  
+    $scope.dis = [{ name:'prog' },{ name:'disp' },{ name:'sportello' },{ name:'corso di recupero' },{ name:'sost. pag.' }];  
     $scope.nameOfHours = ['I','II','III','IV','V','VI','VII','VIII'];
     $scope.nameOfDays = ['lunedi','martedi','mercoledi','giovedi','venerdi'];
     // pagination
@@ -118,7 +118,8 @@ angular.module('teachers').controller('TimetablesController', ['$scope', '$state
      *     }); 
      *   });
      * };
-     */       
+     */
+    
     // generate teacher' timetable
     $scope.generateTable = function(){
       $scope.teacher = Timetables.get({
