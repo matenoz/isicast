@@ -4,6 +4,13 @@
 angular.module('planes').controller('PlanesController', ['$scope', '$stateParams', '$location', '$filter', 'Authentication', 'Planes',
   function ($scope, $stateParams, $location, $filter, Authentication, Planes) {
     $scope.authentication = Authentication;
+
+    // check if role exists
+    $scope.check = function(value, array) {
+      if(array.indexOf(value) > -1){
+        return true;
+      }
+    };
     // list classes
     $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM A','IV AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','II ART SC-MAT','I SC','II SC','III SC PCP','IV SC PCP','V SC PCP','I MAT','II MAT A', 'II MAT B','III MAT','III MAT impianti','IV MAT','V MAT','IV MAT impianti','V MAT impianti','III MAT trasporti','IV MAT trasporti','V MAT trasporti','II periodo SSS','III periodo SSS','II periodo MAT','III periodo MAT'];  
     $scope.axis = ['Asse dei linguaggi','Asse matematico','Asse storico - sociale','Asse scientifico - tecnologico'];

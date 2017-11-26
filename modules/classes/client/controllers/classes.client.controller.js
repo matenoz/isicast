@@ -135,6 +135,13 @@ angular.module('classes').controller('ClassesController', ['$scope', '$statePara
     // Find a list of Classes
     $scope.find = function () {
       $scope.classes = Classes.c.query();
+      /* $scope.teachers = Classes.t.query({}, function(){
+       *   angular.forEach(teachers, function(teacher,index){
+       *     angular.forEach(teacher.classes, function(classe, index){
+       *       
+	 });
+       *   });
+       * });*/
     };
 
     var generate_table = function(){
