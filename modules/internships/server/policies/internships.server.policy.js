@@ -25,12 +25,21 @@ exports.invokeRolesPolicies = function () {
     roles: ['alt'],
     allows: [{
       resources: '/api/internships',
-      permissions: ['get', 'post']
+      permissions: '*'
+    }, {
+      resources: '/api/internships/:internshipId',
+      permissions: '*'
+    }]
+  },{
+    roles: ['user'],
+    allows: [{
+      resources: '/api/internships',
+      permissions: ['get']
     }, {
       resources: '/api/internships/:internshipId',
       permissions: ['get']
     }]
-  }, {
+  },{
     roles: ['guest'],
     allows: [{
       resources: '/api/internships',
