@@ -4,6 +4,15 @@
 angular.module('adoptions').controller('AdoptionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adoptions',
   function ($scope, $stateParams, $location, Authentication, Adoptions) {
     $scope.authentication = Authentication;
+    $scope.currentYear = new Date();
+    $scope.nextYear = new Date();
+    if ($scope.currentYear.getMonth() < 5){
+      $scope.currentYear.setYear($scope.currentYear.getFullYear()-1);
+      $scope.nextYear.setYear($scope.nextYear.getFullYear());
+    } else {
+      $scope.currentYear.setYear($scope.currentYear.getFullYear());
+      $scope.nextYear.setYear($scope.nextYear.getFullYear()+1);
+    }
     $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC (promozione commerciale pubblicitaria)','IV SC (promozione commerciale pubblicitaria)','V SC (promozione commerciale pubblicitaria)','I MAT','II MAT','III MAT (apparati, impianti, servizi ind)','III MAT (manutenzione mezzi di trasporto)','IV MAT (apparati, impianti, servizi ind)','IV MAT (manutenzione mezzi di trasporto)','V MAT (apparati, impianti, servizi ind)','V MAT (manutenzione mezzi di trasporto)','II periodo SSS','III periodo SSS'];
     $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari','MAT Serale'];
     $scope.files = [];
