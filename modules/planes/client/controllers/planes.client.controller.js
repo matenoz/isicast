@@ -12,7 +12,7 @@ angular.module('planes').controller('PlanesController', ['$scope', '$stateParams
       }
     };
     // list classes
-    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM A','IV AFM B','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','II ART SC-MAT','I SC','II SC','III SC PCP','IV SC PCP','V SC PCP','I MAT','II MAT A', 'II MAT B','III MAT','III MAT impianti','IV MAT','V MAT','IV MAT impianti','V MAT impianti','III MAT trasporti','IV MAT trasporti','V MAT trasporti','II periodo SSS','III periodo SSS','II periodo MAT','III periodo MAT'];  
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM A','IV AFM B','IV AFM','V AFM','V AFM A','V AFM B','I AL','II AL','III AL','IV AL','V AL','I ART SC-MAT','II ART SC-MAT', 'III ART MAT-PCP','IV ART MAT-PCP','V ART MAT-PCP','I SC','II SC','III SC PCP','IV SC PCP','V SC PCP','I MAT','I MAT A','I MAT B','II MAT','II MAT A', 'II MAT B','III MAT','III MAT impianti','IV MAT','V MAT','IV MAT impianti','V MAT impianti','III MAT trasporti','IV MAT trasporti','V MAT trasporti','II periodo SSS','III periodo SSS','II periodo MAT','III periodo MAT'];  
     $scope.axis = ['Asse dei linguaggi','Asse matematico','Asse storico - sociale','Asse scientifico - tecnologico'];
     // show current year planes date
     $scope.currentYear = new Date();
