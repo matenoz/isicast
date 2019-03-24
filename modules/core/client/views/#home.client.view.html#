@@ -257,7 +257,7 @@
 	</div>
 	<div class="panel panel-default">
           <div class="panel-body">
-	                <a ng-href="https://web.spaggiari.eu/home/app/default/login.php" class="thumbnail">
+          <a ng-href="https://web.spaggiari.eu/home/app/default/login.php" class="thumbnail">
               <img  ng-src="modules/core/client/img/brand/classeviva.png" alt="at" width="auto" height="auto" class="img-thumbnail" align="center">
             </a>
 

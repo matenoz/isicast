@@ -104,7 +104,7 @@
 		</div>
 		<div class="media col-md-10">
 		  <div class="media-left">
-		    <a ng-href="http://www.istruzione.it/iscrizionionline/index_new.shtml">
+		    <a ng-href="http://www.istruzione.it/iscrizionionline/">
 		      <img class="media-object" ng-src="modules/core/client/img/brand/banner_iscrizionionline_16-17.png" alt="Responsive image">
 		    </a>
 		  </div>
@@ -119,8 +119,8 @@
 		    </a>
 		  </div>
 		  <div class="media-left">
-		    <a ng-href="http://isicast.dyndns.org/wordpress">
-		      <img class="media-object" ng-src="modules/core/client/img/brand/Amministrazione.png" alt="Responsive image">
+                    <a ng-href="https://web.spaggiari.eu/sdg/app/default/trasparenza.php?sede_codice=BOII0006&referer=http://www.isicast.gov.it" class="thumbnail">
+		      <img  ng-src="modules/core/client/img/brand/amministrazione_trasparente2.png" alt="at" width="auto" height="auto" class="img-thumbnail" align="center">
 		    </a>
 		  </div>
 		</div>
@@ -163,7 +163,12 @@
 		</div>
 	      </div><!--end col-md-4 -->
 	      <div class="col-md-8">
-		<h3 align="center">Elenco documenti famiglie e alunni</h3>
+			 <div align="middle">	   
+	   <a href="https://web.spaggiari.eu/sdg/app/default/comunicati.php?sede_codice=BOII0006&referer=http://www.isicast.gov.it" style="font-size:11px;">
+	     <img style="margin-bottom:1px;" alt="logo comunicti e circolari" title="Accesso alla sezione comunicati e circolari" class="thumbnail" ng-src="modules/core/client/img/brand/comunicati.jpeg"> Comunicati e circolari </a>
+	   </div>
+
+		<h3 align="center">Storico documenti famiglie e alunni</h3>
 		<div class="panel-group">
 		  <a ng-repeat="doc in docs |orderBy:'-created'| limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})" num-pages="numPages()">
 		     <!-- <a ng-repeat="doc in docs | limitTo: offset - docs.length | limitTo: pageSize " ui-sref="docs.view({docId: doc._id})"  num-pages="numPages()"> -->

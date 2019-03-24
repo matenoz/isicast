@@ -14,6 +14,11 @@ function($scope,$stateParams, $location, Docs) {
   $scope.pageChanged = function() {
     $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
   };
- 
+  $scope.linkClicked = function(link){
+    // your code here
+    $location.path(link);
+  };
+  $scope.link = 'https://web.spaggiari.eu/sdg/app/default/comunicati.php?sede_codice=BOII0006&referer=http://ww.isicast.gov.it';
 }
+  
 ]);
