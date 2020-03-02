@@ -47,11 +47,16 @@
         </div>
 	<div class="form-group">
           <label class="label {{label}}" for="content">Finalità e obiettivi</label>
-          <trix-editor angular-trix name="content" ng-model="content" id="content" class="trix-content" placeholder="Finalità"></trix-editor>
+	  
+          <!-- <trix-editor angular-trix name="content" ng-model="content" id="content" class="trix-content" placeholder="Finalità"></trix-editor> -->
+	            <textarea  name="content" ng-model="content" id="content" class="form-control" cols="30" rows="30" placeholder="FInalità"></textarea>
+
         </div>
 	<div class="form-group">
           <label class="label {{label}}" for="description">Articolazione del Percorso</label>
-          <trix-editor angular-trix name="description" ng-model="description" id="description" class="trix-content" placeholder="Articolazione"></trix-editor>
+          <!-- <trix-editor angular-trix name="description" ng-model="description" id="description" class="trix-content" placeholder="Articolazione"></trix-editor> -->
+	            <textarea  name="description" ng-model="description" id="description" class="form-control" cols="30" rows="30" placeholder="Articolazione"></textarea>
+
         </div>
 	<hr/>
 	<h4 align="middle"><label class="label {{label}}"> Inserimento Attività</label></h4>
