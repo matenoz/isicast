@@ -13,7 +13,7 @@ angular.module('adoptions').controller('AdoptionsController', ['$scope', '$state
       $scope.currentYear.setYear($scope.currentYear.getFullYear());
       $scope.nextYear.setYear($scope.nextYear.getFullYear()+1);
     }
-    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC (promozione commerciale pubblicitaria)','IV SC (promozione commerciale pubblicitaria)','V SC (promozione commerciale pubblicitaria)','I MAT','II MAT','III MAT (apparati, impianti, servizi ind)','III MAT (manutenzione mezzi di trasporto)','IV MAT (apparati, impianti, servizi ind)','IV MAT (manutenzione mezzi di trasporto)','V MAT (apparati, impianti, servizi ind)','V MAT (manutenzione mezzi di trasporto)','II periodo SSS','III periodo SSS'];
+    $scope.classarray = ['I AFM','II AFM','III AFM','IV AFM','V AFM','I AL','II AL','III AL','IV AL','V AL','I SC','II SC','III SC (promozione commerciale pubblicitaria)','IV SC (promozione commerciale pubblicitaria)','V SC (promozione commerciale pubblicitaria)','I MAT','II MAT','I MAT A','I MAT B','II MAT A','II MAT B','III MAT','IV MAT','V MAT','III MAT (apparati, impianti, servizi ind)','III MAT (manutenzione mezzi di trasporto)','IV MAT (apparati, impianti, servizi ind)','IV MAT (manutenzione mezzi di trasporto)','V MAT (apparati, impianti, servizi ind)','V MAT (manutenzione mezzi di trasporto)','II periodo SSS','III periodo SSS'];
     $scope.indirizzoarray = ['Amministrazione Finanza & Marketing','Liceo Scientifico','Manutenzione e Assistenza Tecnica','Servizi Commerciali','Servizi Socio Sanitari','MAT Serale'];
     $scope.files = [];
     $scope.onLoaded = function () {
