@@ -22,11 +22,10 @@ angular.module('docs').config(['$stateProvider',
         url: '/ecdl',
         templateUrl: 'modules/docs/client/views/ecdl-docs.client.view.html'
       })
-    /* .state('docs.provvisorio', {
-     *   url: '/orarioprovvisorio',
-     *   templateUrl: 'modules/docs/client/views/provvisorio-docs.client.view.html'
-     * })
-     */
+      .state('docs.provvisorio', {
+        url: '/orarioprovvisorio',
+        templateUrl: 'modules/docs/client/views/provvisorio-docs.client.view.html'
+      })
       .state('docs.create', {
         url: '/create',
         templateUrl: 'modules/docs/client/views/create-doc.client.view.html',
