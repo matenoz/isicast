@@ -32,11 +32,12 @@
 	    <ul class="dropdown-menu"  role="menu" ng-controller="RulesController" ng-init="find()">
 	      <li class="dropdown-header">L'istituto</li>
 	      <li ng-show="!rule.isFrame" ng-repeat="rule in rules">
-		<a ui-sref="rules.view({ruleId: rule._id})">
+		<a ui-sref="rules.view({ruleId: rule._id})">  
 		  <span ng-bind="rule.title">
 		  </span>
 		</a>
 	      </li>
+	      <li><a href="https://sites.google.com/isicast.net/orientamento">Orientamento</a></li>
 	      <li class="divider"></li>
 	      <li class="dropdown-header">Sezioni</li>
 	      <li><a ng-href="#">Diurno</a></li>
@@ -83,7 +84,9 @@
 	      <span class="caret"></span></a>
 	    <ul class="dropdown-menu" role="menu">
 	      <li><a ng-href="http://didattica.isicast.gov.it/wordpress"> Amm.ne Trasparente fino al 22-03-2019</a></li>
+	      <li><a ng-href="https://web.spaggiari.eu/sdg/app/default/trasparenza.php?sede_codice=BOII0006&referer=http://www.isicast.gov.it">Amm.ne Trasparente dal 22-03-2019</a></li>
 	      <li><a ng-href="http://didattica.isicast.gov.it/wordpress/?page_id=45">Albo Pretorio fino 22-03-2019</a></li>
+	      <li><a ng-href="https://web.spaggiari.eu/sdg/app/default/albo_pretorio.php?sede_codice=BOII0006&referer=http://www.isicast.gov.it">Albo Pretorio dal 22-03-2019</a></li>
 	      <li><a ng-href="http://didattica.isicast.gov.it/wordpress/?p=109">Bacheca Sindacale</a></li>
 	      <li><a ng-href="http://didattica.isicast.gov.it/wordpress/?amm-trasparente=codice-disciplinare">Codice Disciplinare</a></li>
 	      <li><a ui-sref="docs.list">Documenti e Circolari fino al 22-03-2019</a></li>
